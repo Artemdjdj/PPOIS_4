@@ -21,3 +21,4 @@ class NumberValidator:
             raise ValueError(f"The value is too small, min value  is {self.min_value}")
         elif value > self.max_value:
             raise ValueError(f"The value is too big, max value  is {self.max_value}")
+        instance.__dict__[self.name] = value
