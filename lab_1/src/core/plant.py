@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 from src.utils.descriptor import NumberValidator
 from src.main.settings import Color
 
 
-class IPlant:
+class IPlant(ABC):
     height = NumberValidator()
     count_of_water = NumberValidator()
 
@@ -34,6 +35,10 @@ class IPlant:
     def color(self, color: Color) -> None:
         self.__color = color
 
+    @abstractmethod
+    def is_edible(self)->bool:
+        pass
+
 
 class Vegetable(IPlant):
     length_root = NumberValidator()
@@ -49,6 +54,11 @@ class Vegetable(IPlant):
         super.__init__(height, name, color, count_of_water)
         self.length_root = length_root
 
+    def get_type_of_plant(self):
+        return "Vegetable"
+    
+    def is_edible(self)->bool:
+        return True
 
 class Fruit(IPlant):
     def __init__(
@@ -70,6 +80,9 @@ class Fruit(IPlant):
     def is_sweet(self, is_sweet: bool) -> None:
         self.__is_sweet = is_sweet
 
+    def is_edible(self)->bool:
+        return True
+
 
 class DecorativePlant(IPlant):
     def __init__(
@@ -90,3 +103,6 @@ class DecorativePlant(IPlant):
     @design.setter
     def design(self, design: str) -> None:
         self.__design = design
+
+    def is_edible(self)->bool:
+        return False
