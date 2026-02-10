@@ -1,4 +1,3 @@
-from typing import Any
 from src.utils.descriptor import NumberValidator
 
 

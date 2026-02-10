@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 from src.utils.descriptor import NumberValidator
-from src.main.settings import Color
+from src.utils.utils import Color
+from src.main.settings import MAX_DIAMETER_OF_PLANT
 
 
 class IPlant(ABC):
     height = NumberValidator()
     count_of_water = NumberValidator()
+    diameter = NumberValidator(MAX_DIAMETER_OF_PLANT)
 
     def __init__(
         self,
@@ -13,15 +15,17 @@ class IPlant(ABC):
         name: str,
         color: Color,
         count_of_water: int | float = None,
+        diameter: int | float = None,
     ) -> None:
         self.height = height
         self.__name = name
-        self.color = color
+        self.__color = color
         self.count_of_water = count_of_water
+        self.diameter = diameter
 
     @property
     def name(self) -> str:
-        return self.name
+        return self.__name
 
     @name.setter
     def name(self, name: str) -> None:
@@ -29,14 +33,10 @@ class IPlant(ABC):
 
     @property
     def color(self) -> str:
-        return self.color.value
-
-    @color.setter
-    def color(self, color: Color) -> None:
-        self.__color = color
+        return self.__color.name
 
     @abstractmethod
-    def is_edible(self)->bool:
+    def is_edible(self) -> bool:
         pass
 
 
@@ -56,9 +56,10 @@ class Vegetable(IPlant):
 
     def get_type_of_plant(self):
         return "Vegetable"
-    
-    def is_edible(self)->bool:
+
+    def is_edible(self) -> bool:
         return True
+
 
 class Fruit(IPlant):
     def __init__(
@@ -80,7 +81,7 @@ class Fruit(IPlant):
     def is_sweet(self, is_sweet: bool) -> None:
         self.__is_sweet = is_sweet
 
-    def is_edible(self)->bool:
+    def is_edible(self) -> bool:
         return True
 
 
@@ -104,5 +105,5 @@ class DecorativePlant(IPlant):
     def design(self, design: str) -> None:
         self.__design = design
 
-    def is_edible(self)->bool:
+    def is_edible(self) -> bool:
         return False

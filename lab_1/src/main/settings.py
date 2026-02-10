@@ -1,5 +1,2 @@
-from dataclasses import dataclass
-
-@dataclass
-class Color:
-    name : str
+MAX_DIAMETER_OF_PLANT = 42000
+MAX_COEFF = 1
