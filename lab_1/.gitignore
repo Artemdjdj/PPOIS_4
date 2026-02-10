@@ -1,0 +1,15 @@
+#editor
+.vscode/
+.idea/
+
+#virtual_enviroment
+.venv/
+
+# images
+images/
+
+#cache
+__pycache__/
+src/main/__pycache__/
+src/settings/__pycache__/
+
