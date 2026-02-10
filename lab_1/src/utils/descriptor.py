@@ -15,10 +15,10 @@ class NumberValidator:
         return instance.__dict__[self.name]
 
     def __set__(self, instance: Any, value: int | float) -> None:
-        if isinstance(value, (int|float)):
+        if not isinstance(value, (int|float)):
             raise TypeError("The value is not int and not float")
-        elif value < self.min_value:
+        elif self.min_value is not None and value < self.min_value:
             raise ValueError(f"The value is too small, min value  is {self.min_value}")
-        elif value > self.max_value:
+        elif self.max_value is not None and value > self.max_value:
             raise ValueError(f"The value is too big, max value  is {self.max_value}")
         instance.__dict__[self.name] = value
