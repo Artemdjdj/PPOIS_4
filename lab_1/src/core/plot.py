@@ -1,7 +1,8 @@
 from enum import Enum
 from typing import Set, Optional
 from src.utils.descriptor import NumberValidator
-from src.exceptions.exceptions import GrillDoesNotExist, PositionError
+from src.utils.validator import PositionValidator
+from src.exceptions.exceptions import GrillDoesNotExist
 from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
 from src.core.plant import IPlant
@@ -117,10 +118,8 @@ class GardenPlot(BasicObject):
         return self.__plants
 
     def remove_plant(self, position: int) -> None:
-        if not isinstance(position, int):
-            raise TypeError("Некорректный формат номера растения")
-        if abs(position) >= len(self.__plants):
-            raise PositionError("Некорректая позиция растения")
+        validator = PositionValidator(len(self.__plants), position)
+        validator.validate()
         self.__plants.pop(position)
 
     def clear_garden_of_all_plants(self) -> None:
@@ -134,4 +133,34 @@ class GardenPlot(BasicObject):
     def fertilize_soil(self, amount_of_fertilizer: int | float)->None:
         coeff_fertilizer = amount_of_fertilizer/AMOUNT_OF_FERTILIZER
         self.__soil.fertilize(coeff_fertilizer)
+
+    @property
+    def recreation_area(self)->None:
+        return self.__recreation_area
+
+    def create_recreation_area(self, recreation_area:RecreationArea)->None:
+        self.__recreation_area = recreation_area
+        
+    def add_tool(self, tool: ITool) -> None:
+        self.__tools.append(tool)
+
+    @property
+    def tools(self) -> list[ITool]:
+        return self.__tools
+
+    def remove_tool(self, position: int) -> None:
+        validator = PositionValidator(len(self.__tools), position)
+        validator.validate()
+        self.__tools.pop(position)
+
+    def cleaк_garden_of_all_tools(self) -> None:
+        self.__tools.clear()
+
+    def tool_maintenance(self, position: int)->str:
+        validator = PositionValidator(len(self.__tools), position)
+        validator.validate()
+        return self.__tools[position].maintain()
+    
+    
+    
 
