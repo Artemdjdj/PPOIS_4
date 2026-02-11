@@ -95,6 +95,9 @@ class GardenPlot(BasicObject):
         self.__recreation_area: Optional[RecreationArea] = None
         self.__plants:list[IPlant] = []
         self.__tools:list[ITool] = []
+        self.__irrigation_system = []
+
+    
     
 
 

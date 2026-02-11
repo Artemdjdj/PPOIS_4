@@ -8,11 +8,6 @@ class GrillDoesNotExist(Exception):
         super().__init__(msg)
         self.msg: str = msg
 
-class BigAmountOfWaterError(Exception):
-    def __init__(self, msg: str) -> None:
-        super().__init__(msg)
-        self.msg: str = msg
-
 class BigAmountOfFertilizerError(Exception):
     def __init__(self, msg: str) -> None:
         super().__init__(msg)
