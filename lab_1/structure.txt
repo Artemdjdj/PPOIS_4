@@ -26,6 +26,10 @@ lab_1
 │   │   ├── descriptor.py
 │   │   └── utils.py
 │   │
+│   ├── interface/
+│   │   ├── __init__.py
+│   │   └── garden_menu.py
+│   │
 │   └── __init__.py
 │
 ├── tests/
