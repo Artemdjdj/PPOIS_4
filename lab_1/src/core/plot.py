@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Set, Optional
 from src.utils.descriptor import NumberValidator
 from src.utils.validator import PositionValidator
-from src.exceptions.exceptions import GrillDoesNotExist
+from src.exceptions.exceptions import GrillDoesNotExist, SizeError
 from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
 from src.core.plant import IPlant
@@ -130,17 +130,22 @@ class GardenPlot(BasicObject):
         self.__irrigation_system.water(amount, self.__plants)
         self.__irrigation_system.turn_of()
 
-    def fertilize_soil(self, amount_of_fertilizer: int | float)->None:
-        coeff_fertilizer = amount_of_fertilizer/AMOUNT_OF_FERTILIZER
+    def fertilize_soil(self, amount_of_fertilizer: int | float) -> None:
+        coeff_fertilizer = amount_of_fertilizer / AMOUNT_OF_FERTILIZER
         self.__soil.fertilize(coeff_fertilizer)
 
     @property
-    def recreation_area(self)->None:
+    def recreation_area(self) -> None:
         return self.__recreation_area
 
-    def create_recreation_area(self, recreation_area:RecreationArea)->None:
+    def create_recreation_area(self, recreation_area: RecreationArea) -> None:
+        if (
+            recreation_area.square > self.square
+            or recreation_area.perimeter > self.perimeter
+        ):
+            raise SizeError(" Зона отдыха не должна превышать размеры самого участка")
         self.__recreation_area = recreation_area
-        
+
     def add_tool(self, tool: ITool) -> None:
         self.__tools.append(tool)
 
@@ -154,13 +159,9 @@ class GardenPlot(BasicObject):
         self.__tools.pop(position)
 
     def cleaк_garden_of_all_tools(self) -> None:
-        self.__tools.clear()
+        self.__tools.clear()   
 
-    def tool_maintenance(self, position: int)->str:
+    def tool_maintenance(self, position: int) -> str:
         validator = PositionValidator(len(self.__tools), position)
         validator.validate()
         return self.__tools[position].maintain()
-    
-    
-    
-

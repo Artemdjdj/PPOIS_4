@@ -1,15 +1,16 @@
 from abc import ABC, abstractmethod
-from src.exceptions.exceptions import PositionError
+from src.exceptions.exceptions import PositionError, NoneObjectError
+from src.core.plot import RecreationArea
+
+
 class IValidator(ABC):
-    
     @abstractmethod
-    def validate(self)->None:
+    def validate(self) -> None:
         pass
 
 
 class PositionValidator(IValidator):
-
-    def __init__(self, len_of_arr: int, position:int)->None:
+    def __init__(self, len_of_arr: int, position: int) -> None:
         self.__len_of_arr = len_of_arr
         self.__position = position
 
@@ -18,4 +19,3 @@ class PositionValidator(IValidator):
             raise TypeError("Некорректный формат позиции в списке")
         if abs(self.__position) >= self.__len_of_arr:
             raise PositionError("Некорректая позиция")
-        
