@@ -2,9 +2,11 @@ from enum import Enum
 from typing import Set, Optional
 from src.utils.descriptor import NumberValidator
 from src.exceptions.exceptions import GrillDoesNotExist, PositionError
+from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
 from src.core.plant import IPlant
 from src.core.tool import ITool
+from src.core.irrigation_system import IrrigationSystem
 
 
 class MeatType(Enum):
@@ -35,15 +37,15 @@ class BasicObject:
     perimeter = NumberValidator()
 
     def __init__(self, square: int | float, perimeter: int | float) -> None:
-        self.square:int|float = square
-        self.perimeter:int|float = perimeter
+        self.square: int | float = square
+        self.perimeter: int | float = perimeter
 
 
 class Grill:
     def fry(self, meat: MeatType) -> str:
         return f"мясо приготовилось за {meat.cooking_time} минут"
-    
-    def __str__(self)->str:
+
+    def __str__(self) -> str:
         return "Гриль для приготовления мясных блюд"
 
 
@@ -51,7 +53,7 @@ class RecreationArea(BasicObject):
     def __init__(self, square: int | float, perimeter: int | float) -> None:
         super().__init__(square, perimeter)
         self.__decorative_fittings: Set[str] = set()
-        self.__grill: Grill = None
+        self.__grill: Optional[Grill] = None
         self.__is_clean = True
 
     def get_decorative_fittings(self) -> Set[str]:
@@ -88,31 +90,48 @@ class RecreationArea(BasicObject):
     def clean(self) -> None:
         if not self.__is_clean:
             self.__is_clean = True
-    
-class GardenPlot(BasicObject):
-    def __init__(self, square: int | float, perimeter: int | float, soil_type:SoilType) -> None:
-        super().__init__(square, perimeter)
-        self.__soil:Soil = Soil(soil_type)
-        self.__recreation_area: Optional[RecreationArea] = None
-        self.__plants:list[IPlant] = []
-        self.__tools:list[ITool] = []
-        self.__irrigation_system = []
 
-    
-    def plant_plant(self, plant:IPlant)->None:
+
+class GardenPlot(BasicObject):
+    def __init__(
+        self,
+        square: int | float,
+        perimeter: int | float,
+        soil_type: SoilType,
+        amount_of_all_water: int | float,
+    ) -> None:
+        super().__init__(square, perimeter)
+        self.__soil: Soil = Soil(soil_type)
+        self.__recreation_area: Optional[RecreationArea] = None
+        self.__plants: list[IPlant] = []
+        self.__tools: list[ITool] = []
+        self.__irrigation_system: IrrigationSystem = IrrigationSystem(
+            amount_of_all_water
+        )
+
+    def plant_plant(self, plant: IPlant) -> None:
         self.__plants.append(plant)
 
     @property
-    def plants(self)->list[IPlant]:
+    def plants(self) -> list[IPlant]:
         return self.__plants
-    
-    def remove_plant(self, position:int)->None:
+
+    def remove_plant(self, position: int) -> None:
         if not isinstance(position, int):
             raise TypeError("Некорректный формат номера растения")
-        if abs(position)>=len(self.__plants):
+        if abs(position) >= len(self.__plants):
             raise PositionError("Некорректая позиция растения")
         self.__plants.pop(position)
 
-    def clear_garden_of_all_plants(self)->None:
+    def clear_garden_of_all_plants(self) -> None:
         self.__plants.clear()
-        
+
+    def water_plants(self, amount: int | float) -> None:
+        self.__irrigation_system.turn_on()
+        self.__irrigation_system.water(amount, self.__plants)
+        self.__irrigation_system.turn_of()
+
+    def fertilize_soil(self, amount_of_fertilizer: int | float)->None:
+        coeff_fertilizer = amount_of_fertilizer/AMOUNT_OF_FERTILIZER
+        self.__soil.fertilize(coeff_fertilizer)
+

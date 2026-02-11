@@ -5,7 +5,7 @@ from src.core.plant import IPlant
 class IrrigationSystem:
     amount_of_all_water = NumberValidator()
 
-    def __init__(self, amount: int | float, amount_of_all_water: int|float) -> None:
+    def __init__(self, amount_of_all_water: int|float) -> None:
         self.__is_active = False
         self.amount_of_all_water: int | float = amount_of_all_water
 
