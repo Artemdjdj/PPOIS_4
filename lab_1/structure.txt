@@ -1,0 +1,35 @@
+lab_1
+├── .venv/
+│
+├── images/
+│
+├── src/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── irrigation_system.py
+│   │   ├── plant.py
+│   │   ├── plot.py
+│   │   ├── soil.py
+│   │   └── tool.py
+│   │
+│   ├── exceptions/
+│   │   ├── __init__.py
+│   │   └── exceptions.py
+│   │
+│   ├── main/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   └── settings.py
+│   │
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── descriptor.py
+│   │   └── utils.py
+│   │
+│   └── __init__.py
+│
+├── tests/
+│
+├── .gitignore
+├── README.MD
+└── structure.txt
