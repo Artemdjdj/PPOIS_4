@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Set, Optional
 from src.utils.descriptor import NumberValidator
-from src.exceptions.exceptions import GrillDoesNotExist
+from src.exceptions.exceptions import GrillDoesNotExist, PositionError
 from src.core.soil import Soil, SoilType
 from src.core.plant import IPlant
 from src.core.tool import ITool
@@ -42,6 +42,9 @@ class BasicObject:
 class Grill:
     def fry(self, meat: MeatType) -> str:
         return f"мясо приготовилось за {meat.cooking_time} минут"
+    
+    def __str__(self)->str:
+        return "Гриль для приготовления мясных блюд"
 
 
 class RecreationArea(BasicObject):
@@ -82,11 +85,9 @@ class RecreationArea(BasicObject):
     def is_clean(self) -> bool:
         return self.__is_clean
 
-    def clean(self) -> str:
+    def clean(self) -> None:
         if not self.__is_clean:
             self.__is_clean = True
-            return "Территория убрана!"
-        return "Территория не загрязнена"
     
 class GardenPlot(BasicObject):
     def __init__(self, square: int | float, perimeter: int | float, soil_type:SoilType) -> None:
@@ -98,7 +99,20 @@ class GardenPlot(BasicObject):
         self.__irrigation_system = []
 
     
+    def plant_plant(self, plant:IPlant)->None:
+        self.__plants.append(plant)
+
+    @property
+    def plants(self)->list[IPlant]:
+        return self.__plants
     
+    def remove_plant(self, position:int)->None:
+        if not isinstance(position, int):
+            raise TypeError("Некорректный формат номера растения")
+        if abs(position)>=len(self.__plants):
+            raise PositionError("Некорректая позиция растения")
+        self.__plants.pop(position)
 
-
-
+    def clear_garden_of_all_plants(self)->None:
+        self.__plants.clear()
+        
