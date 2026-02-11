@@ -1,7 +1,7 @@
 from enum import Enum
-from src.utils.descriptor import NumberValidator
-from src.exceptions.exceptions import TypeOfSoilError
-from src.main.settings import MAX_COEFF
+from src.exceptions.exceptions import (
+    TypeOfSoilError,
+)
 
 
 class SoilType(Enum):
@@ -14,13 +14,8 @@ class SoilType(Enum):
 
 
 class Soil:
-    coeff_water = NumberValidator(MAX_COEFF)
-    coeff_fertilizer = NumberValidator(MAX_COEFF)
-
-    def __init__(self, coeff_water: int | float, coeff_fertilizer: int | float):
-        self.__type_of_soil = SoilType.LOAMY
-        self.coeff_water = coeff_water
-        self.coeff_fertilizer = coeff_fertilizer
+    def __init__(self, soil_type: SoilType = SoilType.LOAMY):
+        self.__type_of_soil: SoilType = soil_type
 
     @property
     def type_of_soil(self) -> str:

@@ -1,14 +1,11 @@
 from enum import Enum
+from typing import Set, Optional
 from src.utils.descriptor import NumberValidator
-from src.utils.descriptor import IntegerValidator
+from src.exceptions.exceptions import GrillDoesNotExist
+from src.core.soil import Soil, SoilType
+from src.core.plant import IPlant
+from src.core.tool import ITool
 
-class SoilType(Enum):
-    CLAY = "глинистая"
-    SANDY = "песчаная"
-    LOAMY = "суглинистая"
-    PEATY = "торфяная"
-    CHALKY = "известковая"
-    CHERNOZEM = "чернозём"
 
 class MeatType(Enum):
     BEEF = ("говядина", 120)
@@ -32,25 +29,73 @@ class MeatType(Enum):
     def cooking_time(self) -> int:
         return self.value[1]
 
+
 class BasicObject:
     squre = NumberValidator()
     perimeter = NumberValidator()
 
     def __init__(self, square: int | float, perimeter: int | float) -> None:
-        self.square = square
-        self.perimeter = perimeter
-
-
-class Alcove(BasicObject):
-    human_count = IntegerValidator()
-
-    def __init__(
-        self, square: int | float, perimeter: int | float, human_count: int
-    ) -> None:
-        super().__init__(square, perimeter)
-        self.human_count = human_count
+        self.square:int|float = square
+        self.perimeter:int|float = perimeter
 
 
 class Grill:
-    def fry(self, meat:MeatType)->str:
+    def fry(self, meat: MeatType) -> str:
         return f"мясо приготовилось за {meat.cooking_time} минут"
+
+
+class RecreationArea(BasicObject):
+    def __init__(self, square: int | float, perimeter: int | float) -> None:
+        super().__init__(square, perimeter)
+        self.__decorative_fittings: Set[str] = set()
+        self.__grill: Grill = None
+        self.__is_clean = True
+
+    def get_decorative_fittings(self) -> Set[str]:
+        return self.__decorative_fittings
+
+    def add_decorative_fitting(self, fitting: str) -> None:
+        self.__decorative_fittings.add(fitting)
+
+    def remove_decorative_fitting(self, fitting: str) -> None:
+        self.__decorative_fittings.remove(fitting)
+
+    def put_grill(self) -> bool:
+        if self.__grill is None:
+            self.__grill = Grill()
+            self.__is_clean = False
+            return True
+        return False
+
+    def remove_grill(self) -> bool:
+        if self.__grill is not None:
+            self.__grill = None
+            return True
+        return False
+
+    def use_grill(self) -> str:
+        if self.__grill:
+            return self.__grill.fry()
+        raise GrillDoesNotExist("Гриль не установлен!")
+
+    @property
+    def is_clean(self) -> bool:
+        return self.__is_clean
+
+    def clean(self) -> str:
+        if not self.__is_clean:
+            self.__is_clean = True
+            return "Территория убрана!"
+        return "Территория не загрязнена"
+    
+class GardenPlot(BasicObject):
+    def __init__(self, square: int | float, perimeter: int | float, soil_type:SoilType) -> None:
+        super().__init__(square, perimeter)
+        self.__soil:Soil = Soil(soil_type)
+        self.__recreation_area: Optional[RecreationArea] = None
+        self.__plants:list[IPlant] = []
+        self.__tools:list[ITool] = []
+    
+
+
+

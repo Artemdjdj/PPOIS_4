@@ -6,7 +6,6 @@ from src.main.settings import MAX_DIAMETER_OF_PLANT
 
 class IPlant(ABC):
     height = NumberValidator()
-    count_of_water = NumberValidator()
     diameter = NumberValidator(MAX_DIAMETER_OF_PLANT)
 
     def __init__(
@@ -14,15 +13,16 @@ class IPlant(ABC):
         height: int | float,
         name: str,
         color: Color,
-        count_of_water: int | float = None,
+        is_watered:bool=False,
         diameter: int | float = None,
     ) -> None:
         self.height = height
         self.__name = name
         self.__color = color
-        self.count_of_water = count_of_water
+        self.__is_watered = is_watered
         self.diameter = diameter
 
+        
     @property
     def name(self) -> str:
         return self.__name
@@ -34,6 +34,14 @@ class IPlant(ABC):
     @property
     def color(self) -> str:
         return self.__color.name
+    
+    @property
+    def is_watered(self) -> bool:
+        return self.__is_watered
+
+    @is_watered.setter
+    def is_watered(self, is_watered) -> None:
+        self.__is_watered = is_watered
 
     @abstractmethod
     def is_edible(self) -> bool:
@@ -49,9 +57,9 @@ class Vegetable(IPlant):
         name: str,
         color: Color,
         length_root: int | float,
-        count_of_water: int | float = None,
+        is_watered:bool = False
     ):
-        super.__init__(height, name, color, count_of_water)
+        super.__init__(height, name, color, is_watered)
         self.length_root = length_root
 
     def get_type_of_plant(self):
@@ -68,9 +76,9 @@ class Fruit(IPlant):
         name: str,
         color: Color,
         is_sweet: bool,
-        count_of_water: int | float = None,
+        is_watered:bool = False
     ):
-        super.__init__(height, name, color, count_of_water)
+        super.__init__(height, name, color, is_watered)
         self.__is_sweet = is_sweet
 
     @property
@@ -92,9 +100,9 @@ class DecorativePlant(IPlant):
         name: str,
         color: Color,
         design: str,
-        count_of_water: int | float = None,
+        is_watered:bool = False
     ):
-        super.__init__(height, name, color, count_of_water)
+        super.__init__(height, name, color, is_watered)
         self.__design = design
 
     @property
