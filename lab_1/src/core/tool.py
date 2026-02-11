@@ -1,7 +1,15 @@
+import time
 from typing import Any
 from abc import ABC, abstractmethod
 from enum import Enum
 from datetime import date
+from src.main.settings import (
+    COEFF_WEAR_SHOVEL,
+    COEFF_WEAR_GARDEN_SHERAS,
+    COEFF_WEAR_RAKE,
+    SPECIAL_COEFF_OF_MAINTAIN,
+    COEFF_OF_DIAMETER,
+)
 
 
 class ToolState(Enum):
@@ -44,14 +52,47 @@ class Tool(ABC):
     def date_of_maintain(self) -> date:
         return self.__date_of_maintain
 
+    def __default_maintain(self, time_repair: int) -> None:
+        self.__state = ToolState.GOOD
+        self.__usage_count = 0
+        self.__date_of_maintain = date.today()
+
     def maintain(self) -> str:
-        pass
+        if self.__state == ToolState.PERFECT:
+            return "Инструмент новый, обслуживание не надо"
+        elif self.__state == ToolState.GOOD:
+            return "Инструмент в хорошем состоянии, можно приступать к работе"
+        elif self.__state == ToolState.WORN:
+            self.__default_maintain(1)
+            return "Инструмент имел небольшие дефекты, теперь все готово инструмент и хорошем состоянии"
+        else:
+            self.__default_maintain(2)
+            return "Инструмент был сильно поврежден, теперь все готово инструмент и хорошем состоянии"
 
     @abstractmethod
-    def perform_task(self, work_hours: float):
+    def perform_task(self, work_hours: int | float, kwargs: Any) -> bool:
         pass
 
 
 class Shovel(Tool):
-    def perform_task(self, **kwargs: Any):
-        pass
+    def perform_task(self, work_hours: int | float, **kwargs: Any) -> bool:
+        self.__usage_count += work_hours / COEFF_WEAR_SHOVEL
+        return self.__usage.count <= SPECIAL_COEFF_OF_MAINTAIN
+
+
+class GardenSheras(Tool):
+    def perform_task(self, work_hours: int | float, **kwargs: Any) -> bool:
+        diameter = kwargs.get("diameter", None)
+        if diameter:
+            self.__usage_count += (
+                work_hours * diameter / (COEFF_WEAR_GARDEN_SHERAS * COEFF_OF_DIAMETER)
+            )
+        else:
+            self.__usage_count += work_hours / COEFF_WEAR_GARDEN_SHERAS
+        return self.__usage.count <= SPECIAL_COEFF_OF_MAINTAIN
+
+
+class Rake(Tool):
+    def perform_task(self, work_hours: int | float, **kwargs: Any) -> bool:
+        self.__usage_count += work_hours / COEFF_WEAR_RAKE
+        return self.__usage.count <= SPECIAL_COEFF_OF_MAINTAIN
