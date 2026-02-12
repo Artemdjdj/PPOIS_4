@@ -72,11 +72,13 @@ class Plant:
         }
 
     @classmethod
-    def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> 'Plant':
+    def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "Plant":
+        color_obj = Color()
+        color_obj.color = info_dict["color"]  # правильно
         return cls(
             height=info_dict["height"],
             name=info_dict["name"],
-            color=Color().color(info_dict["color"]),
+            color=color_obj,
             is_watered=info_dict["is_watered"],
             diameter=info_dict["diameter"],
         )

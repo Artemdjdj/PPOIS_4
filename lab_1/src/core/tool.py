@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Dict, Any
 from datetime import date
 from src.main.settings import COUNT_OF_WORK_HOURS_WORN, COUNT_OF_WORK_HOURS_BROKEN
+from src.exceptions.exceptions import BrokenToolError
 
 
 class ToolState(Enum):
@@ -61,7 +62,9 @@ class Tool:
             self.__default_maintain(2)
             return "Инструмент был сильно поврежден, теперь все готово инструмент и хорошем состоянии"
 
-    def perform_task(self, work_hours: int | float) -> bool:
+    def perform_task(self, work_hours: int | float) -> None:
+        if self.__state == ToolState.BROKEN:
+            raise BrokenToolError("Инструмент сломан")
         self.__usage_count += work_hours
         if (
             self.__usage_count >= COUNT_OF_WORK_HOURS_WORN
@@ -85,7 +88,7 @@ class Tool:
         }
 
     @classmethod
-    def create_object_from_dict(cls, data: Dict[str, Any]) -> 'Tool':
+    def create_object_from_dict(cls, data: Dict[str, Any]) -> "Tool":
         tool = cls(
             name=data["name"], brand=data["brand"], description=data["description"]
         )

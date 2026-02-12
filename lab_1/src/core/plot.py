@@ -45,7 +45,7 @@ class BasicObject:
         return {"square": self.square, "perimeter": self.perimeter}
 
     @classmethod
-    def create_object_create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "BasicObject":
+    def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "BasicObject":
         return cls(square=info_dict["square"], perimeter=info_dict["perimeter"])
 
 
@@ -101,15 +101,15 @@ class RecreationArea(BasicObject):
 
     def create_dict(self) -> Dict[str, Any]:
         base_dict = super().create_dict()
-        recreation_area_dict = {
+        area_dict = {
             "decorative_fittings": list(self.__decorative_fittings),
-            "grill": True if self.__grill is not None else False,
+            "grill": self.__grill is not None,
             "is_clean": self.__is_clean,
         }
-        return {**base_dict, **recreation_area_dict}
+        return base_dict | area_dict
 
     @classmethod
-    def create_object_create_object_from_dict(cls, info_dict: Dict[str, Any]) -> 'RecreationArea':
+    def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "RecreationArea":
         return cls(
             square=info_dict["square"],
             perimeter=info_dict["perimeter"],
@@ -187,32 +187,41 @@ class GardenPlot(BasicObject):
     def clear_garden_of_all_tools(self) -> None:
         self.__tools.clear()
 
+    def tool_perform_task(self, position: int, work_hours: int | float) -> None:
+        validator = PositionValidator(len(self.__tools), position)
+        validator.validate()
+        self.__tools[position].perform_task(work_hours)
+
     def tool_maintenance(self, position: int) -> str:
         validator = PositionValidator(len(self.__tools), position)
         validator.validate()
         return self.__tools[position].maintenance()
-    
+
     def create_dict(self) -> Dict[str, Any]:
         base_dict = super().create_dict()
         garden_dict = {
             "soil": self.__soil.create_dict(),
-            "recreation_area": self.recreation_area.create_dict() if self.recreation_area else None,
+            "recreation_area": self.recreation_area.create_dict()
+            if self.recreation_area
+            else None,
             "plants": [plant.create_dict() for plant in self.__plants],
             "tools": [tool.create_dict() for tool in self.__tools],
-            "irrigation_system": self.__irrigation_system.create_dict()
+            "irrigation_system": self.__irrigation_system.create_dict(),
         }
-        return {base_dict, garden_dict}
+        return base_dict | garden_dict
 
     @classmethod
-    def create_object_from_dict(cls, data: Dict[str, Any]) -> 'GardenPlot':
+    def create_object_from_dict(cls, data: Dict[str, Any]) -> "GardenPlot":
         garden = cls(
             square=data["square"],
             perimeter=data["perimeter"],
             soil_type=SoilType(data["soil"]["soil_type"]),
-            amount_of_all_water=data["irrigation_system"]["amount_of_all_water"]
+            amount_of_all_water=data["irrigation_system"]["amount_of_all_water"],
         )
         if data["recreation_area"]:
-            garden.__recreation_area = RecreationArea.create_object_from_dict(data["recreation_area"])
+            garden.__recreation_area = RecreationArea.create_object_from_dict(
+                data["recreation_area"]
+            )
         garden.__plants = [
             Plant.create_object_from_dict(plant_data) for plant_data in data["plants"]
         ]

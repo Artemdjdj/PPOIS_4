@@ -1,0 +1,46 @@
+{
+    "square": 342.0,
+    "perimeter": 4234.0,
+    "soil": {
+        "soil_type": "песчаная"
+    },
+    "recreation_area": null,
+    "plants": [
+        {
+            "height": 23.0,
+            "name": "огурец",
+            "color": "зеленый",
+            "is_watered": false,
+            "diameter": 34.0
+        },
+        {
+            "height": 45.0,
+            "name": "помидор",
+            "color": "красный",
+            "is_watered": false,
+            "diameter": 56.0
+        }
+    ],
+    "tools": [
+        {
+            "name": "Дрель",
+            "brand": "Bosh",
+            "description": "Мощная",
+            "state": "идеальное",
+            "usage_count": 0,
+            "date_of_maintain": "2026-02-12"
+        },
+        {
+            "name": "Грабли",
+            "brand": "Неизвестен",
+            "description": "-",
+            "state": "идеальное",
+            "usage_count": 0,
+            "date_of_maintain": "2026-02-12"
+        }
+    ],
+    "irrigation_system": {
+        "amount_of_all_water": 56.0,
+        "is_active": false
+    }
+}

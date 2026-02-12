@@ -1,9 +1,11 @@
 import sys
+import json
 from typing import Optional
 from src.core.plot import GardenPlot, RecreationArea
 from src.core.plant import Plant, Color
 from src.core.soil import SoilType
 from src.core.tool import Tool
+from src.interface.loader import BasicDataManager, GardenJsonDataManager
 from src.exceptions.exceptions import (
     ColorError,
     PositionError,
@@ -11,12 +13,15 @@ from src.exceptions.exceptions import (
     LackOfWaterError,
     TooMuchPlantsAreWateredError,
     BigAmountOfFertilizerError,
+    BrokenToolError,
 )
 
 
 class GardenMenu:
-    def __init__(self) -> None:
+    def __init__(self, filename: str) -> None:
         self.__garden_plot: Optional[GardenPlot] = None
+        self.__garden_manager: BasicDataManager = None
+        self.__filename = filename
 
     def run(self) -> None:
         try:
@@ -36,7 +41,9 @@ class GardenMenu:
             print(
                 "\n 1 - глинистая \n 2 - песчаная \n 3 - суглинистая \n 4 - торфяная \n 5 - известковая \n 6 - чернозем"
             )
-            soil_choice = int(input("Выберите тип почвы(выберите нужный вам вариант): "))
+            soil_choice = int(
+                input("Выберите тип почвы(выберите нужный вам вариант): ")
+            )
             soil_dict = {
                 1: SoilType.CLAY,
                 2: SoilType.SANDY,
@@ -89,9 +96,10 @@ class GardenMenu:
         print("10 - просмотр всех декоративных элементов")
         print("11 - добавить новый инструмент")
         print("12 - удалить инструмент")
-        print("13 - обслужить инструмент")
-        print("14 - просмотр всех инструментов")
-        print("15 - удалить все инструменты")
+        print("13 - использовать инструмент")
+        print("14 - обслужить инструмент")
+        print("15 - просмотр всех инструментов")
+        print("16 - удалить все инструменты")
         print("0  -  завершить работу с программой")
         print("__________________________")
 
@@ -124,10 +132,12 @@ class GardenMenu:
             case "12":
                 self.__remove_tool()
             case "13":
+                self.__tool_perfome_task()
+            case "14":
                 self.__tool_maintenance()
             case "14":
                 self.__show_all_tools()
-            case "15":
+            case "16":
                 self.__clear_all_tools()
             case "0":
                 self.__exit()
@@ -156,7 +166,7 @@ class GardenMenu:
     def __remove_plant(self) -> None:
         print("\nВыбрана функция удаления растения \n")
         try:
-            if len(self.__garden_plot.plants)>0:
+            if len(self.__garden_plot.plants) > 0:
                 position = int(input("Введите позицию растения: "))
                 self.__garden_plot.remove_plant(position)
                 print("\n Растение успешно удалено")
@@ -199,7 +209,7 @@ class GardenMenu:
     def __water_plants(self) -> None:
         print("\nВыбрана функция полива растений \n")
         try:
-            if len(self.__garden_plot.plants)>0:
+            if len(self.__garden_plot.plants) > 0:
                 amount = float(input("Введите необходимый объем полива: "))
                 self.__garden_plot.water_plants(amount)
                 print("\n Растения успешно политы")
@@ -217,7 +227,9 @@ class GardenMenu:
     def __fertilize_plants(self) -> None:
         print("\nВыбрана функция удобрения земли \n")
         try:
-            amount_of_fertilize = float(input("Введите необходимый объем полива: "))
+            amount_of_fertilize = float(
+                input("Введите необходимый коэффициент удобрений: ")
+            )
             self.__garden_plot.fertilize_soil(amount_of_fertilize)
             print("\nЗемля успешно удобрена")
         except BigAmountOfFertilizerError as e:
@@ -259,8 +271,10 @@ class GardenMenu:
         try:
             recreation_area = self.__garden_plot.recreation_area
             if recreation_area is not None:
-                if len(recreation_area.get_decorative_fittings())>0:
-                    fitting = input("Введите название элемента, которого хотите удалить: ")
+                if len(recreation_area.get_decorative_fittings()) > 0:
+                    fitting = input(
+                        "Введите название элемента, которого хотите удалить: "
+                    )
                     recreation_area.remove_decorative_fittings(fitting)
                     print("\n Элемент декора успешно удален")
                 else:
@@ -277,9 +291,7 @@ class GardenMenu:
             if recreation_area is not None:
                 decor_elements = recreation_area.get_decorative_fittings()
                 if len(decor_elements) > 0:
-                    print(
-                        ", ".join(map(str, decor_elements))
-                    )
+                    print(", ".join(map(str, decor_elements)))
                 else:
                     print("\n Декораций пока нет")
             else:
@@ -302,12 +314,34 @@ class GardenMenu:
     def __remove_tool(self) -> None:
         print("\nВыбрана функция удаления инструмента \n")
         try:
-            if len(self.__garden_plot.tools)>0:
+            if len(self.__garden_plot.tools) > 0:
                 position = int(input("Введите позицию инструмента: "))
                 self.__garden_plot.remove_tool(position)
                 print("\n Инструмент успешно удален")
             else:
                 print("Инструментов нет")
+        except ValueError as e:
+            print(f"\n {e}")
+        except TypeError as e:
+            print(f"\n {e}")
+        except PositionError as e:
+            print(f"\n {e}")
+        except Exception as e:
+            print(f"\n {e}")
+
+    def __tool_perfome_task(self) -> None:
+        print("\nВыбрана функция использования инструмента \n")
+        try:
+            position = int(input("Введите позицию инструмента: "))
+            work_hours = float(
+                input(
+                    "Введите количество часов, на протяжении которых будет использоваться инструмент: "
+                )
+            )
+            self.__garden_plot.tool_perform_task(position, work_hours)
+            print("\nВы успешно использовали инструмент ")
+        except BrokenToolError as e:
+            print(f"\n {e}")
         except ValueError as e:
             print(f"\n {e}")
         except TypeError as e:
@@ -356,6 +390,14 @@ class GardenMenu:
             print(f"\n {e}")
 
     def __exit(self) -> None:
+        if self.__garden_plot is not None:
+            result = input("\n Хотите сохранить садовый участок? (y/n)\n")
+            if result.lower() == "y":
+                self.__garden_manager = GardenJsonDataManager(
+                    self.__garden_plot, self.__filename
+                )
+                self.__garden_manager.save_garden()
+                print("\n Садовый участок был успешно сохранен\n")
         print("\nПрограмма завершает свою работу \n")
         sys.exit(0)
 
@@ -363,4 +405,14 @@ class GardenMenu:
         print("\nВаш ввод не корректен, попробуйте снова \n")
 
     def __load_garden_plot(self) -> None:
-        pass
+        try:
+            self.__garden_manager = GardenJsonDataManager(
+                self.__garden_plot, self.__filename
+            )
+            garden_plot = self.__garden_manager.load_garden()
+            self.__garden_plot = garden_plot
+            print("Садовый участок успешно загружен")
+        except ValueError as e:
+            print(f"\n{e}\n")
+        except Exception as e:
+            print(f"\n{e}\n")

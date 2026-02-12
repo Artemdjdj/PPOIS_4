@@ -1,7 +1,7 @@
 import pytest
 from datetime import date
 from src.core.tool import Tool
-
+from src.exceptions.exceptions import BrokenToolError
 
 class TestTool:
     def test_tool_creation(self):
@@ -22,6 +22,8 @@ class TestTool:
         assert tool.state == "поврежденное"
         tool.perform_task(6)
         assert tool.state == "сломанное"
+        with pytest.raises(BrokenToolError):
+            tool.perform_task(6)
 
     def test_maintenance(self):
         tool = Tool("Шуруповерт", "Makita", "Мощный")
@@ -34,6 +36,7 @@ class TestTool:
         )
         assert tool.state == "хорошее"
         assert tool.usage_count == 0
+        
 
     def test_str_method(self):
         tool = Tool("Лопата", "Fiskars", "Штыковая лопата")

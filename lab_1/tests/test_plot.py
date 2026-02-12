@@ -106,7 +106,7 @@ class TestGardenPlot:
     def test_fertilize_soil(self):
         plot = GardenPlot(100, 50, SoilType.LOAMY, 200)
         with pytest.raises(BigAmountOfFertilizerError):
-            plot.fertilize_soil(3)
+            plot.fertilize_soil(200)
 
     def test_create_recreation_area(self):
         plot = GardenPlot(200, 150, SoilType.CLAY, 300)

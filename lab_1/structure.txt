@@ -24,6 +24,7 @@ lab_1
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   ├── descriptor.py
+│   │   ├── loader.py
 │   │   └── validator.py
 │   │
 │   ├── interface/
@@ -42,5 +43,6 @@ lab_1
 │
 ├── .gitignore
 ├── README.MD
+├── garden_plot.json
 ├── requirements.txt
 └── structure.txt

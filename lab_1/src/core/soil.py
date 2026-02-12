@@ -26,9 +26,10 @@ class Soil:
     def fertilize(self, coeff_fertilizer: int | float) -> None:
         if self.__coeff_fertilizer + coeff_fertilizer <= MAX_COEFF:
             self.__coeff_fertilizer += coeff_fertilizer
-        raise BigAmountOfFertilizerError(
-            "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
-        )
+        else:
+            raise BigAmountOfFertilizerError(
+                "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
+            )
 
     def create_dict(self) -> Dict[str, Any]:
         return {"soil_type": self.type_of_soil}
