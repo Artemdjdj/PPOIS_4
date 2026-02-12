@@ -3,28 +3,35 @@ from src.core.plot import GardenPlot
 from src.core.plant import Plant
 from src.core.soil import SoilType
 from src.utils.utils import Color
-from src.exceptions.exceptions import ColorError
+from src.exceptions.exceptions import (
+    ColorError,
+    PositionError,
+    SystemIsNotActiveError,
+    LackOfWaterError,
+    TooMuchPlantsAreWateredError,
+)
+
 
 class GardenMenu:
-    def __init__(self)->None:
-        self.__garden_plot:Optional[GardenPlot] = None
+    def __init__(self) -> None:
+        self.__garden_plot: Optional[GardenPlot] = None
 
-    def run(self)->None:
+    def run(self) -> None:
         while True:
             if self.__garden_plot is None:
                 self.__make_start_choice()
             else:
                 self.__make_choice()
 
-    def __create_plot(self)->None:
+    def __create_plot(self) -> None:
         try:
             square = float(input("Площадь участка (кв.м): "))
             perimeter = float(input("Периметр участка (м): "))
 
             soil_choice = int(input("Выберите тип почвы(выберите нужный вам вариант: "))
             soil_dict = {
-                "1": SoilType.CLAY, 
-                "2": SoilType.SANDY, 
+                "1": SoilType.CLAY,
+                "2": SoilType.SANDY,
                 "3": SoilType.LOAMY,
                 "4": SoilType.PEATY,
                 "5": SoilType.CHALKY,
@@ -38,14 +45,14 @@ class GardenMenu:
         except ValueError as e:
             print(f"Ошибка ввода: {e}. Попробуйте снова.\n")
 
-    def __show_start_menu(self)->None:
+    def __show_start_menu(self) -> None:
         print("\n \__________________START_MENU_________________/")
         print("1  - редактировать уже существующий участок")
         print("2  - создать новый участок")
         print("0 -  завершить работу с программой")
         print("|____________________________________________|")
-    
-    def __make_start_choice(self)->None:
+
+    def __make_start_choice(self) -> None:
         self.__show_start_menu()
         user_choice = input("Выберите операцию: ")
         match user_choice:
@@ -58,7 +65,7 @@ class GardenMenu:
             case _:
                 self.__incorrect_input()
 
-    def __show_menu(self)->None:
+    def __show_menu(self) -> None:
         print("\n \________MENU________/")
         print("1  - создать новый участок")
         print("2  - посадить растение")
@@ -79,7 +86,7 @@ class GardenMenu:
         print("0  -  завершить работу с программой")
         print("|____________________________________________|")
 
-    def __make_choice(self)->None:
+    def __make_choice(self) -> None:
         self.__show_menu()
         user_choice = input("Выберите операцию: ")
         match user_choice:
@@ -120,8 +127,8 @@ class GardenMenu:
             case _:
                 self.__incorrect_input()
 
-    def __plant_plant(self)->None:
-        print("Выбрана функция создания растения")
+    def __plant_plant(self) -> None:
+        print("Выбрана функция создания растения\n")
         try:
             height = float(input("Введите высоту растения: "))
             diameter = float(input("Введите высоту растения: "))
@@ -129,60 +136,93 @@ class GardenMenu:
             color_name = input("Введите цвет: ")
             color = Color()
             color.color = color_name
-            plant = Plant(height=height,name=name,color=color, diameter=diameter)
+            plant = Plant(height=height, name=name, color=color, diameter=diameter)
             self.__garden_plot.plant_plant(plant)
+            print("\n Растение успешно посажено")
         except ValueError as e:
             print(f"\n {e}")
         except ColorError as e:
             print(f"\n {e}")
 
-    def __remove_plant(self)->None:
+    def __remove_plant(self) -> None:
+        print("\n Выбрана функция удаления растения \n")
+        try:
+            position = int(input("Введите высоту растения: "))
+            self.__garden_plot.remove_plant(position)
+            print("\n Растение успешно удалено")
+        except ValueError as e:
+            print(f"\n {e}")
+        except TypeError as e:
+            print(f"\n {e}")
+        except PositionError as e:
+            print(f"\n {e}")
+
+    def __show_plants(self) -> None:
+        print("\n Просмотр всех растений \n")
+        try:
+            for plant in self.__garden_plot.plants:
+                print(plant)
+        except Exception as e:
+            print(f"\n {e}")
+
+    def __clear_all_plants(self) -> None:
+        print("\n Выбрана функция удаления всех растений \n")
+        try:
+            self.__garden_plot.clear_garden_of_all_plants()
+            print("\n Растения успешно удалены")
+        except PositionError as e:
+            print(f"\n {e}")
+
+    def __water_plants(self) -> None:
+        print("\n Выбрана функция полива растений \n")
+        try:
+            amount = float(input("Введите необходимый объем полива: "))
+            self.__garden_plot.water_plants(amount)
+            print("\n Растения успешно политы")
+        except SystemIsNotActiveError as e:
+            print(f"\n {e}")
+        except LackOfWaterError as e:
+            print(f"\n {e}")
+        except TooMuchPlantsAreWateredError as e:
+            print(f"\n {e}")
+        except Exception as e:
+            print(f"\n {e}")
+
+    def __fertilize_plants(self) -> None:
         pass
 
-    def __show_plants(self)->None:
+    def __create_recreation_area(self) -> None:
         pass
 
-    def __clear_all_plants(self)->None:
+    def __add_decor(self) -> None:
         pass
 
-    def __water_plants(self)->None:
-        pass    
-
-    def __fertilize_plants(self)->None:
-        pass  
-
-    def __create_recreation_area(self)->None:
+    def __remove_decor(self) -> None:
         pass
 
-    def __add_decor(self)->None:
-        pass
-    
-    def __remove_decor(self)->None:
+    def __show_all_decorations(self) -> None:
         pass
 
-    def __show_all_decorations(self)->None:
+    def __add_new_tool(self) -> None:
         pass
 
-    def __add_new_tool(self)->None:
+    def __remove_tool(self) -> None:
         pass
 
-    def __remove_tool(self)->None:
+    def __tool_maintaince(self) -> None:
         pass
 
-    def __tool_maintaince(self)->None:
+    def __show_all_tools(self) -> None:
         pass
 
-    def __show_all_tools(self)->None:
+    def __clear_all_tools(self) -> None:
         pass
 
-    def __clear_all_tools(self)->None:
+    def __exit(self) -> None:
         pass
 
-    def __exit(self)->None:
+    def __incorrect_input(self) -> None:
         pass
 
-    def __incorrect_input(self)->None:
-        pass
-
-    def __load_garden_plot(self)->None:
+    def __load_garden_plot(self) -> None:
         pass

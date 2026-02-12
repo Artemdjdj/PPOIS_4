@@ -41,3 +41,5 @@ class Plant:
     def is_watered(self, is_watered) -> None:
         self.__is_watered = is_watered
 
+    def __str__(self)->str:
+        return f"{self.__name} and height {self.__height}"
