@@ -5,7 +5,7 @@ from src.core.plot import GardenPlot, RecreationArea
 from src.core.plant import Plant, Color
 from src.core.soil import SoilType
 from src.core.tool import Tool
-from src.interface.loader import BasicDataManager, GardenJsonDataManager
+from src.interface.manager import BasicDataManager, GardenJsonDataManager
 from src.exceptions.exceptions import (
     ColorError,
     PositionError,

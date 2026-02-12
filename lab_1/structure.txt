@@ -16,6 +16,11 @@ lab_1
 │   │   ├── __init__.py
 │   │   └── exceptions.py
 │   │
+│   ├── interface/
+│   │   ├── __init__.py
+│   │   ├── garden_menu.py
+│   │   └── loader.py
+│   │
 │   ├── main/
 │   │   ├── __init__.py
 │   │   ├── main.py
@@ -24,12 +29,7 @@ lab_1
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   ├── descriptor.py
-│   │   ├── loader.py
 │   │   └── validator.py
-│   │
-│   ├── interface/
-│   │   ├── __init__.py
-│   │   └── garden_menu.py
 │   │
 │   └── __init__.py
 │
@@ -40,6 +40,13 @@ lab_1
 │   ├── test_plot.py
 │   ├── test_soil.py
 │   └── test_tool.py
+│
+├── uml/
+│   ├── classes_GardenPlot.puml
+│   ├── packages_GardenPlot.puml
+│   ├── states_garden_plot.png
+│   ├── states_GardenPlot.puml
+│   └── uml.png
 │
 ├── .gitignore
 ├── README.MD
