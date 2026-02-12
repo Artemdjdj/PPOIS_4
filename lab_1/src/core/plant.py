@@ -1,7 +1,24 @@
+from typing import Optional
 from src.utils.descriptor import NumberValidator
-from src.utils.utils import Color
 from src.main.settings import MAX_DIAMETER_OF_PLANT
+from src.utils.validator import ColorValidator, ColorType
 
+
+class Color:
+    def __init__(self) -> None:
+        self.__color:Optional[ColorType] = None
+        self.__validator = None
+
+    @property
+    def color(self) -> str:
+        return self.__color
+
+    @color.setter
+    def color(self, color: str) -> None:
+        color = color.lower()
+        self.__validator = ColorValidator(color)
+        self.__validator.validate()
+        self.__color = color
 
 class Plant:
     height = NumberValidator()
@@ -31,7 +48,7 @@ class Plant:
 
     @property
     def color(self) -> str:
-        return self.__color.name
+        return self.__color.value
 
     @property
     def is_watered(self) -> bool:
@@ -42,4 +59,4 @@ class Plant:
         self.__is_watered = is_watered
 
     def __str__(self)->str:
-        return f"{self.__name} and height {self.__height}"
+        return f"Растение {self.__name} высота которого: {self.height}"

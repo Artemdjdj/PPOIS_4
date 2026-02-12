@@ -1,6 +1,6 @@
 from src.exceptions.exceptions import SystemIsNotActiveError, LackOfWaterError, TooMuchPlantsAreWateredError
 from src.utils.descriptor import NumberValidator
-from src.core.plant import IPlant
+from src.core.plant import Plant
 
 class IrrigationSystem:
     amount_of_all_water = NumberValidator()
@@ -9,7 +9,7 @@ class IrrigationSystem:
         self.__is_active = False
         self.amount_of_all_water: int | float = amount_of_all_water
 
-    def water(self, amount: int | float, plants:list[IPlant]) -> None:
+    def water(self, amount: int | float, plants:list[Plant]) -> None:
         if not self.__is_active:
             raise SystemIsNotActiveError("Система автоматического полива не включена")
         if amount > self.amount_of_all_water:

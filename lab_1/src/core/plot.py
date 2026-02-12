@@ -6,7 +6,7 @@ from src.exceptions.exceptions import GrillDoesNotExist, SizeError
 from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
 from src.core.plant import Plant
-from src.core.tool import ITool
+from src.core.tool import Tool
 from src.core.irrigation_system import IrrigationSystem
 
 
@@ -105,7 +105,7 @@ class GardenPlot(BasicObject):
         self.__soil: Soil = Soil(soil_type)
         self.__recreation_area: Optional[RecreationArea] = None
         self.__plants: list[Plant] = []
-        self.__tools: list[ITool] = []
+        self.__tools: list[Tool] = []
         self.__irrigation_system: IrrigationSystem = IrrigationSystem(
             amount_of_all_water
         )
@@ -115,7 +115,7 @@ class GardenPlot(BasicObject):
 
     @property
     def plants(self) -> list[Plant]:
-        return self.__plants
+        return self.__plant.copy()
 
     def remove_plant(self, position: int) -> None:
         validator = PositionValidator(len(self.__plants), position)
@@ -146,19 +146,19 @@ class GardenPlot(BasicObject):
             raise SizeError(" Зона отдыха не должна превышать размеры самого участка")
         self.__recreation_area = recreation_area
 
-    def add_tool(self, tool: ITool) -> None:
+    def add_tool(self, tool: Tool) -> None:
         self.__tools.append(tool)
 
     @property
-    def tools(self) -> list[ITool]:
-        return self.__tools
+    def tools(self) -> list[Tool]:
+        return self.__tools.copy()
 
     def remove_tool(self, position: int) -> None:
         validator = PositionValidator(len(self.__tools), position)
         validator.validate()
         self.__tools.pop(position)
 
-    def cleaк_garden_of_all_tools(self) -> None:
+    def clear_garden_of_all_tools(self) -> None:
         self.__tools.clear()   
 
     def tool_maintenance(self, position: int) -> str:

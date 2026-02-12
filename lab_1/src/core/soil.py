@@ -1,19 +1,8 @@
-from enum import Enum
 from src.exceptions.exceptions import (
-    TypeOfSoilError,
     BigAmountOfFertilizerError,
 )
 from src.main.settings import MAX_COEFF, NORMAL_COEFF
-from src.utils.validator import SoilValidator
-
-
-class SoilType(Enum):
-    CLAY = "глинистая"
-    SANDY = "песчаная"
-    LOAMY = "суглинистая"
-    PEATY = "торфяная"
-    CHALKY = "известковая"
-    CHERNOZEM = "чернозём"
+from src.utils.validator import SoilValidator, SoilType
 
 
 class Soil:
@@ -28,6 +17,7 @@ class Soil:
 
     @type_of_soil.setter
     def type_of_soil(self, type_of_soil: str) -> None:
+        type_of_soil = type_of_soil.lower()
         self.__validator = SoilValidator(type_of_soil)
         self.__validator.validate()
         self.__type_of_soil = type_of_soil

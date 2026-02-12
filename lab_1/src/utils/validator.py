@@ -1,12 +1,10 @@
 from abc import ABC, abstractmethod
+from enum import Enum
 from src.exceptions.exceptions import (
     PositionError,
-    NoneObjectError,
     ColorError,
     TypeOfSoilError,
 )
-from src.utils.utils import ColorType
-from src.core.soil import SoilType
 
 
 class IValidator(ABC):
@@ -26,6 +24,14 @@ class PositionValidator(IValidator):
         if abs(self.__position) >= self.__len_of_arr:
             raise PositionError("Некорректая позиция")
 
+class ColorType(Enum):
+    GREEN = "зеленый"
+    BLUE = "голубой"
+    BROWN = "коричневый"
+    BLACK = "черный"
+    YELLOW = "желтый"
+    RED = "красный"
+    ORANGE = "оранжевый"
 
 class ColorValidator(IValidator):
     def __init__(self, color: str) -> None:
@@ -38,6 +44,14 @@ class ColorValidator(IValidator):
             if color.value == self.__color:
                 return
         raise ColorError("Некорректный цвет")
+
+class SoilType(Enum):
+    CLAY = "глинистая"
+    SANDY = "песчаная"
+    LOAMY = "суглинистая"
+    PEATY = "торфяная"
+    CHALKY = "известковая"
+    CHERNOZEM = "чернозём"
 
 
 class SoilValidator(IValidator):

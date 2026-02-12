@@ -24,7 +24,7 @@ lab_1
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   ├── descriptor.py
-│   │   └── utils.py
+│   │   └── validator.py
 │   │
 │   ├── interface/
 │   │   ├── __init__.py
