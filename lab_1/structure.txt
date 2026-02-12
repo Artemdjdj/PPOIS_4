@@ -33,7 +33,14 @@ lab_1
 │   └── __init__.py
 │
 ├── tests/
+│   ├── __init__.py
+│   ├── test_irrigitation_system.py
+│   ├── test_plant.py
+│   ├── test_plot.py
+│   ├── test_soil.py
+│   └── test_tool.py
 │
 ├── .gitignore
 ├── README.MD
+├── requirements.txt
 └── structure.txt
