@@ -5,7 +5,7 @@ from src.utils.validator import PositionValidator
 from src.exceptions.exceptions import GrillDoesNotExist, SizeError
 from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
-from src.core.plant import IPlant
+from src.core.plant import Plant
 from src.core.tool import ITool
 from src.core.irrigation_system import IrrigationSystem
 
@@ -104,17 +104,17 @@ class GardenPlot(BasicObject):
         super().__init__(square, perimeter)
         self.__soil: Soil = Soil(soil_type)
         self.__recreation_area: Optional[RecreationArea] = None
-        self.__plants: list[IPlant] = []
+        self.__plants: list[Plant] = []
         self.__tools: list[ITool] = []
         self.__irrigation_system: IrrigationSystem = IrrigationSystem(
             amount_of_all_water
         )
 
-    def plant_plant(self, plant: IPlant) -> None:
+    def plant_plant(self, plant: Plant) -> None:
         self.__plants.append(plant)
 
     @property
-    def plants(self) -> list[IPlant]:
+    def plants(self) -> list[Plant]:
         return self.__plants
 
     def remove_plant(self, position: int) -> None:
