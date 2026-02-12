@@ -34,7 +34,7 @@ class MeatType(Enum):
 
 
 class BasicObject:
-    squre = NumberValidator()
+    square = NumberValidator()
     perimeter = NumberValidator()
 
     def __init__(self, square: int | float, perimeter: int | float) -> None:

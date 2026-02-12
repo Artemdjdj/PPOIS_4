@@ -1,0 +1,68 @@
+@startuml packages_GardenPlot
+set namespaceSeparator none
+package "src" as src {
+}
+package "src.core" as src.core {
+}
+package "src.core.irrigation_system" as src.core.irrigation_system {
+}
+package "src.core.plant" as src.core.plant {
+}
+package "src.core.plot" as src.core.plot {
+}
+package "src.core.soil" as src.core.soil {
+}
+package "src.core.tool" as src.core.tool {
+}
+package "src.exceptions" as src.exceptions {
+}
+package "src.exceptions.exceptions" as src.exceptions.exceptions {
+}
+package "src.interface" as src.interface {
+}
+package "src.interface.garden_menu" as src.interface.garden_menu {
+}
+package "src.interface.loader" as src.interface.loader {
+}
+package "src.main" as src.main {
+}
+package "src.main.main" as src.main.main {
+}
+package "src.main.settings" as src.main.settings {
+}
+package "src.utils" as src.utils {
+}
+package "src.utils.descriptor" as src.utils.descriptor {
+}
+package "src.utils.validator" as src.utils.validator {
+}
+src.core.irrigation_system --> src.core.plant
+src.core.irrigation_system --> src.exceptions.exceptions
+src.core.irrigation_system --> src.utils.descriptor
+src.core.plant --> src.main.settings
+src.core.plant --> src.utils.descriptor
+src.core.plant --> src.utils.validator
+src.core.plot --> src.core.irrigation_system
+src.core.plot --> src.core.plant
+src.core.plot --> src.core.soil
+src.core.plot --> src.core.tool
+src.core.plot --> src.exceptions.exceptions
+src.core.plot --> src.main.settings
+src.core.plot --> src.utils.descriptor
+src.core.plot --> src.utils.validator
+src.core.soil --> src.exceptions.exceptions
+src.core.soil --> src.main.settings
+src.core.soil --> src.utils.validator
+src.core.tool --> src.exceptions.exceptions
+src.core.tool --> src.main.settings
+src.interface.garden_menu --> src.core.plant
+src.interface.garden_menu --> src.core.plot
+src.interface.garden_menu --> src.core.soil
+src.interface.garden_menu --> src.core.tool
+src.interface.garden_menu --> src.exceptions.exceptions
+src.interface.garden_menu --> src.interface.loader
+src.interface.loader --> src.core.plot
+src.main.main --> src.interface.garden_menu
+src.main.main --> src.main.settings
+src.utils.validator --> src.exceptions.exceptions
+@enduml

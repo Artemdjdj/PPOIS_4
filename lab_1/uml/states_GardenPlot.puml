@@ -1,0 +1,65 @@
+@startuml
+title Состояния садового участка (GardenPlot)
+
+state GardenPlot {
+
+  state Plants {
+    state EMPTY_PLANTS : нет растений
+    state HAS_PLANTS   : есть растения
+    state WATERED      : растения политы
+    state FERTILIZED   : почва удобрена
+
+    [*] --> EMPTY_PLANTS : участок создан
+    EMPTY_PLANTS --> HAS_PLANTS : plant_plant()
+    HAS_PLANTS --> EMPTY_PLANTS : clear_all_plants()
+    HAS_PLANTS --> WATERED      : water_plants()
+    HAS_PLANTS --> FERTILIZED   : fertilize_soil()
+    WATERED    --> HAS_PLANTS   : (впитывание)
+    FERTILIZED --> HAS_PLANTS   : (усвоение удобрений)
+  }
+
+  state Recreation {
+    state NO_RECREATION     : зона отдыха отсутствует
+    state HAS_RECREATION    : зона отдыха создана
+
+    [*] --> NO_RECREATION
+    NO_RECREATION --> HAS_RECREATION : create_recreation_area()
+
+    state HAS_RECREATION {
+      state Decor {
+        state NO_DECOR  : декор отсутствует
+        state HAS_DECOR : есть элементы декора
+        [*] --> NO_DECOR
+        NO_DECOR  --> HAS_DECOR : add_decorative_fitting()
+        HAS_DECOR --> NO_DECOR  : remove_decorative_fitting()
+      }
+      
+      state Grill {
+        state NO_GRILL  : гриль отсутствует
+        state HAS_GRILL : гриль установлен
+        [*] --> NO_GRILL
+        NO_GRILL  --> HAS_GRILL : put_grill()
+        HAS_GRILL --> NO_GRILL  : remove_grill()
+      }
+
+      state Cleanliness {
+        state CLEAN : чисто
+        state DIRTY : грязно
+        [*] --> CLEAN
+        CLEAN --> DIRTY : put_grill()
+        DIRTY --> CLEAN : clean()
+      }
+    }
+  }
+
+  state Tools {
+    state NO_TOOLS  : инструментов нет
+    state HAS_TOOLS : есть инструменты
+
+    [*] --> NO_TOOLS
+    NO_TOOLS  --> HAS_TOOLS : add_tool()
+    HAS_TOOLS --> NO_TOOLS  : remove_tool()
+    HAS_TOOLS --> NO_TOOLS  : clear_all_tools()
+  }
+}
+@enduml

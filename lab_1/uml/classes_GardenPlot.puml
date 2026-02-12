@@ -1,0 +1,170 @@
+@startuml classes_GardenPlot
+set namespaceSeparator none
+class "BasicDataManager" as src.interface.loader.BasicDataManager {
+  {abstract}load_garden() -> GardenPlot
+  {abstract}save_garden() -> None
+}
+class "BasicObject" as src.core.plot.BasicObject {
+  perimeter
+  square
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(info_dict: Dict[str, Any]) -> 'BasicObject'
+}
+class "<color:red>BigAmountOfFertilizerError</color>" as src.exceptions.exceptions.BigAmountOfFertilizerError {
+  msg : str
+}
+class "<color:red>BrokenToolError</color>" as src.exceptions.exceptions.BrokenToolError {
+  msg : str
+}
+class "Color" as src.core.plant.Color {
+  color : str
+}
+class "<color:red>ColorError</color>" as src.exceptions.exceptions.ColorError {
+  msg : str
+}
+class "ColorType" as src.utils.validator.ColorType {
+  name
+}
+class "ColorValidator" as src.utils.validator.ColorValidator {
+  validate()
+}
+class "GardenJsonDataManager" as src.interface.loader.GardenJsonDataManager {
+  load_garden() -> GardenPlot
+  save_garden() -> None
+}
+class "GardenMenu" as src.interface.garden_menu.GardenMenu {
+  run() -> None
+}
+class "GardenPlot" as src.core.plot.GardenPlot {
+  plants : list[Plant]
+  recreation_area : None
+  tools : list[Tool]
+  add_tool(tool: Tool) -> None
+  clear_garden_of_all_plants() -> None
+  clear_garden_of_all_tools() -> None
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(data: Dict[str, Any]) -> 'GardenPlot'
+  create_recreation_area(recreation_area: RecreationArea) -> None
+  fertilize_soil(amount_of_fertilizer: int | float) -> None
+  plant_plant(plant: Plant) -> None
+  remove_plant(position: int) -> None
+  remove_tool(position: int) -> None
+  tool_maintenance(position: int) -> str
+  tool_perform_task(position: int, work_hours: int | float) -> None
+  water_plants(amount: int | float) -> None
+}
+class "Grill" as src.core.plot.Grill {
+  fry(meat: MeatType) -> str
+}
+class "<color:red>GrillDoesNotExist</color>" as src.exceptions.exceptions.GrillDoesNotExist {
+  msg : str
+}
+class "IValidator" as src.utils.validator.IValidator {
+  {abstract}validate() -> None
+}
+class "IrrigationSystem" as src.core.irrigation_system.IrrigationSystem {
+  amount_of_all_water
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(data: Dict[str, Any]) -> 'IrrigationSystem'
+  turn_of() -> None
+  turn_on() -> None
+  water(amount: int | float, plants: list[Plant]) -> None
+}
+class "JsonDataManager" as src.interface.loader.JsonDataManager {
+  load_from_json() -> Dict
+  save_to_json(data: Dict) -> None
+}
+class "<color:red>LackOfWaterError</color>" as src.exceptions.exceptions.LackOfWaterError {
+  msg : str
+}
+class "MeatType" as src.core.plot.MeatType {
+  cooking_time : int
+  name
+}
+class "<color:red>NoneObjectError</color>" as src.exceptions.exceptions.NoneObjectError {
+  msg : str
+}
+class "NumberValidator" as src.utils.descriptor.NumberValidator {
+  max_value : Optional[int | float]
+  min_value : int
+  name : str
+}
+class "Plant" as src.core.plant.Plant {
+  color : str
+  diameter
+  height
+  is_watered : bool
+  name : str
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(info_dict: Dict[str, Any]) -> 'Plant'
+}
+class "<color:red>PositionError</color>" as src.exceptions.exceptions.PositionError {
+  msg : str
+}
+class "PositionValidator" as src.utils.validator.PositionValidator {
+  validate()
+}
+class "RecreationArea" as src.core.plot.RecreationArea {
+  is_clean : bool
+  add_decorative_fitting(fitting: str) -> None
+  clean() -> None
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(info_dict: Dict[str, Any]) -> 'RecreationArea'
+  get_decorative_fittings() -> Set[str]
+  put_grill() -> bool
+  remove_decorative_fitting(fitting: str) -> None
+  remove_grill() -> bool
+  use_grill() -> str
+}
+class "<color:red>SizeError</color>" as src.exceptions.exceptions.SizeError {
+  msg : str
+}
+class "Soil" as src.core.soil.Soil {
+  type_of_soil : str
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(info_dict: Dict[str, Any]) -> 'Soil'
+  fertilize(coeff_fertilizer: int | float) -> None
+}
+class "SoilType" as src.utils.validator.SoilType {
+  name
+}
+class "SoilValidator" as src.utils.validator.SoilValidator {
+  validate()
+}
+class "<color:red>SystemIsNotActiveError</color>" as src.exceptions.exceptions.SystemIsNotActiveError {
+  msg : str
+}
+class "<color:red>TooMuchPlantsAreWateredError</color>" as src.exceptions.exceptions.TooMuchPlantsAreWateredError {
+  msg : str
+}
+class "Tool" as src.core.tool.Tool {
+  brand : str
+  date_of_maintain : date
+  description : str
+  name : str
+  state : str
+  usage_count : str
+  create_dict() -> Dict[str, Any]
+  create_object_from_dict(data: Dict[str, Any]) -> 'Tool'
+  maintenance() -> str
+  perform_task(work_hours: int | float) -> None
+}
+class "ToolState" as src.core.tool.ToolState {
+  name
+}
+class "<color:red>TypeOfSoilError</color>" as src.exceptions.exceptions.TypeOfSoilError {
+  msg : str
+}
+src.core.plot.GardenPlot --|> src.core.plot.BasicObject
+src.core.plot.RecreationArea --|> src.core.plot.BasicObject
+src.interface.loader.GardenJsonDataManager --|> src.interface.loader.JsonDataManager
+src.interface.loader.JsonDataManager --|> src.interface.loader.BasicDataManager
+src.utils.validator.ColorValidator --|> src.utils.validator.IValidator
+src.utils.validator.PositionValidator --|> src.utils.validator.IValidator
+src.utils.validator.SoilValidator --|> src.utils.validator.IValidator
+src.utils.descriptor.NumberValidator --* src.core.irrigation_system.IrrigationSystem : amount_of_all_water
+src.utils.descriptor.NumberValidator --* src.core.plant.Plant : height
+src.utils.descriptor.NumberValidator --* src.core.plant.Plant : diameter
+src.utils.descriptor.NumberValidator --* src.core.plot.BasicObject : square
+src.utils.descriptor.NumberValidator --* src.core.plot.BasicObject : perimeter
+@enduml
