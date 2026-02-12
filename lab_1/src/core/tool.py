@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Dict, Any
 from datetime import date
 from src.main.settings import COUNT_OF_WORK_HOURS_WORN, COUNT_OF_WORK_HOURS_BROKEN
 
@@ -72,3 +73,23 @@ class Tool:
 
     def __str__(self) -> None:
         return f"Инструмент: {self.__name}, бренд: {self.__brand}"
+
+    def create_dict(self) -> Dict[str, Any]:
+        return {
+            "name": self.__name,
+            "brand": self.__brand,
+            "description": self.__description,
+            "state": self.__state.value,
+            "usage_count": self.__usage_count,
+            "date_of_maintain": self.__date_of_maintain.isoformat(),
+        }
+
+    @classmethod
+    def create_object_from_dict(cls, data: Dict[str, Any]) -> 'Tool':
+        tool = cls(
+            name=data["name"], brand=data["brand"], description=data["description"]
+        )
+        tool.__state = ToolState(data["state"])
+        tool.__usage_count = data["usage_count"]
+        tool.__date_of_maintain = date.fromisoformat(data["date_of_maintain"])
+        return tool

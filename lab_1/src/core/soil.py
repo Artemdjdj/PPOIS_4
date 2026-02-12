@@ -1,3 +1,4 @@
+from typing import Dict, Any
 from src.exceptions.exceptions import (
     BigAmountOfFertilizerError,
 )
@@ -28,3 +29,10 @@ class Soil:
         raise BigAmountOfFertilizerError(
             "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
         )
+
+    def create_dict(self) -> Dict[str, Any]:
+        return {"soil_type": self.type_of_soil}
+
+    @classmethod
+    def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> 'Soil':
+        return cls(soil_type=SoilType(info_dict["soil_type"]))

@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Set, Optional
+from typing import Set, Optional, Dict, Any
 from src.utils.descriptor import NumberValidator
 from src.utils.validator import PositionValidator
 from src.exceptions.exceptions import GrillDoesNotExist, SizeError
@@ -40,6 +40,13 @@ class BasicObject:
     def __init__(self, square: int | float, perimeter: int | float) -> None:
         self.square: int | float = square
         self.perimeter: int | float = perimeter
+
+    def create_dict(self) -> Dict[str, Any]:
+        return {"square": self.square, "perimeter": self.perimeter}
+
+    @classmethod
+    def create_object_create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "BasicObject":
+        return cls(square=info_dict["square"], perimeter=info_dict["perimeter"])
 
 
 class Grill:
@@ -91,6 +98,25 @@ class RecreationArea(BasicObject):
     def clean(self) -> None:
         if not self.__is_clean:
             self.__is_clean = True
+
+    def create_dict(self) -> Dict[str, Any]:
+        base_dict = super().create_dict()
+        recreation_area_dict = {
+            "decorative_fittings": list(self.__decorative_fittings),
+            "grill": True if self.__grill is not None else False,
+            "is_clean": self.__is_clean,
+        }
+        return {**base_dict, **recreation_area_dict}
+
+    @classmethod
+    def create_object_create_object_from_dict(cls, info_dict: Dict[str, Any]) -> 'RecreationArea':
+        return cls(
+            square=info_dict["square"],
+            perimeter=info_dict["perimeter"],
+            decorative_fittings=set(info_dict["decorative_fittings"]),
+            grill=Grill() if info_dict["grill"] else None,
+            is_clean=info_dict["is_clean"],
+        )
 
 
 class GardenPlot(BasicObject):
@@ -159,9 +185,39 @@ class GardenPlot(BasicObject):
         self.__tools.pop(position)
 
     def clear_garden_of_all_tools(self) -> None:
-        self.__tools.clear()   
+        self.__tools.clear()
 
     def tool_maintenance(self, position: int) -> str:
         validator = PositionValidator(len(self.__tools), position)
         validator.validate()
         return self.__tools[position].maintenance()
+    
+    def create_dict(self) -> Dict[str, Any]:
+        base_dict = super().create_dict()
+        garden_dict = {
+            "soil": self.__soil.create_dict(),
+            "recreation_area": self.recreation_area.create_dict() if self.recreation_area else None,
+            "plants": [plant.create_dict() for plant in self.__plants],
+            "tools": [tool.create_dict() for tool in self.__tools],
+            "irrigation_system": self.__irrigation_system.create_dict()
+        }
+        return {base_dict, garden_dict}
+
+    @classmethod
+    def create_object_from_dict(cls, data: Dict[str, Any]) -> 'GardenPlot':
+        garden = cls(
+            square=data["square"],
+            perimeter=data["perimeter"],
+            soil_type=SoilType(data["soil"]["soil_type"]),
+            amount_of_all_water=data["irrigation_system"]["amount_of_all_water"]
+        )
+        if data["recreation_area"]:
+            garden.__recreation_area = RecreationArea.create_object_from_dict(data["recreation_area"])
+        garden.__plants = [
+            Plant.create_object_from_dict(plant_data) for plant_data in data["plants"]
+        ]
+        garden.__tools = [
+            Tool.create_object_from_dict(tool_data) for tool_data in data["tools"]
+        ]
+
+        return garden
