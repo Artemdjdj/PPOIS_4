@@ -8,12 +8,12 @@ from src.utils.validator import SoilValidator, SoilType
 class Soil:
     def __init__(self, soil_type: SoilType = SoilType.LOAMY):
         self.__validator = None
-        self.__type_of_soil: SoilType = soil_type
+        self.__type_of_soil: str = soil_type.value
         self.__coeff_fertilizer: int | float = NORMAL_COEFF
 
     @property
     def type_of_soil(self) -> str:
-        return self.__type_of_soil.value
+        return self.__type_of_soil
 
     @type_of_soil.setter
     def type_of_soil(self, type_of_soil: str) -> None:

@@ -15,3 +15,8 @@ src/utils/__pycache__/
 src/core/__pycache__/
 src/exceptions/__pycache__/
 src/interface/__pycache__/
+tests/__pycache__/
+tests/.pytest_cache/
+
+#coverage
+.coverage

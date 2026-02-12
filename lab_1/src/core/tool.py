@@ -62,10 +62,13 @@ class Tool:
 
     def perform_task(self, work_hours: int | float) -> bool:
         self.__usage_count += work_hours
-        if self.__usage.count <= COUNT_OF_WORK_HOURS_WORN:
+        if (
+            self.__usage_count >= COUNT_OF_WORK_HOURS_WORN
+            and self.__usage_count <= COUNT_OF_WORK_HOURS_BROKEN
+        ):
             self.__state = ToolState.WORN
-        elif self.__usage.count <= COUNT_OF_WORK_HOURS_BROKEN:
+        elif self.__usage_count > COUNT_OF_WORK_HOURS_BROKEN:
             self.__state = ToolState.BROKEN
 
-    def __str__(self)->None:
+    def __str__(self) -> None:
         return f"Инструмент: {self.__name}, бренд: {self.__brand}"

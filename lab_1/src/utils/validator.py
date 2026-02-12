@@ -32,6 +32,7 @@ class ColorType(Enum):
     YELLOW = "желтый"
     RED = "красный"
     ORANGE = "оранжевый"
+    WHITE = "белый"
 
 class ColorValidator(IValidator):
     def __init__(self, color: str) -> None:
@@ -56,7 +57,7 @@ class SoilType(Enum):
 
 class SoilValidator(IValidator):
     def __init__(self, type_of_soil: str) -> None:
-        self.__type_of_soile = type_of_soil
+        self.__type_of_soil = type_of_soil
 
     def validate(self):
         if not isinstance(self.__type_of_soil, str):

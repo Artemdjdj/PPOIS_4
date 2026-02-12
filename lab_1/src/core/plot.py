@@ -115,7 +115,7 @@ class GardenPlot(BasicObject):
 
     @property
     def plants(self) -> list[Plant]:
-        return self.__plant.copy()
+        return self.__plants.copy()
 
     def remove_plant(self, position: int) -> None:
         validator = PositionValidator(len(self.__plants), position)
@@ -164,4 +164,4 @@ class GardenPlot(BasicObject):
     def tool_maintenance(self, position: int) -> str:
         validator = PositionValidator(len(self.__tools), position)
         validator.validate()
-        return self.__tools[position].maintain()
+        return self.__tools[position].maintenance()

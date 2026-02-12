@@ -48,7 +48,7 @@ class Plant:
 
     @property
     def color(self) -> str:
-        return self.__color.value
+        return self.__color.color
 
     @property
     def is_watered(self) -> bool:
