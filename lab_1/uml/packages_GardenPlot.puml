@@ -22,7 +22,7 @@ package "src.interface" as src.interface {
 }
 package "src.interface.garden_menu" as src.interface.garden_menu {
 }
-package "src.interface.loader" as src.interface.loader {
+package "src.interface.manager" as src.interface.manager {
 }
 package "src.main" as src.main {
 }
@@ -60,8 +60,8 @@ src.interface.garden_menu --> src.core.plot
 src.interface.garden_menu --> src.core.soil
 src.interface.garden_menu --> src.core.tool
 src.interface.garden_menu --> src.exceptions.exceptions
-src.interface.garden_menu --> src.interface.loader
-src.interface.loader --> src.core.plot
+src.interface.garden_menu --> src.interface.manager
+src.interface.manager --> src.core.plot
 src.main.main --> src.interface.garden_menu
 src.main.main --> src.main.settings
 src.utils.validator --> src.exceptions.exceptions

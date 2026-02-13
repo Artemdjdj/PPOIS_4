@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Set, Optional, Dict, Any
+from typing import Set, Optional, Dict, Any, List
 from src.utils.descriptor import NumberValidator
 from src.utils.validator import PositionValidator
 from src.exceptions.exceptions import GrillDoesNotExist, SizeError
@@ -130,8 +130,8 @@ class GardenPlot(BasicObject):
         super().__init__(square, perimeter)
         self.__soil: Soil = Soil(soil_type)
         self.__recreation_area: Optional[RecreationArea] = None
-        self.__plants: list[Plant] = []
-        self.__tools: list[Tool] = []
+        self.__plants: List[Plant] = []
+        self.__tools: List[Tool] = []
         self.__irrigation_system: IrrigationSystem = IrrigationSystem(
             amount_of_all_water
         )
