@@ -233,7 +233,7 @@ background-color:rgb(87, 99, 177);</string>
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="qrc/main.qrc">
+                    <iconset resource="../qrc/main.qrc">
                      <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -878,7 +878,7 @@ border:none;</string>
                                  <string/>
                                 </property>
                                 <property name="icon">
-                                 <iconset resource="qrc/main.qrc">
+                                 <iconset resource="../qrc/main.qrc">
                                   <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
                                 </property>
                                 <property name="iconSize">
@@ -1067,7 +1067,7 @@ border-radius:15px;</string>
                        <string/>
                       </property>
                       <property name="icon">
-                       <iconset resource="qrc/main_icons.qrc">
+                       <iconset resource="../qrc/main_icons.qrc">
                         <normaloff>:/icons/magnifying_glass.png</normaloff>:/icons/magnifying_glass.png</iconset>
                       </property>
                       <property name="iconSize">
@@ -1108,7 +1108,7 @@ border-radius:15px;</string>
                     <item>
                      <widget class="QTabWidget" name="tabWidget_2">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_2">
                        <attribute name="title">
@@ -1288,7 +1288,7 @@ background:none;</string>
                               <string/>
                              </property>
                              <property name="pixmap">
-                              <pixmap resource="qrc/main.qrc">:/images/no_records_horizontal.png</pixmap>
+                              <pixmap resource="../qrc/main.qrc">:/images/no_records_horizontal.png</pixmap>
                              </property>
                              <property name="scaledContents">
                               <bool>true</bool>
@@ -1618,7 +1618,7 @@ border:none;</string>
                                  <string/>
                                 </property>
                                 <property name="icon">
-                                 <iconset resource="qrc/main.qrc">
+                                 <iconset resource="../qrc/main.qrc">
                                   <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
                                 </property>
                                 <property name="iconSize">
@@ -1722,8 +1722,9 @@ border:none;</string>
   </widget>
  </widget>
  <resources>
-  <include location="qrc/main.qrc"/>
-  <include location="qrc/main_icons.qrc"/>
+  <include location="../qrc/main.qrc"/>
+  <include location="../qrc/main_icons.qrc"/>
+  <include location="../qrc/main.qrc"/>
  </resources>
  <connections/>
 </ui>

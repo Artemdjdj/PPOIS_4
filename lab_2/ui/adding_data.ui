@@ -141,7 +141,7 @@ padding:4px;</string>
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="qrc/main_icons.qrc">
+                  <iconset resource="../qrc/main_icons.qrc">
                    <normaloff>:/icons/user2.png</normaloff>:/icons/user2.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -216,7 +216,7 @@ padding:4px;</string>
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="qrc/main_icons.qrc">
+                  <iconset resource="../qrc/main_icons.qrc">
                    <normaloff>:/icons/address.png</normaloff>:/icons/address.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -291,7 +291,7 @@ padding:4px;</string>
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="qrc/main_icons.qrc">
+                  <iconset resource="../qrc/main_icons.qrc">
                    <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -369,7 +369,7 @@ padding:4px;</string>
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="qrc/main_icons.qrc">
+                  <iconset resource="../qrc/main_icons.qrc">
                    <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -441,7 +441,7 @@ padding:4px;</string>
                   <string/>
                  </property>
                  <property name="icon">
-                  <iconset resource="qrc/main_icons.qrc">
+                  <iconset resource="../qrc/main_icons.qrc">
                    <normaloff>:/icons/doctor2.png</normaloff>:/icons/doctor2.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -556,7 +556,8 @@ padding:2px 4px;</string>
   </layout>
  </widget>
  <resources>
-  <include location="qrc/main_icons.qrc"/>
+  <include location="../qrc/main.qrc"/>
+  <include location="../qrc/main_icons.qrc"/>
  </resources>
  <connections/>
 </ui>
