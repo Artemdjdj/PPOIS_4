@@ -108,11 +108,39 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../qrc/main.qrc">:/images/unsuccessful_delete.png</pixmap>
+            <pixmap resource="../qrc/main.qrc">:/images/successful_delete.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
            </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_4">
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Удалено 10 элементов</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -178,7 +206,7 @@ border-radius:6px;</string>
  </widget>
  <resources>
   <include location="../qrc/main.qrc"/>
-  <include location="C:/msys64/mingw64/qrc/main.qrc"/>
+  <include location="../qrc/main.qrc"/>
  </resources>
  <connections/>
 </ui>
