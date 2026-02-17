@@ -176,7 +176,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_start">
+                  <widget class="QLabel" name="__label_start">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -223,7 +223,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="button_start_with_logo">
+                  <widget class="QPushButton" name="__button_start_with_logo">
                    <property name="styleSheet">
                     <string notr="true">border:None;
 border-radius:200px;
@@ -292,7 +292,7 @@ background-color:rgb(87, 99, 177);</string>
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="button_exit">
+                  <widget class="QPushButton" name="__button_exit">
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -323,7 +323,7 @@ border-radius:25px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="button_start">
+                  <widget class="QPushButton" name="__button_start">
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -505,7 +505,7 @@ border-radius:25px;</string>
                     <item>
                      <widget class="QTabWidget" name="tabWidget_3">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_7">
                        <attribute name="title">
@@ -552,7 +552,7 @@ border-radius:25px;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QFrame" name="frame_22">
+                            <widget class="QFrame" name="__label_work_with_data">
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -607,7 +607,7 @@ border-radius:25px;</string>
                                <number>1</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_11">
+                               <widget class="QPushButton" name="__button_add_new_record">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -625,7 +625,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="pushButton_12">
+                               <widget class="QPushButton" name="__button_edit">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -670,7 +670,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_15">
+                               <widget class="QPushButton" name="__button_show_tree">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -715,7 +715,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_13">
+                               <widget class="QPushButton" name="__button_delete">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -757,7 +757,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_14">
+                               <widget class="QPushButton" name="__butto_exit_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -775,7 +775,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="pushButton_19">
+                               <widget class="QPushButton" name="__button_save">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -1144,71 +1144,7 @@ border-radius:10px;</string>
                                   </spacer>
                                  </item>
                                  <item>
-                                  <widget class="QLabel" name="label_7">
-                                   <property name="font">
-                                    <font>
-                                     <family>Arial</family>
-                                     <pointsize>11</pointsize>
-                                     <bold>true</bold>
-                                    </font>
-                                   </property>
-                                   <property name="text">
-                                    <string>Количество записей на странице</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <widget class="QPushButton" name="pushButton_3">
-                                   <property name="minimumSize">
-                                    <size>
-                                     <width>10</width>
-                                     <height>0</height>
-                                    </size>
-                                   </property>
-                                   <property name="maximumSize">
-                                    <size>
-                                     <width>90</width>
-                                     <height>16777215</height>
-                                    </size>
-                                   </property>
-                                   <property name="sizeIncrement">
-                                    <size>
-                                     <width>130</width>
-                                     <height>0</height>
-                                    </size>
-                                   </property>
-                                   <property name="font">
-                                    <font>
-                                     <family>Arial</family>
-                                     <pointsize>11</pointsize>
-                                    </font>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">padding:8px;
-background-color:rgb(87, 99, 177);
-border-radius:15px;
-</string>
-                                   </property>
-                                   <property name="text">
-                                    <string>10</string>
-                                   </property>
-                                  </widget>
-                                 </item>
-                                 <item>
-                                  <spacer name="horizontalSpacer_5">
-                                   <property name="orientation">
-                                    <enum>Qt::Orientation::Horizontal</enum>
-                                   </property>
-                                   <property name="sizeHint" stdset="0">
-                                    <size>
-                                     <width>40</width>
-                                     <height>20</height>
-                                    </size>
-                                   </property>
-                                  </spacer>
-                                 </item>
-                                 <item>
-                                  <widget class="QLabel" name="label_8">
+                                  <widget class="QLabel" name="__label_all_records">
                                    <property name="font">
                                     <font>
                                      <family>Arial</family>
@@ -1225,7 +1161,7 @@ border-radius:15px;
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QPushButton" name="pushButton_4">
+                                  <widget class="QPushButton" name="__button_search">
                                    <property name="minimumSize">
                                     <size>
                                      <width>40</width>
@@ -1292,7 +1228,7 @@ border-radius:15px;</string>
                     <item>
                      <widget class="QTabWidget" name="tabWidget_2">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_2">
                        <attribute name="title">
@@ -1333,7 +1269,7 @@ border-radius:15px;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QTableWidget" name="table_of_recording">
+                            <widget class="QTableWidget" name="__table_of_recording">
                              <property name="minimumSize">
                               <size>
                                <width>669</width>
@@ -1541,6 +1477,21 @@ background:none;</string>
                     <enum>QFrame::Shadow::Raised</enum>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item>
                      <widget class="QTabWidget" name="tabWidget_4">
                       <property name="currentIndex">
@@ -1574,164 +1525,303 @@ background:none;</string>
                           <property name="frameShadow">
                            <enum>QFrame::Shadow::Raised</enum>
                           </property>
-                          <layout class="QHBoxLayout" name="horizontalLayout_12">
+                          <layout class="QHBoxLayout" name="horizontalLayout_6">
                            <property name="spacing">
-                            <number>20</number>
+                            <number>15</number>
                            </property>
                            <property name="leftMargin">
-                            <number>80</number>
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
                            </property>
                            <property name="rightMargin">
-                            <number>80</number>
+                            <number>10</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
                            </property>
                            <item>
-                            <widget class="QPushButton" name="pushButton_20">
-                             <property name="maximumSize">
+                            <spacer name="horizontalSpacer_7">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeType">
+                              <enum>QSizePolicy::Policy::Fixed</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
                               <size>
-                               <width>50</width>
-                               <height>50</height>
+                               <width>5</width>
+                               <height>20</height>
                               </size>
                              </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_19">
+                             <property name="maximumSize">
+                              <size>
+                               <width>250</width>
+                               <height>16777215</height>
+                              </size>
                              </property>
                              <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                              <string notr="true">border:none;</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::Shape::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Shadow::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_12">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="__label_all_records_2">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>150</width>
+                                  <height>16777215</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>9</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Записей на странице</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_28">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>14</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
+background-color:rgb(140, 49, 74);
+border-radius:25px;</string>
+                                </property>
+                                <property name="text">
+                                 <string>10</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_22">
+                             <property name="maximumSize">
+                              <size>
+                               <width>800</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::Shape::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Shadow::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_20">
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_20">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(87, 99, 177);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>&lt;</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="pushButton_21">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                                </property>
+                                <property name="text">
+                                 <string>&lt;</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_21">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(67, 153, 143);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>1</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="pushButton_22">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                                </property>
+                                <property name="text">
+                                 <string>1</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_22">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(67, 153, 143);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>2</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="pushButton_23">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                                </property>
+                                <property name="text">
+                                 <string>2</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_23">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(67, 153, 143);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>...</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="pushButton_24">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                                </property>
+                                <property name="text">
+                                 <string>...</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_24">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(67, 153, 143);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>n</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QPushButton" name="pushButton_25">
-                             <property name="maximumSize">
-                              <size>
-                               <width>50</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Arial</family>
-                               <pointsize>16</pointsize>
-                               <bold>true</bold>
-                              </font>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">padding:10px;
+                                </property>
+                                <property name="text">
+                                 <string>n</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushButton_25">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>50</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">padding:15px;
 background-color:rgb(87, 99, 177);
 border-radius:25px;</string>
-                             </property>
-                             <property name="text">
-                              <string>&gt;</string>
-                             </property>
+                                </property>
+                                <property name="text">
+                                 <string>&gt;</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
                             </widget>
                            </item>
                           </layout>
@@ -1812,7 +1902,7 @@ border-radius:25px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_26">
+                               <widget class="QPushButton" name="__button_user_icon">
                                 <property name="minimumSize">
                                  <size>
                                   <width>26</width>
@@ -1845,7 +1935,7 @@ border:none;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_4">
+                               <widget class="QLabel" name="__label_medical_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -1889,7 +1979,7 @@ border:none;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="label_5">
+                               <widget class="QLabel" name="__label_last_medical_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
