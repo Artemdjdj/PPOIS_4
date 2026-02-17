@@ -241,7 +241,7 @@ background-color:rgb(87, 99, 177);</string>
                    </property>
                    <property name="icon">
                     <iconset resource="../qrc/main.qrc">
-                     <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
+                     <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -534,7 +534,7 @@ border-radius:25px;</string>
                         <string notr="true">border:none;</string>
                        </property>
                        <attribute name="title">
-                        <string>Раьота с данными</string>
+                        <string>Работа с данными</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_16">
                         <property name="spacing">
@@ -928,7 +928,7 @@ border:none;</string>
                                 </property>
                                 <property name="icon">
                                  <iconset resource="../qrc/main.qrc">
-                                  <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
+                                  <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
                                 </property>
                                 <property name="iconSize">
                                  <size>
@@ -1101,7 +1101,7 @@ border-radius:10px;</string>
 background-color:none;</string>
                          </property>
                          <property name="currentIndex">
-                          <number>1</number>
+                          <number>0</number>
                          </property>
                          <widget class="QWidget" name="tab_6">
                           <attribute name="title">
@@ -1265,7 +1265,7 @@ border-radius:15px;</string>
                                    </property>
                                    <property name="icon">
                                     <iconset resource="../qrc/main_icons.qrc">
-                                     <normaloff>:/icons/magnifying_glass.png</normaloff>:/icons/magnifying_glass.png</iconset>
+                                     <normaloff>:/icons/icons/magnifying_glass.png</normaloff>:/icons/icons/magnifying_glass.png</iconset>
                                    </property>
                                    <property name="iconSize">
                                     <size>
@@ -1520,7 +1520,7 @@ background:none;</string>
                               <string/>
                              </property>
                              <property name="pixmap">
-                              <pixmap resource="../qrc/main.qrc">:/images/no_records_horizontal.png</pixmap>
+                              <pixmap resource="../qrc/main.qrc">:/images/images/no_records_horizontal.png</pixmap>
                              </property>
                              <property name="scaledContents">
                               <bool>true</bool>
@@ -2005,7 +2005,7 @@ border:none;</string>
                                 </property>
                                 <property name="icon">
                                  <iconset resource="../qrc/main.qrc">
-                                  <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
+                                  <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
                                 </property>
                                 <property name="iconSize">
                                  <size>
@@ -2110,7 +2110,6 @@ border:none;</string>
  <resources>
   <include location="../qrc/main.qrc"/>
   <include location="../qrc/main_icons.qrc"/>
-  <include location="../qrc/main.qrc"/>
  </resources>
  <connections/>
 </ui>

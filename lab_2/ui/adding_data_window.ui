@@ -145,7 +145,7 @@ padding:4px;</string>
                  </property>
                  <property name="icon">
                   <iconset resource="../qrc/main_icons.qrc">
-                   <normaloff>:/icons/user2.png</normaloff>:/icons/user2.png</iconset>
+                   <normaloff>:/icons/icons/user2.png</normaloff>:/icons/icons/user2.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -223,7 +223,7 @@ padding:4px;</string>
                  </property>
                  <property name="icon">
                   <iconset resource="../qrc/main_icons.qrc">
-                   <normaloff>:/icons/address.png</normaloff>:/icons/address.png</iconset>
+                   <normaloff>:/icons/icons/address.png</normaloff>:/icons/icons/address.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -301,7 +301,7 @@ padding:4px;</string>
                  </property>
                  <property name="icon">
                   <iconset resource="../qrc/main_icons.qrc">
-                   <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                   <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -382,7 +382,7 @@ padding:4px;</string>
                  </property>
                  <property name="icon">
                   <iconset resource="../qrc/main_icons.qrc">
-                   <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                   <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -457,7 +457,7 @@ padding:4px;</string>
                  </property>
                  <property name="icon">
                   <iconset resource="../qrc/main_icons.qrc">
-                   <normaloff>:/icons/doctor2.png</normaloff>:/icons/doctor2.png</iconset>
+                   <normaloff>:/icons/icons/doctor2.png</normaloff>:/icons/icons/doctor2.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>

@@ -211,7 +211,7 @@ padding:4px;</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../qrc/main_icons.qrc">
-                               <normaloff>:/icons/user2.png</normaloff>:/icons/user2.png</iconset>
+                               <normaloff>:/icons/icons/user2.png</normaloff>:/icons/icons/user2.png</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -289,7 +289,7 @@ padding:4px;</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../qrc/main_icons.qrc">
-                               <normaloff>:/icons/address.png</normaloff>:/icons/address.png</iconset>
+                               <normaloff>:/icons/icons/address.png</normaloff>:/icons/icons/address.png</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -367,7 +367,7 @@ padding:4px;</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../qrc/main_icons.qrc">
-                               <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                               <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -448,7 +448,7 @@ padding:4px;</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../qrc/main_icons.qrc">
-                               <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                               <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -523,7 +523,7 @@ padding:4px;</string>
                              </property>
                              <property name="icon">
                               <iconset resource="../qrc/main_icons.qrc">
-                               <normaloff>:/icons/doctor2.png</normaloff>:/icons/doctor2.png</iconset>
+                               <normaloff>:/icons/icons/doctor2.png</normaloff>:/icons/icons/doctor2.png</iconset>
                              </property>
                              <property name="iconSize">
                               <size>
@@ -939,7 +939,7 @@ background:none;</string>
                          <string/>
                         </property>
                         <property name="pixmap">
-                         <pixmap resource="../qrc/main.qrc">:/images/no_records_horizontal.png</pixmap>
+                         <pixmap resource="../qrc/main.qrc">:/images/images/no_records_horizontal.png</pixmap>
                         </property>
                         <property name="scaledContents">
                          <bool>true</bool>
@@ -980,7 +980,7 @@ background:none;</string>
                <item>
                 <widget class="QTabWidget" name="tabWidget_4">
                  <property name="currentIndex">
-                  <number>1</number>
+                  <number>0</number>
                  </property>
                  <widget class="QWidget" name="tab_9">
                   <property name="styleSheet">
@@ -1403,7 +1403,7 @@ border:none;</string>
                            </property>
                            <property name="icon">
                             <iconset resource="../qrc/main.qrc">
-                             <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
+                             <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
                            </property>
                            <property name="iconSize">
                             <size>
