@@ -4,6 +4,8 @@ icons/
 
 #qrc
 qrc/
+
+#__pycache__
 src/interface/__pycache__/
 src/interface/ui/__pycache__/
 src/interface/qrc/__pycache__/

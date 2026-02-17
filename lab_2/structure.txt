@@ -1,0 +1,38 @@
+lab_2
+├── .venv/
+│
+├── images/
+│
+├── icons/
+│
+├── qrc/
+│
+├── src/
+│   ├── interface/
+│   │   ├── qrc/
+│   │   │   ├── __init__.py
+│   │   │   ├── main_icons_rc.py
+│   │   │   └── main_rc.py
+│   │   ├── ui/
+│   │   │   ├── __init__.py
+│   │   │   └── ui_main_window.py
+│   │   │  
+│   │   └── __init__.py
+│   │
+│   ├── main/
+│   │   ├── __init__.py
+│   │   └── main.py
+│   │
+│   └── __init__.py
+│
+├── ui/
+│   ├── adding_data_window.ui
+│   ├── after_delete_window.ui
+│   ├── delete_window.ui
+│   ├── main_window.ui
+│   └── search_window.ui
+│
+├── .gitignore
+├── README.MD
+├── requirements.txt
+└── structure.txt
