@@ -108,7 +108,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../qrc/main.qrc">:/images/successful_delete.png</pixmap>
+            <pixmap resource="../qrc/main.qrc">:/images/unsuccessful_delete2.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -174,7 +174,7 @@
           <widget class="QPushButton" name="pushButton">
            <property name="styleSheet">
             <string notr="true">border:none;
-background-color:rgb(255, 51, 71);
+background-color:rgb(87, 99, 177);
 padding:6px;
 border-radius:6px;</string>
            </property>
@@ -187,7 +187,7 @@ border-radius:6px;</string>
           <widget class="QPushButton" name="pushButton_2">
            <property name="styleSheet">
             <string notr="true">border:none;
-background-color:rgb(83, 130, 22);
+background-color:rgb(67, 153, 143);
 padding:6px;
 border-radius:6px;</string>
            </property>
@@ -205,7 +205,6 @@ border-radius:6px;</string>
   </layout>
  </widget>
  <resources>
-  <include location="../qrc/main.qrc"/>
   <include location="../qrc/main.qrc"/>
  </resources>
  <connections/>
