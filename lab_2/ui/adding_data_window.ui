@@ -93,7 +93,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="__label_fio_user">
               <property name="text">
                <string>ФИО пациента (Архипенко Михаил Иванович)</string>
               </property>
@@ -124,7 +124,7 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="QLineEdit" name="__line_edit_fio_user">
                  <property name="accessibleDescription">
                   <string/>
                  </property>
@@ -133,10 +133,13 @@
 border-radius:6px;
 padding:4px;</string>
                  </property>
+                 <property name="placeholderText">
+                  <string>Введите ваше ФИО</string>
+                 </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_4">
+                <widget class="QPushButton" name="__button_user">
                  <property name="text">
                   <string/>
                  </property>
@@ -171,7 +174,7 @@ padding:4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
             <item>
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="__label_address">
               <property name="text">
                <string>Адрес прописки (г. Минск, ул. Сухаревская 23, кв. 55)</string>
               </property>
@@ -202,16 +205,19 @@ padding:4px;</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLineEdit" name="lineEdit_2">
+                <widget class="QLineEdit" name="__line_edit_address">
                  <property name="styleSheet">
                   <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
                  </property>
+                 <property name="placeholderText">
+                  <string>Введите адрес прописки</string>
+                 </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_5">
+                <widget class="QPushButton" name="__button_address">
                  <property name="text">
                   <string/>
                  </property>
@@ -246,7 +252,7 @@ padding:4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="__label_of_birthday">
               <property name="text">
                <string>Дата рождения (20.02.2006)</string>
               </property>
@@ -277,16 +283,19 @@ padding:4px;</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLineEdit" name="lineEdit_3">
+                <widget class="QLineEdit" name="__line_edit_date_of_birthday">
                  <property name="styleSheet">
                   <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
                  </property>
+                 <property name="placeholderText">
+                  <string>Введите дату рождения</string>
+                 </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_6">
+                <widget class="QPushButton" name="__button_date_of_birthday">
                  <property name="text">
                   <string/>
                  </property>
@@ -318,7 +327,7 @@ padding:4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="__label_of_admission">
               <property name="accessibleName">
                <string/>
               </property>
@@ -355,16 +364,19 @@ padding:4px;</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLineEdit" name="lineEdit_4">
+                <widget class="QLineEdit" name="__line_edit_date_of_admission">
                  <property name="styleSheet">
                   <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
                  </property>
+                 <property name="placeholderText">
+                  <string>Введите дату приема</string>
+                 </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_7">
+                <widget class="QPushButton" name="__button_date_of_admission">
                  <property name="text">
                   <string/>
                  </property>
@@ -399,7 +411,7 @@ padding:4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="__label_fio_doctor">
               <property name="text">
                <string>ФИО врача (Архипенко Михаил Иванович)</string>
               </property>
@@ -427,16 +439,19 @@ padding:4px;</string>
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLineEdit" name="lineEdit_5">
+                <widget class="QLineEdit" name="__line_edit_doctor">
                  <property name="styleSheet">
                   <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
                  </property>
+                 <property name="placeholderText">
+                  <string>Введите ФИО врача</string>
+                 </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_8">
+                <widget class="QPushButton" name="__button_doctor">
                  <property name="text">
                   <string/>
                  </property>
@@ -468,7 +483,7 @@ padding:4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="__label_doctor_promt">
               <property name="styleSheet">
                <string notr="true">border:None;</string>
               </property>
@@ -478,11 +493,14 @@ padding:4px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QTextEdit" name="textEdit">
+             <widget class="QTextEdit" name="__text_edit_doctor_promt">
               <property name="styleSheet">
                <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
+              </property>
+              <property name="placeholderText">
+               <string>Введите заключение врача</string>
               </property>
              </widget>
             </item>
@@ -506,7 +524,7 @@ padding:4px;</string>
              <number>10</number>
             </property>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="__button_cancel">
               <property name="styleSheet">
                <string notr="true">background-color:rgb(193, 35, 90);
 border : 1px solid  rgb(193, 35, 90);
@@ -519,7 +537,7 @@ padding:2px 4px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="__button_clear">
               <property name="styleSheet">
                <string notr="true">background-color:rgb(87, 99, 177);
 border:1px solid rgb(87, 99, 177);;
@@ -532,7 +550,7 @@ padding:2px 4px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="__button_save">
               <property name="styleSheet">
                <string notr="true">background-color:rgb(67, 153, 143);
 border:1px solid rgb(67, 153, 143);

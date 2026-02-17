@@ -196,6 +196,9 @@
 border-radius:6px;
 padding:4px;</string>
                              </property>
+                             <property name="placeholderText">
+                              <string>Введите ваше ФИО</string>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -271,6 +274,9 @@ padding:4px;</string>
 border-radius:6px;
 padding:4px;</string>
                              </property>
+                             <property name="placeholderText">
+                              <string>Введите адрес прописки</string>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -345,6 +351,9 @@ padding:4px;</string>
                               <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
+                             </property>
+                             <property name="placeholderText">
+                              <string>Введите дату рождения</string>
                              </property>
                             </widget>
                            </item>
@@ -424,6 +433,9 @@ padding:4px;</string>
 border-radius:6px;
 padding:4px;</string>
                              </property>
+                             <property name="text">
+                              <string>Введите дату приема</string>
+                             </property>
                             </widget>
                            </item>
                            <item>
@@ -495,6 +507,9 @@ padding:4px;</string>
                               <string notr="true">border: 1px solid rgb(197, 197, 197);
 border-radius:6px;
 padding:4px;</string>
+                             </property>
+                             <property name="placeholderText">
+                              <string>Введите ФИО врача</string>
                              </property>
                             </widget>
                            </item>
