@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>500</height>
+    <width>1055</width>
+    <height>722</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>386</width>
-    <height>500</height>
+    <width>1055</width>
+    <height>722</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>386</width>
-    <height>500</height>
+    <width>1055</width>
+    <height>722</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -52,20 +52,26 @@
      <property name="frameShadow">
       <enum>QFrame::Shadow::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QFrame" name="frame_9">
+       <widget class="QFrame" name="frame_2">
+        <property name="maximumSize">
+         <size>
+          <width>386</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Shape::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Shadow::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_27">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QFrame" name="frame_15">
+          <widget class="QFrame" name="frame_4">
            <property name="styleSheet">
-            <string notr="true">border:None</string>
+            <string notr="true">border:none;</string>
            </property>
            <property name="frameShape">
             <enum>QFrame::Shape::StyledPanel</enum>
@@ -73,11 +79,468 @@
            <property name="frameShadow">
             <enum>QFrame::Shadow::Raised</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_18">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
-             <widget class="QFrame" name="frame_16">
+             <widget class="QFrame" name="frame_9">
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_27">
+               <item>
+                <widget class="QFrame" name="frame_15">
+                 <property name="styleSheet">
+                  <string notr="true">border:None</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_18">
+                  <item>
+                   <widget class="QFrame" name="frame_16">
+                    <property name="styleSheet">
+                     <string notr="true">border:None;</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_19">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QFrame" name="frame_30">
+                       <property name="styleSheet">
+                        <string notr="true">border:None;</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_20">
+                        <item>
+                         <widget class="QLabel" name="label_13">
+                          <property name="text">
+                           <string>ФИО пациента (Архипенко Михаил Иванович)</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_32">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_16">
+                           <property name="spacing">
+                            <number>4</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="lineEdit_11">
+                             <property name="accessibleDescription">
+                              <string/>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid rgb(197, 197, 197);
+border-radius:6px;
+padding:4px;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_17">
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/user2.png</normaloff>:/icons/user2.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>27</width>
+                               <height>27</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_33">
+                       <property name="styleSheet">
+                        <string notr="true">border:None;</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_21">
+                        <item>
+                         <widget class="QLabel" name="label_14">
+                          <property name="text">
+                           <string>Адрес прописки (г. Минск, ул. Лобанка 23, кв. 55)</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_34">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_17">
+                           <property name="spacing">
+                            <number>4</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="lineEdit_12">
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid rgb(197, 197, 197);
+border-radius:6px;
+padding:4px;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_18">
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/address.png</normaloff>:/icons/address.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>27</width>
+                               <height>27</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_35">
+                       <property name="styleSheet">
+                        <string notr="true">border:None;</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_23">
+                        <item>
+                         <widget class="QLabel" name="label_15">
+                          <property name="text">
+                           <string>Дата рождения (20.02.2006)</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_36">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_19">
+                           <property name="spacing">
+                            <number>4</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="lineEdit_13">
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid rgb(197, 197, 197);
+border-radius:6px;
+padding:4px;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_19">
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>27</width>
+                               <height>27</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_37">
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_24">
+                        <item>
+                         <widget class="QLabel" name="label_16">
+                          <property name="accessibleName">
+                           <string/>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border:None;</string>
+                          </property>
+                          <property name="text">
+                           <string>Дата приема (20.02.2006)</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_38">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_20">
+                           <property name="spacing">
+                            <number>4</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="lineEdit_14">
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid rgb(197, 197, 197);
+border-radius:6px;
+padding:4px;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_20">
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>27</width>
+                               <height>27</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QFrame" name="frame_39">
+                       <property name="styleSheet">
+                        <string notr="true">border:None;</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_25">
+                        <item>
+                         <widget class="QLabel" name="label_17">
+                          <property name="text">
+                           <string>ФИО врача (Архипенко Михаил Иванович)</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="frame_40">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_21">
+                           <property name="spacing">
+                            <number>4</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QLineEdit" name="lineEdit_15">
+                             <property name="styleSheet">
+                              <string notr="true">border: 1px solid rgb(197, 197, 197);
+border-radius:6px;
+padding:4px;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="pushButton_21">
+                             <property name="text">
+                              <string/>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/doctor2.png</normaloff>:/icons/doctor2.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>27</width>
+                               <height>27</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame_5">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>150</height>
+               </size>
+              </property>
               <property name="styleSheet">
-               <string notr="true">border:None;</string>
+               <string notr="true">border:None
+</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Shape::StyledPanel</enum>
@@ -85,7 +548,181 @@
               <property name="frameShadow">
                <enum>QFrame::Shadow::Raised</enum>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_19">
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>5</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_2">
+                 <property name="styleSheet">
+                  <string notr="true">background-color:rgb(87, 99, 177);
+border:1px solid rgb(87, 99, 177);;
+border-radius:6px;
+padding:2px 4px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Отмена</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_3">
+                 <property name="styleSheet">
+                  <string notr="true">background-color:rgb(67, 153, 143);
+border:1px solid rgb(67, 153, 143);
+border-radius:6px;
+padding:2px 4px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Найти</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>15</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::Shape::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Shadow::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QFrame" name="frame_8">
+           <property name="minimumSize">
+            <size>
+             <width>669</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Shape::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame_11">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="spacing">
+                <number>80</number>
+               </property>
+               <property name="leftMargin">
+                <number>70</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>60</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>14</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Результат поиска</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame_12">
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
                <property name="spacing">
                 <number>0</number>
                </property>
@@ -102,381 +739,600 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QFrame" name="frame_30">
-                 <property name="styleSheet">
-                  <string notr="true">border:None;</string>
+                <widget class="QTabWidget" name="tabWidget_2">
+                 <property name="currentIndex">
+                  <number>1</number>
                  </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_20">
-                  <item>
-                   <widget class="QLabel" name="label_13">
-                    <property name="text">
-                     <string>ФИО пациента (Архипенко Михаил Иванович)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_32">
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_16">
-                     <property name="spacing">
-                      <number>4</number>
+                 <widget class="QWidget" name="tab_2">
+                  <attribute name="title">
+                   <string>Tab 1</string>
+                  </attribute>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_17">
+                     <property name="frameShape">
+                      <enum>QFrame::Shape::StyledPanel</enum>
                      </property>
-                     <property name="leftMargin">
-                      <number>0</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Shadow::Raised</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>0</number>
+                     <layout class="QHBoxLayout" name="horizontalLayout_5">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>20</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QTableWidget" name="table_of_recording">
+                        <property name="minimumSize">
+                         <size>
+                          <width>669</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">border:none;
+background:none;</string>
+                        </property>
+                        <attribute name="horizontalHeaderVisible">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="horizontalHeaderCascadingSectionResizes">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="horizontalHeaderDefaultSectionSize">
+                         <number>105</number>
+                        </attribute>
+                        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="horizontalHeaderStretchLastSection">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderVisible">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderCascadingSectionResizes">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderHighlightSections">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                         <bool>true</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderStretchLastSection">
+                         <bool>false</bool>
+                        </attribute>
+                        <row/>
+                        <row/>
+                        <row/>
+                        <row/>
+                        <row/>
+                        <column>
+                         <property name="text">
+                          <string>ФИО пациента</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Адрес прописки</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Дата рождения</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Дата приема</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>ФИО врача</string>
+                         </property>
+                        </column>
+                        <column>
+                         <property name="text">
+                          <string>Заключение</string>
+                         </property>
+                        </column>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_4">
+                  <attribute name="title">
+                   <string>Tab 2</string>
+                  </attribute>
+                  <layout class="QVBoxLayout" name="verticalLayout_22">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_31">
+                     <property name="frameShape">
+                      <enum>QFrame::Shape::StyledPanel</enum>
                      </property>
-                     <property name="rightMargin">
-                      <number>0</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Shadow::Raised</enum>
                      </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QLineEdit" name="lineEdit_11">
-                       <property name="accessibleDescription">
-                        <string/>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">border: 1px solid rgb(197, 197, 197);
-border-radius:6px;
-padding:4px;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_17">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../qrc/main_icons.qrc">
-                         <normaloff>:/icons/user2.png</normaloff>:/icons/user2.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>27</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
+                     <layout class="QHBoxLayout" name="horizontalLayout_18">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="label_6">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="pixmap">
+                         <pixmap resource="../qrc/main.qrc">:/images/no_records_horizontal.png</pixmap>
+                        </property>
+                        <property name="scaledContents">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                 </widget>
                </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame_13">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Shape::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_11">
                <item>
-                <widget class="QFrame" name="frame_33">
-                 <property name="styleSheet">
-                  <string notr="true">border:None;</string>
+                <widget class="QTabWidget" name="tabWidget_4">
+                 <property name="currentIndex">
+                  <number>1</number>
                  </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_21">
-                  <item>
-                   <widget class="QLabel" name="label_14">
-                    <property name="text">
-                     <string>Адрес прописки (г. Минск, ул. Лобанка 23, кв. 55)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_34">
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_17">
-                     <property name="spacing">
-                      <number>4</number>
+                 <widget class="QWidget" name="tab_9">
+                  <attribute name="title">
+                   <string>Tab 1</string>
+                  </attribute>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_14">
+                     <property name="frameShape">
+                      <enum>QFrame::Shape::StyledPanel</enum>
                      </property>
-                     <property name="leftMargin">
-                      <number>0</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Shadow::Raised</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>0</number>
+                     <layout class="QHBoxLayout" name="horizontalLayout_12">
+                      <property name="spacing">
+                       <number>20</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>80</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>80</number>
+                      </property>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_22">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(87, 99, 177);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>&lt;</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_23">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(67, 153, 143);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>1</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_24">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(67, 153, 143);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>2</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_25">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(67, 153, 143);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>...</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_26">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(67, 153, 143);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>n</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_27">
+                        <property name="maximumSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Arial</family>
+                          <pointsize>16</pointsize>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">padding:10px;
+background-color:rgb(87, 99, 177);
+border-radius:25px;</string>
+                        </property>
+                        <property name="text">
+                         <string>&gt;</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_10">
+                  <attribute name="title">
+                   <string>Tab 2</string>
+                  </attribute>
+                  <layout class="QHBoxLayout" name="horizontalLayout_15">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_28">
+                     <property name="styleSheet">
+                      <string notr="true">border:none;
+</string>
                      </property>
-                     <property name="rightMargin">
-                      <number>0</number>
+                     <property name="frameShape">
+                      <enum>QFrame::Shape::StyledPanel</enum>
                      </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Shadow::Raised</enum>
                      </property>
-                     <item>
-                      <widget class="QLineEdit" name="lineEdit_12">
-                       <property name="styleSheet">
-                        <string notr="true">border: 1px solid rgb(197, 197, 197);
-border-radius:6px;
-padding:4px;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_18">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../qrc/main_icons.qrc">
-                         <normaloff>:/icons/address.png</normaloff>:/icons/address.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>27</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_35">
-                 <property name="styleSheet">
-                  <string notr="true">border:None;</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_23">
-                  <item>
-                   <widget class="QLabel" name="label_15">
-                    <property name="text">
-                     <string>Дата рождения (20.02.2006)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_36">
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_19">
-                     <property name="spacing">
-                      <number>4</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QLineEdit" name="lineEdit_13">
-                       <property name="styleSheet">
-                        <string notr="true">border: 1px solid rgb(197, 197, 197);
-border-radius:6px;
-padding:4px;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_19">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../qrc/main_icons.qrc">
-                         <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>27</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_37">
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_24">
-                  <item>
-                   <widget class="QLabel" name="label_16">
-                    <property name="accessibleName">
-                     <string/>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border:None;</string>
-                    </property>
-                    <property name="text">
-                     <string>Дата приема (20.02.2006)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_38">
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_20">
-                     <property name="spacing">
-                      <number>4</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QLineEdit" name="lineEdit_14">
-                       <property name="styleSheet">
-                        <string notr="true">border: 1px solid rgb(197, 197, 197);
-border-radius:6px;
-padding:4px;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_20">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../qrc/main_icons.qrc">
-                         <normaloff>:/icons/date.png</normaloff>:/icons/date.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>27</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_39">
-                 <property name="styleSheet">
-                  <string notr="true">border:None;</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_25">
-                  <item>
-                   <widget class="QLabel" name="label_17">
-                    <property name="text">
-                     <string>ФИО врача (Архипенко Михаил Иванович)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_40">
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_21">
-                     <property name="spacing">
-                      <number>4</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QLineEdit" name="lineEdit_15">
-                       <property name="styleSheet">
-                        <string notr="true">border: 1px solid rgb(197, 197, 197);
-border-radius:6px;
-padding:4px;</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_21">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../qrc/main_icons.qrc">
-                         <normaloff>:/icons/doctor2.png</normaloff>:/icons/doctor2.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>27</width>
-                         <height>27</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
+                     <layout class="QVBoxLayout" name="verticalLayout_9">
+                      <property name="spacing">
+                       <number>6</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QFrame" name="frame_29">
+                        <property name="frameShape">
+                         <enum>QFrame::Shape::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Shadow::Raised</enum>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout_22">
+                         <property name="spacing">
+                          <number>4</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QPushButton" name="pushButton_28">
+                           <property name="minimumSize">
+                            <size>
+                             <width>26</width>
+                             <height>26</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>60</width>
+                             <height>60</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">background-color:none;
+border:none;</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../qrc/main.qrc">
+                             <normaloff>:/images/doctor_without_background.png</normaloff>:/images/doctor_without_background.png</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>25</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_4">
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>10</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">border:none;
+</string>
+                           </property>
+                           <property name="text">
+                            <string>Медицинское приложение для учета обслуживаний пациентов</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QFrame" name="frame_41">
+                        <property name="frameShape">
+                         <enum>QFrame::Shape::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Shadow::Raised</enum>
+                        </property>
+                        <layout class="QHBoxLayout" name="horizontalLayout_23">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>25</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="label_5">
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>10</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">border:none;
+
+</string>
+                           </property>
+                           <property name="text">
+                            <string>© 2026 Медицинское приложение для учета обслуживаний пациентов 
+Все права защищены.</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                 </widget>
                </item>
               </layout>
@@ -484,83 +1340,6 @@ padding:4px;</string>
             </item>
            </layout>
           </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_3">
-        <property name="styleSheet">
-         <string notr="true">border:None
-</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>10</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>5</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="styleSheet">
-            <string notr="true">background-color:rgb(87, 99, 177);
-border:1px solid rgb(87, 99, 177);;
-border-radius:6px;
-padding:2px 4px;</string>
-           </property>
-           <property name="text">
-            <string>Отмена</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_3">
-           <property name="styleSheet">
-            <string notr="true">background-color:rgb(67, 153, 143);
-border:1px solid rgb(67, 153, 143);
-border-radius:6px;
-padding:2px 4px;</string>
-           </property>
-           <property name="text">
-            <string>Найти</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>15</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
