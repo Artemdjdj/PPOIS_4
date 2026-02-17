@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border:none;
+background-color:none;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
     <size>
@@ -39,7 +43,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">border:none;</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
@@ -97,7 +101,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QTabWidget" name="tabWidget">
+        <widget class="QTabWidget" name="__tab_widget_main">
          <property name="currentIndex">
           <number>1</number>
          </property>
@@ -126,6 +130,9 @@
            </property>
            <item>
             <widget class="QFrame" name="frame_2">
+             <property name="styleSheet">
+              <string notr="true">border:none;</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
              </property>
@@ -390,6 +397,9 @@ border-radius:25px;</string>
             <height>16777215</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">border:none;</string>
+          </property>
           <attribute name="title">
            <string>Главная страница</string>
           </attribute>
@@ -422,6 +432,9 @@ border-radius:25px;</string>
                <width>16777215</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:none;</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Shape::StyledPanel</enum>
@@ -459,6 +472,9 @@ border-radius:25px;</string>
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">border:none;</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::Shape::StyledPanel</enum>
                 </property>
@@ -483,6 +499,9 @@ border-radius:25px;</string>
                  </property>
                  <item>
                   <widget class="QFrame" name="frame_9">
+                   <property name="styleSheet">
+                    <string notr="true">border:none;</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::Shape::StyledPanel</enum>
                    </property>
@@ -503,13 +522,19 @@ border-radius:25px;</string>
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTabWidget" name="tabWidget_3">
+                     <widget class="QTabWidget" name="__tab_widget_work_state">
+                      <property name="styleSheet">
+                       <string notr="true">border:none;</string>
+                      </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="tab_7">
+                       <property name="styleSheet">
+                        <string notr="true">border:none;</string>
+                       </property>
                        <attribute name="title">
-                        <string>Tab 1</string>
+                        <string>Раьота с данными</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_16">
                         <property name="spacing">
@@ -529,6 +554,9 @@ border-radius:25px;</string>
                         </property>
                         <item>
                          <widget class="QFrame" name="frame_10">
+                          <property name="styleSheet">
+                           <string notr="true">border:none;</string>
+                          </property>
                           <property name="frameShape">
                            <enum>QFrame::Shape::StyledPanel</enum>
                           </property>
@@ -553,6 +581,9 @@ border-radius:25px;</string>
                            </property>
                            <item>
                             <widget class="QFrame" name="__label_work_with_data">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -561,12 +592,15 @@ border-radius:25px;</string>
                              </property>
                              <layout class="QHBoxLayout" name="horizontalLayout_13">
                               <item>
-                               <widget class="QLabel" name="label_3">
+                               <widget class="QLabel" name="__label_work_with_data_2">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
                                   <pointsize>10</pointsize>
                                  </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">border:none;</string>
                                 </property>
                                 <property name="text">
                                  <string>Работа с данными</string>
@@ -586,6 +620,9 @@ border-radius:25px;</string>
                                <width>16777215</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
                              </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
@@ -647,6 +684,9 @@ border-radius:10px;</string>
                            </item>
                            <item>
                             <widget class="QFrame" name="frame_20">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -692,6 +732,9 @@ border-radius:10px;</string>
                            </item>
                            <item>
                             <widget class="QFrame" name="frame_21">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -737,6 +780,9 @@ border-radius:10px;</string>
                            </item>
                            <item>
                             <widget class="QFrame" name="frame_23">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -801,8 +847,11 @@ border-radius:10px;</string>
                        </layout>
                       </widget>
                       <widget class="QWidget" name="tab_8">
+                       <property name="styleSheet">
+                        <string notr="true">border:none;</string>
+                       </property>
                        <attribute name="title">
-                        <string>Tab 2</string>
+                        <string>Загрузка данных</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_18">
                         <property name="spacing">
@@ -869,7 +918,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="pushButton_16">
+                               <widget class="QPushButton" name="__button_icon_of_app">
                                 <property name="styleSheet">
                                  <string notr="true">background-color:none;
 border:none;</string>
@@ -890,7 +939,7 @@ border:none;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="pushButton_17">
+                               <widget class="QPushButton" name="__button_load_from_file">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -908,7 +957,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="pushButton_18">
+                               <widget class="QPushButton" name="__button_load_from_db">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -1017,6 +1066,12 @@ border-radius:10px;</string>
                     </property>
                     <item>
                      <widget class="QFrame" name="frame_11">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>90</height>
+                       </size>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::Shape::StyledPanel</enum>
                       </property>
@@ -1040,13 +1095,17 @@ border-radius:10px;</string>
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QTabWidget" name="tabWidget_5">
+                        <widget class="QTabWidget" name="__tab_widget_header">
+                         <property name="styleSheet">
+                          <string notr="true">border:none;
+background-color:none;</string>
+                         </property>
                          <property name="currentIndex">
-                          <number>0</number>
+                          <number>1</number>
                          </property>
                          <widget class="QWidget" name="tab_6">
                           <attribute name="title">
-                           <string>Tab 1</string>
+                           <string>Заголовок</string>
                           </attribute>
                           <layout class="QHBoxLayout" name="horizontalLayout_19">
                            <property name="spacing">
@@ -1161,18 +1220,40 @@ border-radius:10px;</string>
                                   </widget>
                                  </item>
                                  <item>
+                                  <spacer name="horizontalSpacer_5">
+                                   <property name="orientation">
+                                    <enum>Qt::Orientation::Horizontal</enum>
+                                   </property>
+                                   <property name="sizeHint" stdset="0">
+                                    <size>
+                                     <width>40</width>
+                                     <height>20</height>
+                                    </size>
+                                   </property>
+                                  </spacer>
+                                 </item>
+                                 <item>
                                   <widget class="QPushButton" name="__button_search">
                                    <property name="minimumSize">
                                     <size>
-                                     <width>40</width>
+                                     <width>100</width>
                                      <height>0</height>
                                     </size>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>60</width>
+                                     <width>150</width>
                                      <height>16777215</height>
                                     </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>11</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="layoutDirection">
+                                    <enum>Qt::LayoutDirection::RightToLeft</enum>
                                    </property>
                                    <property name="styleSheet">
                                     <string notr="true">
@@ -1180,7 +1261,7 @@ background-color:rgb(26, 24, 26);
 border-radius:15px;</string>
                                    </property>
                                    <property name="text">
-                                    <string/>
+                                    <string>Найти</string>
                                    </property>
                                    <property name="icon">
                                     <iconset resource="../qrc/main_icons.qrc">
@@ -1217,7 +1298,7 @@ border-radius:15px;</string>
                          </widget>
                          <widget class="QWidget" name="tab_11">
                           <attribute name="title">
-                           <string>Tab 2</string>
+                           <string>Пустой заголовок</string>
                           </attribute>
                          </widget>
                         </widget>
@@ -1226,13 +1307,13 @@ border-radius:15px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QTabWidget" name="tabWidget_2">
+                     <widget class="QTabWidget" name="__tab_widget_records">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="tab_2">
                        <attribute name="title">
-                        <string>Tab 1</string>
+                        <string>Список записей</string>
                        </attribute>
                        <layout class="QHBoxLayout" name="horizontalLayout_7">
                         <property name="leftMargin">
@@ -1354,7 +1435,7 @@ background:none;</string>
                       </widget>
                       <widget class="QWidget" name="tab_5">
                        <attribute name="title">
-                        <string>Страница</string>
+                        <string>Список в виде дерева</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_11">
                         <property name="spacing">
@@ -1385,7 +1466,7 @@ background:none;</string>
                       </widget>
                       <widget class="QWidget" name="tab_4">
                        <attribute name="title">
-                        <string>Tab 2</string>
+                        <string>Записей нет</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_22">
                         <property name="spacing">
@@ -1493,13 +1574,13 @@ background:none;</string>
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTabWidget" name="tabWidget_4">
+                     <widget class="QTabWidget" name="__tab_widget_footer">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="tab_9">
                        <attribute name="title">
-                        <string>Tab 1</string>
+                        <string>Пагинация</string>
                        </attribute>
                        <layout class="QHBoxLayout" name="horizontalLayout_14">
                         <property name="spacing">
@@ -1831,7 +1912,7 @@ border-radius:25px;</string>
                       </widget>
                       <widget class="QWidget" name="tab_10">
                        <attribute name="title">
-                        <string>Tab 2</string>
+                        <string>Футер</string>
                        </attribute>
                        <layout class="QHBoxLayout" name="horizontalLayout_15">
                         <property name="spacing">
