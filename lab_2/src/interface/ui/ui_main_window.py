@@ -51,8 +51,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.__tab_widget_main = QTabWidget(self.frame)
-        self.__tab_widget_main.setObjectName(u"__tab_widget_main")
+        self.tab_widget_main = QTabWidget(self.frame)
+        self.tab_widget_main.setObjectName(u"tab_widget_main")
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
         self.tab.setStyleSheet(u"")
@@ -78,17 +78,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.__label_start = QLabel(self.frame_5)
-        self.__label_start.setObjectName(u"__label_start")
+        self.label_start = QLabel(self.frame_5)
+        self.label_start.setObjectName(u"label_start")
         font = QFont()
         font.setFamilies([u"Arial"])
         font.setPointSize(20)
         font.setBold(False)
-        self.__label_start.setFont(font)
-        self.__label_start.setStyleSheet(u"border:None;")
-        self.__label_start.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_start.setFont(font)
+        self.label_start.setStyleSheet(u"border:None;")
+        self.label_start.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_2.addWidget(self.__label_start)
+        self.horizontalLayout_2.addWidget(self.label_start)
 
 
         self.verticalLayout_5.addWidget(self.frame_5)
@@ -101,17 +101,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.__button_start_with_logo = QPushButton(self.frame_3)
-        self.__button_start_with_logo.setObjectName(u"__button_start_with_logo")
-        self.__button_start_with_logo.setStyleSheet(u"border:None;\n"
+        self.button_start_with_logo = QPushButton(self.frame_3)
+        self.button_start_with_logo.setObjectName(u"button_start_with_logo")
+        self.button_start_with_logo.setStyleSheet(u"border:None;\n"
 "border-radius:200px;\n"
 "background-color:rgb(87, 99, 177);")
         icon = QIcon()
         icon.addFile(u":/images/images/doctor_without_background.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.__button_start_with_logo.setIcon(icon)
-        self.__button_start_with_logo.setIconSize(QSize(300, 300))
+        self.button_start_with_logo.setIcon(icon)
+        self.button_start_with_logo.setIconSize(QSize(300, 300))
 
-        self.verticalLayout_4.addWidget(self.__button_start_with_logo)
+        self.verticalLayout_4.addWidget(self.button_start_with_logo)
 
 
         self.verticalLayout_5.addWidget(self.frame_3)
@@ -130,31 +130,31 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.__button_exit = QPushButton(self.frame_4)
-        self.__button_exit.setObjectName(u"__button_exit")
-        self.__button_exit.setMinimumSize(QSize(150, 0))
-        self.__button_exit.setMaximumSize(QSize(250, 16777215))
+        self.button_exit = QPushButton(self.frame_4)
+        self.button_exit.setObjectName(u"button_exit")
+        self.button_exit.setMinimumSize(QSize(150, 0))
+        self.button_exit.setMaximumSize(QSize(250, 16777215))
         font1 = QFont()
         font1.setFamilies([u"Arial"])
         font1.setPointSize(12)
         font1.setBold(True)
-        self.__button_exit.setFont(font1)
-        self.__button_exit.setStyleSheet(u"padding:20px;\n"
+        self.button_exit.setFont(font1)
+        self.button_exit.setStyleSheet(u"padding:20px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout.addWidget(self.__button_exit)
+        self.horizontalLayout.addWidget(self.button_exit)
 
-        self.__button_start = QPushButton(self.frame_4)
-        self.__button_start.setObjectName(u"__button_start")
-        self.__button_start.setMinimumSize(QSize(150, 0))
-        self.__button_start.setMaximumSize(QSize(250, 16777215))
-        self.__button_start.setFont(font1)
-        self.__button_start.setStyleSheet(u"padding:20px;\n"
+        self.button_start = QPushButton(self.frame_4)
+        self.button_start.setObjectName(u"button_start")
+        self.button_start.setMinimumSize(QSize(150, 0))
+        self.button_start.setMaximumSize(QSize(250, 16777215))
+        self.button_start.setFont(font1)
+        self.button_start.setStyleSheet(u"padding:20px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout.addWidget(self.__button_start)
+        self.horizontalLayout.addWidget(self.button_start)
 
         self.horizontalSpacer_2 = QSpacerItem(150, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
@@ -166,7 +166,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.frame_2)
 
-        self.__tab_widget_main.addTab(self.tab, "")
+        self.tab_widget_main.addTab(self.tab, "")
         self.tab_3 = QWidget()
         self.tab_3.setObjectName(u"tab_3")
         self.tab_3.setMinimumSize(QSize(824, 722))
@@ -206,9 +206,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_13 = QVBoxLayout(self.frame_9)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.__tab_widget_work_state = QTabWidget(self.frame_9)
-        self.__tab_widget_work_state.setObjectName(u"__tab_widget_work_state")
-        self.__tab_widget_work_state.setStyleSheet(u"border:none;")
+        self.tab_widget_work_state = QTabWidget(self.frame_9)
+        self.tab_widget_work_state.setObjectName(u"tab_widget_work_state")
+        self.tab_widget_work_state.setStyleSheet(u"border:none;")
         self.tab_7 = QWidget()
         self.tab_7.setObjectName(u"tab_7")
         self.tab_7.setStyleSheet(u"border:none;")
@@ -225,26 +225,26 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setSpacing(0)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.__label_work_with_data = QFrame(self.frame_10)
-        self.__label_work_with_data.setObjectName(u"__label_work_with_data")
-        self.__label_work_with_data.setStyleSheet(u"border:none;")
-        self.__label_work_with_data.setFrameShape(QFrame.Shape.StyledPanel)
-        self.__label_work_with_data.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.__label_work_with_data)
+        self.label_work_with_data = QFrame(self.frame_10)
+        self.label_work_with_data.setObjectName(u"label_work_with_data")
+        self.label_work_with_data.setStyleSheet(u"border:none;")
+        self.label_work_with_data.setFrameShape(QFrame.Shape.StyledPanel)
+        self.label_work_with_data.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.label_work_with_data)
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.__label_work_with_data_2 = QLabel(self.__label_work_with_data)
-        self.__label_work_with_data_2.setObjectName(u"__label_work_with_data_2")
+        self.label_work_with_data_2 = QLabel(self.label_work_with_data)
+        self.label_work_with_data_2.setObjectName(u"label_work_with_data_2")
         font2 = QFont()
         font2.setFamilies([u"Arial"])
         font2.setPointSize(10)
-        self.__label_work_with_data_2.setFont(font2)
-        self.__label_work_with_data_2.setStyleSheet(u"border:none;")
-        self.__label_work_with_data_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_work_with_data_2.setFont(font2)
+        self.label_work_with_data_2.setStyleSheet(u"border:none;")
+        self.label_work_with_data_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_13.addWidget(self.__label_work_with_data_2)
+        self.horizontalLayout_13.addWidget(self.label_work_with_data_2)
 
 
-        self.verticalLayout_14.addWidget(self.__label_work_with_data)
+        self.verticalLayout_14.addWidget(self.label_work_with_data)
 
         self.frame_16 = QFrame(self.frame_10)
         self.frame_16.setObjectName(u"frame_16")
@@ -255,23 +255,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_17 = QVBoxLayout(self.frame_16)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(2, 0, 2, 1)
-        self.__button_add_new_record = QPushButton(self.frame_16)
-        self.__button_add_new_record.setObjectName(u"__button_add_new_record")
-        self.__button_add_new_record.setFont(font2)
-        self.__button_add_new_record.setStyleSheet(u"padding:6px;\n"
+        self.button_add_new_record = QPushButton(self.frame_16)
+        self.button_add_new_record.setObjectName(u"button_add_new_record")
+        self.button_add_new_record.setFont(font2)
+        self.button_add_new_record.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_17.addWidget(self.__button_add_new_record)
+        self.verticalLayout_17.addWidget(self.button_add_new_record)
 
-        self.__button_edit = QPushButton(self.frame_16)
-        self.__button_edit.setObjectName(u"__button_edit")
-        self.__button_edit.setFont(font2)
-        self.__button_edit.setStyleSheet(u"padding:6px;\n"
+        self.button_edit = QPushButton(self.frame_16)
+        self.button_edit.setObjectName(u"button_edit")
+        self.button_edit.setFont(font2)
+        self.button_edit.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_17.addWidget(self.__button_edit)
+        self.verticalLayout_17.addWidget(self.button_edit)
 
 
         self.verticalLayout_14.addWidget(self.frame_16)
@@ -285,14 +285,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setSpacing(0)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(2, 0, 2, 0)
-        self.__button_show_tree = QPushButton(self.frame_20)
-        self.__button_show_tree.setObjectName(u"__button_show_tree")
-        self.__button_show_tree.setFont(font2)
-        self.__button_show_tree.setStyleSheet(u"padding:6px;\n"
+        self.button_show_tree = QPushButton(self.frame_20)
+        self.button_show_tree.setObjectName(u"button_show_tree")
+        self.button_show_tree.setFont(font2)
+        self.button_show_tree.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(26, 24, 26);\n"
 "border-radius:10px;")
 
-        self.horizontalLayout_9.addWidget(self.__button_show_tree)
+        self.horizontalLayout_9.addWidget(self.button_show_tree)
 
 
         self.verticalLayout_14.addWidget(self.frame_20)
@@ -306,14 +306,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setSpacing(0)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_15.setContentsMargins(2, 0, 2, 0)
-        self.__button_delete = QPushButton(self.frame_21)
-        self.__button_delete.setObjectName(u"__button_delete")
-        self.__button_delete.setFont(font2)
-        self.__button_delete.setStyleSheet(u"padding:6px;\n"
+        self.button_delete = QPushButton(self.frame_21)
+        self.button_delete.setObjectName(u"button_delete")
+        self.button_delete.setFont(font2)
+        self.button_delete.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(141, 69, 98);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_15.addWidget(self.__button_delete)
+        self.verticalLayout_15.addWidget(self.button_delete)
 
 
         self.verticalLayout_14.addWidget(self.frame_21)
@@ -326,23 +326,23 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QVBoxLayout(self.frame_23)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.verticalLayout_21.setContentsMargins(2, 0, 2, 0)
-        self.__butto_exit_app = QPushButton(self.frame_23)
-        self.__butto_exit_app.setObjectName(u"__butto_exit_app")
-        self.__butto_exit_app.setFont(font2)
-        self.__butto_exit_app.setStyleSheet(u"padding:6px;\n"
+        self.butto_exit_app = QPushButton(self.frame_23)
+        self.butto_exit_app.setObjectName(u"butto_exit_app")
+        self.butto_exit_app.setFont(font2)
+        self.butto_exit_app.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_21.addWidget(self.__butto_exit_app)
+        self.verticalLayout_21.addWidget(self.butto_exit_app)
 
-        self.__button_save = QPushButton(self.frame_23)
-        self.__button_save.setObjectName(u"__button_save")
-        self.__button_save.setFont(font2)
-        self.__button_save.setStyleSheet(u"padding:6px;\n"
+        self.button_save = QPushButton(self.frame_23)
+        self.button_save.setObjectName(u"button_save")
+        self.button_save.setFont(font2)
+        self.button_save.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_21.addWidget(self.__button_save)
+        self.verticalLayout_21.addWidget(self.button_save)
 
 
         self.verticalLayout_14.addWidget(self.frame_23)
@@ -350,7 +350,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addWidget(self.frame_10)
 
-        self.__tab_widget_work_state.addTab(self.tab_7, "")
+        self.tab_widget_work_state.addTab(self.tab_7, "")
         self.tab_8 = QWidget()
         self.tab_8.setObjectName(u"tab_8")
         self.tab_8.setStyleSheet(u"border:none;")
@@ -374,32 +374,32 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.verticalLayout_20.setContentsMargins(2, 0, 2, 0)
-        self.__button_icon_of_app = QPushButton(self.frame_25)
-        self.__button_icon_of_app.setObjectName(u"__button_icon_of_app")
-        self.__button_icon_of_app.setStyleSheet(u"background-color:none;\n"
+        self.button_icon_of_app = QPushButton(self.frame_25)
+        self.button_icon_of_app.setObjectName(u"button_icon_of_app")
+        self.button_icon_of_app.setStyleSheet(u"background-color:none;\n"
 "border:none;")
-        self.__button_icon_of_app.setIcon(icon)
-        self.__button_icon_of_app.setIconSize(QSize(50, 50))
+        self.button_icon_of_app.setIcon(icon)
+        self.button_icon_of_app.setIconSize(QSize(50, 50))
 
-        self.verticalLayout_20.addWidget(self.__button_icon_of_app)
+        self.verticalLayout_20.addWidget(self.button_icon_of_app)
 
-        self.__button_load_from_file = QPushButton(self.frame_25)
-        self.__button_load_from_file.setObjectName(u"__button_load_from_file")
-        self.__button_load_from_file.setFont(font2)
-        self.__button_load_from_file.setStyleSheet(u"padding:6px;\n"
+        self.button_load_from_file = QPushButton(self.frame_25)
+        self.button_load_from_file.setObjectName(u"button_load_from_file")
+        self.button_load_from_file.setFont(font2)
+        self.button_load_from_file.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_20.addWidget(self.__button_load_from_file)
+        self.verticalLayout_20.addWidget(self.button_load_from_file)
 
-        self.__button_load_from_db = QPushButton(self.frame_25)
-        self.__button_load_from_db.setObjectName(u"__button_load_from_db")
-        self.__button_load_from_db.setFont(font2)
-        self.__button_load_from_db.setStyleSheet(u"padding:6px;\n"
+        self.button_load_from_db = QPushButton(self.frame_25)
+        self.button_load_from_db.setObjectName(u"button_load_from_db")
+        self.button_load_from_db.setFont(font2)
+        self.button_load_from_db.setStyleSheet(u"padding:6px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_20.addWidget(self.__button_load_from_db)
+        self.verticalLayout_20.addWidget(self.button_load_from_db)
 
 
         self.verticalLayout_19.addWidget(self.frame_25)
@@ -421,9 +421,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_18.addWidget(self.frame_24)
 
-        self.__tab_widget_work_state.addTab(self.tab_8, "")
+        self.tab_widget_work_state.addTab(self.tab_8, "")
 
-        self.verticalLayout_13.addWidget(self.__tab_widget_work_state)
+        self.verticalLayout_13.addWidget(self.tab_widget_work_state)
 
 
         self.verticalLayout_7.addWidget(self.frame_9)
@@ -457,9 +457,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.__tab_widget_header = QTabWidget(self.frame_11)
-        self.__tab_widget_header.setObjectName(u"__tab_widget_header")
-        self.__tab_widget_header.setStyleSheet(u"border:none;\n"
+        self.tab_widget_header = QTabWidget(self.frame_11)
+        self.tab_widget_header.setObjectName(u"tab_widget_header")
+        self.tab_widget_header.setStyleSheet(u"border:none;\n"
 "background-color:none;")
         self.tab_6 = QWidget()
         self.tab_6.setObjectName(u"tab_6")
@@ -494,39 +494,39 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
 
-        self.__label_all_records = QLabel(self.frame_18)
-        self.__label_all_records.setObjectName(u"__label_all_records")
+        self.label_all_records = QLabel(self.frame_18)
+        self.label_all_records.setObjectName(u"label_all_records")
         font3 = QFont()
         font3.setFamilies([u"Arial"])
         font3.setPointSize(14)
         font3.setBold(True)
-        self.__label_all_records.setFont(font3)
-        self.__label_all_records.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_all_records.setFont(font3)
+        self.label_all_records.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_8.addWidget(self.__label_all_records)
+        self.horizontalLayout_8.addWidget(self.label_all_records)
 
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_5)
 
-        self.__button_search = QPushButton(self.frame_18)
-        self.__button_search.setObjectName(u"__button_search")
-        self.__button_search.setMinimumSize(QSize(100, 0))
-        self.__button_search.setMaximumSize(QSize(150, 16777215))
+        self.button_search = QPushButton(self.frame_18)
+        self.button_search.setObjectName(u"button_search")
+        self.button_search.setMinimumSize(QSize(100, 0))
+        self.button_search.setMaximumSize(QSize(150, 16777215))
         font4 = QFont()
         font4.setFamilies([u"Arial"])
         font4.setPointSize(11)
-        self.__button_search.setFont(font4)
-        self.__button_search.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
-        self.__button_search.setStyleSheet(u"\n"
+        self.button_search.setFont(font4)
+        self.button_search.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        self.button_search.setStyleSheet(u"\n"
 "background-color:rgb(26, 24, 26);\n"
 "border-radius:15px;")
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/magnifying_glass.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.__button_search.setIcon(icon1)
-        self.__button_search.setIconSize(QSize(30, 30))
+        self.button_search.setIcon(icon1)
+        self.button_search.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_8.addWidget(self.__button_search)
+        self.horizontalLayout_8.addWidget(self.button_search)
 
         self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -538,18 +538,18 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_19.addWidget(self.frame_17)
 
-        self.__tab_widget_header.addTab(self.tab_6, "")
+        self.tab_widget_header.addTab(self.tab_6, "")
         self.tab_11 = QWidget()
         self.tab_11.setObjectName(u"tab_11")
-        self.__tab_widget_header.addTab(self.tab_11, "")
+        self.tab_widget_header.addTab(self.tab_11, "")
 
-        self.horizontalLayout_4.addWidget(self.__tab_widget_header)
+        self.horizontalLayout_4.addWidget(self.tab_widget_header)
 
 
         self.verticalLayout_10.addWidget(self.frame_11)
 
-        self.__tab_widget_records = QTabWidget(self.frame_12)
-        self.__tab_widget_records.setObjectName(u"__tab_widget_records")
+        self.tab_widget_records = QTabWidget(self.frame_12)
+        self.tab_widget_records.setObjectName(u"tab_widget_records")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.horizontalLayout_7 = QHBoxLayout(self.tab_2)
@@ -563,44 +563,44 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 20, 0, -1)
-        self.__table_of_recording = QTableWidget(self.frame_15)
-        if (self.__table_of_recording.columnCount() < 6):
-            self.__table_of_recording.setColumnCount(6)
+        self.table_of_recording = QTableWidget(self.frame_15)
+        if (self.table_of_recording.columnCount() < 6):
+            self.table_of_recording.setColumnCount(6)
         __qtablewidgetitem = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.table_of_recording.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.table_of_recording.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.table_of_recording.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        self.table_of_recording.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        self.table_of_recording.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
-        self.__table_of_recording.setHorizontalHeaderItem(5, __qtablewidgetitem5)
-        if (self.__table_of_recording.rowCount() < 5):
-            self.__table_of_recording.setRowCount(5)
-        self.__table_of_recording.setObjectName(u"__table_of_recording")
-        self.__table_of_recording.setMinimumSize(QSize(669, 0))
-        self.__table_of_recording.setStyleSheet(u"border:none;\n"
+        self.table_of_recording.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        if (self.table_of_recording.rowCount() < 5):
+            self.table_of_recording.setRowCount(5)
+        self.table_of_recording.setObjectName(u"table_of_recording")
+        self.table_of_recording.setMinimumSize(QSize(669, 0))
+        self.table_of_recording.setStyleSheet(u"border:none;\n"
 "background:none;")
-        self.__table_of_recording.horizontalHeader().setVisible(True)
-        self.__table_of_recording.horizontalHeader().setCascadingSectionResizes(True)
-        self.__table_of_recording.horizontalHeader().setDefaultSectionSize(105)
-        self.__table_of_recording.horizontalHeader().setProperty(u"showSortIndicator", True)
-        self.__table_of_recording.horizontalHeader().setStretchLastSection(True)
-        self.__table_of_recording.verticalHeader().setVisible(True)
-        self.__table_of_recording.verticalHeader().setCascadingSectionResizes(True)
-        self.__table_of_recording.verticalHeader().setHighlightSections(True)
-        self.__table_of_recording.verticalHeader().setProperty(u"showSortIndicator", True)
-        self.__table_of_recording.verticalHeader().setStretchLastSection(False)
+        self.table_of_recording.horizontalHeader().setVisible(True)
+        self.table_of_recording.horizontalHeader().setCascadingSectionResizes(True)
+        self.table_of_recording.horizontalHeader().setDefaultSectionSize(105)
+        self.table_of_recording.horizontalHeader().setProperty(u"showSortIndicator", True)
+        self.table_of_recording.horizontalHeader().setStretchLastSection(True)
+        self.table_of_recording.verticalHeader().setVisible(True)
+        self.table_of_recording.verticalHeader().setCascadingSectionResizes(True)
+        self.table_of_recording.verticalHeader().setHighlightSections(True)
+        self.table_of_recording.verticalHeader().setProperty(u"showSortIndicator", True)
+        self.table_of_recording.verticalHeader().setStretchLastSection(False)
 
-        self.horizontalLayout_5.addWidget(self.__table_of_recording)
+        self.horizontalLayout_5.addWidget(self.table_of_recording)
 
 
         self.horizontalLayout_7.addWidget(self.frame_15)
 
-        self.__tab_widget_records.addTab(self.tab_2, "")
+        self.tab_widget_records.addTab(self.tab_2, "")
         self.tab_5 = QWidget()
         self.tab_5.setObjectName(u"tab_5")
         self.verticalLayout_11 = QVBoxLayout(self.tab_5)
@@ -615,7 +615,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_11.addWidget(self.treeWidget)
 
-        self.__tab_widget_records.addTab(self.tab_5, "")
+        self.tab_widget_records.addTab(self.tab_5, "")
         self.tab_4 = QWidget()
         self.tab_4.setObjectName(u"tab_4")
         self.verticalLayout_22 = QVBoxLayout(self.tab_4)
@@ -642,9 +642,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addWidget(self.frame_31)
 
-        self.__tab_widget_records.addTab(self.tab_4, "")
+        self.tab_widget_records.addTab(self.tab_4, "")
 
-        self.verticalLayout_10.addWidget(self.__tab_widget_records)
+        self.verticalLayout_10.addWidget(self.tab_widget_records)
 
 
         self.verticalLayout_8.addWidget(self.frame_12)
@@ -659,8 +659,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setSpacing(0)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
-        self.__tab_widget_footer = QTabWidget(self.frame_13)
-        self.__tab_widget_footer.setObjectName(u"__tab_widget_footer")
+        self.tab_widget_footer = QTabWidget(self.frame_13)
+        self.tab_widget_footer.setObjectName(u"tab_widget_footer")
         self.tab_9 = QWidget()
         self.tab_9.setObjectName(u"tab_9")
         self.horizontalLayout_14 = QHBoxLayout(self.tab_9)
@@ -689,17 +689,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setSpacing(0)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.__label_all_records_2 = QLabel(self.frame_19)
-        self.__label_all_records_2.setObjectName(u"__label_all_records_2")
-        self.__label_all_records_2.setMaximumSize(QSize(150, 16777215))
+        self.label_all_records_2 = QLabel(self.frame_19)
+        self.label_all_records_2.setObjectName(u"label_all_records_2")
+        self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
         font5 = QFont()
         font5.setFamilies([u"Arial"])
         font5.setPointSize(9)
         font5.setBold(False)
-        self.__label_all_records_2.setFont(font5)
-        self.__label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_all_records_2.setFont(font5)
+        self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.__label_all_records_2)
+        self.horizontalLayout_12.addWidget(self.label_all_records_2)
 
         self.pushButton_28 = QPushButton(self.frame_19)
         self.pushButton_28.setObjectName(u"pushButton_28")
@@ -797,7 +797,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14.addWidget(self.frame_14)
 
-        self.__tab_widget_footer.addTab(self.tab_9, "")
+        self.tab_widget_footer.addTab(self.tab_9, "")
         self.tab_10 = QWidget()
         self.tab_10.setObjectName(u"tab_10")
         self.horizontalLayout_15 = QHBoxLayout(self.tab_10)
@@ -822,24 +822,24 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.setSpacing(4)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.horizontalLayout_16.setContentsMargins(5, 0, 0, 0)
-        self.__button_user_icon = QPushButton(self.frame_29)
-        self.__button_user_icon.setObjectName(u"__button_user_icon")
-        self.__button_user_icon.setMinimumSize(QSize(26, 26))
-        self.__button_user_icon.setMaximumSize(QSize(60, 60))
-        self.__button_user_icon.setStyleSheet(u"background-color:none;\n"
+        self.button_user_icon = QPushButton(self.frame_29)
+        self.button_user_icon.setObjectName(u"button_user_icon")
+        self.button_user_icon.setMinimumSize(QSize(26, 26))
+        self.button_user_icon.setMaximumSize(QSize(60, 60))
+        self.button_user_icon.setStyleSheet(u"background-color:none;\n"
 "border:none;")
-        self.__button_user_icon.setIcon(icon)
-        self.__button_user_icon.setIconSize(QSize(25, 25))
+        self.button_user_icon.setIcon(icon)
+        self.button_user_icon.setIconSize(QSize(25, 25))
 
-        self.horizontalLayout_16.addWidget(self.__button_user_icon)
+        self.horizontalLayout_16.addWidget(self.button_user_icon)
 
-        self.__label_medical_app = QLabel(self.frame_29)
-        self.__label_medical_app.setObjectName(u"__label_medical_app")
-        self.__label_medical_app.setFont(font2)
-        self.__label_medical_app.setStyleSheet(u"border:none;\n"
+        self.label_medical_app = QLabel(self.frame_29)
+        self.label_medical_app.setObjectName(u"label_medical_app")
+        self.label_medical_app.setFont(font2)
+        self.label_medical_app.setStyleSheet(u"border:none;\n"
 "")
 
-        self.horizontalLayout_16.addWidget(self.__label_medical_app)
+        self.horizontalLayout_16.addWidget(self.label_medical_app)
 
 
         self.verticalLayout_9.addWidget(self.frame_29)
@@ -852,14 +852,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setSpacing(0)
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.horizontalLayout_17.setContentsMargins(25, 0, 0, 0)
-        self.__label_last_medical_app = QLabel(self.frame_30)
-        self.__label_last_medical_app.setObjectName(u"__label_last_medical_app")
-        self.__label_last_medical_app.setFont(font2)
-        self.__label_last_medical_app.setStyleSheet(u"border:none;\n"
+        self.label_last_medical_app = QLabel(self.frame_30)
+        self.label_last_medical_app.setObjectName(u"label_last_medical_app")
+        self.label_last_medical_app.setFont(font2)
+        self.label_last_medical_app.setStyleSheet(u"border:none;\n"
 "\n"
 "")
 
-        self.horizontalLayout_17.addWidget(self.__label_last_medical_app)
+        self.horizontalLayout_17.addWidget(self.label_last_medical_app)
 
 
         self.verticalLayout_9.addWidget(self.frame_30)
@@ -867,9 +867,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_15.addWidget(self.frame_28)
 
-        self.__tab_widget_footer.addTab(self.tab_10, "")
+        self.tab_widget_footer.addTab(self.tab_10, "")
 
-        self.horizontalLayout_11.addWidget(self.__tab_widget_footer)
+        self.horizontalLayout_11.addWidget(self.tab_widget_footer)
 
 
         self.verticalLayout_8.addWidget(self.frame_13)
@@ -880,9 +880,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.frame_6)
 
-        self.__tab_widget_main.addTab(self.tab_3, "")
+        self.tab_widget_main.addTab(self.tab_3, "")
 
-        self.verticalLayout_2.addWidget(self.__tab_widget_main)
+        self.verticalLayout_2.addWidget(self.tab_widget_main)
 
 
         self.verticalLayout.addWidget(self.frame)
@@ -891,11 +891,11 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.__tab_widget_main.setCurrentIndex(1)
-        self.__tab_widget_work_state.setCurrentIndex(1)
-        self.__tab_widget_header.setCurrentIndex(0)
-        self.__tab_widget_records.setCurrentIndex(2)
-        self.__tab_widget_footer.setCurrentIndex(1)
+        self.tab_widget_main.setCurrentIndex(1)
+        self.tab_widget_work_state.setCurrentIndex(1)
+        self.tab_widget_header.setCurrentIndex(0)
+        self.tab_widget_records.setCurrentIndex(2)
+        self.tab_widget_footer.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -903,44 +903,44 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.__label_start.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0443\u0447\u0435\u0442 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
-        self.__button_start_with_logo.setText("")
-        self.__button_exit.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
-        self.__button_start.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
-        self.__tab_widget_main.setTabText(self.__tab_widget_main.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
-        self.__label_work_with_data_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
-        self.__button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
-        self.__button_edit.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
-        self.__button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
-        self.__button_delete.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
-        self.__butto_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
-        self.__button_save.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
-        self.__tab_widget_work_state.setTabText(self.__tab_widget_work_state.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
-        self.__button_icon_of_app.setText("")
-        self.__button_load_from_file.setText(QCoreApplication.translate("MainWindow", u" \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0444\u0430\u0439\u043b\u0430", None))
-        self.__button_load_from_db.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0431\u0434", None))
-        self.__tab_widget_work_state.setTabText(self.__tab_widget_work_state.indexOf(self.tab_8), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
-        self.__label_all_records.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0432\u0441\u0435\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
-        self.__button_search.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438", None))
-        self.__tab_widget_header.setTabText(self.__tab_widget_header.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
-        self.__tab_widget_header.setTabText(self.__tab_widget_header.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0441\u0442\u043e\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
-        ___qtablewidgetitem = self.__table_of_recording.horizontalHeaderItem(0)
+        self.label_start.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0438\u0439 \u0443\u0447\u0435\u0442 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
+        self.button_start_with_logo.setText("")
+        self.button_exit.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
+        self.button_start.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.tab_widget_main.setTabText(self.tab_widget_main.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
+        self.label_work_with_data_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
+        self.button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
+        self.button_edit.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
+        self.button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
+        self.button_delete.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
+        self.butto_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
+        self.button_save.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
+        self.tab_widget_work_state.setTabText(self.tab_widget_work_state.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
+        self.button_icon_of_app.setText("")
+        self.button_load_from_file.setText(QCoreApplication.translate("MainWindow", u" \u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0444\u0430\u0439\u043b\u0430", None))
+        self.button_load_from_db.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0431\u0434", None))
+        self.tab_widget_work_state.setTabText(self.tab_widget_work_state.indexOf(self.tab_8), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.label_all_records.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0432\u0441\u0435\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
+        self.button_search.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438", None))
+        self.tab_widget_header.setTabText(self.tab_widget_header.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
+        self.tab_widget_header.setTabText(self.tab_widget_header.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0441\u0442\u043e\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
+        ___qtablewidgetitem = self.table_of_recording.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430", None));
-        ___qtablewidgetitem1 = self.__table_of_recording.horizontalHeaderItem(1)
+        ___qtablewidgetitem1 = self.table_of_recording.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None));
-        ___qtablewidgetitem2 = self.__table_of_recording.horizontalHeaderItem(2)
+        ___qtablewidgetitem2 = self.table_of_recording.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None));
-        ___qtablewidgetitem3 = self.__table_of_recording.horizontalHeaderItem(3)
+        ___qtablewidgetitem3 = self.table_of_recording.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430", None));
-        ___qtablewidgetitem4 = self.__table_of_recording.horizontalHeaderItem(4)
+        ___qtablewidgetitem4 = self.table_of_recording.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None));
-        ___qtablewidgetitem5 = self.__table_of_recording.horizontalHeaderItem(5)
+        ___qtablewidgetitem5 = self.table_of_recording.horizontalHeaderItem(5)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None));
-        self.__tab_widget_records.setTabText(self.__tab_widget_records.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
-        self.__tab_widget_records.setTabText(self.__tab_widget_records.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0432 \u0432\u0438\u0434\u0435 \u0434\u0435\u0440\u0435\u0432\u0430", None))
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0432 \u0432\u0438\u0434\u0435 \u0434\u0435\u0440\u0435\u0432\u0430", None))
         self.label_6.setText("")
-        self.__tab_widget_records.setTabText(self.__tab_widget_records.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442", None))
-        self.__label_all_records_2.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442", None))
+        self.label_all_records_2.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
         self.pushButton_28.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.pushButton_20.setText(QCoreApplication.translate("MainWindow", u"<", None))
         self.pushButton_21.setText(QCoreApplication.translate("MainWindow", u"1", None))
@@ -948,12 +948,22 @@ class Ui_MainWindow(object):
         self.pushButton_23.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.pushButton_24.setText(QCoreApplication.translate("MainWindow", u"n", None))
         self.pushButton_25.setText(QCoreApplication.translate("MainWindow", u">", None))
-        self.__tab_widget_footer.setTabText(self.__tab_widget_footer.indexOf(self.tab_9), QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0433\u0438\u043d\u0430\u0446\u0438\u044f", None))
-        self.__button_user_icon.setText("")
-        self.__label_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
-        self.__label_last_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
+        self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_9), QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0433\u0438\u043d\u0430\u0446\u0438\u044f", None))
+        self.button_user_icon.setText("")
+        self.label_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
+        self.label_last_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
 "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
-        self.__tab_widget_footer.setTabText(self.__tab_widget_footer.indexOf(self.tab_10), QCoreApplication.translate("MainWindow", u"\u0424\u0443\u0442\u0435\u0440", None))
-        self.__tab_widget_main.setTabText(self.__tab_widget_main.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
+        self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_10), QCoreApplication.translate("MainWindow", u"\u0424\u0443\u0442\u0435\u0440", None))
+        self.tab_widget_main.setTabText(self.tab_widget_main.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
     # retranslateUi
+
+        # my settings
+
+        # hide tabBar
+        self.tab_widget_main.tabBar().hide()
+        self.tab_widget_header.tabBar().hide()
+        self.tab_widget_records.tabBar().hide()
+        self.tab_widget_header.tabBar().hide()
+        self.tab_widget_footer.tabBar().hide()
+        self.tab_widget_work_state.tabBar().hide()
 

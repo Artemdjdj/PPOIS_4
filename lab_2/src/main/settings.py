@@ -1,0 +1,1 @@
+MAIN_WINDOW_ICON = u":/images/images/doctor_without_background.png"

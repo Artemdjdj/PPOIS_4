@@ -101,7 +101,7 @@ background-color:none;</string>
         <number>0</number>
        </property>
        <item>
-        <widget class="QTabWidget" name="__tab_widget_main">
+        <widget class="QTabWidget" name="tab_widget_main">
          <property name="currentIndex">
           <number>1</number>
          </property>
@@ -183,7 +183,7 @@ background-color:none;</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="__label_start">
+                  <widget class="QLabel" name="label_start">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -230,7 +230,7 @@ background-color:none;</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="__button_start_with_logo">
+                  <widget class="QPushButton" name="button_start_with_logo">
                    <property name="styleSheet">
                     <string notr="true">border:None;
 border-radius:200px;
@@ -299,7 +299,7 @@ background-color:rgb(87, 99, 177);</string>
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="__button_exit">
+                  <widget class="QPushButton" name="button_exit">
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -330,7 +330,7 @@ border-radius:25px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="__button_start">
+                  <widget class="QPushButton" name="button_start">
                    <property name="minimumSize">
                     <size>
                      <width>150</width>
@@ -522,7 +522,7 @@ border-radius:25px;</string>
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTabWidget" name="__tab_widget_work_state">
+                     <widget class="QTabWidget" name="tab_widget_work_state">
                       <property name="styleSheet">
                        <string notr="true">border:none;</string>
                       </property>
@@ -580,7 +580,7 @@ border-radius:25px;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QFrame" name="__label_work_with_data">
+                            <widget class="QFrame" name="label_work_with_data">
                              <property name="styleSheet">
                               <string notr="true">border:none;</string>
                              </property>
@@ -592,7 +592,7 @@ border-radius:25px;</string>
                              </property>
                              <layout class="QHBoxLayout" name="horizontalLayout_13">
                               <item>
-                               <widget class="QLabel" name="__label_work_with_data_2">
+                               <widget class="QLabel" name="label_work_with_data_2">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -644,7 +644,7 @@ border-radius:25px;</string>
                                <number>1</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__button_add_new_record">
+                               <widget class="QPushButton" name="button_add_new_record">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -662,7 +662,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="__button_edit">
+                               <widget class="QPushButton" name="button_edit">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -710,7 +710,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__button_show_tree">
+                               <widget class="QPushButton" name="button_show_tree">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -758,7 +758,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__button_delete">
+                               <widget class="QPushButton" name="button_delete">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -803,7 +803,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__butto_exit_app">
+                               <widget class="QPushButton" name="butto_exit_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -821,7 +821,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="__button_save">
+                               <widget class="QPushButton" name="button_save">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -918,7 +918,7 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__button_icon_of_app">
+                               <widget class="QPushButton" name="button_icon_of_app">
                                 <property name="styleSheet">
                                  <string notr="true">background-color:none;
 border:none;</string>
@@ -939,7 +939,7 @@ border:none;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="__button_load_from_file">
+                               <widget class="QPushButton" name="button_load_from_file">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -957,7 +957,7 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="__button_load_from_db">
+                               <widget class="QPushButton" name="button_load_from_db">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -1095,7 +1095,7 @@ border-radius:10px;</string>
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QTabWidget" name="__tab_widget_header">
+                        <widget class="QTabWidget" name="tab_widget_header">
                          <property name="styleSheet">
                           <string notr="true">border:none;
 background-color:none;</string>
@@ -1203,7 +1203,7 @@ background-color:none;</string>
                                   </spacer>
                                  </item>
                                  <item>
-                                  <widget class="QLabel" name="__label_all_records">
+                                  <widget class="QLabel" name="label_all_records">
                                    <property name="font">
                                     <font>
                                      <family>Arial</family>
@@ -1233,7 +1233,7 @@ background-color:none;</string>
                                   </spacer>
                                  </item>
                                  <item>
-                                  <widget class="QPushButton" name="__button_search">
+                                  <widget class="QPushButton" name="button_search">
                                    <property name="minimumSize">
                                     <size>
                                      <width>100</width>
@@ -1307,7 +1307,7 @@ border-radius:15px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QTabWidget" name="__tab_widget_records">
+                     <widget class="QTabWidget" name="tab_widget_records">
                       <property name="currentIndex">
                        <number>2</number>
                       </property>
@@ -1350,7 +1350,7 @@ border-radius:15px;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QTableWidget" name="__table_of_recording">
+                            <widget class="QTableWidget" name="table_of_recording">
                              <property name="minimumSize">
                               <size>
                                <width>669</width>
@@ -1574,7 +1574,7 @@ background:none;</string>
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTabWidget" name="__tab_widget_footer">
+                     <widget class="QTabWidget" name="tab_widget_footer">
                       <property name="currentIndex">
                        <number>1</number>
                       </property>
@@ -1672,7 +1672,7 @@ background:none;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="__label_all_records_2">
+                               <widget class="QLabel" name="label_all_records_2">
                                 <property name="maximumSize">
                                  <size>
                                   <width>150</width>
@@ -1983,7 +1983,7 @@ border-radius:25px;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="__button_user_icon">
+                               <widget class="QPushButton" name="button_user_icon">
                                 <property name="minimumSize">
                                  <size>
                                   <width>26</width>
@@ -2016,7 +2016,7 @@ border:none;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="__label_medical_app">
+                               <widget class="QLabel" name="label_medical_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
@@ -2060,7 +2060,7 @@ border:none;</string>
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QLabel" name="__label_last_medical_app">
+                               <widget class="QLabel" name="label_last_medical_app">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>

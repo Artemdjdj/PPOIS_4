@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>AfterDeleteWindow</class>
+ <widget class="QDialog" name="AfterDeleteWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -97,7 +97,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="__label_after_delete">
+          <widget class="QLabel" name="label_after_delete">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -125,7 +125,7 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QLabel" name="__label_after_delete_message">
+             <widget class="QLabel" name="label_after_delete_message">
               <property name="font">
                <font>
                 <family>Arial</family>
@@ -171,7 +171,7 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QPushButton" name="__button_cancel">
+          <widget class="QPushButton" name="button_cancel">
            <property name="styleSheet">
             <string notr="true">border:none;
 background-color:rgb(87, 99, 177);
@@ -184,7 +184,7 @@ border-radius:6px;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="__button_ok">
+          <widget class="QPushButton" name="button_ok">
            <property name="styleSheet">
             <string notr="true">border:none;
 background-color:rgb(67, 153, 143);
