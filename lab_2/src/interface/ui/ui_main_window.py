@@ -965,7 +965,7 @@ class Ui_MainWindow(object):
         self.tab_widget_main.setCurrentIndex(1)
         self.tab_widget_work_state.setCurrentIndex(1)
         self.tab_widget_header.setCurrentIndex(0)
-        self.tab_widget_records.setCurrentIndex(0)
+        self.tab_widget_records.setCurrentIndex(1)
         self.tab_widget_footer.setCurrentIndex(0)
 
 
