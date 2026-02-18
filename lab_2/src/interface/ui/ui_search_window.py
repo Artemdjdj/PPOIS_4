@@ -395,12 +395,12 @@ class Ui_SearchWindow(object):
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.tabWidget_2 = QTabWidget(self.frame_12)
         self.tabWidget_2.setObjectName(u"tabWidget_2")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.horizontalLayout_7 = QHBoxLayout(self.tab_2)
+        self.tab_list_of_records = QWidget()
+        self.tab_list_of_records.setObjectName(u"tab_list_of_records")
+        self.horizontalLayout_7 = QHBoxLayout(self.tab_list_of_records)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.frame_17 = QFrame(self.tab_2)
+        self.frame_17 = QFrame(self.tab_list_of_records)
         self.frame_17.setObjectName(u"frame_17")
         self.frame_17.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_17.setFrameShadow(QFrame.Shadow.Raised)
@@ -445,14 +445,14 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_7.addWidget(self.frame_17)
 
-        self.tabWidget_2.addTab(self.tab_2, "")
-        self.tab_4 = QWidget()
-        self.tab_4.setObjectName(u"tab_4")
-        self.verticalLayout_22 = QVBoxLayout(self.tab_4)
+        self.tabWidget_2.addTab(self.tab_list_of_records, "")
+        self.tab_no_records = QWidget()
+        self.tab_no_records.setObjectName(u"tab_no_records")
+        self.verticalLayout_22 = QVBoxLayout(self.tab_no_records)
         self.verticalLayout_22.setSpacing(0)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.frame_31 = QFrame(self.tab_4)
+        self.frame_31 = QFrame(self.tab_no_records)
         self.frame_31.setObjectName(u"frame_31")
         self.frame_31.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_31.setFrameShadow(QFrame.Shadow.Raised)
@@ -475,7 +475,7 @@ class Ui_SearchWindow(object):
 
         self.verticalLayout_22.addWidget(self.frame_31)
 
-        self.tabWidget_2.addTab(self.tab_4, "")
+        self.tabWidget_2.addTab(self.tab_no_records, "")
 
         self.verticalLayout_10.addWidget(self.tabWidget_2)
 
@@ -492,13 +492,13 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.tabWidget_4 = QTabWidget(self.frame_13)
         self.tabWidget_4.setObjectName(u"tabWidget_4")
-        self.tab_9 = QWidget()
-        self.tab_9.setObjectName(u"tab_9")
-        self.tab_9.setStyleSheet(u"border:none;\n"
+        self.tab_pagination = QWidget()
+        self.tab_pagination.setObjectName(u"tab_pagination")
+        self.tab_pagination.setStyleSheet(u"border:none;\n"
 "background-color:none;")
-        self.horizontalLayout_3 = QHBoxLayout(self.tab_9)
+        self.horizontalLayout_3 = QHBoxLayout(self.tab_pagination)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.frame_14 = QFrame(self.tab_9)
+        self.frame_14 = QFrame(self.tab_pagination)
         self.frame_14.setObjectName(u"frame_14")
         self.frame_14.setStyleSheet(u"border:none;\n"
 "background-color:none;")
@@ -631,14 +631,14 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_3.addWidget(self.frame_14)
 
-        self.tabWidget_4.addTab(self.tab_9, "")
-        self.tab_10 = QWidget()
-        self.tab_10.setObjectName(u"tab_10")
-        self.horizontalLayout_15 = QHBoxLayout(self.tab_10)
+        self.tabWidget_4.addTab(self.tab_pagination, "")
+        self.tab_footer = QWidget()
+        self.tab_footer.setObjectName(u"tab_footer")
+        self.horizontalLayout_15 = QHBoxLayout(self.tab_footer)
         self.horizontalLayout_15.setSpacing(0)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.frame_28 = QFrame(self.tab_10)
+        self.frame_28 = QFrame(self.tab_footer)
         self.frame_28.setObjectName(u"frame_28")
         self.frame_28.setStyleSheet(u"border:none;\n"
 "")
@@ -706,7 +706,7 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_15.addWidget(self.frame_28)
 
-        self.tabWidget_4.addTab(self.tab_10, "")
+        self.tabWidget_4.addTab(self.tab_footer, "")
 
         self.horizontalLayout_11.addWidget(self.tabWidget_4)
 
@@ -726,7 +726,7 @@ class Ui_SearchWindow(object):
         self.retranslateUi(SearchWindow)
 
         self.tabWidget_2.setCurrentIndex(1)
-        self.tabWidget_4.setCurrentIndex(0)
+        self.tabWidget_4.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(SearchWindow)
@@ -770,9 +770,9 @@ class Ui_SearchWindow(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None));
         ___qtablewidgetitem5 = self.table_of_recording.horizontalHeaderItem(5)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None));
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_2), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_list_of_records), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
         self.label_without_recording.setText("")
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_4), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_no_records), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
         self.label_all_records_2.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
         self.pushButton_28.setText(QCoreApplication.translate("SearchWindow", u"10", None))
         self.pushButton_20.setText(QCoreApplication.translate("SearchWindow", u"<", None))
@@ -781,11 +781,11 @@ class Ui_SearchWindow(object):
         self.pushButton_23.setText(QCoreApplication.translate("SearchWindow", u"...", None))
         self.pushButton_24.setText(QCoreApplication.translate("SearchWindow", u"n", None))
         self.pushButton_25.setText(QCoreApplication.translate("SearchWindow", u">", None))
-        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_9), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
+        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_pagination), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
         self.footer_button_with_icon.setText("")
         self.medical_app_label.setText(QCoreApplication.translate("SearchWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
         self.last_label_in_footer.setText(QCoreApplication.translate("SearchWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
 "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
-        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_10), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
+        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_footer), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
     # retranslateUi
 

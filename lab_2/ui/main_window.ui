@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>845</width>
+    <width>1000</width>
     <height>758</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>845</width>
+    <width>1000</width>
     <height>758</height>
    </size>
   </property>
@@ -27,12 +27,13 @@
   </property>
   <property name="styleSheet">
    <string notr="true">border:none;
+border-radius:0;
 background-color:none;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
     <size>
-     <width>845</width>
+     <width>1000</width>
      <height>758</height>
     </size>
    </property>
@@ -105,7 +106,7 @@ background-color:none;</string>
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="tab">
+         <widget class="QWidget" name="tab_start_page">
           <property name="styleSheet">
            <string notr="true"/>
           </property>
@@ -384,7 +385,7 @@ border-radius:25px;</string>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_3">
+         <widget class="QWidget" name="tab_main_page">
           <property name="minimumSize">
            <size>
             <width>824</width>
@@ -529,7 +530,7 @@ border-radius:25px;</string>
                       <property name="currentIndex">
                        <number>1</number>
                       </property>
-                      <widget class="QWidget" name="tab_7">
+                      <widget class="QWidget" name="tab_work_with_data">
                        <property name="styleSheet">
                         <string notr="true">border:none;</string>
                        </property>
@@ -568,13 +569,13 @@ border-radius:25px;</string>
                             <number>0</number>
                            </property>
                            <property name="leftMargin">
-                            <number>0</number>
+                            <number>10</number>
                            </property>
                            <property name="topMargin">
                             <number>0</number>
                            </property>
                            <property name="rightMargin">
-                            <number>0</number>
+                            <number>10</number>
                            </property>
                            <property name="bottomMargin">
                             <number>0</number>
@@ -652,7 +653,7 @@ border-radius:25px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(67, 153, 143);
 border-radius:10px;</string>
                                 </property>
@@ -670,7 +671,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(67, 153, 143);
 border-radius:10px;</string>
                                 </property>
@@ -718,7 +719,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(26, 24, 26);
 border-radius:10px;</string>
                                 </property>
@@ -766,7 +767,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(141, 69, 98);
 border-radius:10px;</string>
                                 </property>
@@ -811,7 +812,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(87, 99, 177);
 border-radius:10px;</string>
                                 </property>
@@ -829,7 +830,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(87, 99, 177);
 border-radius:10px;</string>
                                 </property>
@@ -846,7 +847,7 @@ border-radius:10px;</string>
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="tab_8">
+                      <widget class="QWidget" name="tab_load_data">
                        <property name="styleSheet">
                         <string notr="true">border:none;</string>
                        </property>
@@ -906,13 +907,13 @@ border-radius:10px;</string>
                                <number>0</number>
                               </property>
                               <property name="leftMargin">
-                               <number>2</number>
+                               <number>9</number>
                               </property>
                               <property name="topMargin">
                                <number>0</number>
                               </property>
                               <property name="rightMargin">
-                               <number>2</number>
+                               <number>9</number>
                               </property>
                               <property name="bottomMargin">
                                <number>0</number>
@@ -947,7 +948,8 @@ border:none;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13
+px;
 background-color:rgb(67, 153, 143);
 border-radius:10px;</string>
                                 </property>
@@ -965,7 +967,7 @@ border-radius:10px;</string>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:6px;
+                                 <string notr="true">padding:13px;
 background-color:rgb(87, 99, 177);
 border-radius:10px;</string>
                                 </property>
@@ -1014,7 +1016,7 @@ border-radius:10px;</string>
                <widget class="QFrame" name="frame_8">
                 <property name="minimumSize">
                  <size>
-                  <width>669</width>
+                  <width>824</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -1103,7 +1105,7 @@ background-color:none;</string>
                          <property name="currentIndex">
                           <number>0</number>
                          </property>
-                         <widget class="QWidget" name="tab_6">
+                         <widget class="QWidget" name="tab_header_search">
                           <attribute name="title">
                            <string>Заголовок</string>
                           </attribute>
@@ -1296,7 +1298,7 @@ border-radius:15px;</string>
                            </item>
                           </layout>
                          </widget>
-                         <widget class="QWidget" name="tab_11">
+                         <widget class="QWidget" name="tab_header_other">
                           <attribute name="title">
                            <string>Пустой заголовок</string>
                           </attribute>
@@ -1309,9 +1311,9 @@ border-radius:15px;</string>
                     <item>
                      <widget class="QTabWidget" name="tab_widget_records">
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>1</number>
                       </property>
-                      <widget class="QWidget" name="tab_2">
+                      <widget class="QWidget" name="tab_list_of_records">
                        <attribute name="title">
                         <string>Список записей</string>
                        </attribute>
@@ -1433,7 +1435,7 @@ background:none;</string>
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="tab_5">
+                      <widget class="QWidget" name="tab_tree_of_records">
                        <attribute name="title">
                         <string>Список в виде дерева</string>
                        </attribute>
@@ -1464,7 +1466,7 @@ background:none;</string>
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="tab_4">
+                      <widget class="QWidget" name="tab_no_records">
                        <attribute name="title">
                         <string>Записей нет</string>
                        </attribute>
@@ -1576,9 +1578,9 @@ background:none;</string>
                     <item>
                      <widget class="QTabWidget" name="tab_widget_footer">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
-                      <widget class="QWidget" name="tab_9">
+                      <widget class="QWidget" name="tab_pagination">
                        <attribute name="title">
                         <string>Пагинация</string>
                        </attribute>
@@ -1910,7 +1912,7 @@ border-radius:25px;</string>
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="tab_10">
+                      <widget class="QWidget" name="tab_footer">
                        <attribute name="title">
                         <string>Футер</string>
                        </attribute>
@@ -1942,140 +1944,257 @@ border-radius:25px;</string>
                           <property name="frameShadow">
                            <enum>QFrame::Shadow::Raised</enum>
                           </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_9">
-                           <property name="spacing">
-                            <number>6</number>
-                           </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_21">
                            <property name="leftMargin">
                             <number>0</number>
                            </property>
-                           <property name="topMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="rightMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>0</number>
-                           </property>
                            <item>
-                            <widget class="QFrame" name="frame_29">
+                            <widget class="QFrame" name="frame_32">
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
                              <property name="frameShadow">
                               <enum>QFrame::Shadow::Raised</enum>
                              </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_16">
-                              <property name="spacing">
-                               <number>4</number>
-                              </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_9">
                               <property name="leftMargin">
-                               <number>5</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
                                <number>0</number>
                               </property>
                               <item>
-                               <widget class="QPushButton" name="button_user_icon">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>26</width>
-                                  <height>26</height>
-                                 </size>
+                               <widget class="QFrame" name="frame_29">
+                                <property name="frameShape">
+                                 <enum>QFrame::Shape::StyledPanel</enum>
                                 </property>
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>60</width>
-                                  <height>60</height>
-                                 </size>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Shadow::Raised</enum>
                                 </property>
-                                <property name="styleSheet">
-                                 <string notr="true">background-color:none;
+                                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                                 <property name="spacing">
+                                  <number>4</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>5</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QPushButton" name="button_user_icon">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>26</width>
+                                     <height>26</height>
+                                    </size>
+                                   </property>
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>60</width>
+                                     <height>60</height>
+                                    </size>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">background-color:none;
 border:none;</string>
-                                </property>
-                                <property name="text">
-                                 <string/>
-                                </property>
-                                <property name="icon">
-                                 <iconset resource="../qrc/main.qrc">
-                                  <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
-                                </property>
-                                <property name="iconSize">
-                                 <size>
-                                  <width>25</width>
-                                  <height>25</height>
-                                 </size>
-                                </property>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="../qrc/main.qrc">
+                                     <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>25</width>
+                                     <height>25</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QLabel" name="label_medical_app">
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">border:none;
+</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Медицинское приложение для учета обслуживаний пациентов</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QLabel" name="label_medical_app">
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
+                               <widget class="QFrame" name="frame_30">
+                                <property name="frameShape">
+                                 <enum>QFrame::Shape::StyledPanel</enum>
                                 </property>
-                                <property name="styleSheet">
-                                 <string notr="true">border:none;
+                                <property name="frameShadow">
+                                 <enum>QFrame::Shadow::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_17">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>25</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLabel" name="label_last_medical_app">
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">border:none;
+
 </string>
-                                </property>
-                                <property name="text">
-                                 <string>Медицинское приложение для учета обслуживаний пациентов</string>
-                                </property>
+                                   </property>
+                                   <property name="text">
+                                    <string>© 2026 Медицинское приложение для учета обслуживаний пациентов 
+Все права защищены.</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
                                </widget>
                               </item>
                              </layout>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QFrame" name="frame_30">
+                            <widget class="QFrame" name="frame_33">
+                             <property name="maximumSize">
+                              <size>
+                               <width>310</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
                              <property name="frameShadow">
                               <enum>QFrame::Shadow::Raised</enum>
                              </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_17">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
-                              <property name="leftMargin">
-                               <number>25</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_12">
                               <item>
-                               <widget class="QLabel" name="label_last_medical_app">
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
+                               <widget class="QFrame" name="frame_34">
+                                <property name="frameShape">
+                                 <enum>QFrame::Shape::StyledPanel</enum>
                                 </property>
-                                <property name="styleSheet">
-                                 <string notr="true">border:none;
-
-</string>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Shadow::Raised</enum>
                                 </property>
-                                <property name="text">
-                                 <string>© 2026 Медицинское приложение для учета обслуживаний пациентов 
-Все права защищены.</string>
+                                <layout class="QHBoxLayout" name="horizontalLayout_22">
+                                 <item>
+                                  <widget class="QPushButton" name="button_address_clinic">
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>30</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="../qrc/main_icons.qrc">
+                                     <normaloff>:/icons/icons/address.png</normaloff>:/icons/icons/address.png</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>30</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QLabel" name="label_address_clinic">
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="text">
+                                    <string>г Минскул. Лобанка 24</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="frame_35">
+                                <property name="frameShape">
+                                 <enum>QFrame::Shape::StyledPanel</enum>
                                 </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Shadow::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_23">
+                                 <item>
+                                  <widget class="QPushButton" name="button_email_clinic">
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>30</width>
+                                     <height>16777215</height>
+                                    </size>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="icon">
+                                    <iconset resource="../qrc/main_icons.qrc">
+                                     <normaloff>:/icons/icons/email.png</normaloff>:/icons/icons/email.png</iconset>
+                                   </property>
+                                   <property name="iconSize">
+                                    <size>
+                                     <width>30</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QLabel" name="label_email_clinic">
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>10</pointsize>
+                                    </font>
+                                   </property>
+                                   <property name="text">
+                                    <string>minsk_clinic@gmail.com</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
                                </widget>
                               </item>
                              </layout>

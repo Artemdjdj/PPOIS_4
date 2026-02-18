@@ -761,7 +761,7 @@ padding:2px 4px;</string>
                  <property name="currentIndex">
                   <number>1</number>
                  </property>
-                 <widget class="QWidget" name="tab_2">
+                 <widget class="QWidget" name="tab_list_of_records">
                   <attribute name="title">
                    <string>Tab 1</string>
                   </attribute>
@@ -883,7 +883,7 @@ background:none;</string>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="tab_4">
+                 <widget class="QWidget" name="tab_no_records">
                   <attribute name="title">
                    <string>Tab 2</string>
                   </attribute>
@@ -980,9 +980,9 @@ background:none;</string>
                <item>
                 <widget class="QTabWidget" name="tabWidget_4">
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
-                 <widget class="QWidget" name="tab_9">
+                 <widget class="QWidget" name="tab_pagination">
                   <property name="styleSheet">
                    <string notr="true">border:none;
 background-color:none;</string>
@@ -1308,7 +1308,7 @@ border-radius:25px;</string>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="tab_10">
+                 <widget class="QWidget" name="tab_footer">
                   <attribute name="title">
                    <string>Tab 2</string>
                   </attribute>
