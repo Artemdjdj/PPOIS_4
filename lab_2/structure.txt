@@ -15,7 +15,11 @@ lab_2
 │   │   │   └── main_rc.py
 │   │   ├── ui/
 │   │   │   ├── __init__.py
-│   │   │   └── ui_main_window.py
+│   │   │   ├── ui_adding_data_window.py
+│   │   │   ├── ui_after_delete_window.py
+│   │   │   ├── ui_delete_window.py
+│   │   │   ├── ui_main_window.py
+│   │   │   └── ui_search_window.py
 │   │   │  
 │   │   └── __init__.py
 │   │
