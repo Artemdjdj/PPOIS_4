@@ -1,14 +1,6 @@
 lab_2
 ├── .venv/
 │
-├── db/
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── clinic.py
-│   ├── __init__.py
-│   ├── db_manager.py
-│   └── settings.py
-│
 ├── images/
 │
 ├── icons/
@@ -16,6 +8,14 @@ lab_2
 ├── qrc/
 │
 ├── src/
+│   ├── db/
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   └── clinic.py
+│   │   ├── __init__.py
+│   │   ├── db_manager.py
+│   │   └── settings.py
+│   │
 │   ├── exceptions/
 │   │   ├── __init__.py
 │   │   └── exceptions.py

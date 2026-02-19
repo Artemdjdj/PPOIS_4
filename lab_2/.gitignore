@@ -13,8 +13,8 @@ src/interface/__pycache__/
 src/interface/ui/__pycache__/
 src/interface/qrc/__pycache__/
 src/main/__pycache__/
-db/__pycache__/
-db/models/__pycache__/
+src/db/__pycache__/
+src/db/models/__pycache__/
 
 #enviroment
 .env
