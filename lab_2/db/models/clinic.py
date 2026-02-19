@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String, Date, func
+from sqlalchemy import String, Date, func
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import DeclarativeBase
@@ -12,7 +12,7 @@ class Base(DeclarativeBase):
 class ClinicInfoBase(Base):
     __tablename__ = "clinic_info"
 
-    id:Mapped[int] = mapped_column(Integer, primary_key=True)
+    id:Mapped[int] = mapped_column(primary_key=True)
     fio_patient:Mapped[str] = mapped_column(String(80))
     address:Mapped[str] = mapped_column(String(100))
     birthday:Mapped[date] = mapped_column(Date)
