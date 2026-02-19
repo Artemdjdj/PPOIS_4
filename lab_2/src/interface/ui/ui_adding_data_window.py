@@ -18,16 +18,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCalendarWidget, QDialog, QFrame,
     QHBoxLayout, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QTextEdit, QVBoxLayout, QWidget)
-import main_rc
-import main_icons_rc
+import src.interface.qrc.main_rc
+import src.interface.qrc.main_icons_rc
 
 class Ui_AddingDataWindow(object):
     def setupUi(self, AddingDataWindow):
         if not AddingDataWindow.objectName():
             AddingDataWindow.setObjectName(u"AddingDataWindow")
-        AddingDataWindow.resize(386, 840)
-        AddingDataWindow.setMinimumSize(QSize(386, 840))
-        AddingDataWindow.setMaximumSize(QSize(610, 840))
+        AddingDataWindow.resize(530, 807)
+        AddingDataWindow.setMinimumSize(QSize(530, 807))
+        AddingDataWindow.setMaximumSize(QSize(530, 807))
         self.verticalLayout = QVBoxLayout(AddingDataWindow)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -39,6 +39,7 @@ class Ui_AddingDataWindow(object):
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(-1, 0, -1, 0)
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setStyleSheet(u"border:None;")
@@ -59,6 +60,14 @@ class Ui_AddingDataWindow(object):
         self.label_fio_user.setObjectName(u"label_fio_user")
 
         self.verticalLayout_4.addWidget(self.label_fio_user)
+
+        self.label_incorrect_user = QLabel(self.frame_4)
+        self.label_incorrect_user.setObjectName(u"label_incorrect_user")
+        self.label_incorrect_user.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_user.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_user.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_4.addWidget(self.label_incorrect_user)
 
         self.frame_10 = QFrame(self.frame_4)
         self.frame_10.setObjectName(u"frame_10")
@@ -102,6 +111,14 @@ class Ui_AddingDataWindow(object):
         self.label_address.setObjectName(u"label_address")
 
         self.verticalLayout_5.addWidget(self.label_address)
+
+        self.label_incorrect_address = QLabel(self.frame_5)
+        self.label_incorrect_address.setObjectName(u"label_incorrect_address")
+        self.label_incorrect_address.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_address.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_address.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_5.addWidget(self.label_incorrect_address)
 
         self.frame_11 = QFrame(self.frame_5)
         self.frame_11.setObjectName(u"frame_11")
@@ -148,6 +165,8 @@ class Ui_AddingDataWindow(object):
 
         self.frame_12 = QFrame(self.frame_6)
         self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setMinimumSize(QSize(0, 140))
+        self.frame_12.setMaximumSize(QSize(16777215, 140))
         self.frame_12.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_12)
@@ -189,6 +208,8 @@ class Ui_AddingDataWindow(object):
 
         self.frame_13 = QFrame(self.frame_7)
         self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setMinimumSize(QSize(0, 140))
+        self.frame_13.setMaximumSize(QSize(16777215, 140))
         self.frame_13.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_13)
@@ -225,6 +246,19 @@ class Ui_AddingDataWindow(object):
         self.label_fio_doctor.setObjectName(u"label_fio_doctor")
 
         self.verticalLayout_8.addWidget(self.label_fio_doctor)
+
+        self.label_incorrect_fio = QLabel(self.frame_8)
+        self.label_incorrect_fio.setObjectName(u"label_incorrect_fio")
+        self.label_incorrect_fio.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_fio.setMaximumSize(QSize(16777215, 12))
+        font = QFont()
+        font.setFamilies([u"Arial"])
+        font.setPointSize(8)
+        self.label_incorrect_fio.setFont(font)
+        self.label_incorrect_fio.setStyleSheet(u"color:rgb(156, 15, 29);\n"
+"")
+
+        self.verticalLayout_8.addWidget(self.label_incorrect_fio)
 
         self.frame_14 = QFrame(self.frame_8)
         self.frame_14.setObjectName(u"frame_14")
@@ -271,6 +305,8 @@ class Ui_AddingDataWindow(object):
 
         self.frame_15 = QFrame(self.frame_9)
         self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setMinimumSize(QSize(0, 100))
+        self.frame_15.setMaximumSize(QSize(16777215, 100))
         self.frame_15.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_15.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_15)
@@ -356,12 +392,14 @@ class Ui_AddingDataWindow(object):
     def retranslateUi(self, AddingDataWindow):
         AddingDataWindow.setWindowTitle(QCoreApplication.translate("AddingDataWindow", u"\u0424\u043e\u0440\u043c\u0430 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u044f", None))
         self.label_fio_user.setText(QCoreApplication.translate("AddingDataWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
+        self.label_incorrect_user.setText("")
 #if QT_CONFIG(accessibility)
         self.line_edit_fio_user.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
         self.line_edit_fio_user.setPlaceholderText(QCoreApplication.translate("AddingDataWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e", None))
         self.button_user.setText("")
         self.label_address.setText(QCoreApplication.translate("AddingDataWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438 (\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u0421\u0443\u0445\u0430\u0440\u0435\u0432\u0441\u043a\u0430\u044f 23, \u043a\u0432. 55)", None))
+        self.label_incorrect_address.setText("")
         self.line_edit_address.setPlaceholderText(QCoreApplication.translate("AddingDataWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None))
         self.button_address.setText("")
         self.label_of_birthday.setText(QCoreApplication.translate("AddingDataWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (20.02.2006)", None))
@@ -372,6 +410,7 @@ class Ui_AddingDataWindow(object):
         self.label_of_admission.setText(QCoreApplication.translate("AddingDataWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (20.02.2006)", None))
         self.button_date_of_admission.setText("")
         self.label_fio_doctor.setText(QCoreApplication.translate("AddingDataWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
+        self.label_incorrect_fio.setText("")
         self.line_edit_doctor.setPlaceholderText(QCoreApplication.translate("AddingDataWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None))
         self.button_doctor.setText("")
         self.label_doctor_promt.setText(QCoreApplication.translate("AddingDataWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None))

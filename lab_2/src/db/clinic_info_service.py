@@ -10,12 +10,12 @@ class ClinicInfoService:
     def __init__(self, db_manager: DatabaseManager):
         self.__db_manager = db_manager
 
-    def create_patient(self, patient:ClinicInfoBase) -> ClinicInfoBase:
+    def create_patient(self, clinic_info:ClinicInfoBase) -> ClinicInfoBase:
         session = self.__db_manager.session
         try:
-            session.add(patient)
+            session.add(clinic_info)
             session.commit()
-            return patient
+            return clinic_info
         except:
             session.rollback()
             raise

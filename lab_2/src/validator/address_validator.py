@@ -1,5 +1,5 @@
 import re
-from basic_validator import BasicAddressValidator
+from src.validator.basic_validator import BasicAddressValidator
 from src.exceptions.exceptions import AddressError
 
 

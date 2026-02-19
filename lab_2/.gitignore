@@ -15,6 +15,8 @@ src/interface/qrc/__pycache__/
 src/main/__pycache__/
 src/db/__pycache__/
 src/db/models/__pycache__/
+src/validator/__pycache__/
+src/exceptions/__pycache__/
 
 #enviroment
 .env
