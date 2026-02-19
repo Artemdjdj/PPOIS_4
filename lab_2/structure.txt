@@ -16,6 +16,10 @@ lab_2
 ├── qrc/
 │
 ├── src/
+│   ├── exceptions/
+│   │   ├── __init__.py
+│   │   └── exceptions.py
+│   │
 │   ├── interface/
 │   │   ├── qrc/
 │   │   │   ├── __init__.py
@@ -36,6 +40,13 @@ lab_2
 │   │   ├── main.py
 │   │   └── settings.py
 │   │
+│   ├── validator/
+│   │   ├── __init__.py
+│   │   ├── address_validator.py
+│   │   ├── basic_validator.py
+│   │   ├── date_validator.py
+│   │   └── fio_validator.py
+│   │  
 │   └── __init__.py
 │
 ├── ui/
