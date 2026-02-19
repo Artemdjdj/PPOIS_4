@@ -1,4 +1,5 @@
 import sys
+from datetime import date
 from typing import Optional
 
 from PySide6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
@@ -58,13 +59,24 @@ class MainWindow(QMainWindow):
                 self.ui.table_of_recording.setItem(row, 5, QTableWidgetItem(str(record.conclusion)))
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
 
-    def __add_new_clinic_info(self, clinic_info) -> None:
-        self.__clinic_info_service.create_patient(clinic_info)
+    def __add_new_clinic_info(self, fio_user: Optional[str], address: Optional[str], birthday: Optional[date],
+                              date_of_admission: Optional[date], fio_doctor: Optional[str],
+                              conclusion: Optional[str]) -> None:
+        if fio_user is not None:
+            clinic_info = ClinicInfoBase(fio_patient=fio_user,
+                                         address=address,
+                                         birthday=birthday,
+                                         date_of_admission=date_of_admission,
+                                         fio_doctor=fio_doctor,
+                                         conclusion=conclusion)
+            self.__clinic_info_service.create_patient(clinic_info)
+            self.__load_from_db()
 
-    def __create_new_clinic_info(self)->None:
-        dialog = AddingDataWindow()
-        dialog.submitted.connect(self.__add_new_clinic_info)
-        dialog.show()
+    def __create_new_clinic_info(self) -> None:
+            dialog = AddingDataWindow()
+            dialog.submitted.connect(self.__add_new_clinic_info)
+            dialog.exec()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
