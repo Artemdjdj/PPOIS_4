@@ -226,53 +226,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.setSpacing(0)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.verticalLayout_14.setContentsMargins(10, 0, 10, 0)
-        self.label_work_with_data = QFrame(self.frame_10)
-        self.label_work_with_data.setObjectName(u"label_work_with_data")
-        self.label_work_with_data.setStyleSheet(u"border:none;")
-        self.label_work_with_data.setFrameShape(QFrame.Shape.StyledPanel)
-        self.label_work_with_data.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.label_work_with_data)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.label_work_with_data_2 = QLabel(self.label_work_with_data)
-        self.label_work_with_data_2.setObjectName(u"label_work_with_data_2")
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        font2.setPointSize(10)
-        self.label_work_with_data_2.setFont(font2)
-        self.label_work_with_data_2.setStyleSheet(u"border:none;")
-        self.label_work_with_data_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_13.addWidget(self.label_work_with_data_2)
-
-
-        self.verticalLayout_14.addWidget(self.label_work_with_data)
-
         self.frame_16 = QFrame(self.frame_10)
         self.frame_16.setObjectName(u"frame_16")
-        self.frame_16.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_16.setMaximumSize(QSize(16777215, 110))
         self.frame_16.setStyleSheet(u"border:none;")
         self.frame_16.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_16)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_17.setContentsMargins(2, 0, 2, 1)
-        self.button_add_new_record = QPushButton(self.frame_16)
-        self.button_add_new_record.setObjectName(u"button_add_new_record")
-        self.button_add_new_record.setFont(font2)
-        self.button_add_new_record.setStyleSheet(u"padding:13px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:10px;")
+        self.button_icon = QPushButton(self.frame_16)
+        self.button_icon.setObjectName(u"button_icon")
+        self.button_icon.setIcon(icon)
+        self.button_icon.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_17.addWidget(self.button_add_new_record)
-
-        self.button_edit = QPushButton(self.frame_16)
-        self.button_edit.setObjectName(u"button_edit")
-        self.button_edit.setFont(font2)
-        self.button_edit.setStyleSheet(u"padding:13px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:10px;")
-
-        self.verticalLayout_17.addWidget(self.button_edit)
+        self.verticalLayout_17.addWidget(self.button_icon)
 
 
         self.verticalLayout_14.addWidget(self.frame_16)
@@ -282,24 +250,65 @@ class Ui_MainWindow(object):
         self.frame_20.setStyleSheet(u"border:none;")
         self.frame_20.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_20.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_9 = QHBoxLayout(self.frame_20)
-        self.horizontalLayout_9.setSpacing(0)
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(2, 0, 2, 0)
-        self.button_show_tree = QPushButton(self.frame_20)
-        self.button_show_tree.setObjectName(u"button_show_tree")
-        self.button_show_tree.setFont(font2)
-        self.button_show_tree.setStyleSheet(u"padding:13px;\n"
-"background-color:rgb(26, 24, 26);\n"
+        self.verticalLayout_23 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_23.setSpacing(15)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalLayout_23.setContentsMargins(0, -1, 0, -1)
+        self.verticalSpacer = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_23.addItem(self.verticalSpacer)
+
+        self.label_work_with_data = QFrame(self.frame_20)
+        self.label_work_with_data.setObjectName(u"label_work_with_data")
+        self.label_work_with_data.setMaximumSize(QSize(16777215, 30))
+        self.label_work_with_data.setStyleSheet(u"border:none;")
+        self.label_work_with_data.setFrameShape(QFrame.Shape.StyledPanel)
+        self.label_work_with_data.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.label_work_with_data)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.label_work_with_data_2 = QLabel(self.label_work_with_data)
+        self.label_work_with_data_2.setObjectName(u"label_work_with_data_2")
+        self.label_work_with_data_2.setMaximumSize(QSize(16777215, 30))
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(10)
+        font2.setBold(True)
+        self.label_work_with_data_2.setFont(font2)
+        self.label_work_with_data_2.setStyleSheet(u"border:none;")
+        self.label_work_with_data_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_13.addWidget(self.label_work_with_data_2)
+
+
+        self.verticalLayout_23.addWidget(self.label_work_with_data)
+
+        self.button_add_new_record = QPushButton(self.frame_20)
+        self.button_add_new_record.setObjectName(u"button_add_new_record")
+        font3 = QFont()
+        font3.setFamilies([u"Arial"])
+        font3.setPointSize(10)
+        self.button_add_new_record.setFont(font3)
+        self.button_add_new_record.setStyleSheet(u"padding:13px;\n"
+"background-color:rgb(67, 153, 143);\n"
 "border-radius:10px;")
 
-        self.horizontalLayout_9.addWidget(self.button_show_tree)
+        self.verticalLayout_23.addWidget(self.button_add_new_record)
+
+        self.button_show_tree = QPushButton(self.frame_20)
+        self.button_show_tree.setObjectName(u"button_show_tree")
+        self.button_show_tree.setFont(font3)
+        self.button_show_tree.setStyleSheet(u"padding:13px;\n"
+"background-color:rgb(71, 182, 54);\n"
+"border-radius:10px;")
+
+        self.verticalLayout_23.addWidget(self.button_show_tree)
 
 
         self.verticalLayout_14.addWidget(self.frame_20)
 
         self.frame_21 = QFrame(self.frame_10)
         self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setMaximumSize(QSize(16777215, 70))
         self.frame_21.setStyleSheet(u"border:none;")
         self.frame_21.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_21.setFrameShadow(QFrame.Shadow.Raised)
@@ -309,7 +318,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setContentsMargins(2, 0, 2, 0)
         self.button_delete = QPushButton(self.frame_21)
         self.button_delete.setObjectName(u"button_delete")
-        self.button_delete.setFont(font2)
+        self.button_delete.setFont(font3)
         self.button_delete.setStyleSheet(u"padding:13px;\n"
 "background-color:rgb(141, 69, 98);\n"
 "border-radius:10px;")
@@ -321,6 +330,7 @@ class Ui_MainWindow(object):
 
         self.frame_23 = QFrame(self.frame_10)
         self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setMaximumSize(QSize(16777215, 200))
         self.frame_23.setStyleSheet(u"border:none;")
         self.frame_23.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_23.setFrameShadow(QFrame.Shadow.Raised)
@@ -329,7 +339,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_21.setContentsMargins(2, 0, 2, 0)
         self.butto_exit_app = QPushButton(self.frame_23)
         self.butto_exit_app.setObjectName(u"butto_exit_app")
-        self.butto_exit_app.setFont(font2)
+        self.butto_exit_app.setFont(font3)
         self.butto_exit_app.setStyleSheet(u"padding:13px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
@@ -338,7 +348,7 @@ class Ui_MainWindow(object):
 
         self.button_save = QPushButton(self.frame_23)
         self.button_save.setObjectName(u"button_save")
-        self.button_save.setFont(font2)
+        self.button_save.setFont(font3)
         self.button_save.setStyleSheet(u"padding:13px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
@@ -369,6 +379,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
         self.frame_25 = QFrame(self.frame_24)
         self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setMinimumSize(QSize(0, 400))
+        self.frame_25.setMaximumSize(QSize(16777215, 500))
         self.frame_25.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_25.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_20 = QVBoxLayout(self.frame_25)
@@ -380,13 +392,17 @@ class Ui_MainWindow(object):
         self.button_icon_of_app.setStyleSheet(u"background-color:none;\n"
 "border:none;")
         self.button_icon_of_app.setIcon(icon)
-        self.button_icon_of_app.setIconSize(QSize(50, 50))
+        self.button_icon_of_app.setIconSize(QSize(100, 100))
 
         self.verticalLayout_20.addWidget(self.button_icon_of_app)
 
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_20.addItem(self.verticalSpacer_2)
+
         self.button_load_from_file = QPushButton(self.frame_25)
         self.button_load_from_file.setObjectName(u"button_load_from_file")
-        self.button_load_from_file.setFont(font2)
+        self.button_load_from_file.setFont(font3)
         self.button_load_from_file.setStyleSheet(u"padding:13\n"
 "px;\n"
 "background-color:rgb(67, 153, 143);\n"
@@ -394,14 +410,22 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_20.addWidget(self.button_load_from_file)
 
+        self.verticalSpacer_4 = QSpacerItem(20, 15, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_20.addItem(self.verticalSpacer_4)
+
         self.button_load_from_db = QPushButton(self.frame_25)
         self.button_load_from_db.setObjectName(u"button_load_from_db")
-        self.button_load_from_db.setFont(font2)
+        self.button_load_from_db.setFont(font3)
         self.button_load_from_db.setStyleSheet(u"padding:13px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
 
         self.verticalLayout_20.addWidget(self.button_load_from_db)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 135, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_20.addItem(self.verticalSpacer_3)
 
 
         self.verticalLayout_19.addWidget(self.frame_25)
@@ -498,11 +522,11 @@ class Ui_MainWindow(object):
 
         self.label_all_records = QLabel(self.frame_18)
         self.label_all_records.setObjectName(u"label_all_records")
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(14)
-        font3.setBold(True)
-        self.label_all_records.setFont(font3)
+        font4 = QFont()
+        font4.setFamilies([u"Arial"])
+        font4.setPointSize(14)
+        font4.setBold(True)
+        self.label_all_records.setFont(font4)
         self.label_all_records.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_8.addWidget(self.label_all_records)
@@ -515,10 +539,10 @@ class Ui_MainWindow(object):
         self.button_search.setObjectName(u"button_search")
         self.button_search.setMinimumSize(QSize(100, 0))
         self.button_search.setMaximumSize(QSize(150, 16777215))
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(11)
-        self.button_search.setFont(font4)
+        font5 = QFont()
+        font5.setFamilies([u"Arial"])
+        font5.setPointSize(11)
+        self.button_search.setFont(font5)
         self.button_search.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.button_search.setStyleSheet(u"\n"
 "background-color:rgb(26, 24, 26);\n"
@@ -588,6 +612,7 @@ class Ui_MainWindow(object):
 "background:none;")
         self.table_of_recording.horizontalHeader().setVisible(True)
         self.table_of_recording.horizontalHeader().setCascadingSectionResizes(True)
+        self.table_of_recording.horizontalHeader().setMinimumSectionSize(50)
         self.table_of_recording.horizontalHeader().setDefaultSectionSize(105)
         self.table_of_recording.horizontalHeader().setProperty(u"showSortIndicator", True)
         self.table_of_recording.horizontalHeader().setStretchLastSection(True)
@@ -694,11 +719,11 @@ class Ui_MainWindow(object):
         self.label_all_records_2 = QLabel(self.frame_19)
         self.label_all_records_2.setObjectName(u"label_all_records_2")
         self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
-        font5 = QFont()
-        font5.setFamilies([u"Arial"])
-        font5.setPointSize(9)
-        font5.setBold(False)
-        self.label_all_records_2.setFont(font5)
+        font6 = QFont()
+        font6.setFamilies([u"Arial"])
+        font6.setPointSize(9)
+        font6.setBold(False)
+        self.label_all_records_2.setFont(font6)
         self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_12.addWidget(self.label_all_records_2)
@@ -706,13 +731,13 @@ class Ui_MainWindow(object):
         self.pushButton_28 = QPushButton(self.frame_19)
         self.pushButton_28.setObjectName(u"pushButton_28")
         self.pushButton_28.setMaximumSize(QSize(50, 50))
-        font6 = QFont()
-        font6.setFamilies([u"Arial"])
-        font6.setPointSize(14)
-        font6.setBold(False)
-        self.pushButton_28.setFont(font6)
+        font7 = QFont()
+        font7.setFamilies([u"Arial"])
+        font7.setPointSize(14)
+        font7.setBold(False)
+        self.pushButton_28.setFont(font7)
         self.pushButton_28.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(140, 49, 74);\n"
+"background-color:rgb(141, 69, 98);\n"
 "border-radius:25px;")
 
         self.horizontalLayout_12.addWidget(self.pushButton_28)
@@ -732,11 +757,11 @@ class Ui_MainWindow(object):
         self.pushButton_20 = QPushButton(self.frame_22)
         self.pushButton_20.setObjectName(u"pushButton_20")
         self.pushButton_20.setMaximumSize(QSize(50, 50))
-        font7 = QFont()
-        font7.setFamilies([u"Arial"])
-        font7.setPointSize(12)
-        font7.setBold(False)
-        self.pushButton_20.setFont(font7)
+        font8 = QFont()
+        font8.setFamilies([u"Arial"])
+        font8.setPointSize(12)
+        font8.setBold(False)
+        self.pushButton_20.setFont(font8)
         self.pushButton_20.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:25px;")
@@ -746,7 +771,7 @@ class Ui_MainWindow(object):
         self.pushButton_21 = QPushButton(self.frame_22)
         self.pushButton_21.setObjectName(u"pushButton_21")
         self.pushButton_21.setMaximumSize(QSize(50, 50))
-        self.pushButton_21.setFont(font7)
+        self.pushButton_21.setFont(font8)
         self.pushButton_21.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -756,7 +781,7 @@ class Ui_MainWindow(object):
         self.pushButton_22 = QPushButton(self.frame_22)
         self.pushButton_22.setObjectName(u"pushButton_22")
         self.pushButton_22.setMaximumSize(QSize(50, 50))
-        self.pushButton_22.setFont(font7)
+        self.pushButton_22.setFont(font8)
         self.pushButton_22.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -766,7 +791,7 @@ class Ui_MainWindow(object):
         self.pushButton_23 = QPushButton(self.frame_22)
         self.pushButton_23.setObjectName(u"pushButton_23")
         self.pushButton_23.setMaximumSize(QSize(50, 50))
-        self.pushButton_23.setFont(font7)
+        self.pushButton_23.setFont(font8)
         self.pushButton_23.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -776,7 +801,7 @@ class Ui_MainWindow(object):
         self.pushButton_24 = QPushButton(self.frame_22)
         self.pushButton_24.setObjectName(u"pushButton_24")
         self.pushButton_24.setMaximumSize(QSize(50, 50))
-        self.pushButton_24.setFont(font7)
+        self.pushButton_24.setFont(font8)
         self.pushButton_24.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -786,7 +811,7 @@ class Ui_MainWindow(object):
         self.pushButton_25 = QPushButton(self.frame_22)
         self.pushButton_25.setObjectName(u"pushButton_25")
         self.pushButton_25.setMaximumSize(QSize(50, 50))
-        self.pushButton_25.setFont(font7)
+        self.pushButton_25.setFont(font8)
         self.pushButton_25.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:25px;")
@@ -843,7 +868,7 @@ class Ui_MainWindow(object):
 
         self.label_medical_app = QLabel(self.frame_29)
         self.label_medical_app.setObjectName(u"label_medical_app")
-        self.label_medical_app.setFont(font2)
+        self.label_medical_app.setFont(font3)
         self.label_medical_app.setStyleSheet(u"border:none;\n"
 "")
 
@@ -862,7 +887,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(25, 0, 0, 0)
         self.label_last_medical_app = QLabel(self.frame_30)
         self.label_last_medical_app.setObjectName(u"label_last_medical_app")
-        self.label_last_medical_app.setFont(font2)
+        self.label_last_medical_app.setFont(font3)
         self.label_last_medical_app.setStyleSheet(u"border:none;\n"
 "\n"
 "")
@@ -900,7 +925,7 @@ class Ui_MainWindow(object):
 
         self.label_address_clinic = QLabel(self.frame_34)
         self.label_address_clinic.setObjectName(u"label_address_clinic")
-        self.label_address_clinic.setFont(font2)
+        self.label_address_clinic.setFont(font3)
 
         self.horizontalLayout_22.addWidget(self.label_address_clinic)
 
@@ -925,7 +950,7 @@ class Ui_MainWindow(object):
 
         self.label_email_clinic = QLabel(self.frame_35)
         self.label_email_clinic.setObjectName(u"label_email_clinic")
-        self.label_email_clinic.setFont(font2)
+        self.label_email_clinic.setFont(font3)
 
         self.horizontalLayout_23.addWidget(self.label_email_clinic)
 
@@ -963,9 +988,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tab_widget_main.setCurrentIndex(1)
-        self.tab_widget_work_state.setCurrentIndex(1)
+        self.tab_widget_work_state.setCurrentIndex(0)
         self.tab_widget_header.setCurrentIndex(0)
-        self.tab_widget_records.setCurrentIndex(1)
+        self.tab_widget_records.setCurrentIndex(0)
         self.tab_widget_footer.setCurrentIndex(0)
 
 
@@ -979,9 +1004,9 @@ class Ui_MainWindow(object):
         self.button_exit.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
         self.button_start.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
         self.tab_widget_main.setTabText(self.tab_widget_main.indexOf(self.tab_start_page), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
-        self.label_work_with_data_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
+        self.button_icon.setText("")
+        self.label_work_with_data_2.setText(QCoreApplication.translate("MainWindow", u"\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u0438", None))
         self.button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
-        self.button_edit.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
         self.button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
         self.button_delete.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
         self.butto_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))

@@ -1,10 +1,8 @@
 import sys
 from datetime import date
 from typing import Optional
-
 from PySide6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem
 from PySide6.QtGui import QIcon
-
 from src.db.models.clinic import ClinicInfoBase
 from src.db.clinic_info_service import ClinicInfoService
 from src.db.db_manager import DatabaseManager
@@ -73,9 +71,9 @@ class MainWindow(QMainWindow):
             self.__load_from_db()
 
     def __create_new_clinic_info(self) -> None:
-            dialog = AddingDataWindow()
-            dialog.submitted.connect(self.__add_new_clinic_info)
-            dialog.exec()
+        dialog = AddingDataWindow()
+        dialog.submitted.connect(self.__add_new_clinic_info)
+        dialog.exec()
 
 
 if __name__ == "__main__":

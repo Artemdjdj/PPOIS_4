@@ -528,7 +528,7 @@ border-radius:25px;</string>
                        <string notr="true">border:none;</string>
                       </property>
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_work_with_data">
                        <property name="styleSheet">
@@ -581,45 +581,11 @@ border-radius:25px;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <widget class="QFrame" name="label_work_with_data">
-                             <property name="styleSheet">
-                              <string notr="true">border:none;</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::Shape::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Shadow::Raised</enum>
-                             </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_13">
-                              <item>
-                               <widget class="QLabel" name="label_work_with_data_2">
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">border:none;</string>
-                                </property>
-                                <property name="text">
-                                 <string>Работа с данными</string>
-                                </property>
-                                <property name="alignment">
-                                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                           <item>
                             <widget class="QFrame" name="frame_16">
                              <property name="maximumSize">
                               <size>
                                <width>16777215</width>
-                               <height>16777215</height>
+                               <height>110</height>
                               </size>
                              </property>
                              <property name="styleSheet">
@@ -645,6 +611,110 @@ border-radius:25px;</string>
                                <number>1</number>
                               </property>
                               <item>
+                               <widget class="QPushButton" name="button_icon">
+                                <property name="text">
+                                 <string/>
+                                </property>
+                                <property name="icon">
+                                 <iconset resource="../qrc/main.qrc">
+                                  <normaloff>:/images/images/doctor_without_background.png</normaloff>:/images/images/doctor_without_background.png</iconset>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>100</width>
+                                  <height>100</height>
+                                 </size>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="frame_20">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::Shape::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Shadow::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_23">
+                              <property name="spacing">
+                               <number>15</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <spacer name="verticalSpacer">
+                                <property name="orientation">
+                                 <enum>Qt::Orientation::Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Policy::Fixed</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>20</width>
+                                  <height>100</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="label_work_with_data">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">border:none;</string>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::Shape::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Shadow::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                 <item>
+                                  <widget class="QLabel" name="label_work_with_data_2">
+                                   <property name="maximumSize">
+                                    <size>
+                                     <width>16777215</width>
+                                     <height>30</height>
+                                    </size>
+                                   </property>
+                                   <property name="font">
+                                    <font>
+                                     <family>Arial</family>
+                                     <pointsize>10</pointsize>
+                                     <bold>true</bold>
+                                    </font>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">border:none;</string>
+                                   </property>
+                                   <property name="text">
+                                    <string>Операции</string>
+                                   </property>
+                                   <property name="alignment">
+                                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
                                <widget class="QPushButton" name="button_add_new_record">
                                 <property name="font">
                                  <font>
@@ -663,54 +733,6 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="button_edit">
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(67, 153, 143);
-border-radius:10px;</string>
-                                </property>
-                                <property name="text">
-                                 <string>Редактировать</string>
-                                </property>
-                               </widget>
-                              </item>
-                             </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QFrame" name="frame_20">
-                             <property name="styleSheet">
-                              <string notr="true">border:none;</string>
-                             </property>
-                             <property name="frameShape">
-                              <enum>QFrame::Shape::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                              <enum>QFrame::Shadow::Raised</enum>
-                             </property>
-                             <layout class="QHBoxLayout" name="horizontalLayout_9">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
-                              <property name="leftMargin">
-                               <number>2</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>2</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
-                              <item>
                                <widget class="QPushButton" name="button_show_tree">
                                 <property name="font">
                                  <font>
@@ -720,7 +742,7 @@ border-radius:10px;</string>
                                 </property>
                                 <property name="styleSheet">
                                  <string notr="true">padding:13px;
-background-color:rgb(26, 24, 26);
+background-color:rgb(71, 182, 54);
 border-radius:10px;</string>
                                 </property>
                                 <property name="text">
@@ -733,6 +755,12 @@ border-radius:10px;</string>
                            </item>
                            <item>
                             <widget class="QFrame" name="frame_21">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>70</height>
+                              </size>
+                             </property>
                              <property name="styleSheet">
                               <string notr="true">border:none;</string>
                              </property>
@@ -781,6 +809,12 @@ border-radius:10px;</string>
                            </item>
                            <item>
                             <widget class="QFrame" name="frame_23">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>200</height>
+                              </size>
+                             </property>
                              <property name="styleSheet">
                               <string notr="true">border:none;</string>
                              </property>
@@ -896,6 +930,18 @@ border-radius:10px;</string>
                            </property>
                            <item>
                             <widget class="QFrame" name="frame_25">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>400</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>500</height>
+                              </size>
+                             </property>
                              <property name="frameShape">
                               <enum>QFrame::Shape::StyledPanel</enum>
                              </property>
@@ -933,11 +979,27 @@ border:none;</string>
                                 </property>
                                 <property name="iconSize">
                                  <size>
-                                  <width>50</width>
-                                  <height>50</height>
+                                  <width>100</width>
+                                  <height>100</height>
                                  </size>
                                 </property>
                                </widget>
+                              </item>
+                              <item>
+                               <spacer name="verticalSpacer_2">
+                                <property name="orientation">
+                                 <enum>Qt::Orientation::Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Policy::Fixed</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>20</width>
+                                  <height>40</height>
+                                 </size>
+                                </property>
+                               </spacer>
                               </item>
                               <item>
                                <widget class="QPushButton" name="button_load_from_file">
@@ -959,6 +1021,22 @@ border-radius:10px;</string>
                                </widget>
                               </item>
                               <item>
+                               <spacer name="verticalSpacer_4">
+                                <property name="orientation">
+                                 <enum>Qt::Orientation::Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Policy::Fixed</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>20</width>
+                                  <height>15</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
                                <widget class="QPushButton" name="button_load_from_db">
                                 <property name="font">
                                  <font>
@@ -975,6 +1053,22 @@ border-radius:10px;</string>
                                  <string>Загрузить из бд</string>
                                 </property>
                                </widget>
+                              </item>
+                              <item>
+                               <spacer name="verticalSpacer_3">
+                                <property name="orientation">
+                                 <enum>Qt::Orientation::Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Policy::Fixed</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>20</width>
+                                  <height>135</height>
+                                 </size>
+                                </property>
+                               </spacer>
                               </item>
                              </layout>
                             </widget>
@@ -1716,7 +1810,7 @@ background:none;</string>
                                 </property>
                                 <property name="styleSheet">
                                  <string notr="true">padding:15px;
-background-color:rgb(140, 49, 74);
+background-color:rgb(141, 69, 98);
 border-radius:25px;</string>
                                 </property>
                                 <property name="text">
