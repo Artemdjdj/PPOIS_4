@@ -56,6 +56,8 @@ lab_2
 │   ├── main_window.ui
 │   └── search_window.ui
 │
+├── .env
+├── .env.example
 ├── .gitignore
 ├── README.MD
 ├── requirements.txt
