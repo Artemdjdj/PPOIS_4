@@ -18,6 +18,16 @@ class DateError(Exception):
         super().__init__(msg)
         self.msg: str = msg
 
+class BirthdayError(DateError):
+    def __init__(self, msg: str) -> None:
+        super().__init__(msg)
+        self.msg: str = msg
+
+class DateOfAdmissionError(DateError):
+    def __init__(self, msg: str) -> None:
+        super().__init__(msg)
+        self.msg: str = msg
+
 
 class AddressError(Exception):
     def __init__(self, msg: str) -> None:

@@ -19,16 +19,16 @@ from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHBoxLayout,
     QHeaderView, QLabel, QLineEdit, QPushButton,
     QSizePolicy, QSpacerItem, QTabWidget, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget)
-import main_rc
-import main_icons_rc
+import src.interface.qrc.main_rc
+import src.interface.qrc.main_icons_rc
 
 class Ui_SearchWindow(object):
     def setupUi(self, SearchWindow):
         if not SearchWindow.objectName():
             SearchWindow.setObjectName(u"SearchWindow")
-        SearchWindow.resize(1055, 722)
-        SearchWindow.setMinimumSize(QSize(1055, 722))
-        SearchWindow.setMaximumSize(QSize(1055, 722))
+        SearchWindow.resize(1255, 722)
+        SearchWindow.setMinimumSize(QSize(1255, 722))
+        SearchWindow.setMaximumSize(QSize(15675, 1200))
         SearchWindow.setStyleSheet(u"background-color:none;")
         self.verticalLayout = QVBoxLayout(SearchWindow)
         self.verticalLayout.setSpacing(0)
@@ -43,7 +43,8 @@ class Ui_SearchWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMaximumSize(QSize(386, 16777215))
+        self.frame_2.setMinimumSize(QSize(500, 0))
+        self.frame_2.setMaximumSize(QSize(500, 16777215))
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_2)
@@ -84,12 +85,20 @@ class Ui_SearchWindow(object):
         self.frame_30.setStyleSheet(u"border:None;")
         self.frame_30.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_30.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_20 = QVBoxLayout(self.frame_30)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.verticalLayout_5 = QVBoxLayout(self.frame_30)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.label_user = QLabel(self.frame_30)
         self.label_user.setObjectName(u"label_user")
 
-        self.verticalLayout_20.addWidget(self.label_user)
+        self.verticalLayout_5.addWidget(self.label_user)
+
+        self.label_incorrect_user = QLabel(self.frame_30)
+        self.label_incorrect_user.setObjectName(u"label_incorrect_user")
+        self.label_incorrect_user.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_user.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_user.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_5.addWidget(self.label_incorrect_user)
 
         self.frame_32 = QFrame(self.frame_30)
         self.frame_32.setObjectName(u"frame_32")
@@ -99,13 +108,13 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_16.setSpacing(4)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.line_edit_user = QLineEdit(self.frame_32)
-        self.line_edit_user.setObjectName(u"line_edit_user")
-        self.line_edit_user.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
+        self.line_edit_fio_user = QLineEdit(self.frame_32)
+        self.line_edit_fio_user.setObjectName(u"line_edit_fio_user")
+        self.line_edit_fio_user.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
 "border-radius:6px;\n"
 "padding:4px;")
 
-        self.horizontalLayout_16.addWidget(self.line_edit_user)
+        self.horizontalLayout_16.addWidget(self.line_edit_fio_user)
 
         self.button_user = QPushButton(self.frame_32)
         self.button_user.setObjectName(u"button_user")
@@ -117,7 +126,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_16.addWidget(self.button_user)
 
 
-        self.verticalLayout_20.addWidget(self.frame_32)
+        self.verticalLayout_5.addWidget(self.frame_32)
 
 
         self.verticalLayout_19.addWidget(self.frame_30)
@@ -127,12 +136,20 @@ class Ui_SearchWindow(object):
         self.frame_33.setStyleSheet(u"border:None;")
         self.frame_33.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_33.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_21 = QVBoxLayout(self.frame_33)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_6 = QVBoxLayout(self.frame_33)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.label_address = QLabel(self.frame_33)
         self.label_address.setObjectName(u"label_address")
 
-        self.verticalLayout_21.addWidget(self.label_address)
+        self.verticalLayout_6.addWidget(self.label_address)
+
+        self.label_incorrect_address = QLabel(self.frame_33)
+        self.label_incorrect_address.setObjectName(u"label_incorrect_address")
+        self.label_incorrect_address.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_address.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_address.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_6.addWidget(self.label_incorrect_address)
 
         self.frame_34 = QFrame(self.frame_33)
         self.frame_34.setObjectName(u"frame_34")
@@ -142,13 +159,13 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_17.setSpacing(4)
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.horizontalLayout_17.setContentsMargins(0, 0, 0, 0)
-        self._line_edit_address = QLineEdit(self.frame_34)
-        self._line_edit_address.setObjectName(u"_line_edit_address")
-        self._line_edit_address.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
+        self.line_edit_address = QLineEdit(self.frame_34)
+        self.line_edit_address.setObjectName(u"line_edit_address")
+        self.line_edit_address.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
 "border-radius:6px;\n"
 "padding:4px;")
 
-        self.horizontalLayout_17.addWidget(self._line_edit_address)
+        self.horizontalLayout_17.addWidget(self.line_edit_address)
 
         self.button_address = QPushButton(self.frame_34)
         self.button_address.setObjectName(u"button_address")
@@ -160,7 +177,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_17.addWidget(self.button_address)
 
 
-        self.verticalLayout_21.addWidget(self.frame_34)
+        self.verticalLayout_6.addWidget(self.frame_34)
 
 
         self.verticalLayout_19.addWidget(self.frame_33)
@@ -170,12 +187,20 @@ class Ui_SearchWindow(object):
         self.frame_35.setStyleSheet(u"border:None;")
         self.frame_35.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_35.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_23 = QVBoxLayout(self.frame_35)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.verticalLayout_11 = QVBoxLayout(self.frame_35)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.label_date_of_birthday = QLabel(self.frame_35)
         self.label_date_of_birthday.setObjectName(u"label_date_of_birthday")
 
-        self.verticalLayout_23.addWidget(self.label_date_of_birthday)
+        self.verticalLayout_11.addWidget(self.label_date_of_birthday)
+
+        self.label_incorrect_birthday = QLabel(self.frame_35)
+        self.label_incorrect_birthday.setObjectName(u"label_incorrect_birthday")
+        self.label_incorrect_birthday.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_birthday.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_birthday.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_11.addWidget(self.label_incorrect_birthday)
 
         self.frame_36 = QFrame(self.frame_35)
         self.frame_36.setObjectName(u"frame_36")
@@ -203,7 +228,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_19.addWidget(self.button_date_of_birthday)
 
 
-        self.verticalLayout_23.addWidget(self.frame_36)
+        self.verticalLayout_11.addWidget(self.frame_36)
 
 
         self.verticalLayout_19.addWidget(self.frame_35)
@@ -212,13 +237,21 @@ class Ui_SearchWindow(object):
         self.frame_37.setObjectName(u"frame_37")
         self.frame_37.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_37.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_24 = QVBoxLayout(self.frame_37)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_13 = QVBoxLayout(self.frame_37)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.label_date_of_admission = QLabel(self.frame_37)
         self.label_date_of_admission.setObjectName(u"label_date_of_admission")
         self.label_date_of_admission.setStyleSheet(u"border:None;")
 
-        self.verticalLayout_24.addWidget(self.label_date_of_admission)
+        self.verticalLayout_13.addWidget(self.label_date_of_admission)
+
+        self.label_incorrect_admission = QLabel(self.frame_37)
+        self.label_incorrect_admission.setObjectName(u"label_incorrect_admission")
+        self.label_incorrect_admission.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_admission.setMaximumSize(QSize(16777215, 12))
+        self.label_incorrect_admission.setStyleSheet(u"color:rgb(156, 15, 29);")
+
+        self.verticalLayout_13.addWidget(self.label_incorrect_admission)
 
         self.frame_38 = QFrame(self.frame_37)
         self.frame_38.setObjectName(u"frame_38")
@@ -244,7 +277,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_20.addWidget(self.button_of_admission)
 
 
-        self.verticalLayout_24.addWidget(self.frame_38)
+        self.verticalLayout_13.addWidget(self.frame_38)
 
 
         self.verticalLayout_19.addWidget(self.frame_37)
@@ -254,12 +287,25 @@ class Ui_SearchWindow(object):
         self.frame_39.setStyleSheet(u"border:None;")
         self.frame_39.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_39.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_25 = QVBoxLayout(self.frame_39)
-        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.verticalLayout_7 = QVBoxLayout(self.frame_39)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label_doctor_fio = QLabel(self.frame_39)
         self.label_doctor_fio.setObjectName(u"label_doctor_fio")
 
-        self.verticalLayout_25.addWidget(self.label_doctor_fio)
+        self.verticalLayout_7.addWidget(self.label_doctor_fio)
+
+        self.label_incorrect_fio = QLabel(self.frame_39)
+        self.label_incorrect_fio.setObjectName(u"label_incorrect_fio")
+        self.label_incorrect_fio.setMinimumSize(QSize(0, 12))
+        self.label_incorrect_fio.setMaximumSize(QSize(16777215, 12))
+        font = QFont()
+        font.setFamilies([u"Arial"])
+        font.setPointSize(8)
+        self.label_incorrect_fio.setFont(font)
+        self.label_incorrect_fio.setStyleSheet(u"color:rgb(156, 15, 29);\n"
+"")
+
+        self.verticalLayout_7.addWidget(self.label_incorrect_fio)
 
         self.frame_40 = QFrame(self.frame_39)
         self.frame_40.setObjectName(u"frame_40")
@@ -287,7 +333,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_21.addWidget(self.button_doctor_icon)
 
 
-        self.verticalLayout_25.addWidget(self.frame_40)
+        self.verticalLayout_7.addWidget(self.frame_40)
 
 
         self.verticalLayout_19.addWidget(self.frame_39)
@@ -317,6 +363,7 @@ class Ui_SearchWindow(object):
 
         self.button_cancel = QPushButton(self.frame_5)
         self.button_cancel.setObjectName(u"button_cancel")
+        self.button_cancel.setMaximumSize(QSize(160, 16777215))
         self.button_cancel.setStyleSheet(u"background-color:rgb(87, 99, 177);\n"
 "border:1px solid rgb(87, 99, 177);;\n"
 "border-radius:6px;\n"
@@ -326,6 +373,7 @@ class Ui_SearchWindow(object):
 
         self.button_search = QPushButton(self.frame_5)
         self.button_search.setObjectName(u"button_search")
+        self.button_search.setMaximumSize(QSize(160, 16777215))
         self.button_search.setStyleSheet(u"background-color:rgb(67, 153, 143);\n"
 "border:1px solid rgb(67, 153, 143);\n"
 "border-radius:6px;\n"
@@ -373,11 +421,11 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_4.setContentsMargins(70, 0, 60, 0)
         self.main_label = QLabel(self.frame_11)
         self.main_label.setObjectName(u"main_label")
-        font = QFont()
-        font.setFamilies([u"Arial"])
-        font.setPointSize(14)
-        font.setBold(True)
-        self.main_label.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"Arial"])
+        font1.setPointSize(14)
+        font1.setBold(True)
+        self.main_label.setFont(font1)
         self.main_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_4.addWidget(self.main_label)
@@ -393,8 +441,8 @@ class Ui_SearchWindow(object):
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.tabWidget_2 = QTabWidget(self.frame_12)
-        self.tabWidget_2.setObjectName(u"tabWidget_2")
+        self.tab_widget_records = QTabWidget(self.frame_12)
+        self.tab_widget_records.setObjectName(u"tab_widget_records")
         self.tab_list_of_records = QWidget()
         self.tab_list_of_records.setObjectName(u"tab_list_of_records")
         self.horizontalLayout_7 = QHBoxLayout(self.tab_list_of_records)
@@ -445,7 +493,7 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_7.addWidget(self.frame_17)
 
-        self.tabWidget_2.addTab(self.tab_list_of_records, "")
+        self.tab_widget_records.addTab(self.tab_list_of_records, "")
         self.tab_no_records = QWidget()
         self.tab_no_records.setObjectName(u"tab_no_records")
         self.verticalLayout_22 = QVBoxLayout(self.tab_no_records)
@@ -467,7 +515,7 @@ class Ui_SearchWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_without_recording.sizePolicy().hasHeightForWidth())
         self.label_without_recording.setSizePolicy(sizePolicy)
-        self.label_without_recording.setPixmap(QPixmap(u":/images/images/no_records_horizontal.png"))
+        self.label_without_recording.setPixmap(QPixmap(u":/images/images/start_in_search_window.png"))
         self.label_without_recording.setScaledContents(True)
 
         self.horizontalLayout_18.addWidget(self.label_without_recording)
@@ -475,9 +523,9 @@ class Ui_SearchWindow(object):
 
         self.verticalLayout_22.addWidget(self.frame_31)
 
-        self.tabWidget_2.addTab(self.tab_no_records, "")
+        self.tab_widget_records.addTab(self.tab_no_records, "")
 
-        self.verticalLayout_10.addWidget(self.tabWidget_2)
+        self.verticalLayout_10.addWidget(self.tab_widget_records)
 
 
         self.verticalLayout_8.addWidget(self.frame_12)
@@ -488,227 +536,142 @@ class Ui_SearchWindow(object):
         self.frame_13.setMaximumSize(QSize(16777215, 200))
         self.frame_13.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_11 = QHBoxLayout(self.frame_13)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.tabWidget_4 = QTabWidget(self.frame_13)
-        self.tabWidget_4.setObjectName(u"tabWidget_4")
-        self.tab_pagination = QWidget()
-        self.tab_pagination.setObjectName(u"tab_pagination")
-        self.tab_pagination.setStyleSheet(u"border:none;\n"
-"background-color:none;")
-        self.horizontalLayout_3 = QHBoxLayout(self.tab_pagination)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_13)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.frame_14 = QFrame(self.tab_pagination)
-        self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setStyleSheet(u"border:none;\n"
-"background-color:none;")
-        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.frame_14)
-        self.horizontalLayout_6.setSpacing(15)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, 0, 10, 0)
-        self.horizontalSpacer_7 = QSpacerItem(5, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_6.addItem(self.horizontalSpacer_7)
-
-        self.frame_19 = QFrame(self.frame_14)
-        self.frame_19.setObjectName(u"frame_19")
-        self.frame_19.setMaximumSize(QSize(250, 16777215))
-        self.frame_19.setStyleSheet(u"border:none;\n"
-"background-color:none;")
-        self.frame_19.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_19.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_12 = QHBoxLayout(self.frame_19)
-        self.horizontalLayout_12.setSpacing(0)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.label_all_records_2 = QLabel(self.frame_19)
-        self.label_all_records_2.setObjectName(u"label_all_records_2")
-        self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
-        font1 = QFont()
-        font1.setFamilies([u"Arial"])
-        font1.setPointSize(9)
-        font1.setBold(False)
-        self.label_all_records_2.setFont(font1)
-        self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_12.addWidget(self.label_all_records_2)
-
-        self.pushButton_28 = QPushButton(self.frame_19)
-        self.pushButton_28.setObjectName(u"pushButton_28")
-        self.pushButton_28.setMaximumSize(QSize(50, 50))
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        font2.setPointSize(14)
-        font2.setBold(False)
-        self.pushButton_28.setFont(font2)
-        self.pushButton_28.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(140, 49, 74);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_12.addWidget(self.pushButton_28)
-
-
-        self.horizontalLayout_6.addWidget(self.frame_19)
-
-        self.frame_22 = QFrame(self.frame_14)
-        self.frame_22.setObjectName(u"frame_22")
-        self.frame_22.setMaximumSize(QSize(800, 16777215))
-        self.frame_22.setStyleSheet(u"border:none;")
-        self.frame_22.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_22.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_24 = QHBoxLayout(self.frame_22)
-        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
-        self.horizontalLayout_24.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_20 = QPushButton(self.frame_22)
-        self.pushButton_20.setObjectName(u"pushButton_20")
-        self.pushButton_20.setMaximumSize(QSize(50, 50))
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(12)
-        font3.setBold(False)
-        self.pushButton_20.setFont(font3)
-        self.pushButton_20.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(87, 99, 177);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_20)
-
-        self.pushButton_21 = QPushButton(self.frame_22)
-        self.pushButton_21.setObjectName(u"pushButton_21")
-        self.pushButton_21.setMaximumSize(QSize(50, 50))
-        self.pushButton_21.setFont(font3)
-        self.pushButton_21.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_21)
-
-        self.pushButton_22 = QPushButton(self.frame_22)
-        self.pushButton_22.setObjectName(u"pushButton_22")
-        self.pushButton_22.setMaximumSize(QSize(50, 50))
-        self.pushButton_22.setFont(font3)
-        self.pushButton_22.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_22)
-
-        self.pushButton_23 = QPushButton(self.frame_22)
-        self.pushButton_23.setObjectName(u"pushButton_23")
-        self.pushButton_23.setMaximumSize(QSize(50, 50))
-        self.pushButton_23.setFont(font3)
-        self.pushButton_23.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_23)
-
-        self.pushButton_24 = QPushButton(self.frame_22)
-        self.pushButton_24.setObjectName(u"pushButton_24")
-        self.pushButton_24.setMaximumSize(QSize(50, 50))
-        self.pushButton_24.setFont(font3)
-        self.pushButton_24.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_24)
-
-        self.pushButton_25 = QPushButton(self.frame_22)
-        self.pushButton_25.setObjectName(u"pushButton_25")
-        self.pushButton_25.setMaximumSize(QSize(50, 50))
-        self.pushButton_25.setFont(font3)
-        self.pushButton_25.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(87, 99, 177);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_24.addWidget(self.pushButton_25)
-
-
-        self.horizontalLayout_6.addWidget(self.frame_22)
-
-
-        self.horizontalLayout_3.addWidget(self.frame_14)
-
-        self.tabWidget_4.addTab(self.tab_pagination, "")
-        self.tab_footer = QWidget()
-        self.tab_footer.setObjectName(u"tab_footer")
-        self.horizontalLayout_15 = QHBoxLayout(self.tab_footer)
-        self.horizontalLayout_15.setSpacing(0)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.frame_28 = QFrame(self.tab_footer)
+        self.frame_28 = QFrame(self.frame_13)
         self.frame_28.setObjectName(u"frame_28")
         self.frame_28.setStyleSheet(u"border:none;\n"
 "")
         self.frame_28.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_28.setFrameShadow(QFrame.Shadow.Raised)
-        self.verticalLayout_9 = QVBoxLayout(self.frame_28)
-        self.verticalLayout_9.setSpacing(6)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.frame_29 = QFrame(self.frame_28)
-        self.frame_29.setObjectName(u"frame_29")
-        self.frame_29.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_29.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_22 = QHBoxLayout(self.frame_29)
-        self.horizontalLayout_22.setSpacing(4)
+        self.horizontalLayout_22 = QHBoxLayout(self.frame_28)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.horizontalLayout_22.setContentsMargins(5, 0, 0, 0)
-        self.footer_button_with_icon = QPushButton(self.frame_29)
-        self.footer_button_with_icon.setObjectName(u"footer_button_with_icon")
-        self.footer_button_with_icon.setMinimumSize(QSize(26, 26))
-        self.footer_button_with_icon.setMaximumSize(QSize(60, 60))
-        self.footer_button_with_icon.setStyleSheet(u"background-color:none;\n"
-"border:none;")
-        icon4 = QIcon()
-        icon4.addFile(u":/images/images/doctor_without_background.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.footer_button_with_icon.setIcon(icon4)
-        self.footer_button_with_icon.setIconSize(QSize(25, 25))
-
-        self.horizontalLayout_22.addWidget(self.footer_button_with_icon)
-
-        self.medical_app_label = QLabel(self.frame_29)
-        self.medical_app_label.setObjectName(u"medical_app_label")
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(10)
-        self.medical_app_label.setFont(font4)
-        self.medical_app_label.setStyleSheet(u"border:none;\n"
-"")
-
-        self.horizontalLayout_22.addWidget(self.medical_app_label)
-
-
-        self.verticalLayout_9.addWidget(self.frame_29)
-
+        self.horizontalLayout_22.setContentsMargins(0, -1, -1, -1)
         self.frame_41 = QFrame(self.frame_28)
         self.frame_41.setObjectName(u"frame_41")
         self.frame_41.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_41.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_23 = QHBoxLayout(self.frame_41)
-        self.horizontalLayout_23.setSpacing(0)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_41)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, -1, -1, -1)
+        self.frame_29 = QFrame(self.frame_41)
+        self.frame_29.setObjectName(u"frame_29")
+        self.frame_29.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_29.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_23 = QHBoxLayout(self.frame_29)
+        self.horizontalLayout_23.setSpacing(4)
         self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
-        self.horizontalLayout_23.setContentsMargins(25, 0, 0, 0)
-        self.last_label_in_footer = QLabel(self.frame_41)
-        self.last_label_in_footer.setObjectName(u"last_label_in_footer")
-        self.last_label_in_footer.setFont(font4)
-        self.last_label_in_footer.setStyleSheet(u"border:none;\n"
+        self.horizontalLayout_23.setContentsMargins(5, 0, 0, 0)
+        self.button_user_icon = QPushButton(self.frame_29)
+        self.button_user_icon.setObjectName(u"button_user_icon")
+        self.button_user_icon.setMinimumSize(QSize(26, 26))
+        self.button_user_icon.setMaximumSize(QSize(60, 60))
+        self.button_user_icon.setStyleSheet(u"background-color:none;\n"
+"border:none;")
+        icon4 = QIcon()
+        icon4.addFile(u":/images/images/doctor_without_background.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_user_icon.setIcon(icon4)
+        self.button_user_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_23.addWidget(self.button_user_icon)
+
+        self.label_medical_app = QLabel(self.frame_29)
+        self.label_medical_app.setObjectName(u"label_medical_app")
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(10)
+        self.label_medical_app.setFont(font2)
+        self.label_medical_app.setStyleSheet(u"border:none;\n"
+"")
+
+        self.horizontalLayout_23.addWidget(self.label_medical_app)
+
+
+        self.verticalLayout_9.addWidget(self.frame_29)
+
+        self.frame_42 = QFrame(self.frame_41)
+        self.frame_42.setObjectName(u"frame_42")
+        self.frame_42.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_42.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_24 = QHBoxLayout(self.frame_42)
+        self.horizontalLayout_24.setSpacing(0)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.horizontalLayout_24.setContentsMargins(25, 0, 0, 0)
+        self.label_last_medical_app = QLabel(self.frame_42)
+        self.label_last_medical_app.setObjectName(u"label_last_medical_app")
+        self.label_last_medical_app.setFont(font2)
+        self.label_last_medical_app.setStyleSheet(u"border:none;\n"
 "\n"
 "")
 
-        self.horizontalLayout_23.addWidget(self.last_label_in_footer)
+        self.horizontalLayout_24.addWidget(self.label_last_medical_app)
 
 
-        self.verticalLayout_9.addWidget(self.frame_41)
+        self.verticalLayout_9.addWidget(self.frame_42)
 
 
-        self.horizontalLayout_15.addWidget(self.frame_28)
+        self.horizontalLayout_22.addWidget(self.frame_41)
 
-        self.tabWidget_4.addTab(self.tab_footer, "")
+        self.frame_43 = QFrame(self.frame_28)
+        self.frame_43.setObjectName(u"frame_43")
+        self.frame_43.setMaximumSize(QSize(310, 16777215))
+        self.frame_43.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_43.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_12 = QVBoxLayout(self.frame_43)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.frame_44 = QFrame(self.frame_43)
+        self.frame_44.setObjectName(u"frame_44")
+        self.frame_44.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_44.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_25 = QHBoxLayout(self.frame_44)
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.button_address_clinic = QPushButton(self.frame_44)
+        self.button_address_clinic.setObjectName(u"button_address_clinic")
+        self.button_address_clinic.setMaximumSize(QSize(30, 16777215))
+        self.button_address_clinic.setIcon(icon1)
+        self.button_address_clinic.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_11.addWidget(self.tabWidget_4)
+        self.horizontalLayout_25.addWidget(self.button_address_clinic)
+
+        self.label_address_clinic = QLabel(self.frame_44)
+        self.label_address_clinic.setObjectName(u"label_address_clinic")
+        self.label_address_clinic.setFont(font2)
+
+        self.horizontalLayout_25.addWidget(self.label_address_clinic)
+
+
+        self.verticalLayout_12.addWidget(self.frame_44)
+
+        self.frame_45 = QFrame(self.frame_43)
+        self.frame_45.setObjectName(u"frame_45")
+        self.frame_45.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_45.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_26 = QHBoxLayout(self.frame_45)
+        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
+        self.button_email_clinic = QPushButton(self.frame_45)
+        self.button_email_clinic.setObjectName(u"button_email_clinic")
+        self.button_email_clinic.setMaximumSize(QSize(30, 16777215))
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/icons/email.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_email_clinic.setIcon(icon5)
+        self.button_email_clinic.setIconSize(QSize(30, 30))
+
+        self.horizontalLayout_26.addWidget(self.button_email_clinic)
+
+        self.label_email_clinic = QLabel(self.frame_45)
+        self.label_email_clinic.setObjectName(u"label_email_clinic")
+        self.label_email_clinic.setFont(font2)
+
+        self.horizontalLayout_26.addWidget(self.label_email_clinic)
+
+
+        self.verticalLayout_12.addWidget(self.frame_45)
+
+
+        self.horizontalLayout_22.addWidget(self.frame_43)
+
+
+        self.horizontalLayout_3.addWidget(self.frame_28)
 
 
         self.verticalLayout_8.addWidget(self.frame_13)
@@ -725,8 +688,7 @@ class Ui_SearchWindow(object):
 
         self.retranslateUi(SearchWindow)
 
-        self.tabWidget_2.setCurrentIndex(1)
-        self.tabWidget_4.setCurrentIndex(1)
+        self.tab_widget_records.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(SearchWindow)
@@ -735,24 +697,30 @@ class Ui_SearchWindow(object):
     def retranslateUi(self, SearchWindow):
         SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"Dialog", None))
         self.label_user.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
+        self.label_incorrect_user.setText("")
 #if QT_CONFIG(accessibility)
-        self.line_edit_user.setAccessibleDescription("")
+        self.line_edit_fio_user.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
-        self.line_edit_user.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e", None))
+        self.line_edit_fio_user.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e", None))
         self.button_user.setText("")
         self.label_address.setText(QCoreApplication.translate("SearchWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438 (\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 23, \u043a\u0432. 55)", None))
-        self._line_edit_address.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None))
+        self.label_incorrect_address.setText("")
+        self.line_edit_address.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None))
         self.button_address.setText("")
-        self.label_date_of_birthday.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (20.02.2006)", None))
+        self.label_date_of_birthday.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (2006-02-12)", None))
+        self.label_incorrect_birthday.setText("")
         self.line_edit_date_of_birthday.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None))
         self.button_date_of_birthday.setText("")
 #if QT_CONFIG(accessibility)
         self.label_date_of_admission.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
-        self.label_date_of_admission.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (20.02.2006)", None))
-        self.line_edit_date_of_admission.setText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u043f\u0440\u0438\u0435\u043c\u0430", None))
+        self.label_date_of_admission.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (2006-02-12)", None))
+        self.label_incorrect_admission.setText("")
+        self.line_edit_date_of_admission.setText("")
+        self.line_edit_date_of_admission.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u043f\u0440\u0438\u0435\u043c\u0430", None))
         self.button_of_admission.setText("")
         self.label_doctor_fio.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
+        self.label_incorrect_fio.setText("")
         self.line_edit_doctor.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None))
         self.button_doctor_icon.setText("")
         self.button_cancel.setText(QCoreApplication.translate("SearchWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
@@ -770,22 +738,17 @@ class Ui_SearchWindow(object):
         ___qtablewidgetitem4.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None));
         ___qtablewidgetitem5 = self.table_of_recording.horizontalHeaderItem(5)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None));
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_list_of_records), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_list_of_records), QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0438", None))
         self.label_without_recording.setText("")
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_no_records), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
-        self.label_all_records_2.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
-        self.pushButton_28.setText(QCoreApplication.translate("SearchWindow", u"10", None))
-        self.pushButton_20.setText(QCoreApplication.translate("SearchWindow", u"<", None))
-        self.pushButton_21.setText(QCoreApplication.translate("SearchWindow", u"1", None))
-        self.pushButton_22.setText(QCoreApplication.translate("SearchWindow", u"2", None))
-        self.pushButton_23.setText(QCoreApplication.translate("SearchWindow", u"...", None))
-        self.pushButton_24.setText(QCoreApplication.translate("SearchWindow", u"n", None))
-        self.pushButton_25.setText(QCoreApplication.translate("SearchWindow", u">", None))
-        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_pagination), QCoreApplication.translate("SearchWindow", u"Tab 1", None))
-        self.footer_button_with_icon.setText("")
-        self.medical_app_label.setText(QCoreApplication.translate("SearchWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
-        self.last_label_in_footer.setText(QCoreApplication.translate("SearchWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_no_records), QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442", None))
+        self.button_user_icon.setText("")
+        self.label_medical_app.setText(QCoreApplication.translate("SearchWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
+        self.label_last_medical_app.setText(QCoreApplication.translate("SearchWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
 "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
-        self.tabWidget_4.setTabText(self.tabWidget_4.indexOf(self.tab_footer), QCoreApplication.translate("SearchWindow", u"Tab 2", None))
+        self.button_address_clinic.setText("")
+        self.label_address_clinic.setText(QCoreApplication.translate("SearchWindow", u"\u0433 \u041c\u0438\u043d\u0441\u043a\u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
+        self.button_email_clinic.setText("")
+        self.label_email_clinic.setText(QCoreApplication.translate("SearchWindow", u"minsk_clinic@gmail.com", None))
     # retranslateUi
 
+        self.tab_widget_records.tabBar().hide()
