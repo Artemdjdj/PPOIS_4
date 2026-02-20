@@ -37,8 +37,12 @@ lab_2
 │   │
 │   ├── main/
 │   │   ├── __init__.py
+│   │   ├── add_clinic_info.py
 │   │   ├── main.py
-│   │   └── settings.py
+│   │   ├── search_clinic_info.py
+│   │   ├── settings.py
+│   │   ├── table_recorder.py
+│   │   └── utils.py
 │   │
 │   ├── validator/
 │   │   ├── __init__.py
