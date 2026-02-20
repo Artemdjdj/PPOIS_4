@@ -10,7 +10,7 @@ class ClinicInfoService:
     def __init__(self, db_manager: DatabaseManager):
         self.__db_manager = db_manager
 
-    def create_patient(self, clinic_info:ClinicInfoBase) -> ClinicInfoBase:
+    def create_clinic_info(self, clinic_info:ClinicInfoBase) -> ClinicInfoBase:
         session = self.__db_manager.session
         try:
             session.add(clinic_info)
@@ -22,7 +22,7 @@ class ClinicInfoService:
         finally:
             session.close()
 
-    def get_all_records_clinic_info(self)-> list[ClinicInfoBase]:
+    def get_all_records_clinic_info(self)-> List[ClinicInfoBase]:
         session = self.__db_manager.session
         try:
             records = session.query(ClinicInfoBase).all()

@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
-    QLabel, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QTabWidget, QTableWidget, QTableWidgetItem,
-    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
+    QHeaderView, QLabel, QMainWindow, QPushButton,
+    QSizePolicy, QSpacerItem, QTabWidget, QTableWidget,
+    QTableWidgetItem, QTreeWidget, QTreeWidgetItem, QVBoxLayout,
+    QWidget)
 import src.interface.qrc.main_rc
 import src.interface.qrc.main_icons_rc
 
@@ -298,7 +299,7 @@ class Ui_MainWindow(object):
         self.button_show_tree.setObjectName(u"button_show_tree")
         self.button_show_tree.setFont(font3)
         self.button_show_tree.setStyleSheet(u"padding:13px;\n"
-"background-color:rgb(71, 182, 54);\n"
+"background-color:rgb(138, 197, 62);\n"
 "border-radius:10px;")
 
         self.verticalLayout_23.addWidget(self.button_show_tree)
@@ -337,14 +338,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QVBoxLayout(self.frame_23)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.verticalLayout_21.setContentsMargins(2, 0, 2, 0)
-        self.butto_exit_app = QPushButton(self.frame_23)
-        self.butto_exit_app.setObjectName(u"butto_exit_app")
-        self.butto_exit_app.setFont(font3)
-        self.butto_exit_app.setStyleSheet(u"padding:13px;\n"
+        self.button_exit_app = QPushButton(self.frame_23)
+        self.button_exit_app.setObjectName(u"button_exit_app")
+        self.button_exit_app.setFont(font3)
+        self.button_exit_app.setStyleSheet(u"padding:13px;\n"
 "background-color:rgb(87, 99, 177);\n"
 "border-radius:10px;")
 
-        self.verticalLayout_21.addWidget(self.butto_exit_app)
+        self.verticalLayout_21.addWidget(self.button_exit_app)
 
         self.button_save = QPushButton(self.frame_23)
         self.button_save.setObjectName(u"button_save")
@@ -604,12 +605,13 @@ class Ui_MainWindow(object):
         self.table_of_recording.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.table_of_recording.setHorizontalHeaderItem(5, __qtablewidgetitem5)
-        if (self.table_of_recording.rowCount() < 5):
-            self.table_of_recording.setRowCount(5)
+        if (self.table_of_recording.rowCount() < 100):
+            self.table_of_recording.setRowCount(100)
         self.table_of_recording.setObjectName(u"table_of_recording")
         self.table_of_recording.setMinimumSize(QSize(669, 0))
         self.table_of_recording.setStyleSheet(u"border:none;\n"
 "background:none;")
+        self.table_of_recording.setRowCount(100)
         self.table_of_recording.horizontalHeader().setVisible(True)
         self.table_of_recording.horizontalHeader().setCascadingSectionResizes(True)
         self.table_of_recording.horizontalHeader().setMinimumSectionSize(50)
@@ -728,98 +730,146 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_12.addWidget(self.label_all_records_2)
 
-        self.pushButton_28 = QPushButton(self.frame_19)
-        self.pushButton_28.setObjectName(u"pushButton_28")
-        self.pushButton_28.setMaximumSize(QSize(50, 50))
+        self.comboBox_pagination = QComboBox(self.frame_19)
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.setObjectName(u"comboBox_pagination")
+        self.comboBox_pagination.setMinimumSize(QSize(80, 50))
+        self.comboBox_pagination.setMaximumSize(QSize(80, 50))
+        palette = QPalette()
+        brush = QBrush(QColor(59, 134, 125, 255))
+        brush.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush)
+        brush1 = QBrush(QColor(61, 139, 130, 255))
+        brush1.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Light, brush1)
+        brush2 = QBrush(QColor(63, 145, 135, 255))
+        brush2.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Midlight, brush2)
+        brush3 = QBrush(QColor(65, 148, 139, 255))
+        brush3.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Dark, brush3)
+        brush4 = QBrush(QColor(56, 128, 120, 255))
+        brush4.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Mid, brush4)
+        brush5 = QBrush(QColor(58, 132, 124, 255))
+        brush5.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush5)
+        brush6 = QBrush(QColor(60, 136, 127, 255))
+        brush6.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Shadow, brush6)
+        brush7 = QBrush(QColor(56, 126, 118, 255))
+        brush7.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.AlternateBase, brush7)
+        brush8 = QBrush(QColor(61, 138, 129, 255))
+        brush8.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ToolTipBase, brush8)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Light, brush1)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Midlight, brush2)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Dark, brush3)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Mid, brush4)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush5)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Shadow, brush6)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.AlternateBase, brush7)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ToolTipBase, brush8)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Light, brush1)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Midlight, brush2)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Dark, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Mid, brush4)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush5)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Shadow, brush6)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.AlternateBase, brush7)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ToolTipBase, brush8)
+        self.comboBox_pagination.setPalette(palette)
         font7 = QFont()
         font7.setFamilies([u"Arial"])
-        font7.setPointSize(14)
-        font7.setBold(False)
-        self.pushButton_28.setFont(font7)
-        self.pushButton_28.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(141, 69, 98);\n"
-"border-radius:25px;")
+        font7.setPointSize(16)
+        font7.setBold(True)
+        self.comboBox_pagination.setFont(font7)
+        self.comboBox_pagination.setStyleSheet(u"padding:10px;\n"
+"text-align:center;\n"
+"")
 
-        self.horizontalLayout_12.addWidget(self.pushButton_28)
+        self.horizontalLayout_12.addWidget(self.comboBox_pagination)
 
 
         self.horizontalLayout_6.addWidget(self.frame_19)
 
-        self.frame_22 = QFrame(self.frame_14)
-        self.frame_22.setObjectName(u"frame_22")
-        self.frame_22.setMaximumSize(QSize(800, 16777215))
-        self.frame_22.setStyleSheet(u"border:none;")
-        self.frame_22.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_22.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_20 = QHBoxLayout(self.frame_22)
-        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_20 = QPushButton(self.frame_22)
-        self.pushButton_20.setObjectName(u"pushButton_20")
-        self.pushButton_20.setMaximumSize(QSize(50, 50))
+        self.result_pagination = QFrame(self.frame_14)
+        self.result_pagination.setObjectName(u"result_pagination")
+        self.result_pagination.setMaximumSize(QSize(800, 16777215))
+        self.result_pagination.setStyleSheet(u"border:none;")
+        self.result_pagination.setFrameShape(QFrame.Shape.StyledPanel)
+        self.result_pagination.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.result_pagination)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.button_prev = QPushButton(self.result_pagination)
+        self.button_prev.setObjectName(u"button_prev")
+        self.button_prev.setMaximumSize(QSize(50, 50))
         font8 = QFont()
         font8.setFamilies([u"Arial"])
         font8.setPointSize(12)
         font8.setBold(False)
-        self.pushButton_20.setFont(font8)
-        self.pushButton_20.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(87, 99, 177);\n"
+        self.button_prev.setFont(font8)
+        self.button_prev.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(64, 145, 136);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout_20.addWidget(self.pushButton_20)
+        self.horizontalLayout_9.addWidget(self.button_prev)
 
-        self.pushButton_21 = QPushButton(self.frame_22)
-        self.pushButton_21.setObjectName(u"pushButton_21")
-        self.pushButton_21.setMaximumSize(QSize(50, 50))
-        self.pushButton_21.setFont(font8)
-        self.pushButton_21.setStyleSheet(u"padding:15px;\n"
+        self.button_first = QPushButton(self.result_pagination)
+        self.button_first.setObjectName(u"button_first")
+        self.button_first.setMaximumSize(QSize(50, 50))
+        self.button_first.setFont(font8)
+        self.button_first.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout_20.addWidget(self.pushButton_21)
+        self.horizontalLayout_9.addWidget(self.button_first)
 
-        self.pushButton_22 = QPushButton(self.frame_22)
-        self.pushButton_22.setObjectName(u"pushButton_22")
-        self.pushButton_22.setMaximumSize(QSize(50, 50))
-        self.pushButton_22.setFont(font8)
-        self.pushButton_22.setStyleSheet(u"padding:15px;\n"
+        self.button_current = QPushButton(self.result_pagination)
+        self.button_current.setObjectName(u"button_current")
+        self.button_current.setMaximumSize(QSize(50, 50))
+        self.button_current.setFont(font8)
+        self.button_current.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(138, 197, 62);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_current)
+
+        self.button_last = QPushButton(self.result_pagination)
+        self.button_last.setObjectName(u"button_last")
+        self.button_last.setMaximumSize(QSize(50, 50))
+        self.button_last.setFont(font8)
+        self.button_last.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout_20.addWidget(self.pushButton_22)
+        self.horizontalLayout_9.addWidget(self.button_last)
 
-        self.pushButton_23 = QPushButton(self.frame_22)
-        self.pushButton_23.setObjectName(u"pushButton_23")
-        self.pushButton_23.setMaximumSize(QSize(50, 50))
-        self.pushButton_23.setFont(font8)
-        self.pushButton_23.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
+        self.button_next = QPushButton(self.result_pagination)
+        self.button_next.setObjectName(u"button_next")
+        self.button_next.setMaximumSize(QSize(50, 50))
+        self.button_next.setFont(font8)
+        self.button_next.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(63, 144, 135);\n"
 "border-radius:25px;")
 
-        self.horizontalLayout_20.addWidget(self.pushButton_23)
-
-        self.pushButton_24 = QPushButton(self.frame_22)
-        self.pushButton_24.setObjectName(u"pushButton_24")
-        self.pushButton_24.setMaximumSize(QSize(50, 50))
-        self.pushButton_24.setFont(font8)
-        self.pushButton_24.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(67, 153, 143);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_20.addWidget(self.pushButton_24)
-
-        self.pushButton_25 = QPushButton(self.frame_22)
-        self.pushButton_25.setObjectName(u"pushButton_25")
-        self.pushButton_25.setMaximumSize(QSize(50, 50))
-        self.pushButton_25.setFont(font8)
-        self.pushButton_25.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(87, 99, 177);\n"
-"border-radius:25px;")
-
-        self.horizontalLayout_20.addWidget(self.pushButton_25)
+        self.horizontalLayout_9.addWidget(self.button_next)
 
 
-        self.horizontalLayout_6.addWidget(self.frame_22)
+        self.horizontalLayout_6.addWidget(self.result_pagination)
 
 
         self.horizontalLayout_14.addWidget(self.frame_14)
@@ -1009,7 +1059,7 @@ class Ui_MainWindow(object):
         self.button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
         self.button_delete.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
-        self.butto_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
+        self.button_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
         self.button_save.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
         self.tab_widget_work_state.setTabText(self.tab_widget_work_state.indexOf(self.tab_work_with_data), QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
         self.button_icon_of_app.setText("")
@@ -1037,13 +1087,17 @@ class Ui_MainWindow(object):
         self.label_6.setText("")
         self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_no_records), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442", None))
         self.label_all_records_2.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
-        self.pushButton_28.setText(QCoreApplication.translate("MainWindow", u"10", None))
-        self.pushButton_20.setText(QCoreApplication.translate("MainWindow", u"<", None))
-        self.pushButton_21.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.pushButton_22.setText(QCoreApplication.translate("MainWindow", u"2", None))
-        self.pushButton_23.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.pushButton_24.setText(QCoreApplication.translate("MainWindow", u"n", None))
-        self.pushButton_25.setText(QCoreApplication.translate("MainWindow", u">", None))
+        self.comboBox_pagination.setItemText(0, QCoreApplication.translate("MainWindow", u"5", None))
+        self.comboBox_pagination.setItemText(1, QCoreApplication.translate("MainWindow", u"10", None))
+        self.comboBox_pagination.setItemText(2, QCoreApplication.translate("MainWindow", u"50", None))
+        self.comboBox_pagination.setItemText(3, QCoreApplication.translate("MainWindow", u"100", None))
+        self.comboBox_pagination.setItemText(4, QCoreApplication.translate("MainWindow", u"150", None))
+
+        self.button_prev.setText(QCoreApplication.translate("MainWindow", u"<", None))
+        self.button_first.setText(QCoreApplication.translate("MainWindow", u"1", None))
+        self.button_current.setText(QCoreApplication.translate("MainWindow", u"3", None))
+        self.button_last.setText(QCoreApplication.translate("MainWindow", u"n", None))
+        self.button_next.setText(QCoreApplication.translate("MainWindow", u">", None))
         self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_pagination), QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0433\u0438\u043d\u0430\u0446\u0438\u044f", None))
         self.button_user_icon.setText("")
         self.label_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))

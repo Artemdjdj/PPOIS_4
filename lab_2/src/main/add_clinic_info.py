@@ -58,3 +58,12 @@ class AddingDataWindow(QDialog):
             self.ui.label_incorrect_address.setText(f"{e}")
         except FioDoctorError as e:
             self.ui.label_incorrect_fio.setText(f"{e}")
+
+    def __clear_data(self):
+        self.ui.label_incorrect_user.setText("")
+        self.ui.label_incorrect_address.setText("")
+        self.ui.label_incorrect_fio.setText("")
+        self.ui.line_edit_fio_user.clear()
+        self.ui.line_edit_address.clear()
+        self.ui.line_edit_doctor.clear()
+        self.ui.text_edit_doctor_promt.clear()
