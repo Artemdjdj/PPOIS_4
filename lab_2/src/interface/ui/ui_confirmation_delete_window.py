@@ -20,16 +20,16 @@ from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHBoxLayout,
     QWidget)
 import src.interface.qrc.main_rc
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        if not Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
-        Dialog.resize(430, 300)
-        Dialog.setMinimumSize(QSize(430, 300))
-        Dialog.setMaximumSize(QSize(430, 300))
-        self.verticalLayout = QVBoxLayout(Dialog)
+class Ui_ConfirmDialog(object):
+    def setupUi(self, ConfirmDialog):
+        if not ConfirmDialog.objectName():
+            ConfirmDialog.setObjectName(u"ConfirmDialog")
+        ConfirmDialog.resize(430, 300)
+        ConfirmDialog.setMinimumSize(QSize(430, 300))
+        ConfirmDialog.setMaximumSize(QSize(430, 300))
+        self.verticalLayout = QVBoxLayout(ConfirmDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.frame = QFrame(Dialog)
+        self.frame = QFrame(ConfirmDialog)
         self.frame.setObjectName(u"frame")
         self.frame.setStyleSheet(u"border:none;")
         self.frame.setFrameShape(QFrame.Shape.StyledPanel)
@@ -116,16 +116,16 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.frame)
 
 
-        self.retranslateUi(Dialog)
+        self.retranslateUi(ConfirmDialog)
 
-        QMetaObject.connectSlotsByName(Dialog)
+        QMetaObject.connectSlotsByName(ConfirmDialog)
     # setupUi
 
-    def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+    def retranslateUi(self, ConfirmDialog):
+        ConfirmDialog.setWindowTitle(QCoreApplication.translate("ConfirmDialog", u"Dialog", None))
         self.label_after_delete.setText("")
-        self.label_after_delete_message.setText(QCoreApplication.translate("Dialog", u" \u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0438 \u0437\u0430\u043f\u0438\u0441\u0438?", None))
-        self.button_cancel.setText(QCoreApplication.translate("Dialog", u"\u041d\u0435\u0442", None))
-        self.button_ok.setText(QCoreApplication.translate("Dialog", u"\u0414\u0430", None))
+        self.label_after_delete_message.setText(QCoreApplication.translate("ConfirmDialog", u" \u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0438 \u0437\u0430\u043f\u0438\u0441\u0438?", None))
+        self.button_cancel.setText(QCoreApplication.translate("ConfirmDialog", u"\u041d\u0435\u0442", None))
+        self.button_ok.setText(QCoreApplication.translate("ConfirmDialog", u"\u0414\u0430", None))
     # retranslateUi
 

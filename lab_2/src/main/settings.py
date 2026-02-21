@@ -16,3 +16,8 @@ stylesheet_for_not_visible_button = """
                                     border:none;
                                     background-color:none;
                                     """
+
+label_delete_nothing_text = "К сожалению удалить нечего!"
+image_delete_nothing = u":/images/images/unsuccessful_delete2.png"
+
+image_delete_successful = u":/images/images/successful_delete_2.png"

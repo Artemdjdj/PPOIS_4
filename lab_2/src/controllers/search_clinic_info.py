@@ -14,7 +14,7 @@ from src.validator.date_validator import DateValidator
 from src.validator.address_validator import BelarusAddressValidator
 from src.exceptions.exceptions import FioUserError, FioDoctorError, DateError, AddressError
 from src.main.table_recorder import TableRecorder
-
+from src.main.data_saver import DataSaver
 
 class SearchWindow(QDialog):
     submitted_search = Signal(str, str, date, date, str)
@@ -24,7 +24,7 @@ class SearchWindow(QDialog):
         self.ui = Ui_SearchWindow()
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon(MAIN_WINDOW_ICON))
-        self.setWindowTitle("Поиск информации")
+        self.setWindowTitle("Поиск записей")
         self.__add_functions()
 
         self.__table_recorder = TableRecorder(
@@ -33,6 +33,14 @@ class SearchWindow(QDialog):
             self.ui.tab_list_of_records,
             self.ui.tab_no_records
         )
+        self.__data_saver = DataSaver(
+            self.ui.line_edit_fio_user,
+            self.ui.line_edit_address,
+            self.ui.line_edit_date_of_birthday,
+            self.ui.line_edit_date_of_admission,
+            self.ui.line_edit_doctor,
+        )
+
 
     def __add_functions(self) -> None:
         self.ui.button_search.clicked.connect(lambda: self.__save_data())
@@ -44,22 +52,7 @@ class SearchWindow(QDialog):
 
     def __save_data(self) -> None:
         try:
-            fio_user = self.ui.line_edit_fio_user.text()
-            address = self.ui.line_edit_address.text()
-            birthday = self.ui.line_edit_date_of_birthday.text()
-            birthday = DateConverter.to_date(self.ui.line_edit_date_of_birthday.text()) if birthday else None
-            date_of_admission = self.ui.line_edit_date_of_admission.text()
-            date_of_admission = DateConverter.to_date(
-                self.ui.line_edit_date_of_admission.text()) if date_of_admission else None
-            fio_doctor = self.ui.line_edit_doctor.text()
+            fio_user, address, birthday, date_of_admission, fio_doctor = self.__data_saver.save_data()
             self.submitted_search.emit(fio_user, address, birthday, date_of_admission, fio_doctor)
-        except FioUserError as e:
-            self.ui.label_incorrect_user.setText(f"{e}")
-        except AddressError as e:
-            self.ui.label_incorrect_address.setText(f"{e}")
-        except FioDoctorError as e:
-            self.ui.label_incorrect_fio.setText(f"{e}")
-        except BirthdayError as e:
-            self.ui.label_incorrect_birthday.setText(f"{e}")
-        except DateOfAdmissionError as e:
-            self.ui.label_incorrect_admission.setText(f"{e}")
+        except Exception as e:
+            pass
