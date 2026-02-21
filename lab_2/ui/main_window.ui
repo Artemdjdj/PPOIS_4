@@ -22,6 +22,12 @@
     <height>16777215</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -528,7 +534,7 @@ border-radius:25px;</string>
                        <string notr="true">border:none;</string>
                       </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="tab_work_with_data">
                        <property name="styleSheet">
@@ -720,12 +726,19 @@ border-radius:25px;</string>
                                  <font>
                                   <family>Arial</family>
                                   <pointsize>10</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(67, 153, 143);
-border-radius:10px;</string>
+                                 <string notr="true">QPushButton {
+    padding:13px;
+	background-color:rgb(67, 153, 143);
+	border-radius:10px;
+}
+QPushButton:hover {
+    background-color: rgb(61, 139, 130);  /* другой цвет при наведении */
+}
+</string>
                                 </property>
                                 <property name="text">
                                  <string>Добавить</string>
@@ -738,12 +751,19 @@ border-radius:10px;</string>
                                  <font>
                                   <family>Arial</family>
                                   <pointsize>10</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(138, 197, 62);
-border-radius:10px;</string>
+                                 <string notr="true">QPushButton{
+padding:13px;
+background-color:rgb(26, 24, 26);
+border-radius:10px;
+}
+
+QPushButton:hover {
+    background-color: rgb(39, 36, 39);  /* другой цвет при наведении */
+}</string>
                                 </property>
                                 <property name="text">
                                  <string>Дерево записей</string>
@@ -792,12 +812,23 @@ border-radius:10px;</string>
                                  <font>
                                   <family>Arial</family>
                                   <pointsize>10</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(141, 69, 98);
-border-radius:10px;</string>
+                                 <string notr="true">QPushButton{
+	padding:13px;
+    background-color:rgb(141, 69, 98);
+    border-radius:10px;
+}
+
+
+QPushButton:hover{
+	padding:13px;
+    background-color:rgb(122, 60, 86);
+    border-radius:10px;
+}
+</string>
                                 </property>
                                 <property name="text">
                                  <string>Удалить</string>
@@ -843,33 +874,26 @@ border-radius:10px;</string>
                                  <font>
                                   <family>Arial</family>
                                   <pointsize>10</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(87, 99, 177);
-border-radius:10px;</string>
+                                 <string notr="true">QPushButton{
+	padding:13px;
+    background-color:rgb(87, 99, 177);
+    border-radius:10px;
+}
+
+
+QPushButton:hover{
+	padding:13px;
+    background-color:rgb(78, 89, 159);
+    border-radius:10px;
+}
+</string>
                                 </property>
                                 <property name="text">
                                  <string>Выйти</string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item>
-                               <widget class="QPushButton" name="button_save">
-                                <property name="font">
-                                 <font>
-                                  <family>Arial</family>
-                                  <pointsize>10</pointsize>
-                                 </font>
-                                </property>
-                                <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(87, 99, 177);
-border-radius:10px;</string>
-                                </property>
-                                <property name="text">
-                                 <string>Сохранить</string>
                                 </property>
                                </widget>
                               </item>
@@ -1002,21 +1026,51 @@ border:none;</string>
                                </spacer>
                               </item>
                               <item>
-                               <widget class="QPushButton" name="button_load_from_file">
+                               <widget class="QLabel" name="label_2">
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
-                                  <pointsize>10</pointsize>
+                                  <pointsize>12</pointsize>
+                                  <bold>false</bold>
+                                 </font>
+                                </property>
+                                <property name="text">
+                                 <string>Загрузить из</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="button_load_from_file">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>12</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13
-px;
-background-color:rgb(67, 153, 143);
-border-radius:10px;</string>
+                                 <string notr="true">
+QPushButton {
+    padding:6px;
+	background-color:rgb(67, 153, 143);
+	border-radius:10px;
+}
+QPushButton:hover {
+    background-color: rgb(61, 139, 130);  /* другой цвет при наведении */
+}
+</string>
                                 </property>
                                 <property name="text">
-                                 <string> Загрузить из файла</string>
+                                 <string>файла</string>
                                 </property>
                                </widget>
                               </item>
@@ -1031,26 +1085,39 @@ border-radius:10px;</string>
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>20</width>
-                                  <height>15</height>
+                                  <height>25</height>
                                  </size>
                                 </property>
                                </spacer>
                               </item>
                               <item>
                                <widget class="QPushButton" name="button_load_from_db">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>30</height>
+                                 </size>
+                                </property>
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
-                                  <pointsize>10</pointsize>
+                                  <pointsize>12</pointsize>
+                                  <bold>true</bold>
                                  </font>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">padding:13px;
-background-color:rgb(87, 99, 177);
-border-radius:10px;</string>
+                                 <string notr="true">
+QPushButton {
+    padding:6px;
+	background-color:rgb(87, 99, 177);
+	border-radius:10px;
+}
+QPushButton:hover {
+    background-color: rgb(75, 85, 152);  /* другой цвет при наведении */
+}</string>
                                 </property>
                                 <property name="text">
-                                 <string>Загрузить из бд</string>
+                                 <string>базы данных</string>
                                 </property>
                                </widget>
                               </item>
@@ -1065,7 +1132,7 @@ border-radius:10px;</string>
                                 <property name="sizeHint" stdset="0">
                                  <size>
                                   <width>20</width>
-                                  <height>135</height>
+                                  <height>120</height>
                                  </size>
                                 </property>
                                </spacer>
@@ -1345,16 +1412,25 @@ background-color:none;</string>
                                    <property name="font">
                                     <font>
                                      <family>Arial</family>
-                                     <pointsize>11</pointsize>
+                                     <pointsize>-1</pointsize>
+                                     <italic>false</italic>
+                                     <bold>true</bold>
                                     </font>
                                    </property>
                                    <property name="layoutDirection">
                                     <enum>Qt::LayoutDirection::RightToLeft</enum>
                                    </property>
                                    <property name="styleSheet">
-                                    <string notr="true">
-background-color:rgb(26, 24, 26);
-border-radius:15px;</string>
+                                    <string notr="true">QPushButton {
+    background-color: #1a181a;
+    border-radius: 14px;
+    border: none;
+    color: white;
+    font: bold 14px;
+}
+QPushButton:hover {
+    background-color: rgb(39, 36, 39);  /* другой цвет при наведении */
+}</string>
                                    </property>
                                    <property name="text">
                                     <string>Найти</string>
@@ -1405,7 +1481,7 @@ border-radius:15px;</string>
                     <item>
                      <widget class="QTabWidget" name="tab_widget_records">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <widget class="QWidget" name="tab_list_of_records">
                        <attribute name="title">
@@ -1636,7 +1712,7 @@ background:none;</string>
                        </attribute>
                        <layout class="QVBoxLayout" name="verticalLayout_11">
                         <property name="spacing">
-                         <number>0</number>
+                         <number>10</number>
                         </property>
                         <property name="leftMargin">
                          <number>0</number>
@@ -1650,6 +1726,140 @@ background:none;</string>
                         <property name="bottomMargin">
                          <number>0</number>
                         </property>
+                        <item>
+                         <widget class="QFrame" name="frame_22">
+                          <property name="frameShape">
+                           <enum>QFrame::Shape::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Shadow::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_20">
+                           <property name="spacing">
+                            <number>20</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>5</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>100</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <spacer name="horizontalSpacer_8">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QLabel" name="label">
+                             <property name="font">
+                              <font>
+                               <family>Arial</family>
+                               <pointsize>14</pointsize>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color:rgbrgb(240, 240, 240);
+padding:10px;</string>
+                             </property>
+                             <property name="text">
+                              <string>Древовидное представление записей</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignmentFlag::AlignCenter</set>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_7">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="button_back_to_table">
+                             <property name="maximumSize">
+                              <size>
+                               <width>200</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Arial</family>
+                               <pointsize>-1</pointsize>
+                               <italic>false</italic>
+                               <bold>true</bold>
+                              </font>
+                             </property>
+                             <property name="layoutDirection">
+                              <enum>Qt::LayoutDirection::RightToLeft</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QPushButton {
+    background-color: #1a181a;
+    padding: 8px;
+    border-radius: 18px;
+    border: none;
+    color: white;
+    font: bold 14px;
+}
+QPushButton:hover {
+    background-color: rgb(39, 36, 39);  /* другой цвет при наведении */
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Таблица</string>
+                             </property>
+                             <property name="icon">
+                              <iconset resource="../qrc/main_icons.qrc">
+                               <normaloff>:/icons/images/table.png</normaloff>:/icons/images/table.png</iconset>
+                             </property>
+                             <property name="iconSize">
+                              <size>
+                               <width>20</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_6">
+                             <property name="orientation">
+                              <enum>Qt::Orientation::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
                         <item>
                          <widget class="QTreeWidget" name="treeWidget">
                           <column>
@@ -1820,26 +2030,10 @@ background:none;</string>
                             <number>0</number>
                            </property>
                            <item>
-                            <spacer name="horizontalSpacer_7">
-                             <property name="orientation">
-                              <enum>Qt::Orientation::Horizontal</enum>
-                             </property>
-                             <property name="sizeType">
-                              <enum>QSizePolicy::Policy::Fixed</enum>
-                             </property>
-                             <property name="sizeHint" stdset="0">
-                              <size>
-                               <width>5</width>
-                               <height>20</height>
-                              </size>
-                             </property>
-                            </spacer>
-                           </item>
-                           <item>
                             <widget class="QFrame" name="frame_19">
                              <property name="maximumSize">
                               <size>
-                               <width>250</width>
+                               <width>350</width>
                                <height>16777215</height>
                               </size>
                              </property>
@@ -1879,7 +2073,7 @@ background:none;</string>
                                 <property name="font">
                                  <font>
                                   <family>Arial</family>
-                                  <pointsize>9</pointsize>
+                                  <pointsize>10</pointsize>
                                   <bold>false</bold>
                                  </font>
                                 </property>
@@ -2219,9 +2413,13 @@ background:none;</string>
                                   <bold>true</bold>
                                  </font>
                                 </property>
+                                <property name="layoutDirection">
+                                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                                </property>
                                 <property name="styleSheet">
                                  <string notr="true">padding:10px;
 text-align:center;
+border: 1px solid rgb(64, 145, 136);
 </string>
                                 </property>
                                 <item>
@@ -2258,9 +2456,12 @@ text-align:center;
                             <widget class="QFrame" name="result_pagination">
                              <property name="maximumSize">
                               <size>
-                               <width>800</width>
+                               <width>700</width>
                                <height>16777215</height>
                               </size>
+                             </property>
+                             <property name="layoutDirection">
+                              <enum>Qt::LayoutDirection::LeftToRight</enum>
                              </property>
                              <property name="styleSheet">
                               <string notr="true">border:none;</string>
@@ -2339,7 +2540,7 @@ border-radius:25px;</string>
                                 </property>
                                 <property name="styleSheet">
                                  <string notr="true">padding:15px;
-background-color:rgb(138, 197, 62);
+background-color:rgb(26, 24, 26);
 border-radius:25px;</string>
                                 </property>
                                 <property name="text">

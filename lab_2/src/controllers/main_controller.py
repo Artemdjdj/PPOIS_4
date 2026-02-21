@@ -1,7 +1,7 @@
 import sys
 from datetime import date
 from typing import Optional, List
-from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton
+from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton, QTreeWidgetItem
 from PySide6.QtGui import QIcon, QPixmap
 
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
@@ -67,6 +67,8 @@ class MainWindow(PaginationMixin, QMainWindow):
         self._connect_pagination_buttons()
         self.ui.button_search.clicked.connect(lambda: self.__search_records())
         self.ui.button_delete.clicked.connect(lambda: self.__delete_records())
+        self.ui.button_show_tree.clicked.connect(lambda: self.__view_as_tree())
+        self.ui.button_back_to_table.clicked.connect(lambda: self.__back_to_table())
 
     def __start_app(self) -> None:
         # переключение на новый tab
@@ -163,3 +165,30 @@ class MainWindow(PaginationMixin, QMainWindow):
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()
+
+    def __view_as_tree(self):
+
+        self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_tree_of_records)
+        self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_footer)
+        tree = self.ui.treeWidget
+        tree.clear()
+        tree.setHeaderLabel("")
+
+        for name, record in enumerate(self._records):
+            item = QTreeWidgetItem(tree)
+            item.setText(0, f"Запись номер: {name+1}")
+
+            child = QTreeWidgetItem(item)
+            child.setText(0, f"ФИО пациента: {record.fio_patient}")
+            child2 = QTreeWidgetItem(item)
+            child2.setText(0, f"Адрес пациента: {record.address}")
+            child3 = QTreeWidgetItem(item)
+            child3.setText(0, f"Дата рождения: {record.birthday}")
+            child4 = QTreeWidgetItem(item)
+            child4.setText(0, f"Дата приема: {record.date_of_admission}")
+            child5 = QTreeWidgetItem(item)
+            child5.setText(0, f"ФИО доктора: {record.fio_doctor}")
+
+    def __back_to_table(self)->None:
+        self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_list_of_records)
+        self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
