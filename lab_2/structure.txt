@@ -8,11 +8,22 @@ lab_2
 ├── qrc/
 │
 ├── src/
+│   ├── controllers/
+│   │   ├── __init__.py
+│   │   ├── add_clinic_info.py
+│   │   ├── after_delete_clinic_info.py
+│   │   ├── confirm_delete_clinic_info.py
+│   │   ├── delete_clinic_info.py
+│   │   ├── main_controller.py
+│   │   ├── save_clinic_info.py
+│   │   └── search_clinic_info.py
+│   │
 │   ├── db/
 │   │   ├── models/
 │   │   │   ├── __init__.py
 │   │   │   └── clinic.py
 │   │   ├── __init__.py
+│   │   ├── clinic_info_service.py
 │   │   ├── db_manager.py
 │   │   └── settings.py
 │   │
@@ -31,15 +42,16 @@ lab_2
 │   │   │   ├── ui_after_delete_window.py
 │   │   │   ├── ui_delete_window.py
 │   │   │   ├── ui_main_window.py
+│   │   │   ├── ui_save_window.py
 │   │   │   └── ui_search_window.py
 │   │   │  
 │   │   └── __init__.py
 │   │
 │   ├── main/
 │   │   ├── __init__.py
-│   │   ├── add_clinic_info.py
+│   │   ├── data_saver.py
 │   │   ├── main.py
-│   │   ├── search_clinic_info.py
+│   │   ├── paginator.py
 │   │   ├── settings.py
 │   │   ├── table_recorder.py
 │   │   └── utils.py
@@ -58,6 +70,7 @@ lab_2
 │   ├── after_delete_window.ui
 │   ├── delete_window.ui
 │   ├── main_window.ui
+│   ├── save_window.ui
 │   └── search_window.ui
 │
 ├── .env
