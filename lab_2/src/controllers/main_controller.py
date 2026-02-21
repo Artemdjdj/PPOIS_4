@@ -108,6 +108,9 @@ class MainWindow(QMainWindow):
                                          date_of_admission=date_of_admission,
                                          fio_doctor=fio_doctor,
                                          conclusion=conclusion)
+            # self.__records.append(clinic_info)
+            # self.__start_pagination()
+            # self.__load_from_db_to_table()
             self.__clinic_info_service.create_clinic_info(clinic_info)
             self.__load_data_from_db()
 
@@ -225,8 +228,12 @@ class MainWindow(QMainWindow):
 
     def __on_delete_result(self, confirmed: bool, records: List[ClinicInfoBase]) -> None:
         if confirmed:
+            self.__clinic_info_service.delete_records_clinic_info(records)
+            # records_remove_ids = set(r.id for r in records)
+            # self.__records = [r for r in self.__records if r.id not in records_remove_ids]
             self.__create_after_delete_window(is_success=True, count_of_delete_records=len(records))
             self.__after_delete_dialog.exec()
+            self.__load_data_from_db()
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()
