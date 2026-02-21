@@ -56,7 +56,7 @@ class Ui_Dialog_save(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_save.sizePolicy().hasHeightForWidth())
         self.label_save.setSizePolicy(sizePolicy)
-        self.label_save.setPixmap(QPixmap(u":/images/images/save.png"))
+        self.label_save.setPixmap(QPixmap(u":/images/images/save3.png"))
         self.label_save.setScaledContents(True)
 
         self.verticalLayout_3.addWidget(self.label_save)
