@@ -48,19 +48,16 @@ class Paginator:
         left_border = (self.current_page - 1) * self.count_of_records_on_page
         right_border = self.current_page * self.count_of_records_on_page if self.current_page * self.count_of_records_on_page < len(
             records) else len(records)
-        print(f"\n левая граница: {left_border},  правая граница: {right_border}")
         return records[left_border:right_border]
 
     def create_pagination(self, records: List[Any]) -> None:
         if self.__count_pages is None:
             self.__count_of_records_on_page = count_records_on_page = int(self.__combobox_pagination.currentText())
             self.__table_of_recording.setRowCount(self.__count_of_records_on_page)
-            print(f" количество записей на странице: {self.__count_of_records_on_page}")
             count_records = len(records)
             temp_count_pages = count_records // count_records_on_page
             remainder = count_records / count_records_on_page - temp_count_pages
             self.__count_pages = temp_count_pages if remainder == 0 else temp_count_pages + 1
-            print(f" количество страниц: {self.__count_pages}")
             self.__current_page = 1
         self.paginate()
 

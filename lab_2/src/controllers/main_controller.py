@@ -3,10 +3,10 @@ from datetime import date
 from typing import Optional, List
 from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton, QTreeWidgetItem
 from PySide6.QtGui import QIcon, QPixmap
-
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
+from src.controllers.save_clinic_info import SaveWindow
 from src.main.paginator import Paginator, PaginationMixin
 from src.main.settings import image_delete_successful
 from src.controllers.search_clinic_info import SearchWindow
@@ -69,6 +69,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.button_delete.clicked.connect(lambda: self.__delete_records())
         self.ui.button_show_tree.clicked.connect(lambda: self.__view_as_tree())
         self.ui.button_back_to_table.clicked.connect(lambda: self.__back_to_table())
+        self.ui.button_exit_app.clicked.connect(lambda: self.__save_data_into_file())
 
     def __start_app(self) -> None:
         # переключение на новый tab
@@ -192,3 +193,13 @@ class MainWindow(PaginationMixin, QMainWindow):
     def __back_to_table(self)->None:
         self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_list_of_records)
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
+
+    def __save_data_into_file(self)->None:
+        self.__dialog = SaveWindow()
+        self.__dialog.cancel.connect(lambda save: self.__result_save(save))
+        self.__dialog.exec()
+
+    def __result_save(self, save: bool) -> None:
+        if save:
+            print("Логика сохранения")
+        self.__exit()
