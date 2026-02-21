@@ -9,27 +9,26 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt)
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHBoxLayout,
-                               QHeaderView, QLabel, QLineEdit, QPushButton,
-                               QSizePolicy, QSpacerItem, QTabWidget, QTableWidget,
-                               QTableWidgetItem, QVBoxLayout, QWidget)
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFrame,
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QPushButton, QSizePolicy, QSpacerItem, QTabWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 import src.interface.qrc.main_rc
 import src.interface.qrc.main_icons_rc
-
 
 class Ui_SearchWindow(object):
     def setupUi(self, SearchWindow):
         if not SearchWindow.objectName():
             SearchWindow.setObjectName(u"SearchWindow")
-        SearchWindow.resize(1255, 722)
-        SearchWindow.setMinimumSize(QSize(1255, 722))
-        SearchWindow.setMaximumSize(QSize(15675, 1200))
+        SearchWindow.resize(1200, 722)
+        SearchWindow.setMinimumSize(QSize(1200, 722))
+        SearchWindow.setMaximumSize(QSize(1200, 722))
         SearchWindow.setStyleSheet(u"background-color:none;")
         self.verticalLayout = QVBoxLayout(SearchWindow)
         self.verticalLayout.setSpacing(0)
@@ -42,10 +41,11 @@ class Ui_SearchWindow(object):
         self.frame.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(-1, 0, -1, 0)
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMinimumSize(QSize(500, 0))
-        self.frame_2.setMaximumSize(QSize(500, 16777215))
+        self.frame_2.setMinimumSize(QSize(386, 0))
+        self.frame_2.setMaximumSize(QSize(386, 16777215))
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_2)
@@ -112,8 +112,8 @@ class Ui_SearchWindow(object):
         self.line_edit_fio_user = QLineEdit(self.frame_32)
         self.line_edit_fio_user.setObjectName(u"line_edit_fio_user")
         self.line_edit_fio_user.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
-                                              "border-radius:6px;\n"
-                                              "padding:4px;")
+"border-radius:6px;\n"
+"padding:4px;")
 
         self.horizontalLayout_16.addWidget(self.line_edit_fio_user)
 
@@ -126,7 +126,9 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_16.addWidget(self.button_user)
 
+
         self.verticalLayout_5.addWidget(self.frame_32)
+
 
         self.verticalLayout_19.addWidget(self.frame_30)
 
@@ -161,8 +163,8 @@ class Ui_SearchWindow(object):
         self.line_edit_address = QLineEdit(self.frame_34)
         self.line_edit_address.setObjectName(u"line_edit_address")
         self.line_edit_address.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
-                                             "border-radius:6px;\n"
-                                             "padding:4px;")
+"border-radius:6px;\n"
+"padding:4px;")
 
         self.horizontalLayout_17.addWidget(self.line_edit_address)
 
@@ -175,7 +177,9 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_17.addWidget(self.button_address)
 
+
         self.verticalLayout_6.addWidget(self.frame_34)
+
 
         self.verticalLayout_19.addWidget(self.frame_33)
 
@@ -210,8 +214,8 @@ class Ui_SearchWindow(object):
         self.line_edit_date_of_birthday = QLineEdit(self.frame_36)
         self.line_edit_date_of_birthday.setObjectName(u"line_edit_date_of_birthday")
         self.line_edit_date_of_birthday.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
-                                                      "border-radius:6px;\n"
-                                                      "padding:4px;")
+"border-radius:6px;\n"
+"padding:4px;")
 
         self.horizontalLayout_19.addWidget(self.line_edit_date_of_birthday)
 
@@ -224,7 +228,9 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_19.addWidget(self.button_date_of_birthday)
 
+
         self.verticalLayout_11.addWidget(self.frame_36)
+
 
         self.verticalLayout_19.addWidget(self.frame_35)
 
@@ -259,8 +265,8 @@ class Ui_SearchWindow(object):
         self.line_edit_date_of_admission = QLineEdit(self.frame_38)
         self.line_edit_date_of_admission.setObjectName(u"line_edit_date_of_admission")
         self.line_edit_date_of_admission.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
-                                                       "border-radius:6px;\n"
-                                                       "padding:4px;")
+"border-radius:6px;\n"
+"padding:4px;")
 
         self.horizontalLayout_20.addWidget(self.line_edit_date_of_admission)
 
@@ -271,7 +277,9 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_20.addWidget(self.button_of_admission)
 
+
         self.verticalLayout_13.addWidget(self.frame_38)
+
 
         self.verticalLayout_19.addWidget(self.frame_37)
 
@@ -296,7 +304,7 @@ class Ui_SearchWindow(object):
         font.setPointSize(8)
         self.label_incorrect_fio.setFont(font)
         self.label_incorrect_fio.setStyleSheet(u"color:rgb(156, 15, 29);\n"
-                                               "")
+"")
 
         self.verticalLayout_7.addWidget(self.label_incorrect_fio)
 
@@ -311,8 +319,8 @@ class Ui_SearchWindow(object):
         self.line_edit_doctor = QLineEdit(self.frame_40)
         self.line_edit_doctor.setObjectName(u"line_edit_doctor")
         self.line_edit_doctor.setStyleSheet(u"border: 1px solid rgb(197, 197, 197);\n"
-                                            "border-radius:6px;\n"
-                                            "padding:4px;")
+"border-radius:6px;\n"
+"padding:4px;")
 
         self.horizontalLayout_21.addWidget(self.line_edit_doctor)
 
@@ -325,13 +333,18 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_21.addWidget(self.button_doctor_icon)
 
+
         self.verticalLayout_7.addWidget(self.frame_40)
+
 
         self.verticalLayout_19.addWidget(self.frame_39)
 
+
         self.verticalLayout_18.addWidget(self.frame_16)
 
+
         self.verticalLayout_27.addWidget(self.frame_15)
+
 
         self.verticalLayout_2.addWidget(self.frame_9)
 
@@ -339,7 +352,7 @@ class Ui_SearchWindow(object):
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setMaximumSize(QSize(16777215, 150))
         self.frame_5.setStyleSheet(u"border:None\n"
-                                   "")
+"")
         self.frame_5.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_5)
@@ -353,9 +366,9 @@ class Ui_SearchWindow(object):
         self.button_cancel.setObjectName(u"button_cancel")
         self.button_cancel.setMaximumSize(QSize(160, 16777215))
         self.button_cancel.setStyleSheet(u"background-color:rgb(87, 99, 177);\n"
-                                         "border:1px solid rgb(87, 99, 177);;\n"
-                                         "border-radius:6px;\n"
-                                         "padding:2px 4px;")
+"border:1px solid rgb(87, 99, 177);;\n"
+"border-radius:6px;\n"
+"padding:2px 4px;")
 
         self.horizontalLayout_2.addWidget(self.button_cancel)
 
@@ -363,9 +376,9 @@ class Ui_SearchWindow(object):
         self.button_search.setObjectName(u"button_search")
         self.button_search.setMaximumSize(QSize(160, 16777215))
         self.button_search.setStyleSheet(u"background-color:rgb(67, 153, 143);\n"
-                                         "border:1px solid rgb(67, 153, 143);\n"
-                                         "border-radius:6px;\n"
-                                         "padding:2px 4px;")
+"border:1px solid rgb(67, 153, 143);\n"
+"border-radius:6px;\n"
+"padding:2px 4px;")
 
         self.horizontalLayout_2.addWidget(self.button_search)
 
@@ -373,9 +386,12 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
 
+
         self.verticalLayout_2.addWidget(self.frame_5)
 
+
         self.verticalLayout_3.addWidget(self.frame_4)
+
 
         self.horizontalLayout.addWidget(self.frame_2)
 
@@ -414,6 +430,7 @@ class Ui_SearchWindow(object):
         self.main_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_4.addWidget(self.main_label)
+
 
         self.verticalLayout_8.addWidget(self.frame_11)
 
@@ -460,7 +477,7 @@ class Ui_SearchWindow(object):
         self.table_of_recording.setObjectName(u"table_of_recording")
         self.table_of_recording.setMinimumSize(QSize(669, 0))
         self.table_of_recording.setStyleSheet(u"border:none;\n"
-                                              "background:none;")
+"background:none;")
         self.table_of_recording.horizontalHeader().setVisible(True)
         self.table_of_recording.horizontalHeader().setCascadingSectionResizes(True)
         self.table_of_recording.horizontalHeader().setDefaultSectionSize(105)
@@ -473,6 +490,7 @@ class Ui_SearchWindow(object):
         self.table_of_recording.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_5.addWidget(self.table_of_recording)
+
 
         self.horizontalLayout_7.addWidget(self.frame_17)
 
@@ -503,11 +521,13 @@ class Ui_SearchWindow(object):
 
         self.horizontalLayout_18.addWidget(self.label_without_recording)
 
+
         self.verticalLayout_22.addWidget(self.frame_31)
 
         self.tab_widget_records.addTab(self.tab_no_records, "")
 
         self.verticalLayout_10.addWidget(self.tab_widget_records)
+
 
         self.verticalLayout_8.addWidget(self.frame_12)
 
@@ -519,10 +539,204 @@ class Ui_SearchWindow(object):
         self.frame_13.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_13)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.frame_28 = QFrame(self.frame_13)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, -1)
+        self.tab_widget_footer = QTabWidget(self.frame_13)
+        self.tab_widget_footer.setObjectName(u"tab_widget_footer")
+        self.tab_pagination = QWidget()
+        self.tab_pagination.setObjectName(u"tab_pagination")
+        self.horizontalLayout_14 = QHBoxLayout(self.tab_pagination)
+        self.horizontalLayout_14.setSpacing(0)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.frame_14 = QFrame(self.tab_pagination)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame_14)
+        self.horizontalLayout_6.setSpacing(15)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 10, 0)
+        self.horizontalSpacer_7 = QSpacerItem(5, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_7)
+
+        self.frame_19 = QFrame(self.frame_14)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setMaximumSize(QSize(250, 16777215))
+        self.frame_19.setStyleSheet(u"border:none;")
+        self.frame_19.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.frame_19)
+        self.horizontalLayout_12.setSpacing(0)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.label_all_records_2 = QLabel(self.frame_19)
+        self.label_all_records_2.setObjectName(u"label_all_records_2")
+        self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(9)
+        font2.setBold(False)
+        self.label_all_records_2.setFont(font2)
+        self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.label_all_records_2)
+
+        self.comboBox_pagination = QComboBox(self.frame_19)
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.addItem("")
+        self.comboBox_pagination.setObjectName(u"comboBox_pagination")
+        self.comboBox_pagination.setMinimumSize(QSize(80, 50))
+        self.comboBox_pagination.setMaximumSize(QSize(80, 50))
+        palette = QPalette()
+        brush = QBrush(QColor(59, 134, 125, 255))
+        brush.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush)
+        brush1 = QBrush(QColor(61, 139, 130, 255))
+        brush1.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Light, brush1)
+        brush2 = QBrush(QColor(63, 145, 135, 255))
+        brush2.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Midlight, brush2)
+        brush3 = QBrush(QColor(65, 148, 139, 255))
+        brush3.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Dark, brush3)
+        brush4 = QBrush(QColor(56, 128, 120, 255))
+        brush4.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Mid, brush4)
+        brush5 = QBrush(QColor(58, 132, 124, 255))
+        brush5.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, brush5)
+        brush6 = QBrush(QColor(60, 136, 127, 255))
+        brush6.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Shadow, brush6)
+        brush7 = QBrush(QColor(56, 126, 118, 255))
+        brush7.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.AlternateBase, brush7)
+        brush8 = QBrush(QColor(61, 138, 129, 255))
+        brush8.setStyle(Qt.BrushStyle.SolidPattern)
+        palette.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.ToolTipBase, brush8)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Light, brush1)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Midlight, brush2)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Dark, brush3)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Mid, brush4)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, brush5)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Shadow, brush6)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.AlternateBase, brush7)
+        palette.setBrush(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ToolTipBase, brush8)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.WindowText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Button, brush)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Light, brush1)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Midlight, brush2)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Dark, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Mid, brush4)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Text, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ButtonText, brush3)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Base, brush5)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Window, brush5)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.Shadow, brush6)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.AlternateBase, brush7)
+        palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ToolTipBase, brush8)
+        self.comboBox_pagination.setPalette(palette)
+        font3 = QFont()
+        font3.setFamilies([u"Arial"])
+        font3.setPointSize(16)
+        font3.setBold(True)
+        self.comboBox_pagination.setFont(font3)
+        self.comboBox_pagination.setStyleSheet(u"padding:10px;\n"
+"text-align:center;\n"
+"")
+
+        self.horizontalLayout_12.addWidget(self.comboBox_pagination)
+
+
+        self.horizontalLayout_6.addWidget(self.frame_19)
+
+        self.result_pagination = QFrame(self.frame_14)
+        self.result_pagination.setObjectName(u"result_pagination")
+        self.result_pagination.setMaximumSize(QSize(800, 16777215))
+        self.result_pagination.setStyleSheet(u"border:none;")
+        self.result_pagination.setFrameShape(QFrame.Shape.StyledPanel)
+        self.result_pagination.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.result_pagination)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.button_prev = QPushButton(self.result_pagination)
+        self.button_prev.setObjectName(u"button_prev")
+        self.button_prev.setMaximumSize(QSize(50, 50))
+        font4 = QFont()
+        font4.setFamilies([u"Arial"])
+        font4.setPointSize(12)
+        font4.setBold(False)
+        self.button_prev.setFont(font4)
+        self.button_prev.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(64, 145, 136);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_prev)
+
+        self.button_first = QPushButton(self.result_pagination)
+        self.button_first.setObjectName(u"button_first")
+        self.button_first.setMaximumSize(QSize(50, 50))
+        self.button_first.setFont(font4)
+        self.button_first.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(67, 153, 143);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_first)
+
+        self.button_current = QPushButton(self.result_pagination)
+        self.button_current.setObjectName(u"button_current")
+        self.button_current.setMaximumSize(QSize(50, 50))
+        self.button_current.setFont(font4)
+        self.button_current.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(138, 197, 62);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_current)
+
+        self.button_last = QPushButton(self.result_pagination)
+        self.button_last.setObjectName(u"button_last")
+        self.button_last.setMaximumSize(QSize(50, 50))
+        self.button_last.setFont(font4)
+        self.button_last.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(67, 153, 143);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_last)
+
+        self.button_next = QPushButton(self.result_pagination)
+        self.button_next.setObjectName(u"button_next")
+        self.button_next.setMaximumSize(QSize(50, 50))
+        self.button_next.setFont(font4)
+        self.button_next.setStyleSheet(u"padding:15px;\n"
+"background-color:rgb(63, 144, 135);\n"
+"border-radius:25px;")
+
+        self.horizontalLayout_9.addWidget(self.button_next)
+
+
+        self.horizontalLayout_6.addWidget(self.result_pagination)
+
+
+        self.horizontalLayout_14.addWidget(self.frame_14)
+
+        self.tab_widget_footer.addTab(self.tab_pagination, "")
+        self.tab_footer = QWidget()
+        self.tab_footer.setObjectName(u"tab_footer")
+        self.horizontalLayout_15 = QHBoxLayout(self.tab_footer)
+        self.horizontalLayout_15.setSpacing(0)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.frame_28 = QFrame(self.tab_footer)
         self.frame_28.setObjectName(u"frame_28")
         self.frame_28.setStyleSheet(u"border:none;\n"
-                                    "")
+"")
         self.frame_28.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_28.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_22 = QHBoxLayout(self.frame_28)
@@ -548,7 +762,7 @@ class Ui_SearchWindow(object):
         self.button_user_icon.setMinimumSize(QSize(26, 26))
         self.button_user_icon.setMaximumSize(QSize(60, 60))
         self.button_user_icon.setStyleSheet(u"background-color:none;\n"
-                                            "border:none;")
+"border:none;")
         icon4 = QIcon()
         icon4.addFile(u":/images/images/doctor_without_background.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.button_user_icon.setIcon(icon4)
@@ -558,14 +772,15 @@ class Ui_SearchWindow(object):
 
         self.label_medical_app = QLabel(self.frame_29)
         self.label_medical_app.setObjectName(u"label_medical_app")
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        font2.setPointSize(10)
-        self.label_medical_app.setFont(font2)
+        font5 = QFont()
+        font5.setFamilies([u"Arial"])
+        font5.setPointSize(10)
+        self.label_medical_app.setFont(font5)
         self.label_medical_app.setStyleSheet(u"border:none;\n"
-                                             "")
+"")
 
         self.horizontalLayout_23.addWidget(self.label_medical_app)
+
 
         self.verticalLayout_9.addWidget(self.frame_29)
 
@@ -579,14 +794,16 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_24.setContentsMargins(25, 0, 0, 0)
         self.label_last_medical_app = QLabel(self.frame_42)
         self.label_last_medical_app.setObjectName(u"label_last_medical_app")
-        self.label_last_medical_app.setFont(font2)
+        self.label_last_medical_app.setFont(font5)
         self.label_last_medical_app.setStyleSheet(u"border:none;\n"
-                                                  "\n"
-                                                  "")
+"\n"
+"")
 
         self.horizontalLayout_24.addWidget(self.label_last_medical_app)
 
+
         self.verticalLayout_9.addWidget(self.frame_42)
+
 
         self.horizontalLayout_22.addWidget(self.frame_41)
 
@@ -613,9 +830,10 @@ class Ui_SearchWindow(object):
 
         self.label_address_clinic = QLabel(self.frame_44)
         self.label_address_clinic.setObjectName(u"label_address_clinic")
-        self.label_address_clinic.setFont(font2)
+        self.label_address_clinic.setFont(font5)
 
         self.horizontalLayout_25.addWidget(self.label_address_clinic)
+
 
         self.verticalLayout_12.addWidget(self.frame_44)
 
@@ -637,132 +855,115 @@ class Ui_SearchWindow(object):
 
         self.label_email_clinic = QLabel(self.frame_45)
         self.label_email_clinic.setObjectName(u"label_email_clinic")
-        self.label_email_clinic.setFont(font2)
+        self.label_email_clinic.setFont(font5)
 
         self.horizontalLayout_26.addWidget(self.label_email_clinic)
 
+
         self.verticalLayout_12.addWidget(self.frame_45)
+
 
         self.horizontalLayout_22.addWidget(self.frame_43)
 
-        self.horizontalLayout_3.addWidget(self.frame_28)
+
+        self.horizontalLayout_15.addWidget(self.frame_28)
+
+        self.tab_widget_footer.addTab(self.tab_footer, "")
+
+        self.horizontalLayout_3.addWidget(self.tab_widget_footer)
+
 
         self.verticalLayout_8.addWidget(self.frame_13)
 
+
         self.verticalLayout_4.addWidget(self.frame_8)
+
 
         self.horizontalLayout.addWidget(self.frame_3)
 
+
         self.verticalLayout.addWidget(self.frame)
+
 
         self.retranslateUi(SearchWindow)
 
         self.tab_widget_records.setCurrentIndex(1)
+        self.tab_widget_footer.setCurrentIndex(1)
+
 
         QMetaObject.connectSlotsByName(SearchWindow)
-
     # setupUi
 
     def retranslateUi(self, SearchWindow):
         SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"Dialog", None))
-        self.label_user.setText(QCoreApplication.translate("SearchWindow",
-                                                           u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)",
-                                                           None))
+        self.label_user.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
         self.label_incorrect_user.setText("")
-        # if QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
         self.line_edit_fio_user.setAccessibleDescription("")
-        # endif // QT_CONFIG(accessibility)
-        self.line_edit_fio_user.setPlaceholderText(QCoreApplication.translate("SearchWindow",
-                                                                              u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e",
-                                                                              None))
+#endif // QT_CONFIG(accessibility)
+        self.line_edit_fio_user.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e", None))
         self.button_user.setText("")
-        self.label_address.setText(QCoreApplication.translate("SearchWindow",
-                                                              u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438 (\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 23, \u043a\u0432. 55)",
-                                                              None))
+        self.label_address.setText(QCoreApplication.translate("SearchWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438 (\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 23, \u043a\u0432. 55)", None))
         self.label_incorrect_address.setText("")
-        self.line_edit_address.setPlaceholderText(QCoreApplication.translate("SearchWindow",
-                                                                             u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438",
-                                                                             None))
+        self.line_edit_address.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None))
         self.button_address.setText("")
-        self.label_date_of_birthday.setText(QCoreApplication.translate("SearchWindow",
-                                                                       u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (2006-02-12)",
-                                                                       None))
+        self.label_date_of_birthday.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (2006-02-12)", None))
         self.label_incorrect_birthday.setText("")
-        self.line_edit_date_of_birthday.setPlaceholderText(QCoreApplication.translate("SearchWindow",
-                                                                                      u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f",
-                                                                                      None))
+        self.line_edit_date_of_birthday.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None))
         self.button_date_of_birthday.setText("")
-        # if QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
         self.label_date_of_admission.setAccessibleName("")
-        # endif // QT_CONFIG(accessibility)
-        self.label_date_of_admission.setText(QCoreApplication.translate("SearchWindow",
-                                                                        u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (2006-02-12)",
-                                                                        None))
+#endif // QT_CONFIG(accessibility)
+        self.label_date_of_admission.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (2006-02-12)", None))
         self.label_incorrect_admission.setText("")
         self.line_edit_date_of_admission.setText("")
-        self.line_edit_date_of_admission.setPlaceholderText(QCoreApplication.translate("SearchWindow",
-                                                                                       u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u043f\u0440\u0438\u0435\u043c\u0430",
-                                                                                       None))
+        self.line_edit_date_of_admission.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u043f\u0440\u0438\u0435\u043c\u0430", None))
         self.button_of_admission.setText("")
-        self.label_doctor_fio.setText(QCoreApplication.translate("SearchWindow",
-                                                                 u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)",
-                                                                 None))
+        self.label_doctor_fio.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
         self.label_incorrect_fio.setText("")
-        self.line_edit_doctor.setPlaceholderText(QCoreApplication.translate("SearchWindow",
-                                                                            u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430",
-                                                                            None))
+        self.line_edit_doctor.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None))
         self.button_doctor_icon.setText("")
-        self.button_cancel.setText(
-            QCoreApplication.translate("SearchWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
+        self.button_cancel.setText(QCoreApplication.translate("SearchWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
         self.button_search.setText(QCoreApplication.translate("SearchWindow", u"\u041d\u0430\u0439\u0442\u0438", None))
-        self.main_label.setText(QCoreApplication.translate("SearchWindow",
-                                                           u"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u043e\u0438\u0441\u043a\u0430",
-                                                           None))
+        self.main_label.setText(QCoreApplication.translate("SearchWindow", u"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442 \u043f\u043e\u0438\u0441\u043a\u0430", None))
         ___qtablewidgetitem = self.table_of_recording.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("SearchWindow",
-                                                               u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430",
-                                                               None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430", None));
         ___qtablewidgetitem1 = self.table_of_recording.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("SearchWindow",
-                                                                u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438",
-                                                                None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("SearchWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None));
         ___qtablewidgetitem2 = self.table_of_recording.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("SearchWindow",
-                                                                u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f",
-                                                                None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None));
         ___qtablewidgetitem3 = self.table_of_recording.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(
-            QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430",
-                                       None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430", None));
         ___qtablewidgetitem4 = self.table_of_recording.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(
-            QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None));
         ___qtablewidgetitem5 = self.table_of_recording.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(
-            QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435",
-                                       None));
-        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_list_of_records),
-                                           QCoreApplication.translate("SearchWindow",
-                                                                      u"\u0417\u0430\u043f\u0438\u0441\u0438", None))
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None));
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_list_of_records), QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0438", None))
         self.label_without_recording.setText("")
-        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_no_records),
-                                           QCoreApplication.translate("SearchWindow",
-                                                                      u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442",
-                                                                      None))
+        self.tab_widget_records.setTabText(self.tab_widget_records.indexOf(self.tab_no_records), QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0435\u0442", None))
+        self.label_all_records_2.setText(QCoreApplication.translate("SearchWindow", u"\u0417\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
+        self.comboBox_pagination.setItemText(0, QCoreApplication.translate("SearchWindow", u"5", None))
+        self.comboBox_pagination.setItemText(1, QCoreApplication.translate("SearchWindow", u"10", None))
+        self.comboBox_pagination.setItemText(2, QCoreApplication.translate("SearchWindow", u"50", None))
+        self.comboBox_pagination.setItemText(3, QCoreApplication.translate("SearchWindow", u"100", None))
+        self.comboBox_pagination.setItemText(4, QCoreApplication.translate("SearchWindow", u"150", None))
+
+        self.button_prev.setText(QCoreApplication.translate("SearchWindow", u"<", None))
+        self.button_first.setText(QCoreApplication.translate("SearchWindow", u"1", None))
+        self.button_current.setText(QCoreApplication.translate("SearchWindow", u"3", None))
+        self.button_last.setText(QCoreApplication.translate("SearchWindow", u"n", None))
+        self.button_next.setText(QCoreApplication.translate("SearchWindow", u">", None))
+        self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_pagination), QCoreApplication.translate("SearchWindow", u"\u041f\u0430\u0433\u0438\u043d\u0430\u0446\u0438\u044f", None))
         self.button_user_icon.setText("")
-        self.label_medical_app.setText(QCoreApplication.translate("SearchWindow",
-                                                                  u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432",
-                                                                  None))
-        self.label_last_medical_app.setText(QCoreApplication.translate("SearchWindow",
-                                                                       u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
-                                                                       "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.",
-                                                                       None))
+        self.label_medical_app.setText(QCoreApplication.translate("SearchWindow", u"\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432", None))
+        self.label_last_medical_app.setText(QCoreApplication.translate("SearchWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
+"\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
         self.button_address_clinic.setText("")
-        self.label_address_clinic.setText(QCoreApplication.translate("SearchWindow",
-                                                                     u"\u0433 \u041c\u0438\u043d\u0441\u043a\u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24",
-                                                                     None))
+        self.label_address_clinic.setText(QCoreApplication.translate("SearchWindow", u"\u0433 \u041c\u0438\u043d\u0441\u043a\u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
         self.button_email_clinic.setText("")
         self.label_email_clinic.setText(QCoreApplication.translate("SearchWindow", u"minsk_clinic@gmail.com", None))
-        # retranslateUi
+        self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_footer), QCoreApplication.translate("SearchWindow", u"\u0424\u0443\u0442\u0435\u0440", None))
+    # retranslateUi
 
         self.tab_widget_records.tabBar().hide()
+        self.tab_widget_footer.tabBar().hide()

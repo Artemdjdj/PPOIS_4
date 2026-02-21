@@ -4,17 +4,17 @@ from typing import Optional, List
 from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton
 from PySide6.QtGui import QIcon, QPixmap
 
-from controllers.after_delete_clinic_info import AfterDeleteWindow
-from controllers.confirm_delete_clinic_info import ConfirmWindow
-from controllers.delete_clinic_info import DeleteWindow
+from src.controllers.after_delete_clinic_info import AfterDeleteWindow
+from src.controllers.confirm_delete_clinic_info import ConfirmWindow
+from src.controllers.delete_clinic_info import DeleteWindow
 from src.main.paginator import Paginator
 from src.main.settings import image_delete_successful
-from controllers.search_clinic_info import SearchWindow
+from src.controllers.search_clinic_info import SearchWindow
 from src.db.models.clinic import ClinicInfoBase
 from src.db.clinic_info_service import ClinicInfoService
 from src.db.db_manager import DatabaseManager
 from src.interface.ui.ui_main_window import Ui_MainWindow
-from controllers.add_clinic_info import AddingDataWindow
+from src.controllers.add_clinic_info import AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON
 from src.main.settings import stylesheet_for_page_in_pagination, stylesheet_for_not_visible_button, \
     stylesheet_for_active_page_in_pagination
@@ -76,11 +76,6 @@ class MainWindow(QMainWindow):
     def __exit(self) -> None:
         self.close()
 
-    # def __start_pagination(self) -> None:
-    #     self.__count_pages = None
-    #     self.__count_of_records_on_page = None
-    #     self.__current_page = None
-
     def __change_count_pages(self) -> None:
         self.__paginator.start_pagination()
         self.__load_from_db_to_table()
@@ -91,12 +86,13 @@ class MainWindow(QMainWindow):
         self.__load_from_db_to_table()
 
     def __load_from_db_to_table(self) -> None:
-        self.__paginator.create_pagination(self.__records)
-        left_border = (self.__paginator.current_page - 1) * self.__paginator.count_of_records_on_page
-        right_border = self.__paginator.current_page * self.__paginator.count_of_records_on_page if self.__paginator.current_page * self.__paginator.count_of_records_on_page < len(
-            self.__records) else len(self.__records)
-        print(f"\n левая граница: {left_border},  правая граница: {right_border}")
-        records = self.__records[left_border:right_border]
+        # self.__paginator.create_pagination(self.__records)
+        # left_border = (self.__paginator.current_page - 1) * self.__paginator.count_of_records_on_page
+        # right_border = self.__paginator.current_page * self.__paginator.count_of_records_on_page if self.__paginator.current_page * self.__paginator.count_of_records_on_page < len(
+        #     self.__records) else len(self.__records)
+        # print(f"\n левая граница: {left_border},  правая граница: {right_border}")
+        # records = self.__records[left_border:right_border]
+        records = self.__paginator.get_data_from_page(self.__records)
         self.__table_recorder.record(records)
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
@@ -112,9 +108,6 @@ class MainWindow(QMainWindow):
                                          date_of_admission=date_of_admission,
                                          fio_doctor=fio_doctor,
                                          conclusion=conclusion)
-            # self.__records.append(clinic_info)
-            # self.__start_pagination()
-            # self.__load_from_db_to_table()
             self.__clinic_info_service.create_clinic_info(clinic_info)
             self.__load_data_from_db()
 
@@ -123,63 +116,9 @@ class MainWindow(QMainWindow):
         dialog.submitted.connect(self.__add_new_clinic_info)
         dialog.exec()
 
-    # def __create_pagination(self) -> None:
-    #     if self.__count_pages is None:
-    #         self.__count_of_records_on_page = count_records_on_page = int(self.ui.comboBox_pagination.currentText())
-    #         self.ui.table_of_recording.setRowCount(self.__count_of_records_on_page)
-    #         print(f" количество записей на странице: {self.__count_of_records_on_page}")
-    #         count_records = len(self.__records)
-    #         temp_count_pages = count_records // count_records_on_page
-    #         remainder = count_records / count_records_on_page - temp_count_pages
-    #         self.__count_pages = temp_count_pages if remainder == 0 else temp_count_pages + 1
-    #         print(f" количество страниц: {self.__count_pages}")
-    #         self.__current_page = 1
-    #     self.__paginate()
-
     def __get_special_page(self, new_current_page: int) -> None:
         self.__paginator.current_page = new_current_page
         self.__load_from_db_to_table()
-
-    # def __apply_style_to_button(self, button: QPushButton, style: str = stylesheet_for_not_visible_button,
-    #                             enabled: bool = False, text: str = "") -> None:
-    #     button.setStyleSheet(style)
-    #     button.setEnabled(enabled)
-    #     button.setText(text)
-
-    # def __paginate(self):
-    #     if self.__count_pages == 1:
-    #         self.__apply_style_to_button(self.ui.button_prev)
-    #         self.__apply_style_to_button(self.ui.button_next)
-    #         self.__apply_style_to_button(self.ui.button_first)
-    #         self.__apply_style_to_button(self.ui.button_last)
-    #     elif self.__count_pages > 1:
-    #         if self.__current_page == 1:
-    #             self.__apply_style_to_button(self.ui.button_prev)
-    #             self.__apply_style_to_button(self.ui.button_first)
-    #             self.__apply_style_to_button(self.ui.button_last, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text=f"{self.__count_pages}")
-    #             self.__apply_style_to_button(self.ui.button_next, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text=">")
-    #         elif self.__current_page == self.__count_pages:
-    #             self.__apply_style_to_button(self.ui.button_prev, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text="<")
-    #             self.__apply_style_to_button(self.ui.button_first, style=stylesheet_for_page_in_pagination,
-    #                                          enabled=True, text="1")
-    #             self.__apply_style_to_button(self.ui.button_last)
-    #             self.__apply_style_to_button(self.ui.button_next)
-    #         else:
-    #             self.__apply_style_to_button(self.ui.button_prev, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text="<")
-    #             self.__apply_style_to_button(self.ui.button_next, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text=">")
-    #             self.__apply_style_to_button(self.ui.button_first, style=stylesheet_for_page_in_pagination,
-    #                                          enabled=True, text="1")
-    #             self.__apply_style_to_button(self.ui.button_last, style=stylesheet_for_page_in_pagination, enabled=True,
-    #                                          text=f"{self.__count_pages}")
-    #             self.__apply_style_to_button(self.ui.button_current, style=stylesheet_for_active_page_in_pagination,
-    #                                          enabled=True)
-    #     self.__apply_style_to_button(self.ui.button_current, style=stylesheet_for_active_page_in_pagination,
-    #                                  enabled=True, text=f"{self.__current_page}")
 
     def __search_records(self) -> None:
         self.__dialog = SearchWindow()
@@ -202,7 +141,7 @@ class MainWindow(QMainWindow):
 
     def __load_filter_records_to_search(self, fio_user, address, birthday, date_of_admission, fio_doctor) -> None:
         all_records = self.__filter_records(fio_user, address, birthday, date_of_admission, fio_doctor)
-        self.__dialog.load_data_to_table(all_records)
+        self.__dialog.set_records(all_records)
 
     def __delete_records(self) -> None:
         self.__dialog = DeleteWindow()
