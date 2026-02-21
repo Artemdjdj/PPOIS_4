@@ -542,7 +542,7 @@ border-radius:6px;
 padding:2px 4px;</string>
            </property>
            <property name="text">
-            <string>Найти</string>
+            <string>Удалить</string>
            </property>
           </widget>
          </item>

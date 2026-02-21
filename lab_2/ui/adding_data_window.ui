@@ -304,7 +304,7 @@ padding:4px;</string>
             <item>
              <widget class="QLabel" name="label_of_birthday">
               <property name="text">
-               <string>Дата рождения (20.02.2006)</string>
+               <string>Дата рождения</string>
               </property>
              </widget>
             </item>
@@ -395,7 +395,7 @@ padding:4px;</string>
                <string notr="true">border:None;</string>
               </property>
               <property name="text">
-               <string>Дата приема (20.02.2006)</string>
+               <string>Дата приема</string>
               </property>
              </widget>
             </item>
