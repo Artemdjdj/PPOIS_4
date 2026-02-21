@@ -7,7 +7,7 @@ from PySide6.QtGui import QIcon, QPixmap
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
-from src.main.paginator import Paginator
+from src.main.paginator import Paginator, PaginationMixin
 from src.main.settings import image_delete_successful
 from src.controllers.search_clinic_info import SearchWindow
 from src.db.models.clinic import ClinicInfoBase
@@ -22,7 +22,7 @@ from src.main.settings import label_delete_nothing_text, image_delete_nothing
 from src.main.table_recorder import TableRecorder
 
 
-class MainWindow(QMainWindow):
+class MainWindow(PaginationMixin, QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -38,16 +38,19 @@ class MainWindow(QMainWindow):
         # self.__current_page: Optional[int] = None
         # self.__count_pages: Optional[int] = None
         # self.__count_of_records_on_page: Optional[int] = None
-        self.__records: List[ClinicInfoBase] = []
-        self.__table_recorder = TableRecorder(
+        self._records: List[ClinicInfoBase] = []
+
+        self._init_paginator(
+            self.ui.button_prev, self.ui.button_first, self.ui.button_current,
+            self.ui.button_last, self.ui.button_next, self.ui.comboBox_pagination,
+            self.ui.table_of_recording
+        )
+        self._init_table_recorder(
             self.ui.table_of_recording,
             self.ui.tab_widget_records,
             self.ui.tab_list_of_records,
             self.ui.tab_no_records
         )
-        self.__paginator = Paginator(self.ui.button_prev, self.ui.button_first, self.ui.button_current,
-                                     self.ui.button_last, self.ui.button_next, self.ui.comboBox_pagination,
-                                     self.ui.table_of_recording)
 
     def __basic_settings_with_tabs(self) -> None:
         self.ui.tab_widget_main.setCurrentWidget(self.ui.tab_start_page)
@@ -61,11 +64,7 @@ class MainWindow(QMainWindow):
         self.ui.button_exit.clicked.connect(lambda: self.__exit())
         self.ui.button_load_from_db.clicked.connect(lambda: self.__load_data_from_db())
         self.ui.button_add_new_record.clicked.connect(lambda: self.__create_new_clinic_info())
-        self.ui.button_prev.clicked.connect(lambda: self.__get_special_page(self.__paginator.current_page - 1))
-        self.ui.button_next.clicked.connect(lambda: self.__get_special_page(self.__paginator.current_page + 1))
-        self.ui.button_first.clicked.connect(lambda: self.__get_special_page(1))
-        self.ui.button_last.clicked.connect(lambda: self.__get_special_page(self.__paginator.count_pages))
-        self.ui.comboBox_pagination.currentIndexChanged.connect(lambda: self.__change_count_pages())
+        self._connect_pagination_buttons()
         self.ui.button_search.clicked.connect(lambda: self.__search_records())
         self.ui.button_delete.clicked.connect(lambda: self.__delete_records())
 
@@ -76,27 +75,14 @@ class MainWindow(QMainWindow):
     def __exit(self) -> None:
         self.close()
 
-    def __change_count_pages(self) -> None:
-        self.__paginator.start_pagination()
-        self.__load_from_db_to_table()
-
     def __load_data_from_db(self) -> None:
-        self.__paginator.start_pagination()
-        self.__records = self.__clinic_info_service.get_all_records_clinic_info()
-        self.__load_from_db_to_table()
-
-    def __load_from_db_to_table(self) -> None:
-        # self.__paginator.create_pagination(self.__records)
-        # left_border = (self.__paginator.current_page - 1) * self.__paginator.count_of_records_on_page
-        # right_border = self.__paginator.current_page * self.__paginator.count_of_records_on_page if self.__paginator.current_page * self.__paginator.count_of_records_on_page < len(
-        #     self.__records) else len(self.__records)
-        # print(f"\n левая граница: {left_border},  правая граница: {right_border}")
-        # records = self.__records[left_border:right_border]
-        records = self.__paginator.get_data_from_page(self.__records)
-        self.__table_recorder.record(records)
+        self._paginator.start_pagination()
+        self._records = self.__clinic_info_service.get_all_records_clinic_info()
+        self._load_data_to_table()
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
         self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
+
 
     def __add_new_clinic_info(self, fio_user: Optional[str], address: Optional[str], birthday: Optional[date],
                               date_of_admission: Optional[date], fio_doctor: Optional[str],
@@ -115,10 +101,6 @@ class MainWindow(QMainWindow):
         dialog = AddingDataWindow()
         dialog.submitted.connect(self.__add_new_clinic_info)
         dialog.exec()
-
-    def __get_special_page(self, new_current_page: int) -> None:
-        self.__paginator.current_page = new_current_page
-        self.__load_from_db_to_table()
 
     def __search_records(self) -> None:
         self.__dialog = SearchWindow()

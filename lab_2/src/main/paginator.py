@@ -1,6 +1,7 @@
 from typing import List, Any
 from PySide6.QtWidgets import QTableWidget, QTabWidget, QTableWidgetItem, QPushButton, QComboBox
 
+from src.main.table_recorder import TableRecorder
 from src.main.settings import stylesheet_for_not_visible_button, stylesheet_for_active_page_in_pagination, \
     stylesheet_for_page_in_pagination
 from src.db.models.clinic import ClinicInfoBase
@@ -103,3 +104,53 @@ class Paginator:
         button.setStyleSheet(style)
         button.setEnabled(enabled)
         button.setText(text)
+
+
+class PaginationMixin:
+
+    def _init_paginator(
+            self,
+            button_prev, button_first, button_current,
+            button_last, button_next, combo_pagination, table
+    ) -> None:
+        self._paginator = Paginator(
+            button_prev, button_first, button_current,
+            button_last, button_next, combo_pagination, table
+        )
+
+    def _init_table_recorder(
+            self, table, tab_widget, tab_list, tab_no_records
+    ) -> None:
+        self._table_recorder = TableRecorder(
+            table, tab_widget, tab_list, tab_no_records
+        )
+
+    def _connect_pagination_buttons(self) -> None:
+        self.ui.button_prev.clicked.connect(
+            lambda: self._get_special_page(self._paginator.current_page - 1)
+        )
+        self.ui.button_next.clicked.connect(
+            lambda: self._get_special_page(self._paginator.current_page + 1)
+        )
+        self.ui.button_first.clicked.connect(
+            lambda: self._get_special_page(1)
+        )
+        self.ui.button_last.clicked.connect(
+            lambda: self._get_special_page(self._paginator.count_pages)
+        )
+        self.ui.comboBox_pagination.currentIndexChanged.connect(
+            lambda: self._change_count_pages()
+        )
+
+    def _change_count_pages(self) -> None:
+        self._paginator.start_pagination()
+        self._load_data_to_table()
+
+    def _get_special_page(self, new_current_page: int) -> None:
+        self._paginator.current_page = new_current_page
+        self._load_data_to_table()
+
+    def _load_data_to_table(self) -> None:
+        records = self._paginator.get_data_from_page(self._records)
+        self._table_recorder.record(records)
+
