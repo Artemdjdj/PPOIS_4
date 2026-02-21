@@ -36,7 +36,11 @@ class DeleteWindow(QDialog):
 
     def __save_data(self) -> None:
         try:
-            fio_user, address, birthday, date_of_admission, fio_doctor = self.__data_saver.save_data()
-            self.submitted_delete.emit(fio_user, address, birthday, date_of_admission, fio_doctor)
+            fio_user, address, birthday, date_of_admission, fio_doctor = (
+                self.__data_saver.save_data()
+            )
+            self.submitted_delete.emit(
+                fio_user, address, birthday, date_of_admission, fio_doctor
+            )
         except Exception as e:
             pass

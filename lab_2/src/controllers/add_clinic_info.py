@@ -9,7 +9,12 @@ from src.db.models.clinic import ClinicInfoBase
 from src.validator.fio_validator import FioUserValidator, FioDoctorValidator
 from src.validator.date_validator import DateValidator
 from src.validator.address_validator import BelarusAddressValidator
-from src.exceptions.exceptions import FioUserError, FioDoctorError, DateError, AddressError
+from src.exceptions.exceptions import (
+    FioUserError,
+    FioDoctorError,
+    DateError,
+    AddressError,
+)
 
 
 class AddingDataWindow(QDialog):
@@ -50,7 +55,9 @@ class AddingDataWindow(QDialog):
             date_of_admission = self.ui.calendarWidget.selectedDate().toPython()
             fio_doctor = self.ui.line_edit_doctor.text()
             conclusion = self.ui.text_edit_doctor_promt.toPlainText()
-            self.submitted.emit(fio_user, address, birthday, date_of_admission, fio_doctor, conclusion)
+            self.submitted.emit(
+                fio_user, address, birthday, date_of_admission, fio_doctor, conclusion
+            )
             self.accept()
         except FioUserError as e:
             self.ui.label_incorrect_user.setText(f"{e}")

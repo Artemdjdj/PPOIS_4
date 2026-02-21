@@ -14,7 +14,8 @@ from src.db.models.clinic import ClinicInfoBase
 from src.main.table_recorder import TableRecorder
 from src.main.data_saver import DataSaver
 
-class SearchWindow(PaginationMixin,QDialog):
+
+class SearchWindow(PaginationMixin, QDialog):
     submitted_search = Signal(str, str, date, date, str)
 
     def __init__(self):
@@ -25,15 +26,19 @@ class SearchWindow(PaginationMixin,QDialog):
         self.setWindowTitle("Поиск записей")
         self._records = []
         self._init_paginator(
-            self.ui.button_prev, self.ui.button_first, self.ui.button_current,
-            self.ui.button_last, self.ui.button_next, self.ui.comboBox_pagination,
-            self.ui.table_of_recording
+            self.ui.button_prev,
+            self.ui.button_first,
+            self.ui.button_current,
+            self.ui.button_last,
+            self.ui.button_next,
+            self.ui.comboBox_pagination,
+            self.ui.table_of_recording,
         )
         self._init_table_recorder(
             self.ui.table_of_recording,
             self.ui.tab_widget_records,
             self.ui.tab_list_of_records,
-            self.ui.tab_no_records
+            self.ui.tab_no_records,
         )
         self.__data_saver = DataSaver(
             self.ui.line_edit_fio_user,
@@ -57,7 +62,11 @@ class SearchWindow(PaginationMixin,QDialog):
     def __save_data(self) -> None:
         try:
             self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
-            fio_user, address, birthday, date_of_admission, fio_doctor = self.__data_saver.save_data()
-            self.submitted_search.emit(fio_user, address, birthday, date_of_admission, fio_doctor)
+            fio_user, address, birthday, date_of_admission, fio_doctor = (
+                self.__data_saver.save_data()
+            )
+            self.submitted_search.emit(
+                fio_user, address, birthday, date_of_admission, fio_doctor
+            )
         except Exception as e:
             pass

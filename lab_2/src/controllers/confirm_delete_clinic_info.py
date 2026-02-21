@@ -10,6 +10,7 @@ from src.db.models.clinic import ClinicInfoBase
 
 class ConfirmWindow(QDialog):
     delete = Signal(bool)
+
     def __init__(self):
         super().__init__()
         self.ui = Ui_ConfirmDialog()

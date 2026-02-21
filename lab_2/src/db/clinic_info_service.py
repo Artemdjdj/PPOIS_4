@@ -27,7 +27,9 @@ class ClinicInfoService:
         try:
             clinic_info_records_ids = [s.id for s in clinic_info_records]
             session.execute(
-                delete(ClinicInfoBase).where(ClinicInfoBase.id.in_(clinic_info_records_ids))
+                delete(ClinicInfoBase).where(
+                    ClinicInfoBase.id.in_(clinic_info_records_ids)
+                )
             )
             session.commit()
         except Exception:

@@ -3,25 +3,30 @@ class FioError(Exception):
         super().__init__(msg)
         self.msg: str = msg
 
+
 class FioUserError(FioError):
     def __init__(self, msg: str) -> None:
         super().__init__(msg)
         self.msg: str = msg
+
 
 class FioDoctorError(FioError):
     def __init__(self, msg: str) -> None:
         super().__init__(msg)
         self.msg: str = msg
 
+
 class DateError(Exception):
     def __init__(self, msg: str) -> None:
         super().__init__(msg)
         self.msg: str = msg
 
+
 class BirthdayError(DateError):
     def __init__(self, msg: str) -> None:
         super().__init__(msg)
         self.msg: str = msg
+
 
 class DateOfAdmissionError(DateError):
     def __init__(self, msg: str) -> None:

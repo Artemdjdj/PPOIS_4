@@ -1,4 +1,4 @@
-MAIN_WINDOW_ICON = u":/images/images/doctor_without_background.png"
+MAIN_WINDOW_ICON = ":/images/images/doctor_without_background.png"
 
 stylesheet_for_page_in_pagination = """
                                     padding:15px;
@@ -18,6 +18,6 @@ stylesheet_for_not_visible_button = """
                                     """
 
 label_delete_nothing_text = "К сожалению удалить нечего!"
-image_delete_nothing = u":/images/images/unsuccessful_delete2.png"
+image_delete_nothing = ":/images/images/unsuccessful_delete2.png"
 
-image_delete_successful = u":/images/images/successful_delete_2.png"
+image_delete_successful = ":/images/images/successful_delete_2.png"

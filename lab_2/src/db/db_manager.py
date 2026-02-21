@@ -6,14 +6,13 @@ from datetime import date
 
 
 class DatabaseManager:
-    def __init__(self, db_url: str = DATABASE_URL)->None:
+    def __init__(self, db_url: str = DATABASE_URL) -> None:
         self.__engine = create_engine(db_url)
         self.__session_local = sessionmaker(bind=self.__engine)
 
-    def create_tables(self)->None:
+    def create_tables(self) -> None:
         Base.metadata.create_all(self.__engine)
 
     @property
     def session(self) -> Session:
         return self.__session_local()
-
