@@ -33,13 +33,13 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__add_functions()
         # стартовая настройка виджетов
         self.__basic_settings_with_tabs()
-        self.__clinic_info_service:ClinicInfoService = ClinicInfoService(DatabaseManager())
+        self.__clinic_info_service: ClinicInfoService = ClinicInfoService(DatabaseManager())
         # пагинация
         # self.__current_page: Optional[int] = None
         # self.__count_pages: Optional[int] = None
         # self.__count_of_records_on_page: Optional[int] = None
         self._records: Optional[List[ClinicInfoBase]] = []
-        self.__is_work_in_db:bool = False
+        self.__is_work_in_db: bool = False
 
         self._init_paginator(
             self.ui.button_prev,
@@ -124,9 +124,8 @@ class MainWindow(PaginationMixin, QMainWindow):
         except sax.SAXParseException as e:
             QMessageBox.critical(self, "Ошибка XML", f"Файл повреждён или неверный формат:\n{e}")
         except Exception as e:
-            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть файл:\n{e}")
+            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть файл или структура данных файле нарушена:\n{e}")
         return None
-
 
     def __add_new_clinic_info(
             self,
@@ -150,7 +149,8 @@ class MainWindow(PaginationMixin, QMainWindow):
                 self.__clinic_info_service.create_clinic_info(clinic_info)
                 self.__load_data_from_db()
             else:
-                print("logic in xml")
+                self._records.append(clinic_info)
+                self.__base_settings_to_show_data()
 
     def __create_new_clinic_info(self) -> None:
         dialog = AddingDataWindow()
@@ -166,7 +166,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> list[ClinicInfoBase]:
 
-        all_records = self.__clinic_info_service.get_all_records_clinic_info() if self.__is_work_in_db else []
+        all_records = self.__clinic_info_service.get_all_records_clinic_info() if self.__is_work_in_db else self._records
         if fio_user:
             all_records = [r for r in all_records if r.fio_patient == fio_user]
         if address:
@@ -236,14 +236,15 @@ class MainWindow(PaginationMixin, QMainWindow):
             if self.__is_work_in_db:
                 self.__clinic_info_service.delete_records_clinic_info(records)
             else:
-                print("delete logic xml")
-                # records_remove_ids = set(r.id for r in records)
-                # self.__records = [r for r in self.__records if r.id not in records_remove_ids]
+                self._records = [r for r in self._records if r not in records]
             self.__create_after_delete_window(
                 is_success=True, count_of_delete_records=len(records)
             )
             self.__after_delete_dialog.exec()
-            self.__load_data_from_db()
+            if self.__is_work_in_db:
+                self.__load_data_from_db()
+            else:
+                self.__base_settings_to_show_data()
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()

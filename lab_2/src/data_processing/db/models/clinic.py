@@ -23,3 +23,12 @@ class ClinicInfoBase(Base):
     def __repr__(self) -> str:
         return f"User(id={self.id!r}, name={self.fio_patient!r}, fullname={self.fio_doctor!r})"
 
+    def __eq__(self, o: object) -> bool:
+        if isinstance(o, ClinicInfoBase):
+            return (self.fio_patient == o.fio_patient and
+                    self.address == o.address and
+                    self.birthday == o.birthday and
+                    self.date_of_admission == o.date_of_admission and
+                    self.fio_doctor == o.fio_doctor and
+                    self.conclusion == o.conclusion)
+        return False

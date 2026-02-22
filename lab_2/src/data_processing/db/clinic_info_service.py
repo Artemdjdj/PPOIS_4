@@ -46,3 +46,15 @@ class ClinicInfoService:
             raise e
         finally:
             session.close()
+
+    def save_new_clinic_info(self, new_records: List[ClinicInfoBase]) -> None:
+        session = self.__db_manager.session
+        try:
+            session.query(ClinicInfoBase).delete()
+            session.add_all(new_records)
+            session.commit()
+        except Exception:
+            session.rollback()
+            raise
+        finally:
+            session.close()
