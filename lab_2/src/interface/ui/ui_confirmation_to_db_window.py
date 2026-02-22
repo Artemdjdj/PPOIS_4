@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'confirmaition_to_db_window.ui'
+## Form generated from reading UI file 'confirmation_to_db_window.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.10.2
 ##

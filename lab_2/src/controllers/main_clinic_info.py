@@ -4,8 +4,8 @@ from typing import Optional, List
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
 
-from data_processing.data.loader import XMLLoader
-from src.data_processing.data.saver import XMLSaver
+from data_processing.data_manager.loader import XMLLoader
+from src.data_processing.data_manager.saver import XMLSaver
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
