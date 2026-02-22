@@ -23,6 +23,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
 import src.interface.qrc.main_rc
 import src.interface.qrc.main_icons_rc
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -259,9 +260,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.setSpacing(15)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.verticalLayout_23.setContentsMargins(0, -1, 0, -1)
-        self.verticalSpacer = QSpacerItem(20, 100, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 60, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.verticalLayout_23.addItem(self.verticalSpacer)
+
+        self.button_back = QPushButton(self.frame_20)
+        self.button_back.setObjectName(u"button_back")
+        font3 = QFont()
+        font3.setFamilies([u"Arial"])
+        font3.setPointSize(10)
+        font3.setBold(True)
+        self.button_back.setFont(font3)
+        self.button_back.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        self.button_back.setStyleSheet(u"QPushButton{\n"
+"padding:3px;\n"
+"background-color:rgb(26, 24, 26);\n"
+"border-radius:10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(39, 36, 39);  /* \u0434\u0440\u0443\u0433\u043e\u0439 \u0446\u0432\u0435\u0442 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 */\n"
+"}")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/icons/back2.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_back.setIcon(icon1)
+        self.button_back.setIconSize(QSize(43, 43))
+
+        self.verticalLayout_23.addWidget(self.button_back)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout_23.addItem(self.verticalSpacer_5)
 
         self.label_work_with_data = QFrame(self.frame_20)
         self.label_work_with_data.setObjectName(u"label_work_with_data")
@@ -274,10 +303,6 @@ class Ui_MainWindow(object):
         self.label_work_with_data_2 = QLabel(self.label_work_with_data)
         self.label_work_with_data_2.setObjectName(u"label_work_with_data_2")
         self.label_work_with_data_2.setMaximumSize(QSize(16777215, 30))
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(10)
-        font3.setBold(True)
         self.label_work_with_data_2.setFont(font3)
         self.label_work_with_data_2.setStyleSheet(u"border:none;")
         self.label_work_with_data_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -623,9 +648,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color: rgb(39, 36, 39);  /* \u0434\u0440\u0443\u0433\u043e\u0439 \u0446\u0432\u0435\u0442 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 */\n"
 "}")
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/icons/magnifying_glass.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_search.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/icons/magnifying_glass.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_search.setIcon(icon2)
         self.button_search.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_8.addWidget(self.button_search)
@@ -752,9 +777,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "    background-color: rgb(39, 36, 39);  /* \u0434\u0440\u0443\u0433\u043e\u0439 \u0446\u0432\u0435\u0442 \u043f\u0440\u0438 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0438 */\n"
 "}")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/images/table.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_back_to_table.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/images/table.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_back_to_table.setIcon(icon3)
         self.button_back_to_table.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_20.addWidget(self.button_back_to_table)
@@ -1094,9 +1119,9 @@ class Ui_MainWindow(object):
         self.button_address_clinic = QPushButton(self.frame_34)
         self.button_address_clinic.setObjectName(u"button_address_clinic")
         self.button_address_clinic.setMaximumSize(QSize(30, 16777215))
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/icons/address.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_address_clinic.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/icons/address.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_address_clinic.setIcon(icon4)
         self.button_address_clinic.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_22.addWidget(self.button_address_clinic)
@@ -1119,9 +1144,9 @@ class Ui_MainWindow(object):
         self.button_email_clinic = QPushButton(self.frame_35)
         self.button_email_clinic.setObjectName(u"button_email_clinic")
         self.button_email_clinic.setMaximumSize(QSize(30, 16777215))
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/icons/email.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_email_clinic.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/icons/email.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_email_clinic.setIcon(icon5)
         self.button_email_clinic.setIconSize(QSize(30, 30))
 
         self.horizontalLayout_23.addWidget(self.button_email_clinic)
@@ -1183,6 +1208,7 @@ class Ui_MainWindow(object):
         self.button_start.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
         self.tab_widget_main.setTabText(self.tab_widget_main.indexOf(self.tab_start_page), QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
         self.button_icon.setText("")
+        self.button_back.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.label_work_with_data_2.setText(QCoreApplication.translate("MainWindow", u"\u041e\u043f\u0435\u0440\u0430\u0446\u0438\u0438", None))
         self.button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))

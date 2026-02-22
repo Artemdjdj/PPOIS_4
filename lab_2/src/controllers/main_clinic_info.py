@@ -83,15 +83,21 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.button_show_tree.clicked.connect(lambda: self.__view_as_tree())
         self.ui.button_back_to_table.clicked.connect(lambda: self.__back_to_table())
         self.ui.button_exit_app.clicked.connect(lambda: self.__save_data_into_file())
+        self.ui.button_back.clicked.connect(lambda: self.__back_to_choose_data())
 
     def __start_app(self) -> None:
-        # переключение на новый tab
         self.ui.tab_widget_main.setCurrentWidget(self.ui.tab_main_page)
 
     def __exit(self) -> None:
         self.close()
 
-    def __base_settings_to_show_data(self):
+    def __back_to_choose_data(self)->None:
+        self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_load_data)
+        self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_footer)
+        self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_no_records)
+        self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_other)
+
+    def __base_settings_to_show_data(self)->None:
         self._paginator.start_pagination()
         self._load_data_to_table()
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
@@ -106,7 +112,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self._records = self.__clinic_info_service.get_all_records_clinic_info()
         self.__base_settings_to_show_data()
 
-    def __load_data_from_xml(self):
+    def __load_data_from_xml(self)->None:
         self.__is_work_in_db = False
         self.ui.button_save_to_db.setStyleSheet(stylesheet_for_button_save_to_db)
         self.ui.button_save_to_db.setEnabled(True)
