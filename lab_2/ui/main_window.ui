@@ -534,7 +534,7 @@ border-radius:25px;</string>
                        <string notr="true">border:none;</string>
                       </property>
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_work_with_data">
                        <property name="styleSheet">
@@ -856,18 +856,36 @@ QPushButton:hover{
                               <enum>QFrame::Shadow::Raised</enum>
                              </property>
                              <layout class="QVBoxLayout" name="verticalLayout_21">
-                              <property name="leftMargin">
-                               <number>2</number>
-                              </property>
-                              <property name="topMargin">
-                               <number>0</number>
-                              </property>
-                              <property name="rightMargin">
-                               <number>2</number>
-                              </property>
-                              <property name="bottomMargin">
-                               <number>0</number>
-                              </property>
+                              <item>
+                               <widget class="QPushButton" name="button_save_to_db">
+                                <property name="font">
+                                 <font>
+                                  <family>Arial</family>
+                                  <pointsize>10</pointsize>
+                                  <bold>true</bold>
+                                 </font>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QPushButton{
+	padding:13px;
+    background-color:rgb(64, 43, 170);
+    border-radius:10px;
+}
+
+
+QPushButton:hover{
+	padding:13px;
+    background-color:rgb(87, 99, 177);
+    border-radius:10px;
+}
+</string>
+                                </property>
+                                <property name="text">
+                                 <string>Сохранить 
+ в бд</string>
+                                </property>
+                               </widget>
+                              </item>
                               <item>
                                <widget class="QPushButton" name="button_exit_app">
                                 <property name="font">
@@ -887,7 +905,7 @@ QPushButton:hover{
 
 QPushButton:hover{
 	padding:13px;
-    background-color:rgb(78, 89, 159);
+    background-color:rgb(64, 43, 170);
     border-radius:10px;
 }
 </string>

@@ -10,8 +10,9 @@ from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
 from src.controllers.save_clinic_info import SaveWindow
+from src.controllers.confirmation_to_db import ConfirmToDbWindow
 from src.main.paginator import PaginationMixin
-from src.main.settings import image_delete_successful
+from src.main.settings import image_delete_successful, stylesheet_for_not_visible_button, stylesheet_for_button_save_to_db
 from src.controllers.search_clinic_info import SearchWindow
 from data_processing.db.models.clinic import ClinicInfoBase
 from data_processing.db.clinic_info_service import ClinicInfoService
@@ -72,6 +73,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.button_exit.clicked.connect(lambda: self.__exit())
         self.ui.button_load_from_db.clicked.connect(lambda: self.__load_data_from_db())
         self.ui.button_load_from_file.clicked.connect(lambda: self.__load_data_from_xml())
+        self.ui.button_save_to_db.clicked.connect(lambda: self.__save_to_db())
         self.ui.button_add_new_record.clicked.connect(
             lambda: self.__create_new_clinic_info()
         )
@@ -98,11 +100,17 @@ class MainWindow(PaginationMixin, QMainWindow):
 
     def __load_data_from_db(self) -> None:
         self.__is_work_in_db = True
+        self.ui.button_save_to_db.setStyleSheet(stylesheet_for_not_visible_button)
+        self.ui.button_save_to_db.setEnabled(False)
+        self.ui.button_save_to_db.setText("")
         self._records = self.__clinic_info_service.get_all_records_clinic_info()
         self.__base_settings_to_show_data()
 
     def __load_data_from_xml(self):
         self.__is_work_in_db = False
+        self.ui.button_save_to_db.setStyleSheet(stylesheet_for_button_save_to_db)
+        self.ui.button_save_to_db.setEnabled(True)
+        self.ui.button_save_to_db.setText("Загрузить \n в бд")
         self._records = self.__choose_load_file()
         if self._records is not None:
             self.__base_settings_to_show_data()
@@ -303,3 +311,18 @@ class MainWindow(PaginationMixin, QMainWindow):
                 QMessageBox.critical(self, "Ошибка", f"Не удалось сохранить файл:\n{e}")
 
         self.__exit()
+
+    def __save_to_db(self) -> None:
+        self.__dialog_confirm_to_save = ConfirmToDbWindow()
+        self.__dialog_confirm_to_save.confirm_to_db.connect(lambda confirmed: self.__on_save_confirm_to_save(confirmed))
+        self.__dialog_confirm_to_save.exec()
+
+    def __on_save_confirm_to_save(self, confirmed: bool) -> None:
+        if confirmed:
+            try:
+                self.__clinic_info_service.save_new_clinic_info(self._records)
+                QMessageBox.information(self, "Успех", f"Данные успешно занесены в базу данных!")
+            except Exception as e:
+                QMessageBox.critical(self, "Ошибка", f"Не удалось занести данные в базу данных")
+
+

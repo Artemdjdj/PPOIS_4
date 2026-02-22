@@ -360,7 +360,25 @@ class Ui_MainWindow(object):
         self.frame_23.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_21 = QVBoxLayout(self.frame_23)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalLayout_21.setContentsMargins(2, 0, 2, 0)
+        self.button_save_to_db = QPushButton(self.frame_23)
+        self.button_save_to_db.setObjectName(u"button_save_to_db")
+        self.button_save_to_db.setFont(font3)
+        self.button_save_to_db.setStyleSheet(u"QPushButton{\n"
+"	padding:13px;\n"
+"    background-color:rgb(64, 43, 170);\n"
+"    border-radius:10px;\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:hover{\n"
+"	padding:13px;\n"
+"    background-color:rgb(87, 99, 177);\n"
+"    border-radius:10px;\n"
+"}\n"
+"")
+
+        self.verticalLayout_21.addWidget(self.button_save_to_db)
+
         self.button_exit_app = QPushButton(self.frame_23)
         self.button_exit_app.setObjectName(u"button_exit_app")
         self.button_exit_app.setFont(font3)
@@ -373,7 +391,7 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:hover{\n"
 "	padding:13px;\n"
-"    background-color:rgb(78, 89, 159);\n"
+"    background-color:rgb(64, 43, 170);\n"
 "    border-radius:10px;\n"
 "}\n"
 "")
@@ -1148,9 +1166,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tab_widget_main.setCurrentIndex(1)
-        self.tab_widget_work_state.setCurrentIndex(1)
+        self.tab_widget_work_state.setCurrentIndex(0)
         self.tab_widget_header.setCurrentIndex(0)
-        self.tab_widget_records.setCurrentIndex(1)
+        self.tab_widget_records.setCurrentIndex(0)
         self.tab_widget_footer.setCurrentIndex(0)
 
 
@@ -1169,6 +1187,8 @@ class Ui_MainWindow(object):
         self.button_add_new_record.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
         self.button_show_tree.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u0440\u0435\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
         self.button_delete.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c", None))
+        self.button_save_to_db.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \n"
+" \u0432 \u0431\u0434", None))
         self.button_exit_app.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0439\u0442\u0438", None))
         self.tab_widget_work_state.setTabText(self.tab_widget_work_state.indexOf(self.tab_work_with_data), QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0431\u043e\u0442\u0430 \u0441 \u0434\u0430\u043d\u043d\u044b\u043c\u0438", None))
         self.button_icon_of_app.setText("")

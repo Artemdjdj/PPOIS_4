@@ -13,7 +13,7 @@ class ConfirmWindow(QDialog):
         self.ui = Ui_ConfirmDialog()
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon(MAIN_WINDOW_ICON))
-        self.setWindowTitle("Подтверждения удаления")
+        self.setWindowTitle("Подтверждение удаления")
         self.__add_functions()
 
     def __add_functions(self) -> None:

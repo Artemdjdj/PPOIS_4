@@ -17,6 +17,21 @@ stylesheet_for_not_visible_button = """
                                     background-color:none;
                                     """
 
+stylesheet_for_button_save_to_db = """
+                                    QPushButton{
+                                        padding:13px;
+                                        background-color:rgb(64, 43, 170);
+                                        border-radius:10px;
+                                    }
+                                    
+                                    
+                                    QPushButton:hover{
+                                        padding:13px;
+                                        background-color:rgb(87, 99, 177);
+                                        border-radius:10px;
+                                    }
+                                    """
+
 label_delete_nothing_text = "К сожалению удалить нечего!"
 image_delete_nothing = ":/images/images/unsuccessful_delete2.png"
 
