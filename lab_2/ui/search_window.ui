@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
+    <width>1400</width>
     <height>722</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1200</width>
+    <width>1400</width>
     <height>722</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1200</width>
+    <width>1400</width>
     <height>942</height>
    </size>
   </property>
@@ -806,7 +806,7 @@ padding:2px 4px;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <property name="spacing">
-             <number>0</number>
+             <number>10</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -1995,7 +1995,7 @@ border:none;</string>
                                </font>
                               </property>
                               <property name="text">
-                               <string>г Минскул. Лобанка 24</string>
+                               <string>г. Минск, ул. Лобанка 24</string>
                               </property>
                              </widget>
                             </item>

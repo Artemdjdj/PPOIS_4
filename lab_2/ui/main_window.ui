@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1200</width>
     <height>758</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
+    <width>1200</width>
     <height>758</height>
    </size>
   </property>
@@ -1261,7 +1261,7 @@ QPushButton:hover {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="leftMargin">
                   <number>0</number>
@@ -1553,7 +1553,7 @@ QPushButton:hover {
                     <item>
                      <widget class="QTabWidget" name="tab_widget_records">
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>2</number>
                       </property>
                       <widget class="QWidget" name="tab_list_of_records">
                        <attribute name="title">
@@ -2612,7 +2612,7 @@ border-radius:25px;</string>
                                 </property>
                                 <property name="styleSheet">
                                  <string notr="true">padding:15px;
-background-color:rgb(26, 24, 26);
+background-color:rgb(138, 197, 62);
 border-radius:25px;</string>
                                 </property>
                                 <property name="text">
@@ -2908,7 +2908,7 @@ border:none;</string>
                                     </font>
                                    </property>
                                    <property name="text">
-                                    <string>г Минскул. Лобанка 24</string>
+                                    <string>г. Минск, ул. Лобанка 24</string>
                                    </property>
                                   </widget>
                                  </item>

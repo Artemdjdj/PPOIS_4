@@ -23,13 +23,12 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
 import src.interface.qrc.main_rc
 import src.interface.qrc.main_icons_rc
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1000, 758)
-        MainWindow.setMinimumSize(QSize(1000, 758))
+        MainWindow.resize(1200, 758)
+        MainWindow.setMinimumSize(QSize(1200, 758))
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamilies([u"Arial"])
@@ -556,7 +555,7 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setSpacing(10)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.frame_12 = QFrame(self.frame_8)
@@ -993,7 +992,7 @@ class Ui_MainWindow(object):
         self.button_current.setMaximumSize(QSize(50, 50))
         self.button_current.setFont(font4)
         self.button_current.setStyleSheet(u"padding:15px;\n"
-"background-color:rgb(26, 24, 26);\n"
+"background-color:rgb(138, 197, 62);\n"
 "border-radius:25px;")
 
         self.horizontalLayout_9.addWidget(self.button_current)
@@ -1193,7 +1192,7 @@ class Ui_MainWindow(object):
         self.tab_widget_main.setCurrentIndex(1)
         self.tab_widget_work_state.setCurrentIndex(0)
         self.tab_widget_header.setCurrentIndex(0)
-        self.tab_widget_records.setCurrentIndex(0)
+        self.tab_widget_records.setCurrentIndex(2)
         self.tab_widget_footer.setCurrentIndex(0)
 
 
@@ -1262,7 +1261,7 @@ class Ui_MainWindow(object):
         self.label_last_medical_app.setText(QCoreApplication.translate("MainWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
 "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
         self.button_address_clinic.setText("")
-        self.label_address_clinic.setText(QCoreApplication.translate("MainWindow", u"\u0433 \u041c\u0438\u043d\u0441\u043a\u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
+        self.label_address_clinic.setText(QCoreApplication.translate("MainWindow", u"\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
         self.button_email_clinic.setText("")
         self.label_email_clinic.setText(QCoreApplication.translate("MainWindow", u"minsk_clinic@gmail.com", None))
         self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_footer), QCoreApplication.translate("MainWindow", u"\u0424\u0443\u0442\u0435\u0440", None))

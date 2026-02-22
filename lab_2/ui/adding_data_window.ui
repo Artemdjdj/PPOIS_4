@@ -204,7 +204,7 @@ padding:4px;</string>
             <item>
              <widget class="QLabel" name="label_address">
               <property name="text">
-               <string>Адрес прописки (г. Минск, ул. Сухаревская 23, кв. 55)</string>
+               <string>Адрес прописки (г. Минск, ул. Сухаревская, д. 23, кв. 55)</string>
               </property>
              </widget>
             </item>

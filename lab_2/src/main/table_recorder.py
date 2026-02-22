@@ -1,5 +1,5 @@
 from typing import List
-from PySide6.QtWidgets import QTableWidget, QTabWidget, QTableWidgetItem
+from PySide6.QtWidgets import QTableWidget, QTabWidget, QTableWidgetItem, QWidget
 from data_processing.db.models.clinic import ClinicInfoBase
 
 
@@ -11,8 +11,8 @@ class TableRecorder:
         tab_list_widget,
         tab_no_records_widget,
         tab_widget_footer: QTabWidget,
-        tab_footer: QTabWidget,
-        tab_pagination: QTabWidget,
+        tab_footer: QWidget,
+        tab_pagination: QWidget,
     ):
         self.table_widget = table_widget
         self.tab_widget = tab_widget
@@ -46,5 +46,5 @@ class TableRecorder:
                     row, 5, QTableWidgetItem(str(record.conclusion))
                 )
         else:
-            self.tab_widget.setCurrentWidget(self.tab_no_records_widget)
             self.tab_widget_footer.setCurrentWidget(self.tab_footer)
+            self.tab_widget.setCurrentWidget(self.tab_no_records_widget)

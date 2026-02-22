@@ -258,7 +258,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             if self.__is_work_in_db:
                 self.__load_data_from_db()
             else:
-                self.__base_settings_to_show_data()
+                self._load_data_to_table()
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()

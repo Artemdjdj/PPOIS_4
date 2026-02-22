@@ -16,9 +16,9 @@ class FioUserValidator(FioValidator):
         super().__init__(name)
 
     def validate(self):
-        pattern = r"^([А-ЯЁ][а-яё]+\s){2}[А-ЯЁ][а-яё]+$"
+        pattern = r"^[А-ЯЁ][а-яё]+\s[А-ЯЁ][а-яё]+(?:\s[А-ЯЁ][а-яё]+)?$"
         if not bool(re.match(pattern, self._name)):
-            raise FioUserError("Некоректно введено имя(фамилия, отчество)")
+            raise FioUserError("Некоректно введено имя (фамилия, отчество)")
 
 
 class FioDoctorValidator(FioValidator):
@@ -28,4 +28,4 @@ class FioDoctorValidator(FioValidator):
     def validate(self):
         pattern = r"^([А-ЯЁ][а-яё]+\s){2}[А-ЯЁ][а-яё]+$"
         if not bool(re.match(pattern, self._name)):
-            raise FioDoctorError("Некоректно введено имя(фамилия, отчество)")
+            raise FioDoctorError("Некоректно введено имя (фамилия, отчество)")

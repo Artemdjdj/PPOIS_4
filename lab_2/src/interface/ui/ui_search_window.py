@@ -26,9 +26,9 @@ class Ui_SearchWindow(object):
     def setupUi(self, SearchWindow):
         if not SearchWindow.objectName():
             SearchWindow.setObjectName(u"SearchWindow")
-        SearchWindow.resize(1200, 722)
-        SearchWindow.setMinimumSize(QSize(1200, 722))
-        SearchWindow.setMaximumSize(QSize(1200, 722))
+        SearchWindow.resize(1400, 722)
+        SearchWindow.setMinimumSize(QSize(1400, 722))
+        SearchWindow.setMaximumSize(QSize(1400, 942))
         SearchWindow.setStyleSheet(u"background-color:none;")
         self.verticalLayout = QVBoxLayout(SearchWindow)
         self.verticalLayout.setSpacing(0)
@@ -407,7 +407,7 @@ class Ui_SearchWindow(object):
         self.frame_8.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Shadow.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setSpacing(10)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.frame_11 = QFrame(self.frame_8)
@@ -959,7 +959,7 @@ class Ui_SearchWindow(object):
         self.label_last_medical_app.setText(QCoreApplication.translate("SearchWindow", u"\u00a9 2026 \u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0443\u0447\u0435\u0442\u0430 \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0439 \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u043e\u0432 \n"
 "\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.", None))
         self.button_address_clinic.setText("")
-        self.label_address_clinic.setText(QCoreApplication.translate("SearchWindow", u"\u0433 \u041c\u0438\u043d\u0441\u043a\u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
+        self.label_address_clinic.setText(QCoreApplication.translate("SearchWindow", u"\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 24", None))
         self.button_email_clinic.setText("")
         self.label_email_clinic.setText(QCoreApplication.translate("SearchWindow", u"minsk_clinic@gmail.com", None))
         self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_footer), QCoreApplication.translate("SearchWindow", u"\u0424\u0443\u0442\u0435\u0440", None))
