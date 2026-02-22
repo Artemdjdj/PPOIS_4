@@ -39,6 +39,9 @@ class SearchWindow(PaginationMixin, QDialog):
             self.ui.tab_widget_records,
             self.ui.tab_list_of_records,
             self.ui.tab_no_records,
+            self.ui.tab_widget_footer,
+            self.ui.tab_footer,
+            self.ui.tab_pagination
         )
         self.__data_saver = DataSaver(
             self.ui.line_edit_fio_user,

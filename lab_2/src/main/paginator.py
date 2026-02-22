@@ -191,9 +191,10 @@ class PaginationMixin:
             table,
         )
 
-    def _init_table_recorder(self, table, tab_widget, tab_list, tab_no_records) -> None:
+    def _init_table_recorder(self, table, tab_widget, tab_list, tab_no_records, tab_widget_footer, tab_footer, tab_pagination) -> None:
         self._table_recorder = TableRecorder(
-            table, tab_widget, tab_list, tab_no_records
+            table, tab_widget, tab_list, tab_no_records,
+            tab_widget_footer, tab_footer, tab_pagination
         )
 
     def _connect_pagination_buttons(self) -> None:

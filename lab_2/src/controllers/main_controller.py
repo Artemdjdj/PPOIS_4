@@ -42,6 +42,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         # self.__count_pages: Optional[int] = None
         # self.__count_of_records_on_page: Optional[int] = None
         self._records: List[ClinicInfoBase] = []
+        self.__is_work_in_db = False
 
         self._init_paginator(
             self.ui.button_prev,
@@ -57,6 +58,9 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.ui.tab_widget_records,
             self.ui.tab_list_of_records,
             self.ui.tab_no_records,
+            self.ui.tab_widget_footer,
+            self.ui.tab_footer,
+            self.ui.tab_pagination
         )
 
     def __basic_settings_with_tabs(self) -> None:
@@ -87,13 +91,21 @@ class MainWindow(PaginationMixin, QMainWindow):
     def __exit(self) -> None:
         self.close()
 
-    def __load_data_from_db(self) -> None:
+    def __base_settings_to_show_data(self):
         self._paginator.start_pagination()
-        self._records = self.__clinic_info_service.get_all_records_clinic_info()
         self._load_data_to_table()
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
         self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
+
+    def __load_data_from_db(self) -> None:
+        self.__is_work_in_db = True
+        self._records = self.__clinic_info_service.get_all_records_clinic_info()
+        self.__base_settings_to_show_data()
+
+    def __load_data_from_xml(self):
+        self._records = []
+        self.__base_settings_to_show_data()
 
     def __add_new_clinic_info(
         self,
@@ -113,8 +125,11 @@ class MainWindow(PaginationMixin, QMainWindow):
                 fio_doctor=fio_doctor,
                 conclusion=conclusion,
             )
-            self.__clinic_info_service.create_clinic_info(clinic_info)
-            self.__load_data_from_db()
+            if self.__is_work_in_db:
+                self.__clinic_info_service.create_clinic_info(clinic_info)
+                self.__load_data_from_db()
+            else:
+                print("logic in xml")
 
     def __create_new_clinic_info(self) -> None:
         dialog = AddingDataWindow()
@@ -129,7 +144,8 @@ class MainWindow(PaginationMixin, QMainWindow):
     def __filter_records(
         self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> list[ClinicInfoBase]:
-        all_records = self.__clinic_info_service.get_all_records_clinic_info()
+
+        all_records = self.__clinic_info_service.get_all_records_clinic_info() if self.__is_work_in_db else []
         if fio_user:
             all_records = [r for r in all_records if r.fio_patient == fio_user]
         if address:
@@ -196,9 +212,12 @@ class MainWindow(PaginationMixin, QMainWindow):
         self, confirmed: bool, records: List[ClinicInfoBase]
     ) -> None:
         if confirmed:
-            self.__clinic_info_service.delete_records_clinic_info(records)
-            # records_remove_ids = set(r.id for r in records)
-            # self.__records = [r for r in self.__records if r.id not in records_remove_ids]
+            if self.__is_work_in_db:
+                self.__clinic_info_service.delete_records_clinic_info(records)
+            else:
+                print("delete logic xml")
+                # records_remove_ids = set(r.id for r in records)
+                # self.__records = [r for r in self.__records if r.id not in records_remove_ids]
             self.__create_after_delete_window(
                 is_success=True, count_of_delete_records=len(records)
             )

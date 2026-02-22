@@ -1481,7 +1481,7 @@ QPushButton:hover {
                     <item>
                      <widget class="QTabWidget" name="tab_widget_records">
                       <property name="currentIndex">
-                       <number>1</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="tab_list_of_records">
                        <attribute name="title">
