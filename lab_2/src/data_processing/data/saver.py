@@ -5,12 +5,12 @@ from typing import List
 from data_processing.db.models.clinic import ClinicInfoBase
 
 
-class BasicLoader(ABC):
+class BasicSaver(ABC):
     @abstractmethod
-    def load(self)->None:
+    def save(self)->None:
         pass
 
-class XMLLoader(BasicLoader):
+class XMLSaver(BasicSaver):
     def __init__(self, path:str, records:List[ClinicInfoBase])->None:
         self._path = path
         self._records = records
@@ -50,7 +50,7 @@ class XMLLoader(BasicLoader):
             root.appendChild(new_record)
         return doc
 
-    def load(self)->None:
+    def save(self)->None:
         doc = self._dom_save()
         with open(self._path, "w", encoding="utf-8") as f:
             doc.writexml(f, indent="  ", addindent="  ", newl="\n")

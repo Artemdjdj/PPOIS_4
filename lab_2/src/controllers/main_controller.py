@@ -1,9 +1,11 @@
+import xml.sax as sax
 from datetime import date
 from typing import Optional, List
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
 
-from data_processing.xml_manager.loader import XMLLoader
+from data_processing.data.loader import XMLLoader
+from src.data_processing.data.saver import XMLSaver
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
@@ -31,13 +33,13 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__add_functions()
         # стартовая настройка виджетов
         self.__basic_settings_with_tabs()
-        self.__clinic_info_service = ClinicInfoService(DatabaseManager())
+        self.__clinic_info_service:ClinicInfoService = ClinicInfoService(DatabaseManager())
         # пагинация
         # self.__current_page: Optional[int] = None
         # self.__count_pages: Optional[int] = None
         # self.__count_of_records_on_page: Optional[int] = None
-        self._records: List[ClinicInfoBase] = []
-        self.__is_work_in_db = False
+        self._records: Optional[List[ClinicInfoBase]] = []
+        self.__is_work_in_db:bool = False
 
         self._init_paginator(
             self.ui.button_prev,
@@ -69,6 +71,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.button_start.clicked.connect(lambda: self.__start_app())
         self.ui.button_exit.clicked.connect(lambda: self.__exit())
         self.ui.button_load_from_db.clicked.connect(lambda: self.__load_data_from_db())
+        self.ui.button_load_from_file.clicked.connect(lambda: self.__load_data_from_xml())
         self.ui.button_add_new_record.clicked.connect(
             lambda: self.__create_new_clinic_info()
         )
@@ -99,8 +102,31 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__base_settings_to_show_data()
 
     def __load_data_from_xml(self):
-        self._records = []
-        self.__base_settings_to_show_data()
+        self.__is_work_in_db = False
+        self._records = self.__choose_load_file()
+        if self._records is not None:
+            self.__base_settings_to_show_data()
+
+    def __choose_load_file(self) -> Optional[List[ClinicInfoBase]]:
+        filename, _ = QFileDialog.getOpenFileName(
+            self,
+            "Открыть файл",
+            "",
+            "XML Files (*.xml);;All Files (*)"
+        )
+        if not filename:
+            return None
+
+        try:
+            loader = XMLLoader(filename)
+            records = loader.load()
+            return records
+        except sax.SAXParseException as e:
+            QMessageBox.critical(self, "Ошибка XML", f"Файл повреждён или неверный формат:\n{e}")
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть файл:\n{e}")
+        return None
+
 
     def __add_new_clinic_info(
             self,
@@ -269,8 +295,8 @@ class MainWindow(PaginationMixin, QMainWindow):
                 filename += ".xml"
 
             try:
-                loader = XMLLoader(filename, self._records)
-                loader.load()
+                saver = XMLSaver(filename, self._records)
+                saver.save()
                 QMessageBox.information(self, "Успех", f"Файл сохранён:\n{filename}")
             except Exception as e:
                 QMessageBox.critical(self, "Ошибка", f"Не удалось сохранить файл:\n{e}")
