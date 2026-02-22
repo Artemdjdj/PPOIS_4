@@ -204,9 +204,13 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__dialog.set_records(all_records)
 
     def __delete_records(self) -> None:
-        self.__dialog = DeleteWindow()
-        self.__dialog.submitted_delete.connect(self.__delete_records_in_main)
-        self.__dialog.exec()
+        if len(self._records)>0:
+            self.__dialog_del = DeleteWindow()
+            self.__dialog_del.submitted_delete.connect(self.__delete_records_in_main)
+            self.__dialog_del.exec()
+        else:
+            self.__create_after_delete_window(is_success=False)
+            self.__after_delete_dialog.exec()
 
     def __create_after_delete_window(
             self, is_success: bool, count_of_delete_records: int = 0
@@ -262,6 +266,8 @@ class MainWindow(PaginationMixin, QMainWindow):
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()
+        if self.__dialog_del:
+            self.__dialog_del.close()
 
     def __view_as_tree(self):
 
