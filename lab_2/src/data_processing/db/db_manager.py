@@ -1,8 +1,7 @@
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine
-from src.db.settings import DATABASE_URL
-from src.db.models.clinic import Base, ClinicInfoBase
-from datetime import date
+from data_processing.db.settings import DATABASE_URL
+from data_processing.db.models.clinic import Base
 
 
 class DatabaseManager:

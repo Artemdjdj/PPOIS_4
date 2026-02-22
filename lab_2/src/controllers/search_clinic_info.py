@@ -1,17 +1,13 @@
-import sys
 from datetime import date
 from typing import List
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QDialog
+from PySide6.QtWidgets import QDialog
 from PySide6.QtGui import QIcon
 
-from src.main.paginator import Paginator, PaginationMixin
-from src.exceptions.exceptions import BirthdayError, DateOfAdmissionError
+from src.main.paginator import PaginationMixin
 from src.interface.ui.ui_search_window import Ui_SearchWindow
 from src.main.settings import MAIN_WINDOW_ICON
-from src.main.utils import DateConverter
-from src.db.models.clinic import ClinicInfoBase
-from src.main.table_recorder import TableRecorder
+from data_processing.db.models.clinic import ClinicInfoBase
 from src.main.data_saver import DataSaver
 
 

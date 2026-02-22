@@ -1,7 +1,4 @@
 from datetime import datetime, date
-from typing import List, Any
-from PySide6.QtWidgets import QTableWidget, QTableWidgetItem, QTabWidget
-from src.db.models.clinic import ClinicInfoBase
 
 
 class DateConverter:

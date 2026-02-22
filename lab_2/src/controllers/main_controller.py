@@ -1,28 +1,23 @@
-import sys
 from datetime import date
 from typing import Optional, List
-from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton, QTreeWidgetItem
+from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
+
+from data_processing.xml_manager.loader import XMLLoader
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
 from src.controllers.delete_clinic_info import DeleteWindow
 from src.controllers.save_clinic_info import SaveWindow
-from src.main.paginator import Paginator, PaginationMixin
+from src.main.paginator import PaginationMixin
 from src.main.settings import image_delete_successful
 from src.controllers.search_clinic_info import SearchWindow
-from src.db.models.clinic import ClinicInfoBase
-from src.db.clinic_info_service import ClinicInfoService
-from src.db.db_manager import DatabaseManager
+from data_processing.db.models.clinic import ClinicInfoBase
+from data_processing.db.clinic_info_service import ClinicInfoService
+from data_processing.db.db_manager import DatabaseManager
 from src.interface.ui.ui_main_window import Ui_MainWindow
 from src.controllers.add_clinic_info import AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON
-from src.main.settings import (
-    stylesheet_for_page_in_pagination,
-    stylesheet_for_not_visible_button,
-    stylesheet_for_active_page_in_pagination,
-)
 from src.main.settings import label_delete_nothing_text, image_delete_nothing
-from src.main.table_recorder import TableRecorder
 
 
 class MainWindow(PaginationMixin, QMainWindow):
@@ -108,13 +103,13 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__base_settings_to_show_data()
 
     def __add_new_clinic_info(
-        self,
-        fio_user: Optional[str],
-        address: Optional[str],
-        birthday: Optional[date],
-        date_of_admission: Optional[date],
-        fio_doctor: Optional[str],
-        conclusion: Optional[str],
+            self,
+            fio_user: Optional[str],
+            address: Optional[str],
+            birthday: Optional[date],
+            date_of_admission: Optional[date],
+            fio_doctor: Optional[str],
+            conclusion: Optional[str],
     ) -> None:
         if fio_user is not None:
             clinic_info = ClinicInfoBase(
@@ -142,7 +137,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__dialog.exec()
 
     def __filter_records(
-        self, fio_user, address, birthday, date_of_admission, fio_doctor
+            self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> list[ClinicInfoBase]:
 
         all_records = self.__clinic_info_service.get_all_records_clinic_info() if self.__is_work_in_db else []
@@ -161,7 +156,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         return all_records
 
     def __load_filter_records_to_search(
-        self, fio_user, address, birthday, date_of_admission, fio_doctor
+            self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> None:
         all_records = self.__filter_records(
             fio_user, address, birthday, date_of_admission, fio_doctor
@@ -174,7 +169,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__dialog.exec()
 
     def __create_after_delete_window(
-        self, is_success: bool, count_of_delete_records: int = 0
+            self, is_success: bool, count_of_delete_records: int = 0
     ) -> None:
         self.__after_delete_dialog = AfterDeleteWindow()
         if not is_success:
@@ -193,7 +188,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             )
 
     def __delete_records_in_main(
-        self, fio_user, address, birthday, date_of_admission, fio_doctor
+            self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> None:
         all_records = self.__filter_records(
             fio_user, address, birthday, date_of_admission, fio_doctor
@@ -209,7 +204,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.__confirm_dialog.exec()
 
     def __on_delete_result(
-        self, confirmed: bool, records: List[ClinicInfoBase]
+            self, confirmed: bool, records: List[ClinicInfoBase]
     ) -> None:
         if confirmed:
             if self.__is_work_in_db:
@@ -255,11 +250,29 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
 
     def __save_data_into_file(self) -> None:
-        self.__dialog = SaveWindow()
-        self.__dialog.cancel.connect(lambda save: self.__result_save(save))
-        self.__dialog.exec()
+        self.__dialog_save = SaveWindow()
+        self.__dialog_save.cancel.connect(lambda save: self.__result_save(save))
+        self.__dialog_save.exec()
 
     def __result_save(self, save: bool) -> None:
         if save:
-            print("Логика сохранения")
+            filename, _ = QFileDialog.getSaveFileName(
+                self,
+                "Сохранить файл",
+                "",
+                "XML Files (*.xml);;All Files (*)"
+            )
+            if not filename:
+                return
+
+            if not filename.endswith(".xml"):
+                filename += ".xml"
+
+            try:
+                loader = XMLLoader(filename, self._records)
+                loader.load()
+                QMessageBox.information(self, "Успех", f"Файл сохранён:\n{filename}")
+            except Exception as e:
+                QMessageBox.critical(self, "Ошибка", f"Не удалось сохранить файл:\n{e}")
+
         self.__exit()

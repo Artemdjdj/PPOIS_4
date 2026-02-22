@@ -1,8 +1,6 @@
 from typing import List, Any
 from PySide6.QtWidgets import (
     QTableWidget,
-    QTabWidget,
-    QTableWidgetItem,
     QPushButton,
     QComboBox,
 )
@@ -13,7 +11,6 @@ from src.main.settings import (
     stylesheet_for_active_page_in_pagination,
     stylesheet_for_page_in_pagination,
 )
-from src.db.models.clinic import ClinicInfoBase
 
 
 class Paginator:

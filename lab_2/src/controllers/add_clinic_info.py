@@ -1,18 +1,14 @@
-import sys
 from datetime import date
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QDialog
+from PySide6.QtWidgets import QDialog
 from PySide6.QtGui import QIcon
 from src.interface.ui.ui_adding_data_window import Ui_AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON
-from src.db.models.clinic import ClinicInfoBase
 from src.validator.fio_validator import FioUserValidator, FioDoctorValidator
-from src.validator.date_validator import DateValidator
 from src.validator.address_validator import BelarusAddressValidator
 from src.exceptions.exceptions import (
     FioUserError,
     FioDoctorError,
-    DateError,
     AddressError,
 )
 

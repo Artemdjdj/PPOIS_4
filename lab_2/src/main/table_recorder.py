@@ -1,6 +1,6 @@
 from typing import List
 from PySide6.QtWidgets import QTableWidget, QTabWidget, QTableWidgetItem
-from src.db.models.clinic import ClinicInfoBase
+from data_processing.db.models.clinic import ClinicInfoBase
 
 
 class TableRecorder:

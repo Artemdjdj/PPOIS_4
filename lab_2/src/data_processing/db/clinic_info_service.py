@@ -1,9 +1,7 @@
 from typing import List
-from datetime import date
-from sqlalchemy import select, delete
-from sqlalchemy.orm import Session
-from src.db.db_manager import DatabaseManager
-from src.db.models.clinic import ClinicInfoBase
+from sqlalchemy import delete
+from data_processing.db.db_manager import DatabaseManager
+from data_processing.db.models.clinic import ClinicInfoBase
 
 
 class ClinicInfoService:

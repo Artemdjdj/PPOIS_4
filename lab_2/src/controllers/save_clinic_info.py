@@ -1,9 +1,8 @@
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QDialog
+from PySide6.QtWidgets import QDialog
 from PySide6.QtGui import QIcon
 from src.interface.ui.ui_save_window import Ui_Dialog_save
 from src.main.settings import MAIN_WINDOW_ICON
-from src.db.models.clinic import ClinicInfoBase
 
 
 class SaveWindow(QDialog):
