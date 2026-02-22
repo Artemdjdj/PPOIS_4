@@ -225,7 +225,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             )
         else:
             self.__after_delete_dialog.ui.label_after_delete_message.setText(
-                f"Успешно удалено {count_of_delete_records} элементов!"
+                f"Успешно удалены элементы ({count_of_delete_records})!"
             )
             self.__after_delete_dialog.ui.label_after_delete.setPixmap(
                 QPixmap(image_delete_successful)
@@ -325,9 +325,12 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__exit()
 
     def __save_to_db(self) -> None:
-        self.__dialog_confirm_to_save = ConfirmToDbWindow()
-        self.__dialog_confirm_to_save.confirm_to_db.connect(lambda confirmed: self.__on_save_confirm_to_save(confirmed))
-        self.__dialog_confirm_to_save.exec()
+        if len(self._records)>0:
+            self.__dialog_confirm_to_save = ConfirmToDbWindow()
+            self.__dialog_confirm_to_save.confirm_to_db.connect(lambda confirmed: self.__on_save_confirm_to_save(confirmed))
+            self.__dialog_confirm_to_save.exec()
+        else:
+            QMessageBox.critical(self, "Ошибка", f"Нельзя сохранить в базу данных пустой список записей!")
 
     def __on_save_confirm_to_save(self, confirmed: bool) -> None:
         if confirmed:
