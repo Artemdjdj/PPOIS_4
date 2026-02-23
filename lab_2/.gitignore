@@ -22,3 +22,6 @@ src/controllers/__pycache__/
 
 #enviroment
 .env
+
+#release
+release/

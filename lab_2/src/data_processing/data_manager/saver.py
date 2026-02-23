@@ -2,7 +2,7 @@ import xml.dom.minidom as minidom
 from abc import ABC, abstractmethod
 from typing import List
 
-from data_processing.db.models.clinic import ClinicInfoBase
+from src.data_processing.db.models.clinic import ClinicInfoBase
 
 
 class BasicSaver(ABC):

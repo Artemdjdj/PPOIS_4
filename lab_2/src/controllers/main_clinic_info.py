@@ -4,7 +4,7 @@ from typing import Optional, List
 from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
 
-from data_processing.data_manager.loader import XMLLoader
+from src.data_processing.data_manager.loader import XMLLoader
 from src.data_processing.data_manager.saver import XMLSaver
 from src.controllers.after_delete_clinic_info import AfterDeleteWindow
 from src.controllers.confirm_delete_clinic_info import ConfirmWindow
@@ -14,9 +14,9 @@ from src.controllers.confirmation_to_db import ConfirmToDbWindow
 from src.main.paginator import PaginationMixin
 from src.main.settings import image_delete_successful, stylesheet_for_not_visible_button, stylesheet_for_button_save_to_db
 from src.controllers.search_clinic_info import SearchWindow
-from data_processing.db.models.clinic import ClinicInfoBase
-from data_processing.db.clinic_info_service import ClinicInfoService
-from data_processing.db.db_manager import DatabaseManager
+from src.data_processing.db.models.clinic import ClinicInfoBase
+from src.data_processing.db.clinic_info_service import ClinicInfoService
+from src.data_processing.db.db_manager import DatabaseManager
 from src.interface.ui.ui_main_window import Ui_MainWindow
 from src.controllers.add_clinic_info import AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON

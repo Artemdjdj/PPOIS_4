@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy import create_engine
-from data_processing.db.settings import DATABASE_URL
-from data_processing.db.models.clinic import Base
+from src.data_processing.db.settings import DATABASE_URL
+from src.data_processing.db.models.clinic import Base
 
 
 class DatabaseManager:

@@ -7,7 +7,7 @@ from PySide6.QtGui import QIcon
 from src.main.paginator import PaginationMixin
 from src.interface.ui.ui_search_window import Ui_SearchWindow
 from src.main.settings import MAIN_WINDOW_ICON
-from data_processing.db.models.clinic import ClinicInfoBase
+from src.data_processing.db.models.clinic import ClinicInfoBase
 from src.main.data_saver import DataSaver
 
 

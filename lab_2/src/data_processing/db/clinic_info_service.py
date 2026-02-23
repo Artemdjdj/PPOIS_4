@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy import delete
-from data_processing.db.db_manager import DatabaseManager
-from data_processing.db.models.clinic import ClinicInfoBase
+from src.data_processing.db.db_manager import DatabaseManager
+from src.data_processing.db.models.clinic import ClinicInfoBase
 
 
 class ClinicInfoService:

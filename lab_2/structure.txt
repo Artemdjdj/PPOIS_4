@@ -6,6 +6,8 @@ lab_2
 │
 ├── qrc/
 │
+├── release/
+│
 ├── src/
 │   ├── controllers/
 │   │   ├── __init__.py

@@ -2,7 +2,7 @@ import xml.sax as sax
 from abc import ABC, abstractmethod
 from typing import List, Any, Dict
 
-from data_processing.db.models.clinic import ClinicInfoBase
+from src.data_processing.db.models.clinic import ClinicInfoBase
 
 
 class BasicLoader(ABC):
