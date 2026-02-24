@@ -7,15 +7,16 @@ from src.data_processing.db.models.clinic import ClinicInfoBase
 
 class BasicSaver(ABC):
     @abstractmethod
-    def save(self)->None:
+    def save(self) -> None:
         pass
 
+
 class XMLSaver(BasicSaver):
-    def __init__(self, path:str, records:List[ClinicInfoBase])->None:
+    def __init__(self, path: str, records: List[ClinicInfoBase]) -> None:
         self._path = path
         self._records = records
 
-    def _dom_save(self)-> minidom.Document:
+    def _dom_save(self) -> minidom.Document:
         impl = minidom.getDOMImplementation()
         doc = impl.createDocument(None, "records", None)
         root = doc.documentElement
@@ -36,7 +37,9 @@ class XMLSaver(BasicSaver):
             new_record.appendChild(new_record_birthday)
 
             new_record_date_of_admission = doc.createElement("date_of_admission")
-            new_record_date_of_admission.appendChild(doc.createTextNode(str(record.date_of_admission)))
+            new_record_date_of_admission.appendChild(
+                doc.createTextNode(str(record.date_of_admission))
+            )
             new_record.appendChild(new_record_date_of_admission)
 
             new_record_fio_doctor = doc.createElement("fio_doctor")
@@ -50,12 +53,7 @@ class XMLSaver(BasicSaver):
             root.appendChild(new_record)
         return doc
 
-    def save(self)->None:
+    def save(self) -> None:
         doc = self._dom_save()
         with open(self._path, "w", encoding="utf-8") as f:
             doc.writexml(f, indent="  ", addindent="  ", newl="\n")
-
-
-
-
-

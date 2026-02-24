@@ -12,7 +12,11 @@ from src.controllers.delete_clinic_info import DeleteWindow
 from src.controllers.save_clinic_info import SaveWindow
 from src.controllers.confirmation_to_db import ConfirmToDbWindow
 from src.main.paginator import PaginationMixin
-from src.main.settings import image_delete_successful, stylesheet_for_not_visible_button, stylesheet_for_button_save_to_db
+from src.main.settings import (
+    image_delete_successful,
+    stylesheet_for_not_visible_button,
+    stylesheet_for_button_save_to_db,
+)
 from src.controllers.search_clinic_info import SearchWindow
 from src.data_processing.db.models.clinic import ClinicInfoBase
 from src.data_processing.db.clinic_info_service import ClinicInfoService
@@ -34,7 +38,9 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__add_functions()
         # стартовая настройка виджетов
         self.__basic_settings_with_tabs()
-        self.__clinic_info_service: ClinicInfoService = ClinicInfoService(DatabaseManager())
+        self.__clinic_info_service: ClinicInfoService = ClinicInfoService(
+            DatabaseManager()
+        )
         # пагинация
         # self.__current_page: Optional[int] = None
         # self.__count_pages: Optional[int] = None
@@ -58,7 +64,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.ui.tab_no_records,
             self.ui.tab_widget_footer,
             self.ui.tab_footer,
-            self.ui.tab_pagination
+            self.ui.tab_pagination,
         )
 
     def __basic_settings_with_tabs(self) -> None:
@@ -72,7 +78,9 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.button_start.clicked.connect(lambda: self.__start_app())
         self.ui.button_exit.clicked.connect(lambda: self.__exit())
         self.ui.button_load_from_db.clicked.connect(lambda: self.__load_data_from_db())
-        self.ui.button_load_from_file.clicked.connect(lambda: self.__load_data_from_xml())
+        self.ui.button_load_from_file.clicked.connect(
+            lambda: self.__load_data_from_xml()
+        )
         self.ui.button_save_to_db.clicked.connect(lambda: self.__save_to_db())
         self.ui.button_add_new_record.clicked.connect(
             lambda: self.__create_new_clinic_info()
@@ -91,17 +99,17 @@ class MainWindow(PaginationMixin, QMainWindow):
     def __exit(self) -> None:
         self.close()
 
-    def __back_to_choose_data(self)->None:
+    def __back_to_choose_data(self) -> None:
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_load_data)
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_footer)
         self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_no_records)
         self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_other)
 
-    def __base_settings_to_show_data(self)->None:
+    def __base_settings_to_show_data(self) -> None:
         self._paginator.start_pagination()
         self._load_data_to_table()
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
-        if len(self._records)>0:
+        if len(self._records) > 0:
             self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
             self.ui.label_count_records.setText(str(len(self._records)))
         else:
@@ -115,7 +123,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self._records = self.__clinic_info_service.get_all_records_clinic_info()
         self.__base_settings_to_show_data()
 
-    def __load_data_from_xml(self)->None:
+    def __load_data_from_xml(self) -> None:
         self.__is_work_in_db = False
         self.ui.button_save_to_db.setStyleSheet(stylesheet_for_button_save_to_db)
         self.ui.button_save_to_db.setEnabled(True)
@@ -126,10 +134,7 @@ class MainWindow(PaginationMixin, QMainWindow):
 
     def __choose_load_file(self) -> Optional[List[ClinicInfoBase]]:
         filename, _ = QFileDialog.getOpenFileName(
-            self,
-            "Открыть файл",
-            "",
-            "XML Files (*.xml);;All Files (*)"
+            self, "Открыть файл", "", "XML Files (*.xml);;All Files (*)"
         )
         if not filename:
             return None
@@ -139,19 +144,25 @@ class MainWindow(PaginationMixin, QMainWindow):
             records = loader.load()
             return records
         except sax.SAXParseException as e:
-            QMessageBox.critical(self, "Ошибка XML", f"Файл повреждён или неверный формат:\n{e}")
+            QMessageBox.critical(
+                self, "Ошибка XML", f"Файл повреждён или неверный формат:\n{e}"
+            )
         except Exception as e:
-            QMessageBox.critical(self, "Ошибка", f"Не удалось открыть файл или структура данных файле нарушена:\n{e}")
+            QMessageBox.critical(
+                self,
+                "Ошибка",
+                f"Не удалось открыть файл или структура данных файле нарушена:\n{e}",
+            )
         return None
 
     def __add_new_clinic_info(
-            self,
-            fio_user: Optional[str],
-            address: Optional[str],
-            birthday: Optional[date],
-            date_of_admission: Optional[date],
-            fio_doctor: Optional[str],
-            conclusion: Optional[str],
+        self,
+        fio_user: Optional[str],
+        address: Optional[str],
+        birthday: Optional[date],
+        date_of_admission: Optional[date],
+        fio_doctor: Optional[str],
+        conclusion: Optional[str],
     ) -> None:
         if fio_user is not None:
             clinic_info = ClinicInfoBase(
@@ -180,10 +191,14 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__dialog.exec()
 
     def __filter_records(
-            self, fio_user, address, birthday, date_of_admission, fio_doctor
+        self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> list[ClinicInfoBase]:
 
-        all_records = self.__clinic_info_service.get_all_records_clinic_info() if self.__is_work_in_db else self._records
+        all_records = (
+            self.__clinic_info_service.get_all_records_clinic_info()
+            if self.__is_work_in_db
+            else self._records
+        )
         if fio_user:
             all_records = [r for r in all_records if r.fio_patient == fio_user]
         if address:
@@ -199,7 +214,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         return all_records
 
     def __load_filter_records_to_search(
-            self, fio_user, address, birthday, date_of_admission, fio_doctor
+        self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> None:
         all_records = self.__filter_records(
             fio_user, address, birthday, date_of_admission, fio_doctor
@@ -207,7 +222,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__dialog.set_records(all_records)
 
     def __delete_records(self) -> None:
-        if len(self._records)>0:
+        if len(self._records) > 0:
             self.__dialog_del = DeleteWindow()
             self.__dialog_del.submitted_delete.connect(self.__delete_records_in_main)
             self.__dialog_del.exec()
@@ -216,7 +231,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.__after_delete_dialog.exec()
 
     def __create_after_delete_window(
-            self, is_success: bool, count_of_delete_records: int = 0
+        self, is_success: bool, count_of_delete_records: int = 0
     ) -> None:
         self.__after_delete_dialog = AfterDeleteWindow()
         if not is_success:
@@ -235,7 +250,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             )
 
     def __delete_records_in_main(
-            self, fio_user, address, birthday, date_of_admission, fio_doctor
+        self, fio_user, address, birthday, date_of_admission, fio_doctor
     ) -> None:
         all_records = self.__filter_records(
             fio_user, address, birthday, date_of_admission, fio_doctor
@@ -251,7 +266,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.__confirm_dialog.exec()
 
     def __on_delete_result(
-            self, confirmed: bool, records: List[ClinicInfoBase]
+        self, confirmed: bool, records: List[ClinicInfoBase]
     ) -> None:
         if confirmed:
             if self.__is_work_in_db:
@@ -301,7 +316,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
 
     def __save_data_into_file(self) -> None:
-        if len(self._records)>0:
+        if len(self._records) > 0:
             self.__dialog_save = SaveWindow()
             self.__dialog_save.cancel.connect(lambda save: self.__result_save(save))
             self.__dialog_save.exec()
@@ -311,10 +326,7 @@ class MainWindow(PaginationMixin, QMainWindow):
     def __result_save(self, save: bool) -> None:
         if save:
             filename, _ = QFileDialog.getSaveFileName(
-                self,
-                "Сохранить файл",
-                "",
-                "XML Files (*.xml);;All Files (*)"
+                self, "Сохранить файл", "", "XML Files (*.xml);;All Files (*)"
             )
             if not filename:
                 return
@@ -332,19 +344,25 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__exit()
 
     def __save_to_db(self) -> None:
-        if len(self._records)>0:
+        if len(self._records) > 0:
             self.__dialog_confirm_to_save = ConfirmToDbWindow()
-            self.__dialog_confirm_to_save.confirm_to_db.connect(lambda confirmed: self.__on_save_confirm_to_save(confirmed))
+            self.__dialog_confirm_to_save.confirm_to_db.connect(
+                lambda confirmed: self.__on_save_confirm_to_save(confirmed)
+            )
             self.__dialog_confirm_to_save.exec()
         else:
-            QMessageBox.critical(self, "Ошибка", f"Нельзя сохранить в базу данных пустой список записей!")
+            QMessageBox.critical(
+                self, "Ошибка", f"Нельзя сохранить в базу данных пустой список записей!"
+            )
 
     def __on_save_confirm_to_save(self, confirmed: bool) -> None:
         if confirmed:
             try:
                 self.__clinic_info_service.save_new_clinic_info(self._records)
-                QMessageBox.information(self, "Успех", f"Данные успешно занесены в базу данных!")
+                QMessageBox.information(
+                    self, "Успех", f"Данные успешно занесены в базу данных!"
+                )
             except Exception as e:
-                QMessageBox.critical(self, "Ошибка", f"Не удалось занести данные в базу данных")
-
-
+                QMessageBox.critical(
+                    self, "Ошибка", f"Не удалось занести данные в базу данных"
+                )
