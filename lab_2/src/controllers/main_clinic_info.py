@@ -103,6 +103,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
         if len(self._records)>0:
             self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
+            self.ui.label_count_records.setText(str(len(self._records)))
         else:
             self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_other)
 
@@ -300,9 +301,12 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
 
     def __save_data_into_file(self) -> None:
-        self.__dialog_save = SaveWindow()
-        self.__dialog_save.cancel.connect(lambda save: self.__result_save(save))
-        self.__dialog_save.exec()
+        if len(self._records)>0:
+            self.__dialog_save = SaveWindow()
+            self.__dialog_save.cancel.connect(lambda save: self.__result_save(save))
+            self.__dialog_save.exec()
+        else:
+            self.__exit()
 
     def __result_save(self, save: bool) -> None:
         if save:

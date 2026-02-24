@@ -623,6 +623,21 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.label_all_records)
 
+        self.horizontalSpacer_9 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_9)
+
+        self.label_count_records = QLabel(self.frame_18)
+        self.label_count_records.setObjectName(u"label_count_records")
+        font6 = QFont()
+        font6.setFamilies([u"Arial"])
+        font6.setPointSize(14)
+        font6.setBold(False)
+        self.label_count_records.setFont(font6)
+        self.label_count_records.setStyleSheet(u"color:rgb(255, 255, 255);")
+
+        self.horizontalLayout_8.addWidget(self.label_count_records)
+
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_5)
@@ -631,11 +646,11 @@ class Ui_MainWindow(object):
         self.button_search.setObjectName(u"button_search")
         self.button_search.setMinimumSize(QSize(100, 0))
         self.button_search.setMaximumSize(QSize(150, 16777215))
-        font6 = QFont()
-        font6.setFamilies([u"Arial"])
-        font6.setBold(True)
-        font6.setItalic(False)
-        self.button_search.setFont(font6)
+        font7 = QFont()
+        font7.setFamilies([u"Arial"])
+        font7.setBold(True)
+        font7.setItalic(False)
+        self.button_search.setFont(font7)
         self.button_search.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.button_search.setStyleSheet(u"QPushButton {\n"
 "    background-color: #1a181a;\n"
@@ -763,7 +778,7 @@ class Ui_MainWindow(object):
         self.button_back_to_table = QPushButton(self.frame_22)
         self.button_back_to_table.setObjectName(u"button_back_to_table")
         self.button_back_to_table.setMaximumSize(QSize(200, 16777215))
-        self.button_back_to_table.setFont(font6)
+        self.button_back_to_table.setFont(font7)
         self.button_back_to_table.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.button_back_to_table.setStyleSheet(u"QPushButton {\n"
 "    background-color: #1a181a;\n"
@@ -871,11 +886,11 @@ class Ui_MainWindow(object):
         self.label_all_records_2 = QLabel(self.frame_19)
         self.label_all_records_2.setObjectName(u"label_all_records_2")
         self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
-        font7 = QFont()
-        font7.setFamilies([u"Arial"])
-        font7.setPointSize(10)
-        font7.setBold(False)
-        self.label_all_records_2.setFont(font7)
+        font8 = QFont()
+        font8.setFamilies([u"Arial"])
+        font8.setPointSize(10)
+        font8.setBold(False)
+        self.label_all_records_2.setFont(font8)
         self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_12.addWidget(self.label_all_records_2)
@@ -942,11 +957,11 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.AlternateBase, brush7)
         palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ToolTipBase, brush8)
         self.comboBox_pagination.setPalette(palette)
-        font8 = QFont()
-        font8.setFamilies([u"Arial"])
-        font8.setPointSize(16)
-        font8.setBold(True)
-        self.comboBox_pagination.setFont(font8)
+        font9 = QFont()
+        font9.setFamilies([u"Arial"])
+        font9.setPointSize(16)
+        font9.setBold(True)
+        self.comboBox_pagination.setFont(font9)
         self.comboBox_pagination.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.comboBox_pagination.setStyleSheet(u"padding:10px;\n"
 "text-align:center;\n"
@@ -1067,10 +1082,10 @@ class Ui_MainWindow(object):
 
         self.label_medical_app = QLabel(self.frame_29)
         self.label_medical_app.setObjectName(u"label_medical_app")
-        font9 = QFont()
-        font9.setFamilies([u"Arial"])
-        font9.setPointSize(10)
-        self.label_medical_app.setFont(font9)
+        font10 = QFont()
+        font10.setFamilies([u"Arial"])
+        font10.setPointSize(10)
+        self.label_medical_app.setFont(font10)
         self.label_medical_app.setStyleSheet(u"border:none;\n"
 "")
 
@@ -1089,7 +1104,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(25, 0, 0, 0)
         self.label_last_medical_app = QLabel(self.frame_30)
         self.label_last_medical_app.setObjectName(u"label_last_medical_app")
-        self.label_last_medical_app.setFont(font9)
+        self.label_last_medical_app.setFont(font10)
         self.label_last_medical_app.setStyleSheet(u"border:none;\n"
 "\n"
 "")
@@ -1127,7 +1142,7 @@ class Ui_MainWindow(object):
 
         self.label_address_clinic = QLabel(self.frame_34)
         self.label_address_clinic.setObjectName(u"label_address_clinic")
-        self.label_address_clinic.setFont(font9)
+        self.label_address_clinic.setFont(font10)
 
         self.horizontalLayout_22.addWidget(self.label_address_clinic)
 
@@ -1152,7 +1167,7 @@ class Ui_MainWindow(object):
 
         self.label_email_clinic = QLabel(self.frame_35)
         self.label_email_clinic.setObjectName(u"label_email_clinic")
-        self.label_email_clinic.setFont(font9)
+        self.label_email_clinic.setFont(font10)
 
         self.horizontalLayout_23.addWidget(self.label_email_clinic)
 
@@ -1190,7 +1205,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.tab_widget_main.setCurrentIndex(1)
-        self.tab_widget_work_state.setCurrentIndex(0)
+        self.tab_widget_work_state.setCurrentIndex(1)
         self.tab_widget_header.setCurrentIndex(0)
         self.tab_widget_records.setCurrentIndex(2)
         self.tab_widget_footer.setCurrentIndex(0)
@@ -1221,7 +1236,8 @@ class Ui_MainWindow(object):
         self.button_load_from_file.setText(QCoreApplication.translate("MainWindow", u"\u0444\u0430\u0439\u043b\u0430", None))
         self.button_load_from_db.setText(QCoreApplication.translate("MainWindow", u"\u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445", None))
         self.tab_widget_work_state.setTabText(self.tab_widget_work_state.indexOf(self.tab_load_data), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0434\u0430\u043d\u043d\u044b\u0445", None))
-        self.label_all_records.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0432\u0441\u0435\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439", None))
+        self.label_all_records.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", None))
+        self.label_count_records.setText("")
         self.button_search.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0439\u0442\u0438", None))
         self.tab_widget_header.setTabText(self.tab_widget_header.indexOf(self.tab_header_search), QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
         self.tab_widget_header.setTabText(self.tab_widget_header.indexOf(self.tab_header_other), QCoreApplication.translate("MainWindow", u"\u041f\u0443\u0441\u0442\u043e\u0439 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a", None))
