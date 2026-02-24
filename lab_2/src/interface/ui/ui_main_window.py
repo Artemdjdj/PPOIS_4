@@ -1283,10 +1283,3 @@ class Ui_MainWindow(object):
         self.tab_widget_footer.setTabText(self.tab_widget_footer.indexOf(self.tab_footer), QCoreApplication.translate("MainWindow", u"\u0424\u0443\u0442\u0435\u0440", None))
         self.tab_widget_main.setTabText(self.tab_widget_main.indexOf(self.tab_main_page), QCoreApplication.translate("MainWindow", u"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", None))
     # retranslateUi
-
-        self.tab_widget_main.tabBar().hide()
-        self.tab_widget_header.tabBar().hide()
-        self.tab_widget_records.tabBar().hide()
-        self.tab_widget_header.tabBar().hide()
-        self.tab_widget_footer.tabBar().hide()
-        self.tab_widget_work_state.tabBar().hide()

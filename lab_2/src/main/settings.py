@@ -1,23 +1,27 @@
 MAIN_WINDOW_ICON = ":/images/images/doctor_without_background.png"
+WIDTH_FIO_USER = 220
+WIDTH_ADDRESS = 250
+WIDTH_DATE = 100
+WIDTH_CONCLUSION = 500
 
-stylesheet_for_page_in_pagination = """
+STYLESHEET_FOR_PAGE_IN_PAGINATION = """
                                     padding:15px;
                                     background-color:rgb(67, 153, 143);
                                     border-radius:25px;
                                     """
 
-stylesheet_for_active_page_in_pagination = """
+STYLESHEET_FOR_ACTIVE_PAGE_IN_PAGINATION = """
                                     padding:15px;
                                     background-color:rgb(138, 197, 62);
                                     border-radius:25px;
                                     """
 
-stylesheet_for_not_visible_button = """
+STYLESHEET_FOR_NOT_VISIBLE_BUTTON = """
                                     border:none;
                                     background-color:none;
                                     """
 
-stylesheet_for_button_save_to_db = """
+STYLESHEET_FOR_BUTTON_SAVE_TO_DB = """
                                     QPushButton{
                                         padding:13px;
                                         background-color:rgb(64, 43, 170);
@@ -32,7 +36,9 @@ stylesheet_for_button_save_to_db = """
                                     }
                                     """
 
-label_delete_nothing_text = "К сожалению удалить нечего!"
-image_delete_nothing = ":/images/images/unsuccessful_delete2.png"
+LABEL_DELETE_NOTHING_TEXT = "К сожалению удалить нечего!"
+IMAGE_DELETE_NOTHING = ":/images/images/unsuccessful_delete2.png"
 
-image_delete_successful = ":/images/images/successful_delete_2.png"
+IMAGE_DELETE_SUCCESSFUL = ":/images/images/successful_delete_2.png"
+
+

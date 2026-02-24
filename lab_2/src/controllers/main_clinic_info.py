@@ -1,7 +1,7 @@
 import xml.sax as sax
 from datetime import date
 from typing import Optional, List
-from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox
+from PySide6.QtWidgets import QMainWindow, QTreeWidgetItem, QFileDialog, QMessageBox, QTableWidget
 from PySide6.QtGui import QIcon, QPixmap
 
 from src.data_processing.data_manager.loader import XMLLoader
@@ -13,9 +13,13 @@ from src.controllers.save_clinic_info import SaveWindow
 from src.controllers.confirmation_to_db import ConfirmToDbWindow
 from src.main.paginator import PaginationMixin
 from src.main.settings import (
-    image_delete_successful,
-    stylesheet_for_not_visible_button,
-    stylesheet_for_button_save_to_db,
+    IMAGE_DELETE_SUCCESSFUL,
+    STYLESHEET_FOR_NOT_VISIBLE_BUTTON,
+    STYLESHEET_FOR_BUTTON_SAVE_TO_DB,
+    WIDTH_FIO_USER,
+    WIDTH_ADDRESS,
+    WIDTH_DATE,
+    WIDTH_CONCLUSION
 )
 from src.controllers.search_clinic_info import SearchWindow
 from src.data_processing.db.models.clinic import ClinicInfoBase
@@ -24,7 +28,7 @@ from src.data_processing.db.db_manager import DatabaseManager
 from src.interface.ui.ui_main_window import Ui_MainWindow
 from src.controllers.add_clinic_info import AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON
-from src.main.settings import label_delete_nothing_text, image_delete_nothing
+from src.main.settings import LABEL_DELETE_NOTHING_TEXT, IMAGE_DELETE_NOTHING
 
 
 class MainWindow(PaginationMixin, QMainWindow):
@@ -41,6 +45,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__clinic_info_service: ClinicInfoService = ClinicInfoService(
             DatabaseManager()
         )
+        self.__basic_settings_for_table()
         # пагинация
         # self.__current_page: Optional[int] = None
         # self.__count_pages: Optional[int] = None
@@ -66,6 +71,23 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.ui.tab_footer,
             self.ui.tab_pagination,
         )
+
+    def __basic_settings_for_table(self)->None:
+        self.ui.tab_widget_main.tabBar().hide()
+        self.ui.tab_widget_header.tabBar().hide()
+        self.ui.tab_widget_records.tabBar().hide()
+        self.ui.tab_widget_header.tabBar().hide()
+        self.ui.tab_widget_footer.tabBar().hide()
+        self.ui.tab_widget_work_state.tabBar().hide()
+        self.ui.table_of_recording.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.ui.table_of_recording.setSelectionMode(QTableWidget.NoSelection)
+        self.ui.table_of_recording.setColumnWidth(0, WIDTH_FIO_USER)
+        self.ui.table_of_recording.setColumnWidth(1, WIDTH_ADDRESS)
+        self.ui.table_of_recording.setColumnWidth(2, WIDTH_DATE)
+        self.ui.table_of_recording.setColumnWidth(3, WIDTH_DATE)
+        self.ui.table_of_recording.setColumnWidth(4, WIDTH_FIO_USER)
+        self.ui.table_of_recording.setColumnWidth(5, WIDTH_CONCLUSION)
+
 
     def __basic_settings_with_tabs(self) -> None:
         self.ui.tab_widget_main.setCurrentWidget(self.ui.tab_start_page)
@@ -117,7 +139,7 @@ class MainWindow(PaginationMixin, QMainWindow):
 
     def __load_data_from_db(self) -> None:
         self.__is_work_in_db = True
-        self.ui.button_save_to_db.setStyleSheet(stylesheet_for_not_visible_button)
+        self.ui.button_save_to_db.setStyleSheet(STYLESHEET_FOR_NOT_VISIBLE_BUTTON)
         self.ui.button_save_to_db.setEnabled(False)
         self.ui.button_save_to_db.setText("")
         self._records = self.__clinic_info_service.get_all_records_clinic_info()
@@ -125,7 +147,7 @@ class MainWindow(PaginationMixin, QMainWindow):
 
     def __load_data_from_xml(self) -> None:
         self.__is_work_in_db = False
-        self.ui.button_save_to_db.setStyleSheet(stylesheet_for_button_save_to_db)
+        self.ui.button_save_to_db.setStyleSheet(STYLESHEET_FOR_BUTTON_SAVE_TO_DB)
         self.ui.button_save_to_db.setEnabled(True)
         self.ui.button_save_to_db.setText("Загрузить \n в бд")
         self._records = self.__choose_load_file()
@@ -236,17 +258,17 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.__after_delete_dialog = AfterDeleteWindow()
         if not is_success:
             self.__after_delete_dialog.ui.label_after_delete_message.setText(
-                label_delete_nothing_text
+                LABEL_DELETE_NOTHING_TEXT
             )
             self.__after_delete_dialog.ui.label_after_delete.setPixmap(
-                QPixmap(image_delete_nothing)
+                QPixmap(IMAGE_DELETE_NOTHING)
             )
         else:
             self.__after_delete_dialog.ui.label_after_delete_message.setText(
                 f"Успешно удалены элементы ({count_of_delete_records})!"
             )
             self.__after_delete_dialog.ui.label_after_delete.setPixmap(
-                QPixmap(image_delete_successful)
+                QPixmap(IMAGE_DELETE_SUCCESSFUL)
             )
 
     def __delete_records_in_main(

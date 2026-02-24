@@ -7,9 +7,9 @@ from PySide6.QtWidgets import (
 
 from src.main.table_recorder import TableRecorder
 from src.main.settings import (
-    stylesheet_for_not_visible_button,
-    stylesheet_for_active_page_in_pagination,
-    stylesheet_for_page_in_pagination,
+    STYLESHEET_FOR_NOT_VISIBLE_BUTTON,
+    STYLESHEET_FOR_ACTIVE_PAGE_IN_PAGINATION,
+    STYLESHEET_FOR_PAGE_IN_PAGINATION,
 )
 
 
@@ -93,26 +93,26 @@ class Paginator:
                 self.__apply_style_to_button(self.__button_first)
                 self.__apply_style_to_button(
                     self.__button_last,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text=f"{self.__count_pages}",
                 )
                 self.__apply_style_to_button(
                     self.__button_next,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text=">",
                 )
             elif self.__current_page == self.__count_pages:
                 self.__apply_style_to_button(
                     self.__button_prev,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text="<",
                 )
                 self.__apply_style_to_button(
                     self.__button_first,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text="1",
                 )
@@ -121,36 +121,36 @@ class Paginator:
             else:
                 self.__apply_style_to_button(
                     self.__button_prev,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text="<",
                 )
                 self.__apply_style_to_button(
                     self.__button_next,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text=">",
                 )
                 self.__apply_style_to_button(
                     self.__button_first,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text="1",
                 )
                 self.__apply_style_to_button(
                     self.__button_last,
-                    style=stylesheet_for_page_in_pagination,
+                    style=STYLESHEET_FOR_PAGE_IN_PAGINATION,
                     enabled=True,
                     text=f"{self.__count_pages}",
                 )
                 self.__apply_style_to_button(
                     self.__button_current,
-                    style=stylesheet_for_active_page_in_pagination,
+                    style=STYLESHEET_FOR_ACTIVE_PAGE_IN_PAGINATION,
                     enabled=True,
                 )
         self.__apply_style_to_button(
             self.__button_current,
-            style=stylesheet_for_active_page_in_pagination,
+            style=STYLESHEET_FOR_ACTIVE_PAGE_IN_PAGINATION,
             enabled=True,
             text=f"{self.__current_page}",
         )
@@ -158,7 +158,7 @@ class Paginator:
     def __apply_style_to_button(
         self,
         button: QPushButton,
-        style: str = stylesheet_for_not_visible_button,
+        style: str = STYLESHEET_FOR_NOT_VISIBLE_BUTTON,
         enabled: bool = False,
         text: str = "",
     ) -> None:
