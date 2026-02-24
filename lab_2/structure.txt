@@ -6,6 +6,8 @@ lab_2
 │
 ├── qrc/
 │
+├── readme_images/
+│
 ├── release/
 │
 ├── src/

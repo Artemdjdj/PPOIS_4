@@ -4,7 +4,7 @@
 
 На рисунке 1 представлен вид, в котором должны выводиться записи.
 
-<img src="images/variant.png">
+<img src="readme_images/variant.png">
 <div align="center">
   Рисунок 1 - вид массива записей.
 </div>
