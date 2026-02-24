@@ -101,8 +101,10 @@ class MainWindow(PaginationMixin, QMainWindow):
         self._paginator.start_pagination()
         self._load_data_to_table()
         self.ui.tab_widget_work_state.setCurrentWidget(self.ui.tab_work_with_data)
-        self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
-        self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
+        if len(self._records)>0:
+            self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_search)
+        else:
+            self.ui.tab_widget_header.setCurrentWidget(self.ui.tab_header_other)
 
     def __load_data_from_db(self) -> None:
         self.__is_work_in_db = True
@@ -262,7 +264,8 @@ class MainWindow(PaginationMixin, QMainWindow):
             if self.__is_work_in_db:
                 self.__load_data_from_db()
             else:
-                self._load_data_to_table()
+                # self._load_data_to_table()
+                self.__base_settings_to_show_data()
         else:
             self.__create_after_delete_window(is_success=False)
             self.__after_delete_dialog.exec()
