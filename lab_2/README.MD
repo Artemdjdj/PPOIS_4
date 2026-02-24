@@ -110,4 +110,4 @@ pyinstaller \
   --hidden-import PySide6.QtWidgets \
   src/main/main.py
 ```
- В корне проекта создастся папка *release*, в которой в паке *dist* находиться .exe файл.
+В корне проекта создастся папка *release*, в которой, внутри папки *dist*, находится .exe-файл.
