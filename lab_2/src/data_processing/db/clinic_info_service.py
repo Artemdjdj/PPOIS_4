@@ -1,5 +1,5 @@
 from typing import List
-from sqlalchemy import delete
+from sqlalchemy import delete, insert
 from src.data_processing.db.db_manager import DatabaseManager
 from src.data_processing.db.models.clinic import ClinicInfoBase
 
@@ -51,7 +51,20 @@ class ClinicInfoService:
         session = self.__db_manager.session
         try:
             session.query(ClinicInfoBase).delete()
-            session.add_all(new_records)
+            records_dicts = [
+                {
+                    'fio_patient': r.fio_patient,
+                    'address': r.address,
+                    'birthday': r.birthday,
+                    'date_of_admission': r.date_of_admission,
+                    'fio_doctor': r.fio_doctor,
+                    'conclusion': r.conclusion,
+                }
+                for r in new_records
+            ]
+            if records_dicts:
+                stmt = insert(ClinicInfoBase).values(records_dicts)
+                session.execute(stmt)
             session.commit()
         except Exception:
             session.rollback()

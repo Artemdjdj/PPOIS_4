@@ -28,7 +28,7 @@ class Ui_SearchWindow(object):
             SearchWindow.setObjectName(u"SearchWindow")
         SearchWindow.resize(1400, 722)
         SearchWindow.setMinimumSize(QSize(1400, 722))
-        SearchWindow.setMaximumSize(QSize(1400, 942))
+        SearchWindow.setMaximumSize(QSize(1400, 722))
         SearchWindow.setStyleSheet(u"background-color:none;")
         self.verticalLayout = QVBoxLayout(SearchWindow)
         self.verticalLayout.setSpacing(0)

@@ -52,6 +52,10 @@ class SearchWindow(PaginationMixin, QDialog):
         self._paginator.start_pagination()
         self._records = records
         self._load_data_to_table()
+        if len(self._records)>0:
+            QMessageBox.information(self, "Найденные записи", f"Количество найденных записей: {len(self._records)}")
+        else:
+            QMessageBox.critical(self, "Ничего не найдено", f"Возможно вы ошиблись при вводе данных")
 
     def __add_functions(self) -> None:
         self._connect_pagination_buttons()
