@@ -178,28 +178,6 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_incorrect_user">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color:rgb(156, 15, 29);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
                          <widget class="QFrame" name="frame_32">
                           <property name="frameShape">
                            <enum>QFrame::Shape::StyledPanel</enum>
@@ -281,28 +259,6 @@ padding:4px;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_incorrect_address">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color:rgb(156, 15, 29);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
                          <widget class="QFrame" name="frame_34">
                           <property name="frameShape">
                            <enum>QFrame::Shape::StyledPanel</enum>
@@ -377,28 +333,6 @@ padding:4px;</string>
                          <widget class="QLabel" name="label_date_of_birthday">
                           <property name="text">
                            <string>Дата рождения (2006-02-12)</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_incorrect_birthday">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color:rgb(156, 15, 29);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
                           </property>
                          </widget>
                         </item>
@@ -484,28 +418,6 @@ padding:4px;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_incorrect_admission">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color:rgb(156, 15, 29);</string>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
                          <widget class="QFrame" name="frame_38">
                           <property name="frameShape">
                            <enum>QFrame::Shape::StyledPanel</enum>
@@ -583,35 +495,6 @@ padding:4px;</string>
                          <widget class="QLabel" name="label_doctor_fio">
                           <property name="text">
                            <string>ФИО врача (Архипенко Михаил Иванович)</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_incorrect_fio">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>12</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Arial</family>
-                            <pointsize>8</pointsize>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">color:rgb(156, 15, 29);
-</string>
-                          </property>
-                          <property name="text">
-                           <string/>
                           </property>
                          </widget>
                         </item>

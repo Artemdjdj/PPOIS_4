@@ -173,7 +173,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             QMessageBox.critical(
                 self,
                 "Ошибка",
-                f"Не удалось открыть файл или структура данных файле нарушена:\n{e}",
+                f"Некорректная данные в файле:\n{e}",
             )
         return None
 
@@ -226,10 +226,10 @@ class MainWindow(PaginationMixin, QMainWindow):
         if address:
             all_records = [r for r in all_records if r.address == address]
         if birthday:
-            all_records = [r for r in all_records if r.birthday == birthday]
+            all_records = [r for r in all_records if str(r.birthday) == str(birthday)]
         if date_of_admission:
             all_records = [
-                r for r in all_records if r.date_of_admission == date_of_admission
+                r for r in all_records if str(r.date_of_admission) == str(date_of_admission)
             ]
         if fio_doctor:
             all_records = [r for r in all_records if r.fio_doctor == fio_doctor]
@@ -241,6 +241,7 @@ class MainWindow(PaginationMixin, QMainWindow):
         all_records = self.__filter_records(
             fio_user, address, birthday, date_of_admission, fio_doctor
         )
+
         self.__dialog.set_records(all_records)
 
     def __delete_records(self) -> None:
@@ -321,7 +322,6 @@ class MainWindow(PaginationMixin, QMainWindow):
         for name, record in enumerate(self._records):
             item = QTreeWidgetItem(tree)
             item.setText(0, f"Запись номер: {name + 1}")
-
             child = QTreeWidgetItem(item)
             child.setText(0, f"ФИО пациента: {record.fio_patient}")
             child2 = QTreeWidgetItem(item)

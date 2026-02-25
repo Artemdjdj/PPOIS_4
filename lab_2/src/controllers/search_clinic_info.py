@@ -1,7 +1,7 @@
 from datetime import date
 from typing import List
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog, QMessageBox
 from PySide6.QtGui import QIcon
 
 from src.main.paginator import PaginationMixin
@@ -60,12 +60,16 @@ class SearchWindow(PaginationMixin, QDialog):
 
     def __save_data(self) -> None:
         try:
-            self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_pagination)
             fio_user, address, birthday, date_of_admission, fio_doctor = (
                 self.__data_saver.save_data()
             )
             self.submitted_search.emit(
                 fio_user, address, birthday, date_of_admission, fio_doctor
             )
+
         except Exception as e:
-            pass
+            self.ui.tab_widget_records.setCurrentWidget(self.ui.tab_no_records)
+            self.ui.tab_widget_footer.setCurrentWidget(self.ui.tab_footer)
+            QMessageBox.critical(
+                self, "Ошибка", f"{e}"
+            )

@@ -3,6 +3,9 @@ from abc import ABC, abstractmethod
 from typing import List, Any, Dict
 
 from src.data_processing.db.models.clinic import ClinicInfoBase
+from src.validator.address_validator import BelarusAddressValidator
+from src.validator.date_validator import BirthdayValidator, DateOfAdmissionValidator
+from src.validator.fio_validator import FioUserValidator, FioDoctorValidator
 
 
 class BasicLoader(ABC):
@@ -59,6 +62,21 @@ class XMLLoader(BasicLoader):
         sax.parse(self._path, handler)
         records = []
         for record in dict_records:
+            validator_fio_user = FioUserValidator(record["fio_patient"])
+            validator_fio_user.validate()
+
+            validator_address = BelarusAddressValidator(record["address"])
+            validator_address.validate()
+
+            validator_birthday = BirthdayValidator(record["birthday"])
+            validator_birthday.validate()
+
+            validator_date_of_admission = DateOfAdmissionValidator(record["date_of_admission"])
+            validator_date_of_admission.validate()
+
+            validator_fio_doctor = FioDoctorValidator(record["fio_doctor"])
+            validator_fio_doctor.validate()
+
             clinic_info = ClinicInfoBase(
                 fio_patient=record["fio_patient"],
                 address=record["address"],
@@ -68,4 +86,5 @@ class XMLLoader(BasicLoader):
                 conclusion=record["conclusion"],
             )
             records.append(clinic_info)
+
         return records

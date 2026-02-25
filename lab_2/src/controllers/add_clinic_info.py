@@ -1,6 +1,6 @@
 from datetime import date
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog, QMessageBox
 from PySide6.QtGui import QIcon
 from src.interface.ui.ui_adding_data_window import Ui_AddingDataWindow
 from src.main.settings import MAIN_WINDOW_ICON
@@ -32,15 +32,12 @@ class AddingDataWindow(QDialog):
     def __check_data(self) -> None:
         validator_fio_user = FioUserValidator(self.ui.line_edit_fio_user.text())
         validator_fio_user.validate()
-        self.ui.label_incorrect_user.setText("")
 
         validator_address = BelarusAddressValidator(self.ui.line_edit_address.text())
         validator_address.validate()
-        self.ui.label_incorrect_address.setText("")
 
         validator_fio_doctor = FioDoctorValidator(self.ui.line_edit_doctor.text())
         validator_fio_doctor.validate()
-        self.ui.label_incorrect_fio.setText("")
 
     def __save_data(self) -> None:
         try:
@@ -55,17 +52,12 @@ class AddingDataWindow(QDialog):
                 fio_user, address, birthday, date_of_admission, fio_doctor, conclusion
             )
             self.accept()
-        except FioUserError as e:
-            self.ui.label_incorrect_user.setText(f"{e}")
-        except AddressError as e:
-            self.ui.label_incorrect_address.setText(f"{e}")
-        except FioDoctorError as e:
-            self.ui.label_incorrect_fio.setText(f"{e}")
+        except Exception as e:
+            QMessageBox.critical(
+                self, "Ошибка", f"{e}"
+            )
 
     def __clear_data(self):
-        self.ui.label_incorrect_user.setText("")
-        self.ui.label_incorrect_address.setText("")
-        self.ui.label_incorrect_fio.setText("")
         self.ui.line_edit_fio_user.clear()
         self.ui.line_edit_address.clear()
         self.ui.line_edit_doctor.clear()

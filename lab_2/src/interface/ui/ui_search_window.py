@@ -93,14 +93,6 @@ class Ui_SearchWindow(object):
 
         self.verticalLayout_5.addWidget(self.label_user)
 
-        self.label_incorrect_user = QLabel(self.frame_30)
-        self.label_incorrect_user.setObjectName(u"label_incorrect_user")
-        self.label_incorrect_user.setMinimumSize(QSize(0, 12))
-        self.label_incorrect_user.setMaximumSize(QSize(16777215, 12))
-        self.label_incorrect_user.setStyleSheet(u"color:rgb(156, 15, 29);")
-
-        self.verticalLayout_5.addWidget(self.label_incorrect_user)
-
         self.frame_32 = QFrame(self.frame_30)
         self.frame_32.setObjectName(u"frame_32")
         self.frame_32.setFrameShape(QFrame.Shape.StyledPanel)
@@ -143,14 +135,6 @@ class Ui_SearchWindow(object):
         self.label_address.setObjectName(u"label_address")
 
         self.verticalLayout_6.addWidget(self.label_address)
-
-        self.label_incorrect_address = QLabel(self.frame_33)
-        self.label_incorrect_address.setObjectName(u"label_incorrect_address")
-        self.label_incorrect_address.setMinimumSize(QSize(0, 12))
-        self.label_incorrect_address.setMaximumSize(QSize(16777215, 12))
-        self.label_incorrect_address.setStyleSheet(u"color:rgb(156, 15, 29);")
-
-        self.verticalLayout_6.addWidget(self.label_incorrect_address)
 
         self.frame_34 = QFrame(self.frame_33)
         self.frame_34.setObjectName(u"frame_34")
@@ -195,14 +179,6 @@ class Ui_SearchWindow(object):
 
         self.verticalLayout_11.addWidget(self.label_date_of_birthday)
 
-        self.label_incorrect_birthday = QLabel(self.frame_35)
-        self.label_incorrect_birthday.setObjectName(u"label_incorrect_birthday")
-        self.label_incorrect_birthday.setMinimumSize(QSize(0, 12))
-        self.label_incorrect_birthday.setMaximumSize(QSize(16777215, 12))
-        self.label_incorrect_birthday.setStyleSheet(u"color:rgb(156, 15, 29);")
-
-        self.verticalLayout_11.addWidget(self.label_incorrect_birthday)
-
         self.frame_36 = QFrame(self.frame_35)
         self.frame_36.setObjectName(u"frame_36")
         self.frame_36.setFrameShape(QFrame.Shape.StyledPanel)
@@ -246,14 +222,6 @@ class Ui_SearchWindow(object):
 
         self.verticalLayout_13.addWidget(self.label_date_of_admission)
 
-        self.label_incorrect_admission = QLabel(self.frame_37)
-        self.label_incorrect_admission.setObjectName(u"label_incorrect_admission")
-        self.label_incorrect_admission.setMinimumSize(QSize(0, 12))
-        self.label_incorrect_admission.setMaximumSize(QSize(16777215, 12))
-        self.label_incorrect_admission.setStyleSheet(u"color:rgb(156, 15, 29);")
-
-        self.verticalLayout_13.addWidget(self.label_incorrect_admission)
-
         self.frame_38 = QFrame(self.frame_37)
         self.frame_38.setObjectName(u"frame_38")
         self.frame_38.setFrameShape(QFrame.Shape.StyledPanel)
@@ -294,19 +262,6 @@ class Ui_SearchWindow(object):
         self.label_doctor_fio.setObjectName(u"label_doctor_fio")
 
         self.verticalLayout_7.addWidget(self.label_doctor_fio)
-
-        self.label_incorrect_fio = QLabel(self.frame_39)
-        self.label_incorrect_fio.setObjectName(u"label_incorrect_fio")
-        self.label_incorrect_fio.setMinimumSize(QSize(0, 12))
-        self.label_incorrect_fio.setMaximumSize(QSize(16777215, 12))
-        font = QFont()
-        font.setFamilies([u"Arial"])
-        font.setPointSize(8)
-        self.label_incorrect_fio.setFont(font)
-        self.label_incorrect_fio.setStyleSheet(u"color:rgb(156, 15, 29);\n"
-"")
-
-        self.verticalLayout_7.addWidget(self.label_incorrect_fio)
 
         self.frame_40 = QFrame(self.frame_39)
         self.frame_40.setObjectName(u"frame_40")
@@ -422,11 +377,11 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_4.setContentsMargins(70, 0, 60, 0)
         self.main_label = QLabel(self.frame_11)
         self.main_label.setObjectName(u"main_label")
-        font1 = QFont()
-        font1.setFamilies([u"Arial"])
-        font1.setPointSize(14)
-        font1.setBold(True)
-        self.main_label.setFont(font1)
+        font = QFont()
+        font.setFamilies([u"Arial"])
+        font.setPointSize(14)
+        font.setBold(True)
+        self.main_label.setFont(font)
         self.main_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_4.addWidget(self.main_label)
@@ -573,11 +528,11 @@ class Ui_SearchWindow(object):
         self.label_all_records_2 = QLabel(self.frame_19)
         self.label_all_records_2.setObjectName(u"label_all_records_2")
         self.label_all_records_2.setMaximumSize(QSize(150, 16777215))
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        font2.setPointSize(9)
-        font2.setBold(False)
-        self.label_all_records_2.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Arial"])
+        font1.setPointSize(9)
+        font1.setBold(False)
+        self.label_all_records_2.setFont(font1)
         self.label_all_records_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_12.addWidget(self.label_all_records_2)
@@ -644,11 +599,11 @@ class Ui_SearchWindow(object):
         palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.AlternateBase, brush7)
         palette.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.ToolTipBase, brush8)
         self.comboBox_pagination.setPalette(palette)
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(16)
-        font3.setBold(True)
-        self.comboBox_pagination.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(16)
+        font2.setBold(True)
+        self.comboBox_pagination.setFont(font2)
         self.comboBox_pagination.setStyleSheet(u"padding:10px;\n"
 "text-align:center;\n"
 "")
@@ -669,11 +624,11 @@ class Ui_SearchWindow(object):
         self.button_prev = QPushButton(self.result_pagination)
         self.button_prev.setObjectName(u"button_prev")
         self.button_prev.setMaximumSize(QSize(50, 50))
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(12)
-        font4.setBold(False)
-        self.button_prev.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Arial"])
+        font3.setPointSize(12)
+        font3.setBold(False)
+        self.button_prev.setFont(font3)
         self.button_prev.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(64, 145, 136);\n"
 "border-radius:25px;")
@@ -683,7 +638,7 @@ class Ui_SearchWindow(object):
         self.button_first = QPushButton(self.result_pagination)
         self.button_first.setObjectName(u"button_first")
         self.button_first.setMaximumSize(QSize(50, 50))
-        self.button_first.setFont(font4)
+        self.button_first.setFont(font3)
         self.button_first.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -693,7 +648,7 @@ class Ui_SearchWindow(object):
         self.button_current = QPushButton(self.result_pagination)
         self.button_current.setObjectName(u"button_current")
         self.button_current.setMaximumSize(QSize(50, 50))
-        self.button_current.setFont(font4)
+        self.button_current.setFont(font3)
         self.button_current.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(138, 197, 62);\n"
 "border-radius:25px;")
@@ -703,7 +658,7 @@ class Ui_SearchWindow(object):
         self.button_last = QPushButton(self.result_pagination)
         self.button_last.setObjectName(u"button_last")
         self.button_last.setMaximumSize(QSize(50, 50))
-        self.button_last.setFont(font4)
+        self.button_last.setFont(font3)
         self.button_last.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(67, 153, 143);\n"
 "border-radius:25px;")
@@ -713,7 +668,7 @@ class Ui_SearchWindow(object):
         self.button_next = QPushButton(self.result_pagination)
         self.button_next.setObjectName(u"button_next")
         self.button_next.setMaximumSize(QSize(50, 50))
-        self.button_next.setFont(font4)
+        self.button_next.setFont(font3)
         self.button_next.setStyleSheet(u"padding:15px;\n"
 "background-color:rgb(63, 144, 135);\n"
 "border-radius:25px;")
@@ -772,10 +727,10 @@ class Ui_SearchWindow(object):
 
         self.label_medical_app = QLabel(self.frame_29)
         self.label_medical_app.setObjectName(u"label_medical_app")
-        font5 = QFont()
-        font5.setFamilies([u"Arial"])
-        font5.setPointSize(10)
-        self.label_medical_app.setFont(font5)
+        font4 = QFont()
+        font4.setFamilies([u"Arial"])
+        font4.setPointSize(10)
+        self.label_medical_app.setFont(font4)
         self.label_medical_app.setStyleSheet(u"border:none;\n"
 "")
 
@@ -794,7 +749,7 @@ class Ui_SearchWindow(object):
         self.horizontalLayout_24.setContentsMargins(25, 0, 0, 0)
         self.label_last_medical_app = QLabel(self.frame_42)
         self.label_last_medical_app.setObjectName(u"label_last_medical_app")
-        self.label_last_medical_app.setFont(font5)
+        self.label_last_medical_app.setFont(font4)
         self.label_last_medical_app.setStyleSheet(u"border:none;\n"
 "\n"
 "")
@@ -830,7 +785,7 @@ class Ui_SearchWindow(object):
 
         self.label_address_clinic = QLabel(self.frame_44)
         self.label_address_clinic.setObjectName(u"label_address_clinic")
-        self.label_address_clinic.setFont(font5)
+        self.label_address_clinic.setFont(font4)
 
         self.horizontalLayout_25.addWidget(self.label_address_clinic)
 
@@ -855,7 +810,7 @@ class Ui_SearchWindow(object):
 
         self.label_email_clinic = QLabel(self.frame_45)
         self.label_email_clinic.setObjectName(u"label_email_clinic")
-        self.label_email_clinic.setFont(font5)
+        self.label_email_clinic.setFont(font4)
 
         self.horizontalLayout_26.addWidget(self.label_email_clinic)
 
@@ -897,30 +852,25 @@ class Ui_SearchWindow(object):
     def retranslateUi(self, SearchWindow):
         SearchWindow.setWindowTitle(QCoreApplication.translate("SearchWindow", u"Dialog", None))
         self.label_user.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u043f\u0430\u0446\u0438\u0435\u043d\u0442\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
-        self.label_incorrect_user.setText("")
 #if QT_CONFIG(accessibility)
         self.line_edit_fio_user.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
         self.line_edit_fio_user.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0424\u0418\u041e", None))
         self.button_user.setText("")
         self.label_address.setText(QCoreApplication.translate("SearchWindow", u"\u0410\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438 (\u0433. \u041c\u0438\u043d\u0441\u043a, \u0443\u043b. \u041b\u043e\u0431\u0430\u043d\u043a\u0430 23, \u043a\u0432. 55)", None))
-        self.label_incorrect_address.setText("")
         self.line_edit_address.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u043f\u0440\u043e\u043f\u0438\u0441\u043a\u0438", None))
         self.button_address.setText("")
         self.label_date_of_birthday.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f (2006-02-12)", None))
-        self.label_incorrect_birthday.setText("")
         self.line_edit_date_of_birthday.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f", None))
         self.button_date_of_birthday.setText("")
 #if QT_CONFIG(accessibility)
         self.label_date_of_admission.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
         self.label_date_of_admission.setText(QCoreApplication.translate("SearchWindow", u"\u0414\u0430\u0442\u0430 \u043f\u0440\u0438\u0435\u043c\u0430 (2006-02-12)", None))
-        self.label_incorrect_admission.setText("")
         self.line_edit_date_of_admission.setText("")
         self.line_edit_date_of_admission.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 \u043f\u0440\u0438\u0435\u043c\u0430", None))
         self.button_of_admission.setText("")
         self.label_doctor_fio.setText(QCoreApplication.translate("SearchWindow", u"\u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430 (\u0410\u0440\u0445\u0438\u043f\u0435\u043d\u043a\u043e \u041c\u0438\u0445\u0430\u0438\u043b \u0418\u0432\u0430\u043d\u043e\u0432\u0438\u0447)", None))
-        self.label_incorrect_fio.setText("")
         self.line_edit_doctor.setPlaceholderText(QCoreApplication.translate("SearchWindow", u"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0424\u0418\u041e \u0432\u0440\u0430\u0447\u0430", None))
         self.button_doctor_icon.setText("")
         self.button_cancel.setText(QCoreApplication.translate("SearchWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))

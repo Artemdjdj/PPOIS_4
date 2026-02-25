@@ -20,14 +20,18 @@ class DataSaver:
         self.fio_doctor = fio_doctor
 
     def save_data(self) -> tuple[str, str, date | None, date | None, str]:
-        birthday = self.birthday.text()
-        birthday = DateConverter.to_date(self.birthday.text()) if birthday else None
-        date_of_admission = self.date_of_admission.text()
-        date_of_admission = (
-            DateConverter.to_date(self.date_of_admission.text())
-            if date_of_admission
-            else None
-        )
+        birthday_text = self.birthday.text()
+        try:
+            birthday = DateConverter.to_date(self.birthday.text())
+        except BaseException:
+            birthday = birthday_text
+
+        date_of_admission_text = self.date_of_admission.text()
+        try:
+            date_of_admission = DateConverter.to_date(self.date_of_admission.text())
+
+        except BaseException:
+            date_of_admission = date_of_admission_text
         return (
             self.fio_user.text(),
             self.address.text(),

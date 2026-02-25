@@ -8,7 +8,7 @@ class BelarusAddressValidator(BasicAddressValidator):
         self.__address = address
 
     def validate(self):
-        pattern = r"^г\.\s*[А-Яа-яЁё]+\s*,\s*ул\.\s*[А-Яа-яЁё]+\s*,\s*д\.\s*\d+[а-я]?\s*,\s*кв\.\s*\d+[а-я]?$"
+        pattern = r"^г\.\s*[А-Яа-яЁё]+(?:[-\s][А-Яа-яЁё]+)*\s*,\s*ул\.\s*[А-Яа-яЁё]+(?:[-\s][А-Яа-яЁё]+)*\s*,\s*д\.\s*\d+[а-я]?\s*,\s*кв\.\s*\d+[а-я]?$"
         if not bool(re.match(pattern, self.__address)):
             raise AddressError(
                 "Некорректный форат адреса(г. Название, ул. Название, д. Номер(корпус если есть а,б,...я), кв. Номер)"
