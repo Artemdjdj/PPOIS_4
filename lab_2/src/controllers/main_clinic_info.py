@@ -38,18 +38,12 @@ class MainWindow(PaginationMixin, QMainWindow):
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon(MAIN_WINDOW_ICON))
         self.setWindowTitle("Медицинское приложение для учета обслуживаний пациентов")
-        # подключение обработчиков
         self.__add_functions()
-        # стартовая настройка виджетов
         self.__basic_settings_with_tabs()
         self.__clinic_info_service: ClinicInfoService = ClinicInfoService(
             DatabaseManager()
         )
         self.__basic_settings_for_table()
-        # пагинация
-        # self.__current_page: Optional[int] = None
-        # self.__count_pages: Optional[int] = None
-        # self.__count_of_records_on_page: Optional[int] = None
         self._records: Optional[List[ClinicInfoBase]] = []
         self.__is_work_in_db: bool = False
 
