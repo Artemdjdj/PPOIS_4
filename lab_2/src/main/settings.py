@@ -36,7 +36,7 @@ STYLESHEET_FOR_BUTTON_SAVE_TO_DB = """
                                     }
                                     """
 
-LABEL_DELETE_NOTHING_TEXT = "К сожалению удалить нечего!"
+LABEL_DELETE_NOTHING_TEXT = "Ничего не было удалено!"
 IMAGE_DELETE_NOTHING = ":/images/images/unsuccessful_delete2.png"
 
 IMAGE_DELETE_SUCCESSFUL = ":/images/images/successful_delete_2.png"

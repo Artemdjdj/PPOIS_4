@@ -23,3 +23,6 @@ class ConfirmWindow(QDialog):
     def __handle_delete(self, confirmed: bool) -> None:
         self.delete.emit(confirmed)
         self.close()
+
+    def set_info_about_count(self, count:int) -> None:
+        self.ui.label_confirm_message.setText(f"Вы действительно хотите удалить записи (количество: {count})")

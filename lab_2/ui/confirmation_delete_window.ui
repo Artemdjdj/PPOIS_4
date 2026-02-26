@@ -82,7 +82,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="label_after_delete">
+          <widget class="QLabel" name="label_confirm">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -110,7 +110,7 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QLabel" name="label_after_delete_message">
+             <widget class="QLabel" name="label_confirm_message">
               <property name="font">
                <font>
                 <family>Arial</family>

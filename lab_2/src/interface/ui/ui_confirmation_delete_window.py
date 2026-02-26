@@ -48,17 +48,17 @@ class Ui_ConfirmDialog(object):
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.label_after_delete = QLabel(self.frame_2)
-        self.label_after_delete.setObjectName(u"label_after_delete")
+        self.label_confirm = QLabel(self.frame_2)
+        self.label_confirm.setObjectName(u"label_confirm")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_after_delete.sizePolicy().hasHeightForWidth())
-        self.label_after_delete.setSizePolicy(sizePolicy)
-        self.label_after_delete.setPixmap(QPixmap(u":/images/images/confirmation2.png"))
-        self.label_after_delete.setScaledContents(True)
+        sizePolicy.setHeightForWidth(self.label_confirm.sizePolicy().hasHeightForWidth())
+        self.label_confirm.setSizePolicy(sizePolicy)
+        self.label_confirm.setPixmap(QPixmap(u":/images/images/confirmation2.png"))
+        self.label_confirm.setScaledContents(True)
 
-        self.verticalLayout_3.addWidget(self.label_after_delete)
+        self.verticalLayout_3.addWidget(self.label_confirm)
 
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
@@ -66,15 +66,15 @@ class Ui_ConfirmDialog(object):
         self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_4)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_after_delete_message = QLabel(self.frame_4)
-        self.label_after_delete_message.setObjectName(u"label_after_delete_message")
+        self.label_confirm_message = QLabel(self.frame_4)
+        self.label_confirm_message.setObjectName(u"label_confirm_message")
         font = QFont()
         font.setFamilies([u"Arial"])
         font.setPointSize(10)
-        self.label_after_delete_message.setFont(font)
-        self.label_after_delete_message.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_confirm_message.setFont(font)
+        self.label_confirm_message.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.horizontalLayout_2.addWidget(self.label_after_delete_message)
+        self.horizontalLayout_2.addWidget(self.label_confirm_message)
 
 
         self.verticalLayout_3.addWidget(self.frame_4)
@@ -123,8 +123,8 @@ class Ui_ConfirmDialog(object):
 
     def retranslateUi(self, ConfirmDialog):
         ConfirmDialog.setWindowTitle(QCoreApplication.translate("ConfirmDialog", u"Dialog", None))
-        self.label_after_delete.setText("")
-        self.label_after_delete_message.setText(QCoreApplication.translate("ConfirmDialog", u" \u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0438 \u0437\u0430\u043f\u0438\u0441\u0438?", None))
+        self.label_confirm.setText("")
+        self.label_confirm_message.setText(QCoreApplication.translate("ConfirmDialog", u" \u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u0438 \u0437\u0430\u043f\u0438\u0441\u0438?", None))
         self.button_cancel.setText(QCoreApplication.translate("ConfirmDialog", u"\u041d\u0435\u0442", None))
         self.button_ok.setText(QCoreApplication.translate("ConfirmDialog", u"\u0414\u0430", None))
     # retranslateUi

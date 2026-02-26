@@ -266,7 +266,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             )
         else:
             self.__after_delete_dialog.ui.label_after_delete_message.setText(
-                f"Успешно удалены элементы ({count_of_delete_records})!"
+                f"Успешно удалены элементы (в количестве: {count_of_delete_records})!"
             )
             self.__after_delete_dialog.ui.label_after_delete.setPixmap(
                 QPixmap(IMAGE_DELETE_SUCCESSFUL)
@@ -283,6 +283,7 @@ class MainWindow(PaginationMixin, QMainWindow):
             self.__after_delete_dialog.exec()
         else:
             self.__confirm_dialog = ConfirmWindow()
+            self.__confirm_dialog.set_info_about_count(len(all_records))
             self.__confirm_dialog.delete.connect(
                 lambda confirmed: self.__on_delete_result(confirmed, all_records)
             )
