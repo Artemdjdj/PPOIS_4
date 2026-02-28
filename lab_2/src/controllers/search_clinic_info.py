@@ -1,7 +1,7 @@
 from datetime import date
 from typing import List
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QDialog, QMessageBox
+from PySide6.QtWidgets import QDialog, QMessageBox, QTableWidget
 from PySide6.QtGui import QIcon
 
 from src.main.paginator import PaginationMixin
@@ -21,6 +21,8 @@ class SearchWindow(PaginationMixin, QDialog):
         self.setWindowIcon(QIcon(MAIN_WINDOW_ICON))
         self.setWindowTitle("Поиск записей")
         self._records = []
+        self.ui.table_of_recording.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.ui.table_of_recording.setSelectionMode(QTableWidget.NoSelection)
         self._init_paginator(
             self.ui.button_prev,
             self.ui.button_first,
