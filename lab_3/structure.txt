@@ -1,0 +1,12 @@
+lab_2
+│
+├── assets/
+│   ├── audio/
+│   │
+│   ├── icons/
+│   │
+│   └── images/
+│
+├── .gitignore
+├── requirements.txt
+└── structure.txt
