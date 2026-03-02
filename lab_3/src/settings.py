@@ -1,0 +1,8 @@
+import pygame
+
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
+
+GAME_NAME = "Moorhuhn"
+
+BACKGROUND_COLOR = (0, 0, 0)
