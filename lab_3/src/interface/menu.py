@@ -5,31 +5,37 @@ import pygame
 
 from src.interface.button import Button
 from src.settings.state import State
-from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT
+from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_FONT, BASIC_FONT_SIZE, \
+    BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_PLAY, NAME_TABLE_RECORD, NAME_HELP, NAME_QUIT, \
+    COORD_Y_FIRST_BUTTON, HEIGHT_BETWEEN_BUTTONS, MENU_BACKGROUND_IMAGE, BASIC_COLOR
 
 
 class Menu:
-    def __init__(self, screen:pygame.Surface)->None:
+    def __init__(self, screen: pygame.Surface) -> None:
         self._screen = screen
         self._buttons = [
-            Button(SCREEN_WIDTH//2-BUTTON_WIDTH//2, 190, BUTTON_WIDTH, BUTTON_HEIGHT, (255, 255, 255), (128, 0, 0), (200, 0, 0), "Играть",
-                   pygame.font.Font("D:/PPOIS_4/lab_3/assets/fonts/main.otf", 20), State.PLAY),
-            Button(SCREEN_WIDTH//2-BUTTON_WIDTH//2, 280, BUTTON_WIDTH, BUTTON_HEIGHT, (255, 255, 255), (128, 0, 0), (200, 0, 0), "Таблица лидеров",
-                   pygame.font.Font("D:/PPOIS_4/lab_3/assets/fonts/main.otf", 20), State.RECORD_TABLE),
-            Button(SCREEN_WIDTH//2-BUTTON_WIDTH//2, 370, BUTTON_WIDTH, BUTTON_HEIGHT, (255, 255, 255), (128, 0, 0), (200, 0, 0), "Справка",
-                   pygame.font.Font("D:/PPOIS_4/lab_3/assets/fonts/main.otf", 20), State.HELP),
-            Button(SCREEN_WIDTH//2-BUTTON_WIDTH//2, 460, BUTTON_WIDTH, BUTTON_HEIGHT, (255, 255, 255), (128, 0, 0), (200, 0, 0), "Выйти",
-                   pygame.font.Font("D:/PPOIS_4/lab_3/assets/fonts/main.otf", 20), State.QUIT),
+            Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_FIRST_BUTTON, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_COLOR,
+                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_PLAY,
+                   pygame.font.Font(BASIC_FONT, BASIC_FONT_SIZE), State.PLAY),
+            Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_FIRST_BUTTON+HEIGHT_BETWEEN_BUTTONS, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_COLOR,
+                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_TABLE_RECORD,
+                   pygame.font.Font(BASIC_FONT, BASIC_FONT_SIZE), State.RECORD_TABLE),
+            Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_FIRST_BUTTON+2*HEIGHT_BETWEEN_BUTTONS, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_COLOR,
+                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_HELP,
+                   pygame.font.Font(BASIC_FONT, BASIC_FONT_SIZE), State.HELP),
+            Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_FIRST_BUTTON+3*HEIGHT_BETWEEN_BUTTONS, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_COLOR,
+                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_QUIT,
+                   pygame.font.Font(BASIC_FONT, BASIC_FONT_SIZE), State.QUIT),
         ]
-        self._background = pygame.image.load("D:/PPOIS_4/lab_3/assets/images/result_menu2.png").convert_alpha()
+        self._background = pygame.image.load(MENU_BACKGROUND_IMAGE).convert_alpha()
         self._background = pygame.transform.scale(self._background, (SCREEN_WIDTH, SCREEN_HEIGHT))
-        self._screen.blit(self._background, (0, 0))
 
-    def draw(self)->None:
+    def draw(self) -> None:
+        self._screen.blit(self._background, (0, 0))
         for button in self._buttons:
             button.draw(self._screen)
 
-    def check_event(self)->Optional[State]:
+    def check_event(self) -> Optional[State]:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -38,6 +44,3 @@ class Menu:
                 if result is not None:
                     return result
         return None
-
-
-
