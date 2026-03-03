@@ -35,5 +35,6 @@ HEIGHT_BETWEEN_BUTTONS = SCREEN_HEIGHT*0.1125
 
 MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/result_menu2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/help_menu.png"
+TABLE_RECORDS_BACKGROUND_IMAGE = BASE_DIR / "assets/images/table_records.png"
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
