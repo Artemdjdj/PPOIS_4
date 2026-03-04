@@ -43,11 +43,20 @@ COORD_X_NAME = SCREEN_WIDTH * 0.37
 COORD_X_RECORD = SCREEN_WIDTH * 0.70
 HEIGHT_BETWEEN_BUTTONS = SCREEN_HEIGHT * 0.1125
 
-MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/result_menu3.png"
-HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/help_menu.png"
-TABLE_RECORDS_BACKGROUND_IMAGE = BASE_DIR / "assets/images/table_records2.png"
+SPEED_FIRST_LAYER = 0.8
+SPEED_SECOND_LAYER = 1.4
+SPEED_THIRD_LAYER = 2.0
+
+DEFAULT_SPEED = 2.5
+
+MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
+HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
+TABLE_RECORDS_BACKGROUND_IMAGE = BASE_DIR / "assets/images/table_records_5.png"
+GAME_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_2.png"
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
+
+BACKGROUND_MUSIC = BASE_DIR / "assets/audio/background (2).mp3"
 
 TEST_LEADERS = [
     {

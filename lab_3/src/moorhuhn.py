@@ -2,10 +2,11 @@ import sys
 
 import pygame
 
+from src.interface.game import Game
 from src.interface.help_menu import HelpMenu
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
-from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR
+from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, BACKGROUND_MUSIC
 from src.settings.state import State
 
 
@@ -20,6 +21,9 @@ class Moorhuhn:
         self._menu = Menu(self._screen)
         self._help_menu = HelpMenu(self._screen)
         self._table_records = TableRecords(self._screen)
+        self._game = Game(self._screen)
+        pygame.mixer.music.load(BACKGROUND_MUSIC)
+        pygame.mixer.music.play(-1)
 
     def _draw_background(self):
         self._screen.fill(BACKGROUND_COLOR)
@@ -30,6 +34,9 @@ class Moorhuhn:
             if self._state == State.MENU:
                 self._menu.draw()
                 new_state = self._menu.check_event()
+            elif self._state == State.PLAY:
+                self._game.draw()
+                new_state = self._game.check_event()
             elif self._state == State.RECORD_TABLE:
                 self._table_records.draw()
                 new_state = self._table_records.check_event()
