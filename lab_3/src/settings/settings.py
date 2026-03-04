@@ -47,7 +47,7 @@ SPEED_FIRST_LAYER = 0.8
 SPEED_SECOND_LAYER = 1.4
 SPEED_THIRD_LAYER = 2.0
 
-DEFAULT_SPEED = 2.5
+DEFAULT_SPEED = 3.5
 
 MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
@@ -56,7 +56,8 @@ GAME_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_2.png"
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
 
-BACKGROUND_MUSIC = BASE_DIR / "assets/audio/background (2).mp3"
+GAME_MUSIC = BASE_DIR / "assets/audio/main_game.mp3"
+MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
 
 TEST_LEADERS = [
     {

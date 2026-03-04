@@ -29,9 +29,9 @@ class Game:
 
     def check_event(self) -> Optional[State]:
         key = pygame.key.get_pressed()
-        if key[pygame.K_LEFT] and self._scroll_position > 0:
+        if (key[pygame.K_LEFT] or key[pygame.K_a]) and self._scroll_position > 0:
             self._scroll_position -= DEFAULT_SPEED
-        if key[pygame.K_RIGHT] and self._scroll_position < SCREEN_WIDTH:
+        if (key[pygame.K_RIGHT] or key[pygame.K_d]) and self._scroll_position < SCREEN_WIDTH:
             self._scroll_position += DEFAULT_SPEED
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
