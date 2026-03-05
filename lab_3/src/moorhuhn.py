@@ -37,6 +37,7 @@ class Moorhuhn:
 
             if self._state == State.MENU:
                 self._menu.draw()
+                pygame.mouse.set_visible(True)
                 new_state = self._menu.check_event()
                 if current_music != MENU_MUSIC:
                     current_music = MENU_MUSIC
@@ -45,11 +46,13 @@ class Moorhuhn:
 
             elif self._state == State.PLAY:
                 self._game.draw()
+                pygame.mouse.set_visible(False)
                 new_state = self._game.check_event()
                 if current_music != GAME_MUSIC:
                     current_music = GAME_MUSIC
                     pygame.mixer.music.load(GAME_MUSIC)
                     pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.1)
 
             elif self._state == State.RECORD_TABLE:
                 self._table_records.draw()

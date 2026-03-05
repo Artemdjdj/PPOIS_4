@@ -53,11 +53,14 @@ MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
 TABLE_RECORDS_BACKGROUND_IMAGE = BASE_DIR / "assets/images/table_records_5.png"
 GAME_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_2.png"
+CROSSHAIR_IMAGE = BASE_DIR / "assets/images/crosshair3.png"
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
 
 GAME_MUSIC = BASE_DIR / "assets/audio/main_game.mp3"
 MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
+SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
+
 
 TEST_LEADERS = [
     {
