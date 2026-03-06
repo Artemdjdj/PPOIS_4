@@ -26,6 +26,9 @@ class AdditionalMenuMixin:
         self._back_button.draw(self._screen)
 
     def check_event(self):
+        key = pygame.key.get_pressed()
+        if key[pygame.K_ESCAPE]:
+            return State.MENU
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()

@@ -24,6 +24,7 @@ class Moorhuhn:
         self._table_records = TableRecords(self._screen)
         self._game = Game(self._screen)
         pygame.mixer.music.load(MENU_MUSIC)
+        pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
 
     def _draw_background(self):
