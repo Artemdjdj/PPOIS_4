@@ -9,6 +9,7 @@ from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
     MENU_MUSIC, GAME_MUSIC
 from src.settings.state import State
+from src.sprites.chicken import SittingChicken
 
 
 class Moorhuhn:
@@ -23,9 +24,12 @@ class Moorhuhn:
         self._help_menu = HelpMenu(self._screen)
         self._table_records = TableRecords(self._screen)
         self._game = Game(self._screen)
+        self._game.create_sitting_chickens([20, 20])
         pygame.mixer.music.load(MENU_MUSIC)
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
+        self._chickens = []
+
 
     def _draw_background(self):
         self._screen.fill(BACKGROUND_COLOR)
@@ -54,6 +58,10 @@ class Moorhuhn:
                     pygame.mixer.music.load(GAME_MUSIC)
                     pygame.mixer.music.play(-1)
                     pygame.mixer.music.set_volume(0.1)
+
+
+                # for chicken in self._chickens:
+                #     chicken.draw(self._screen, self._game.scroll_position)
 
             elif self._state == State.RECORD_TABLE:
                 self._table_records.draw()

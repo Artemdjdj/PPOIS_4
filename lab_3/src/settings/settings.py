@@ -42,21 +42,32 @@ COORD_X_NUMBER = SCREEN_WIDTH * 0.20
 COORD_X_NAME = SCREEN_WIDTH * 0.37
 COORD_X_RECORD = SCREEN_WIDTH * 0.70
 HEIGHT_BETWEEN_BUTTONS = SCREEN_HEIGHT * 0.1125
+HEIGHT_FLYING_CHICKEN = 300
 
-SPEED_FIRST_LAYER = 0.8
-SPEED_SECOND_LAYER = 1.4
-SPEED_THIRD_LAYER = 2.0
+SCALE_IMAGE_THIRD_POWER = 1.5
+SCALE_IMAGE_SECOND_POWER = 0.7
 
-DEFAULT_SPEED = 3.5
+BASE_WIDTH_OF_SITTING_CHICKEN = int(SCREEN_WIDTH*0.042)
+INDENT_BEFORE_MAX_HEIGHT = int(SCREEN_HEIGHT*0.125)
+INDENT_BETWEEN_LAYERS = int(0.07*SCREEN_HEIGHT)
+
+THIRD_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.40)
+SECOND_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.18)
+FIRST_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.42)
+
+SPEED_FIRST_LAYER = 0.4
+SPEED_SECOND_LAYER = 0.7
+SPEED_THIRD_LAYER = 1.0
+DEFAULT_SPEED = 3
 
 MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
 TABLE_RECORDS_BACKGROUND_IMAGE = BASE_DIR / "assets/images/table_records_5.png"
 GAME_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_2.png"
 CROSSHAIR_IMAGE = BASE_DIR / "assets/images/crosshair3.png"
-FIRST_LAYER = BASE_DIR / f"assets/images/new_layer_{1}.png"
-SECOND_LAYER = BASE_DIR / f"assets/images/new_layer_{2}.png"
-THIRD_LAYER = BASE_DIR / f"assets/images/new_layer_{3}.png"
+FIRST_LAYER = BASE_DIR / f"assets/images/new_layer_1.png"
+SECOND_LAYER = BASE_DIR / f"assets/images/new_layer_2.png"
+THIRD_LAYER = BASE_DIR / f"assets/images/new_layer_3.png"
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
 
@@ -66,6 +77,7 @@ SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
 
 
 RIGHT_HORIZONTAL_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken.png"
+SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
 
 TEST_LEADERS = [
     {
