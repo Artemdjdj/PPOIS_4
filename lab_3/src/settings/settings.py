@@ -55,13 +55,15 @@ THIRD_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.42)
 SECOND_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.18)
 FIRST_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.40)
 
+FPS = 60
+
 DEFAULT_SPEED_WORLD = 0.8
 SPEED_FIRST_LAYER = 0.4
 SPEED_SECOND_LAYER = 0.7
 SPEED_THIRD_LAYER = 1.0
 DEFAULT_SPEED = 3
-MIN_CHICKEN_SPEED = 3
-MAX_CHICKEN_SPEED = 5
+MIN_CHICKEN_SPEED = 5
+MAX_CHICKEN_SPEED = 10
 
 MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
@@ -82,6 +84,7 @@ SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
+CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
 
 TEST_LEADERS = [
     {

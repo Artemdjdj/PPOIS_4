@@ -7,7 +7,7 @@ from src.interface.help_menu import HelpMenu
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
-    MENU_MUSIC, GAME_MUSIC
+    MENU_MUSIC, GAME_MUSIC, FPS
 from src.settings.state import State
 from src.sprites.chicken import SittingChicken
 
@@ -25,7 +25,8 @@ class Moorhuhn:
         self._table_records = TableRecords(self._screen)
         self._clock = pygame.time.Clock()
         self._game = Game(self._screen, self._clock)
-        self._game.create_sitting_chickens([0,20, 20])
+        self._game.create_sitting_chickens_field(20)
+        self._game.create_sitting_chickens_game(20)
         self._game.create_flying_chickens(10)
         pygame.mixer.music.load(MENU_MUSIC)
         pygame.mixer.music.set_volume(0.0)
@@ -78,6 +79,6 @@ class Moorhuhn:
 
             if new_state is not None:
                 self._state = new_state
-
+            self._clock.tick(FPS)
             pygame.display.flip()
 
