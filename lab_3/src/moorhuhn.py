@@ -23,10 +23,12 @@ class Moorhuhn:
         self._menu = Menu(self._screen)
         self._help_menu = HelpMenu(self._screen)
         self._table_records = TableRecords(self._screen)
-        self._game = Game(self._screen)
-        self._game.create_sitting_chickens([20, 20])
+        self._clock = pygame.time.Clock()
+        self._game = Game(self._screen, self._clock)
+        self._game.create_sitting_chickens([0,20, 20])
+        self._game.create_flying_chickens(10)
         pygame.mixer.music.load(MENU_MUSIC)
-        pygame.mixer.music.set_volume(0.3)
+        pygame.mixer.music.set_volume(0.0)
         pygame.mixer.music.play(-1)
         self._chickens = []
 

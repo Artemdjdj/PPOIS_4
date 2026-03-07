@@ -3,8 +3,9 @@ import random
 import pygame
 from abc import ABC, abstractmethod
 
-from src.settings.settings import BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_WIDTH, HEIGHT_FLYING_CHICKEN, SCREEN_HEIGHT
-from src.sprites.chicken import SittingChicken
+from src.settings.settings import BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_WIDTH, HEIGHT_FLYING_CHICKEN, SCREEN_HEIGHT, \
+    FIRST_LAYER_HEIGHT, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD
+from src.sprites.chicken import SittingChicken, FlyingChicken
 
 
 class ChickenFactory(ABC):
@@ -23,4 +24,20 @@ class SittingChickenFactory(ChickenFactory):
         temp_bird = SittingChicken(x, y, layer_speed)
         if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False):
             return temp_bird
+        return None
+
+
+class FlyingChickenFactory(ChickenFactory):
+    def create(self, min_y: int, max_y: int, layer_speed: float):
+        x = random.randint(-100, 3*SCREEN_WIDTH)
+        y = random.randint(min_y, max_y)
+
+        direction = random.choice(["left", "right"])
+        speed = random.uniform(MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED)
+
+        temp_bird = FlyingChicken(x, y,layer_speed, speed, direction)
+
+        if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False):
+            return temp_bird
+
         return None
