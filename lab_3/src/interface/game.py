@@ -1,5 +1,5 @@
 import sys
-from typing import Optional
+from typing import Optional, Text
 
 import pygame
 from pygame import Surface
@@ -10,6 +10,7 @@ from src.factories.cartridge_factory import CartridgesFactory
 from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
+from src.interface.writer import Writer
 from src.objects.balloon import Balloon
 from src.objects.hedgehog import Hedgehog
 from src.objects.toilet import Toilet
@@ -22,7 +23,7 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
-    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT
+    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
 from src.objects.oven import Oven
@@ -61,6 +62,8 @@ class Game:
         self._reload_clip_effect.set_volume(0.6)
         self._empty_clip_effect.set_volume(0.6)
 
+        self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT,RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, (CARTRIDGE_START_X-SPACE_BETWEEN_CARTRIDGES*5, CARTRIDGE_START_Y))
+
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
 
@@ -79,15 +82,18 @@ class Game:
         for chicken in self._layer_sky.chickens:
             chicken.update(self._dt)
 
-
         for layer  in self._layers:
             for element in layer.objects:
                 element.draw(self._screen, self._scroll_position)
+
             for chicken in layer.chickens:
                 chicken.draw(self._screen, self._scroll_position)
 
-        for cartridge in self._clip.cartridges:
-            cartridge.draw(self._screen, self._scroll_position)
+        if self._clip.cartridges:
+            for cartridge in self._clip.cartridges:
+                cartridge.draw(self._screen, self._scroll_position)
+        else:
+            self._reload_clip_text.draw(self._screen)
 
         self._cursor.draw(self._screen)
 
@@ -110,5 +116,6 @@ class Game:
                     self._shoot_effect.play()
                 else:
                     self._empty_clip_effect.play()
+
 
         return None
