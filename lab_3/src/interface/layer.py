@@ -1,6 +1,7 @@
 from typing import Tuple, Any, Optional, List
 from abc import ABC, abstractmethod
 import pygame
+from pygame.sprite import Group
 
 from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory
 from src.objects.balloon import Balloon
@@ -18,13 +19,14 @@ class Layer(ABC):
         self._speed = layer_speed
         self._y_range = y_range
         self._width = self._image.get_width()
-        self._objects = []
+        self._objects = pygame.sprite.Group()
 
     def add_object(self, new_element:BaseObjectInLayer)->None:
-        self._objects.append(new_element)
+        if not pygame.sprite.spritecollide(new_element, self._objects, False):
+            self._objects.add(new_element)
 
     @property
-    def objects(self) -> List[BaseObjectInLayer]:
+    def objects(self) -> pygame.sprite.Group:
         return self._objects
 
     @abstractmethod
@@ -44,7 +46,7 @@ class SkyLayer(Layer):
 
     def create_chickens(self, count: int)->None:
         for _ in range(count):
-            chicken = self._factory.create(self._y_range[0], self._y_range[1], self._default_speed)
+            chicken = self._factory.create(self._y_range[0], self._y_range[1], self._default_speed, self._objects)
             if chicken:
                 self._group.add(chicken)
 
@@ -60,7 +62,7 @@ class GroundField(Layer):
 
     def create_chickens(self, count: int)->None:
         for _ in range(count):
-            chicken = self._factory.create(self._y_range[0], self._y_range[1], self._speed)
+            chicken = self._factory.create(self._y_range[0], self._y_range[1], self._speed, self._objects)
             if chicken:
                 self._group.add(chicken)
 

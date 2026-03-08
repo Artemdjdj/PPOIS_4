@@ -13,22 +13,22 @@ class ChickenFactory(ABC):
         self.all_birds = all_birds
 
     @abstractmethod
-    def create(self, min_y, max_y, layer_speed):
+    def create(self, min_y, max_y, layer_speed,layer_objects:pygame.sprite.Group):
         pass
 
 
 class SittingChickenFactory(ChickenFactory):
-    def create(self, min_y: int, max_y: int, layer_speed: float):
+    def create(self, min_y: int, max_y: int, layer_speed: float, layer_objects:pygame.sprite.Group):
         x = random.randint(BASE_WIDTH_OF_SITTING_CHICKEN, 2*SCREEN_WIDTH - BASE_WIDTH_OF_SITTING_CHICKEN)
         y = random.randint(min_y, max_y)
         temp_bird = SittingChicken(x, y, layer_speed)
-        if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False):
+        if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False) and not pygame.sprite.spritecollide(temp_bird, layer_objects, False):
             return temp_bird
         return None
 
 
 class FlyingChickenFactory(ChickenFactory):
-    def create(self, min_y: int, max_y: int, layer_speed: float):
+    def create(self, min_y: int, max_y: int, layer_speed: float,layer_objects:pygame.sprite.Group):
         x = random.randint(-100, 3*SCREEN_WIDTH)
         y = random.randint(min_y, max_y)
 
@@ -37,7 +37,7 @@ class FlyingChickenFactory(ChickenFactory):
 
         temp_bird = FlyingChicken(x, y,layer_speed, speed, direction, min_y, max_y)
 
-        if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False):
+        if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False) and not pygame.sprite.spritecollide(temp_bird, layer_objects, False):
             return temp_bird
 
         return None

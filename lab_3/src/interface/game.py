@@ -10,6 +10,7 @@ from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
 from src.objects.balloon import Balloon
+from src.objects.hedgehog import Hedgehog
 from src.objects.toilet import Toilet
 from src.settings.state import State
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_FONT, BASIC_FONT_SIZE, \
@@ -18,7 +19,8 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SPEED_FIRST_LAYER, SPEED_SECOND_LAYER, SPEED_THIRD_LAYER, DEFAULT_SPEED, SHOOT_EFFECT, CROSSHAIR_IMAGE, FIRST_LAYER, \
     THIRD_LAYER, SECOND_LAYER, HEIGHT_FLYING_CHICKEN, FIRST_LAYER_HEIGHT, \
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
-    CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y
+    CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
+    BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
 from src.objects.oven import Oven
@@ -40,8 +42,10 @@ class Game:
 
         self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_sky.add_object(Balloon(400, 100, SPEED_THIRD_LAYER))
-        self._layer_field.add_object(Toilet(1400, 300, SPEED_SECOND_LAYER))
+        self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
+
+        self._layer_sky.add_object(Balloon(BALLOON_COORD_X, BALLOON_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_field.add_object(Toilet(TOILET_COORD_X, TOILET_COORD_Y, SPEED_SECOND_LAYER))
 
         self._cursor = Cursor()
         self._dt = clock.tick(FPS) / 1000.0
