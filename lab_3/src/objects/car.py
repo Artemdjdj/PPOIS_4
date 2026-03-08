@@ -1,7 +1,7 @@
 import pygame
 
 from src.settings.settings import CAR_IMAGE
-from src.sprites.base_sprite import BaseSprite
+from src.objects.base_sprite import BaseSprite
 
 
 class Car(BaseSprite):

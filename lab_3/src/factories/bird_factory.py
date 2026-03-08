@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 
 from src.settings.settings import BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_WIDTH, HEIGHT_FLYING_CHICKEN, SCREEN_HEIGHT, \
     FIRST_LAYER_HEIGHT, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD
-from src.sprites.chicken import SittingChicken, FlyingChicken
+from src.objects.chicken import SittingChicken, FlyingChicken
 
 
 class ChickenFactory(ABC):

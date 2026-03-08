@@ -1,12 +1,12 @@
 import pygame
 
-from src.settings.settings import OVEN_WITH_CHICKEN
-from src.sprites.base_sprite import BaseSprite
+from src.objects.base_sprite import BaseSprite
+from src.settings.settings import BALLOON_IMAGE
 
 
-class Oven(BaseSprite):
+class Balloon(BaseSprite):
     def __init__(self, x:int, y:int, layer_speed:float) -> None:
-        image = pygame.image.load(OVEN_WITH_CHICKEN).convert_alpha()
+        image = pygame.image.load(BALLOON_IMAGE).convert_alpha()
         self.layer_speed = layer_speed
         super().__init__(image, x, y)
 

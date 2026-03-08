@@ -90,6 +90,7 @@ LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
 OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
+BALLOON_IMAGE = BASE_DIR / "assets/images/balloon_after_upgrade.png"
 
 TEST_LEADERS = [
     {

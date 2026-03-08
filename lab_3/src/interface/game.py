@@ -9,6 +9,7 @@ from src.factories.bird_factory import SittingChickenFactory, FlyingChickenFacto
 from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
+from src.objects.balloon import Balloon
 from src.settings.state import State
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_FONT, BASIC_FONT_SIZE, \
     BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_PLAY, NAME_TABLE_RECORD, NAME_HELP, NAME_QUIT, \
@@ -17,9 +18,9 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     THIRD_LAYER, SECOND_LAYER, HEIGHT_FLYING_CHICKEN, FIRST_LAYER_HEIGHT, \
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y
-from src.sprites.car import Car
-from src.sprites.chicken import SittingChicken, FlyingChicken
-from src.sprites.oven import Oven
+from src.objects.car import Car
+from src.objects.chicken import SittingChicken, FlyingChicken
+from src.objects.oven import Oven
 
 
 class Game:
@@ -38,6 +39,8 @@ class Game:
 
         self._layer_game.car = Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER)
         self._layer_game.oven = Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER)
+
+        self._layer_sky.ballon = Balloon(400, 100, SPEED_THIRD_LAYER)
         self._cursor = Cursor()
         self._dt = clock.tick(FPS) / 1000.0
 
@@ -65,6 +68,8 @@ class Game:
 
         self._layer_game.car.draw(self._screen, self._scroll_position)
         self._layer_game.oven.draw(self._screen, self._scroll_position)
+
+        self._layer_sky.ballon.draw(self._screen, self._scroll_position)
         for layer in self._layers:
             for chicken in layer.chickens:
                 chicken.draw(self._screen, self._scroll_position)

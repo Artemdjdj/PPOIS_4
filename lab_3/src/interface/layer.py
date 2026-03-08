@@ -3,9 +3,10 @@ from abc import ABC, abstractmethod
 import pygame
 
 from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory
+from src.objects.balloon import Balloon
 from src.settings.settings import DEFAULT_SPEED_WORLD
-from src.sprites.car import Car
-from src.sprites.oven import Oven
+from src.objects.car import Car
+from src.objects.oven import Oven
 
 
 class Layer(ABC):
@@ -28,6 +29,7 @@ class SkyLayer(Layer):
         self._default_speed = default_speed_chicken
         self._group = pygame.sprite.Group()
         self._factory = FlyingChickenFactory(self._group)
+        self._ballon = None
         super().__init__(image, name, layer_speed, y_range)
 
     def create_chickens(self, count: int)->None:
@@ -39,6 +41,15 @@ class SkyLayer(Layer):
     @property
     def chickens(self):
         return self._group
+
+    @property
+    def ballon(self)->Optional[Balloon]:
+        return self._ballon
+
+    @ballon.setter
+    def ballon(self, ballon:Balloon)->None:
+        self._ballon = ballon
+
 
 class GroundField(Layer):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):

@@ -3,7 +3,7 @@ import pygame
 from src.settings.settings import SCREEN_WIDTH, SITTING_CHICKEN, HEIGHT_FLYING_CHICKEN, SCALE_IMAGE_THIRD_POWER, \
     SCALE_IMAGE_SECOND_POWER, BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_HEIGHT, SPEED_THIRD_LAYER, LEFT_FLYING_CHICKEN, \
     RIGHT_FLYING_CHICKEN, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD
-from src.sprites.base_sprite import BaseSprite
+from src.objects.base_sprite import BaseSprite
 from src.utils.image_formatter import ImageFormatter
 
 
