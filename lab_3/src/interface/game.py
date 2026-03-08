@@ -23,23 +23,26 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
-    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT
+    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, \
+    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
 from src.objects.oven import Oven
 
 
 class Game:
-    def __init__(self, screen: pygame.Surface, clock:Clock) -> None:
+    def __init__(self, screen: pygame.Surface, clock: Clock) -> None:
         self._screen = screen
 
-        self._layer_sky = SkyLayer(pygame.image.load(FIRST_LAYER).convert_alpha(), 'far',SPEED_FIRST_LAYER, (INDENT_BETWEEN_LAYERS,
-                            FIRST_LAYER_HEIGHT), DEFAULT_SPEED_WORLD)
+        self._layer_sky = SkyLayer(pygame.image.load(FIRST_LAYER).convert_alpha(), 'far', SPEED_FIRST_LAYER,
+                                   (INDENT_BETWEEN_LAYERS,
+                                    FIRST_LAYER_HEIGHT), DEFAULT_SPEED_WORLD)
         self._layer_field = FieldLayer(pygame.image.load(SECOND_LAYER).convert_alpha(), 'mid', SPEED_SECOND_LAYER,
-                                   (FIRST_LAYER_HEIGHT+INDENT_BETWEEN_LAYERS, FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT-INDENT_BETWEEN_LAYERS))
+                                       (FIRST_LAYER_HEIGHT + INDENT_BETWEEN_LAYERS,
+                                        FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT - INDENT_BETWEEN_LAYERS))
         self._layer_game = GameLayer(pygame.image.load(THIRD_LAYER).convert_alpha(), 'game', SPEED_THIRD_LAYER,
-                                      (FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT,
-                                       FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT + THIRD_LAYER_HEIGHT + INDENT_BETWEEN_LAYERS - INDENT_BEFORE_MAX_HEIGHT - INDENT_BETWEEN_LAYERS))
+                                     (FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT,
+                                      FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT + THIRD_LAYER_HEIGHT + INDENT_BETWEEN_LAYERS - INDENT_BEFORE_MAX_HEIGHT - INDENT_BETWEEN_LAYERS))
 
         self._layers = [self._layer_sky, self._layer_field, self._layer_game]
 
@@ -62,7 +65,12 @@ class Game:
         self._reload_clip_effect.set_volume(0.6)
         self._empty_clip_effect.set_volume(0.6)
 
-        self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT,RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, (CARTRIDGE_START_X-SPACE_BETWEEN_CARTRIDGES*5, CARTRIDGE_START_Y))
+        self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR,
+                                        (CARTRIDGE_START_X - SPACE_BETWEEN_CARTRIDGES * 5, CARTRIDGE_START_Y))
+        self._score_text = Writer(SCORE_TEXT, BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
+                                  (SPACE_SCORE_X, SPACE_INFO_Y))
+        self._time_text = Writer(TIME_TEXT, BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
+                                 (SPACE_TIME_X, SPACE_INFO_Y))
 
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
@@ -82,12 +90,15 @@ class Game:
         for chicken in self._layer_sky.chickens:
             chicken.update(self._dt)
 
-        for layer  in self._layers:
+        for layer in self._layers:
             for element in layer.objects:
                 element.draw(self._screen, self._scroll_position)
 
             for chicken in layer.chickens:
                 chicken.draw(self._screen, self._scroll_position)
+
+        self._score_text.draw(self._screen)
+        self._time_text.draw(self._screen)
 
         if self._clip.cartridges:
             for cartridge in self._clip.cartridges:
@@ -111,11 +122,10 @@ class Game:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if len(self._clip.cartridges)!=0:
+                if len(self._clip.cartridges) != 0:
                     self._clip.delete()
                     self._shoot_effect.play()
                 else:
                     self._empty_clip_effect.play()
-
 
         return None
