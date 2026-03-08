@@ -1,9 +1,11 @@
-from typing import Tuple, Any
+from typing import Tuple, Any, Optional
 from abc import ABC, abstractmethod
 import pygame
 
 from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory
 from src.settings.settings import DEFAULT_SPEED_WORLD
+from src.sprites.car import Car
+from src.sprites.oven import Oven
 
 
 class Layer(ABC):
@@ -63,5 +65,22 @@ class FieldLayer(GroundField):
 class GameLayer(GroundField):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
         self._car = None
+        self._oven = None
+        self._static_objects = []
         super().__init__(image, name, layer_speed, y_range)
 
+    @property
+    def car(self)->Optional[Car]:
+        return self._car
+
+    @car.setter
+    def car(self, car: Car):
+        self._car = car
+
+    @property
+    def oven(self)->Optional[Oven]:
+        return self._oven
+
+    @oven.setter
+    def oven(self, oven:Oven)->None:
+        self._oven = oven

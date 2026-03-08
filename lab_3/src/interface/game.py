@@ -15,9 +15,11 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     COORD_Y_FIRST_BUTTON, HEIGHT_BETWEEN_BUTTONS, MENU_BACKGROUND_IMAGE, BASIC_COLOR, GAME_BACKGROUND_IMAGE, BASE_DIR, \
     SPEED_FIRST_LAYER, SPEED_SECOND_LAYER, SPEED_THIRD_LAYER, DEFAULT_SPEED, SHOOT_EFFECT, CROSSHAIR_IMAGE, FIRST_LAYER, \
     THIRD_LAYER, SECOND_LAYER, HEIGHT_FLYING_CHICKEN, FIRST_LAYER_HEIGHT, \
-    SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS
+    SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
+    CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y
 from src.sprites.car import Car
 from src.sprites.chicken import SittingChicken, FlyingChicken
+from src.sprites.oven import Oven
 
 
 class Game:
@@ -33,6 +35,9 @@ class Game:
                                        FIRST_LAYER_HEIGHT + SECOND_LAYER_HEIGHT + THIRD_LAYER_HEIGHT + INDENT_BETWEEN_LAYERS - INDENT_BEFORE_MAX_HEIGHT - INDENT_BETWEEN_LAYERS))
 
         self._layers = [self._layer_sky, self._layer_field, self._layer_game]
+
+        self._layer_game.car = Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER)
+        self._layer_game.oven = Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER)
         self._cursor = Cursor()
         self._dt = clock.tick(FPS) / 1000.0
 
@@ -58,6 +63,8 @@ class Game:
         for chicken in self._layer_sky.chickens:
             chicken.update(self._dt)
 
+        self._layer_game.car.draw(self._screen, self._scroll_position)
+        self._layer_game.oven.draw(self._screen, self._scroll_position)
         for layer in self._layers:
             for chicken in layer.chickens:
                 chicken.draw(self._screen, self._scroll_position)

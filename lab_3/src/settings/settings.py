@@ -43,6 +43,10 @@ COORD_X_NAME = SCREEN_WIDTH * 0.37
 COORD_X_RECORD = SCREEN_WIDTH * 0.70
 HEIGHT_BETWEEN_BUTTONS = SCREEN_HEIGHT * 0.1125
 HEIGHT_FLYING_CHICKEN = 300
+CAR_COORD_X = SCREEN_WIDTH * 0.42
+CAR_COORD_Y = SCREEN_HEIGHT * 0.625
+OVEN_COORD_X = SCREEN_WIDTH*1.67
+OVEN_COORD_Y = SCREEN_HEIGHT *0.5875
 
 SCALE_IMAGE_THIRD_POWER = 1.5
 SCALE_IMAGE_SECOND_POWER = 0.7
@@ -84,6 +88,7 @@ SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
+OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
 
 TEST_LEADERS = [
