@@ -8,6 +8,9 @@ class Cursor:
         self._cursor_img = pygame.image.load(CROSSHAIR_IMAGE).convert_alpha()
         self._cursor_rect = self._cursor_img.get_rect()
 
+    def get_center(self) -> tuple:
+        return self._cursor_rect.center
+
     def draw(self, screen:pygame.Surface)->None:
         mouse_pos = pygame.mouse.get_pos()
         self._cursor_rect.center = mouse_pos
