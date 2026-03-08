@@ -11,3 +11,13 @@ class BaseSprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
+
+class BaseObjectInLayer(BaseSprite):
+    def __init__(self, image: pygame.Surface,x:int, y:int, layer_speed:float,) -> None:
+        self.layer_speed = layer_speed
+        super().__init__(image, x, y)
+
+    def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
+        screen_x = self.rect.x - scroll_position * self.layer_speed
+        screen.blit(self.image, (screen_x, self.rect.y))

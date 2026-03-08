@@ -1,10 +1,10 @@
 import pygame
 
-from src.settings.settings import OVEN_WITH_CHICKEN
+from src.settings.settings import CAR_IMAGE, TOILET_IMAGE
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
-class Oven(BaseObjectInLayer):
+class Toilet(BaseObjectInLayer):
     def __init__(self, x:int, y:int, layer_speed:float) -> None:
-        image = pygame.image.load(OVEN_WITH_CHICKEN).convert_alpha()
+        image = pygame.image.load(TOILET_IMAGE).convert_alpha()
         super().__init__(image, x, y, layer_speed)

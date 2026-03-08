@@ -1,9 +1,11 @@
-from typing import Tuple, Any, Optional
+from typing import Tuple, Any, Optional, List
 from abc import ABC, abstractmethod
 import pygame
 
 from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory
 from src.objects.balloon import Balloon
+from src.objects.base_sprite import BaseObjectInLayer
+from src.objects.toilet import Toilet
 from src.settings.settings import DEFAULT_SPEED_WORLD
 from src.objects.car import Car
 from src.objects.oven import Oven
@@ -16,6 +18,14 @@ class Layer(ABC):
         self._speed = layer_speed
         self._y_range = y_range
         self._width = self._image.get_width()
+        self._objects = []
+
+    def add_object(self, new_element:BaseObjectInLayer)->None:
+        self._objects.append(new_element)
+
+    @property
+    def objects(self) -> List[BaseObjectInLayer]:
+        return self._objects
 
     @abstractmethod
     def create_chickens(self, count: int)->None:
@@ -29,7 +39,7 @@ class SkyLayer(Layer):
         self._default_speed = default_speed_chicken
         self._group = pygame.sprite.Group()
         self._factory = FlyingChickenFactory(self._group)
-        self._ballon = None
+        # self._ballon = None
         super().__init__(image, name, layer_speed, y_range)
 
     def create_chickens(self, count: int)->None:
@@ -41,15 +51,6 @@ class SkyLayer(Layer):
     @property
     def chickens(self):
         return self._group
-
-    @property
-    def ballon(self)->Optional[Balloon]:
-        return self._ballon
-
-    @ballon.setter
-    def ballon(self, ballon:Balloon)->None:
-        self._ballon = ballon
-
 
 class GroundField(Layer):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
@@ -69,29 +70,36 @@ class GroundField(Layer):
 
 class FieldLayer(GroundField):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
-        self._toilet = None
+        # self._toilet = None
         super().__init__(image, name, layer_speed, y_range)
 
+    # @property
+    # def toilet(self) -> Optional[Toilet]:
+    #     return self._toilet
+    #
+    # @toilet.setter
+    # def toilet(self, toilet:Toilet):
+    #     self._toilet = toilet
 
 class GameLayer(GroundField):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
-        self._car = None
-        self._oven = None
-        self._static_objects = []
+        # self._car = None
+        # self._oven = None
+        # self._static_objects = []
         super().__init__(image, name, layer_speed, y_range)
 
-    @property
-    def car(self)->Optional[Car]:
-        return self._car
-
-    @car.setter
-    def car(self, car: Car):
-        self._car = car
-
-    @property
-    def oven(self)->Optional[Oven]:
-        return self._oven
-
-    @oven.setter
-    def oven(self, oven:Oven)->None:
-        self._oven = oven
+    # @property
+    # def car(self)->Optional[Car]:
+    #     return self._car
+    #
+    # @car.setter
+    # def car(self, car: Car):
+    #     self._car = car
+    #
+    # @property
+    # def oven(self)->Optional[Oven]:
+    #     return self._oven
+    #
+    # @oven.setter
+    # def oven(self, oven:Oven)->None:
+    #     self._oven = oven

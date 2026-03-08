@@ -10,6 +10,7 @@ from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
 from src.objects.balloon import Balloon
+from src.objects.toilet import Toilet
 from src.settings.state import State
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_FONT, BASIC_FONT_SIZE, \
     BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_PLAY, NAME_TABLE_RECORD, NAME_HELP, NAME_QUIT, \
@@ -37,10 +38,11 @@ class Game:
 
         self._layers = [self._layer_sky, self._layer_field, self._layer_game]
 
-        self._layer_game.car = Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER)
-        self._layer_game.oven = Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER)
+        self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_sky.add_object(Balloon(400, 100, SPEED_THIRD_LAYER))
+        self._layer_field.add_object(Toilet(1400, 300, SPEED_SECOND_LAYER))
 
-        self._layer_sky.ballon = Balloon(400, 100, SPEED_THIRD_LAYER)
         self._cursor = Cursor()
         self._dt = clock.tick(FPS) / 1000.0
 
@@ -66,10 +68,11 @@ class Game:
         for chicken in self._layer_sky.chickens:
             chicken.update(self._dt)
 
-        self._layer_game.car.draw(self._screen, self._scroll_position)
-        self._layer_game.oven.draw(self._screen, self._scroll_position)
 
-        self._layer_sky.ballon.draw(self._screen, self._scroll_position)
+        for layer  in self._layers:
+            for element in layer.objects:
+                element.draw(self._screen, self._scroll_position)
+
         for layer in self._layers:
             for chicken in layer.chickens:
                 chicken.draw(self._screen, self._scroll_position)
