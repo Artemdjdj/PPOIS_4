@@ -35,7 +35,7 @@ class FlyingChickenFactory(ChickenFactory):
         direction = random.choice(["left", "right"])
         speed = random.uniform(MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED)
 
-        temp_bird = FlyingChicken(x, y,layer_speed, speed, direction)
+        temp_bird = FlyingChicken(x, y,layer_speed, speed, direction, min_y, max_y)
 
         if not pygame.sprite.spritecollide(temp_bird, self.all_birds, False):
             return temp_bird
