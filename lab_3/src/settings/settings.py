@@ -64,6 +64,9 @@ INDENT_BETWEEN_LAYERS = int(0.07*SCREEN_HEIGHT)
 THIRD_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.42)
 SECOND_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.18)
 FIRST_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.40)
+SPACE_BETWEEN_CARTRIDGES = SCREEN_WIDTH *0.039
+CARTRIDGE_START_X = SCREEN_WIDTH*0.95
+CARTRIDGE_START_Y = SCREEN_HEIGHT*0.85
 
 FPS = 60
 
@@ -91,6 +94,8 @@ FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
 GAME_MUSIC = BASE_DIR / "assets/audio/main_game.mp3"
 MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
 SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
+RELOAD_CLIP_EFFECT = BASE_DIR / "assets/audio/empty.mp3"
+EMPTY_CLIP_EFFECT = BASE_DIR / "assets/audio/reload_cartridges.mp3"
 
 
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
@@ -102,6 +107,8 @@ BALLOON_IMAGE = BASE_DIR / "assets/images/balloon_after_upgrade.png"
 HEDGEHOG_IMAGE = BASE_DIR / "assets/images/hedgehog.png"
 HEDGEHOG_AFTER_SHOOT_IMAGE = BASE_DIR / "assets/images/hedgehog_after_shoot.png"
 TOILET_IMAGE = BASE_DIR / "assets/images/toilet.png"
+CARTRIDGE_IMAGE = BASE_DIR / "assets/images/shotgun_cartridge.png"
+
 
 TEST_LEADERS = [
     {

@@ -3,6 +3,7 @@ import random
 import pygame
 from abc import ABC, abstractmethod
 
+from src.interface.cartridge import Cartridge
 from src.settings.settings import BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_WIDTH, HEIGHT_FLYING_CHICKEN, SCREEN_HEIGHT, \
     FIRST_LAYER_HEIGHT, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD
 from src.objects.chicken import SittingChicken, FlyingChicken
@@ -41,3 +42,6 @@ class FlyingChickenFactory(ChickenFactory):
             return temp_bird
 
         return None
+
+
+
