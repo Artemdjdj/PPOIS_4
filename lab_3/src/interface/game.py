@@ -125,6 +125,31 @@ class Game:
                 if len(self._clip.cartridges) != 0:
                     self._clip.delete()
                     self._shoot_effect.play()
+                    aim_x, aim_y = self._cursor.get_center()
+                    for layer in self._layers:
+                        for chicken in layer.chickens:
+                            screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
+                            screen_chicken_y = chicken.rect.y
+                            aim_mask = pygame.mask.Mask((1, 1), fill=True)
+                            offset = (int(aim_x-screen_chicken_x), int(aim_y-screen_chicken_y))
+                            if chicken.mask.overlap(aim_mask, offset):
+                                chicken.kill()
+                                break
+                    # for layer in self._layers:
+                    #     for chicken in layer.chickens:
+                    #         screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
+                    #         screen_chicken_y = chicken.rect.y
+                    #         # if chicken.rect.collidepoint(aim_x, aim_y):
+                    #         collision_rect = chicken.get_collision_rect()
+                    #         collision_rect.x = screen_chicken_x
+                    #         collision_rect.y = screen_chicken_y
+                    #         if collision_rect.collidepoint(aim_x, aim_y):
+                    #             chicken.kill()
+                    #             break
+                            # if pygame.Rect(screen_chicken_x, screen_chicken_y, chicken.rect.width, chicken.rect.height).collidepoint(
+                            #         aim_x, aim_y):
+                            #     chicken.kill()
+                            #     break
                 else:
                     self._empty_clip_effect.play()
 

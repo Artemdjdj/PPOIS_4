@@ -27,6 +27,11 @@ class Layer(ABC):
             self._objects.add(new_element)
 
     @property
+    def speed(self)->int:
+        return self._speed
+
+
+    @property
     def objects(self) -> pygame.sprite.Group:
         return self._objects
 

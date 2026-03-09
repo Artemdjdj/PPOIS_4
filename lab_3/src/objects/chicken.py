@@ -12,6 +12,12 @@ class BaseChicken(BaseSprite):
     def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float) -> None:
         super().__init__(image, x, y)
         self.layer_speed = layer_speed
+        self.mask = pygame.mask.from_surface(self.image)
+
+    # def get_collision_rect(self) -> pygame.Rect:
+    #     margin_x = int(self.rect.width * 0.20)
+    #     margin_y = int(self.rect.height * 0.20)
+    #     return self.rect.inflate(-margin_x * 2, -margin_y * 2)
 
     def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
         screen_x = self.rect.x - scroll_position * self.layer_speed

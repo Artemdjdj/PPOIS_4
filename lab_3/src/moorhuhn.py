@@ -54,8 +54,8 @@ class Moorhuhn:
                     # pygame.mixer.music.set_volume(0.1)
 
             elif self._state == State.PLAY:
-                self._game.draw()
                 pygame.mouse.set_visible(False)
+                self._game.draw()
                 new_state = self._game.check_event()
                 if current_music != GAME_MUSIC:
                     current_music = GAME_MUSIC
