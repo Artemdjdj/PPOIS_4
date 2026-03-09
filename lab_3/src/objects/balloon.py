@@ -1,7 +1,7 @@
 import pygame
 
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
-from src.settings.settings import BALLOON_IMAGE, BALLOON_SHOOT, BALLOON_DEAD_IMAGE, ALPHA_Y, BLOOR_BALLOON_Y, \
+from src.settings.settings import BALLOON_IMAGE, BALLOON_SHOOT, BALLOON_DEAD_IMAGE, ALPHA, BLOOR_BALLOON_Y, \
     DELTA_FALLING_SPEED, FALLING_SPEED
 
 
@@ -12,7 +12,7 @@ class Balloon(BaseObjectInLayer):
 
         self._is_falling = False
         self._fall_speed = 0.0
-        self._alpha = ALPHA_Y
+        self._alpha = ALPHA
 
     def shoot(self) -> None:
         if not self._is_killed:

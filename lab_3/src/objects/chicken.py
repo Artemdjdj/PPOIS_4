@@ -1,9 +1,11 @@
 import random
+import time
+
 import pygame
 from src.settings.settings import SCREEN_WIDTH, SITTING_CHICKEN, HEIGHT_FLYING_CHICKEN, SCALE_IMAGE_THIRD_POWER, \
     SCALE_IMAGE_SECOND_POWER, BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_HEIGHT, SPEED_THIRD_LAYER, LEFT_FLYING_CHICKEN, \
     RIGHT_FLYING_CHICKEN, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD, MIN_VERTICAL_CHICKEN_SPEED, \
-    MAX_VERTICAL_CHICKEN_SPEED
+    MAX_VERTICAL_CHICKEN_SPEED, CHICKEN_DEAD_IMAGE, ALPHA
 from src.objects.base_sprite import BaseSprite
 from src.utils.image_formatter import ImageFormatter
 
@@ -12,19 +14,39 @@ class BaseChicken(BaseSprite):
     def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float) -> None:
         super().__init__(image, x, y)
         self.layer_speed = layer_speed
+        self.shoot_time = 0
         self.mask = pygame.mask.from_surface(self.image)
 
-    # def get_collision_rect(self) -> pygame.Rect:
-    #     margin_x = int(self.rect.width * 0.20)
-    #     margin_y = int(self.rect.height * 0.20)
-    #     return self.rect.inflate(-margin_x * 2, -margin_y * 2)
+        self._dead_image = ImageFormatter.scale_image(pygame.image.load(CHICKEN_DEAD_IMAGE).convert_alpha(),
+                                                      self.image.get_width())
+        self._alpha = ALPHA
+        self._is_fading = False
 
     def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
         screen_x = self.rect.x - scroll_position * self.layer_speed
-        screen.blit(self.image, (screen_x, self.rect.y))
+        if self._is_fading:
+            screen.blit(self._dead_image, (screen_x, self.rect.y))
+        else:
+            screen.blit(self.image, (screen_x, self.rect.y))
 
-    def update(self, dt:float) -> None:
+    def update(self, dt: float) -> None:
         pass
+
+    def shoot(self) -> None:
+        self.shoot_time = time.time()
+        super().shoot()
+
+    def animate(self) -> None:
+        if self._is_killed and not self._is_fading:
+            self._is_fading = True
+            self._dead_image.set_alpha(self._alpha)
+
+        if self._is_fading:
+            self._alpha = max(0, self._alpha - 4)
+            self._dead_image.set_alpha(self._alpha)
+
+            if self._alpha <= 0:
+                self.kill()
 
 
 class SittingChicken(BaseChicken):
@@ -43,9 +65,10 @@ class SittingChicken(BaseChicken):
             return SCALE_IMAGE_THIRD_POWER
         return SCALE_IMAGE_SECOND_POWER
 
+
 class FlyingChicken(BaseChicken):
     def __init__(self, x: int, y: int, layer_speed: float, velocity: float, direction: str,
-                 y_min:int, y_max:int):
+                 y_min: int, y_max: int):
         self._direction = direction
         self._velocity = velocity
         self._float_x = float(x)
@@ -66,30 +89,30 @@ class FlyingChicken(BaseChicken):
         self._vertical_speed = self._velocity * random.uniform(MIN_VERTICAL_CHICKEN_SPEED, MAX_VERTICAL_CHICKEN_SPEED)
 
     def update(self, dt: float) -> None:
-        if self._direction == "left":
-            self._float_x -= self._velocity * dt
-        else:
-            self._float_x += self._velocity * dt
-
-        self._time_until_next_move -= dt
-        if self._time_until_next_move <= 0:
-            self._pick_new_target_y()
-            self._time_until_next_move = random.uniform(2.0, 4.0)
-
-        diff = self._target_y - self._float_y
-        if abs(diff) > 1.0:
-            move = self._vertical_speed * dt
-            if diff >0:
-                self._float_y += move
+        if not self._is_killed:
+            if self._direction == "left":
+                self._float_x -= self._velocity * dt
             else:
-                self._float_y -= move
-        else:
-            self._float_y = self._target_y
+                self._float_x += self._velocity * dt
 
-        self.rect.x = int(self._float_x)
-        self.rect.y = int(self._float_y)
+            self._time_until_next_move -= dt
+            if self._time_until_next_move <= 0:
+                self._pick_new_target_y()
+                self._time_until_next_move = random.uniform(2.0, 4.0)
 
-    def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
-        screen_x = self.rect.x - scroll_position * self.layer_speed
-        screen.blit(self.image, (screen_x, self.rect.y))
+            diff = self._target_y - self._float_y
+            if abs(diff) > 1.0:
+                move = self._vertical_speed * dt
+                if diff > 0:
+                    self._float_y += move
+                else:
+                    self._float_y -= move
+            else:
+                self._float_y = self._target_y
 
+            self.rect.x = int(self._float_x)
+            self.rect.y = int(self._float_y)
+
+    # def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
+    #     screen_x = self.rect.x - scroll_position * self.layer_speed
+    #     screen.blit(self.image, (screen_x, self.rect.y))
