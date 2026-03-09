@@ -33,7 +33,7 @@ from src.objects.oven import Oven
 
 
 class Game:
-    def __init__(self, screen: pygame.Surface, clock: Clock) -> None:
+    def __init__(self, screen: pygame.Surface, dt) -> None:
         self._screen = screen
 
         self._layer_sky = SkyLayer(pygame.image.load(FIRST_LAYER).convert_alpha(), 'far', SPEED_FIRST_LAYER,
@@ -58,7 +58,7 @@ class Game:
 
         self._cursor = Cursor()
         self._clip = CartridgesFactory(5, CARTRIDGE_START_X, CARTRIDGE_START_Y, SPACE_BETWEEN_CARTRIDGES)
-        self._dt = clock.tick(FPS) / 1000.0
+        self._dt = dt
 
         self._scroll_position = SCREEN_WIDTH // 2
         self._sound_player = SoundPlayer()
@@ -66,9 +66,9 @@ class Game:
 
         self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                         (CARTRIDGE_START_X - SPACE_BETWEEN_CARTRIDGES * 5, CARTRIDGE_START_Y))
-        self._score_text = Writer(SCORE_TEXT, BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
+        self._score_text = Writer("", BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                   (SPACE_SCORE_X, SPACE_INFO_Y))
-        self._time_text = Writer(TIME_TEXT, BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
+        self._time_text = Writer("", BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                  (SPACE_TIME_X, SPACE_INFO_Y))
 
     def create_sitting_chickens_game(self, count: int):
@@ -79,6 +79,12 @@ class Game:
 
     def create_flying_chickens(self, count: int):
         self._layer_sky.create_chickens(count)
+
+    def update_time(self, time:str)->None:
+        self._time_text.set_text(time)
+
+    def update(self, dt: float) -> None:
+        self._dt = dt
 
     def draw(self) -> None:
         for x in range(3):
