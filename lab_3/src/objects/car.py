@@ -1,6 +1,6 @@
 import pygame
 
-from src.settings.settings import CAR_IMAGE
+from src.settings.settings import CAR_IMAGE, CAR_SHOOT
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
@@ -11,3 +11,7 @@ class Car(BaseObjectInLayer):
 
     def animate(self) -> None:
         self.image = pygame.image.load(CAR_IMAGE).convert_alpha()
+
+    def play(self, volume:float) -> None:
+        self._player.set_sound(CAR_SHOOT)
+        super().play(volume)

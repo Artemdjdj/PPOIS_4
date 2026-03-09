@@ -2,7 +2,8 @@ import time
 
 import pygame
 
-from src.settings.settings import OVEN_WITH_CHICKEN, OVEN_IMAGE, OVEN_COORD_X, OVEN_COORD_Y, TIME_AFTER_SHOOT
+from src.settings.settings import OVEN_WITH_CHICKEN, OVEN_IMAGE, OVEN_COORD_X, OVEN_COORD_Y, TIME_AFTER_SHOOT, \
+    OVEN_SHOOT
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
@@ -20,11 +21,16 @@ class Oven(BaseObjectInLayer):
     def animate(self) -> None:
         if self._is_killed:
             current_time = time.time()
+            x,y = self.rect.x, self.rect.y
             if self.shoot_time is not None and current_time - self.shoot_time >= TIME_AFTER_SHOOT:
                 self.image = self._img_with_chicken
                 self._is_killed = False
             else:
                 self.image = self._img_empty
             self.rect = self.image.get_rect()
-            self.rect.x = OVEN_COORD_X
-            self.rect.y = OVEN_COORD_Y
+            self.rect.x = x
+            self.rect.y = y
+
+    def play(self, volume:float) -> None:
+        self._player.set_sound(OVEN_SHOOT)
+        super().play(volume)

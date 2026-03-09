@@ -1,5 +1,6 @@
 import pygame
 
+from src.interface.sound_player import SoundPlayer
 from src.settings.settings import SCREEN_WIDTH
 from src.utils.image_formatter import ImageFormatter
 
@@ -16,6 +17,7 @@ class BaseSprite(pygame.sprite.Sprite):
 class BaseObjectInLayer(BaseSprite):
     def __init__(self, image: pygame.Surface,x:int, y:int, layer_speed:float,) -> None:
         self.layer_speed = layer_speed
+        self._player = SoundPlayer()
         self._is_killed = False
         super().__init__(image, x, y)
 
@@ -28,4 +30,8 @@ class BaseObjectInLayer(BaseSprite):
 
     def animate(self) -> None:
         pass
+
+    def play(self, volume)->None:
+        if self._player:
+            self._player.play(volume)
 

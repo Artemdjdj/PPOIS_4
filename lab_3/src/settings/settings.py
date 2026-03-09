@@ -62,6 +62,8 @@ TOILET_COORD_Y = SCREEN_HEIGHT *0.375
 SPACE_SCORE_X = SCREEN_WIDTH* 0.0125
 SPACE_TIME_X = SCREEN_WIDTH * 0.86
 SPACE_INFO_Y = SCREEN_HEIGHT * 0.0375
+ALPHA_Y = SCREEN_HEIGHT *0.3188
+BLOOR_BALLOON_Y = SCREEN_HEIGHT *0.25
 
 SCALE_IMAGE_THIRD_POWER = 1.3
 SCALE_IMAGE_SECOND_POWER = 0.7
@@ -78,6 +80,9 @@ FIRST_LAYER_HEIGHT = int(SCREEN_HEIGHT*0.40)
 SPACE_BETWEEN_CARTRIDGES = SCREEN_WIDTH *0.039
 CARTRIDGE_START_X = SCREEN_WIDTH*0.95
 CARTRIDGE_START_Y = SCREEN_HEIGHT*0.87
+
+FALLING_SPEED = 0.2
+DELTA_FALLING_SPEED = 0.1
 
 FPS = 60
 
@@ -108,6 +113,12 @@ MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
 SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
 RELOAD_CLIP_EFFECT = BASE_DIR / "assets/audio/empty.mp3"
 EMPTY_CLIP_EFFECT = BASE_DIR / "assets/audio/reload_cartridges.mp3"
+CAR_SHOOT = BASE_DIR / "assets/audio/car_shoot.mp3"
+CHICKEN_SHOOT = BASE_DIR / "assets/audio/chicken_shoot.mp3"
+HEDGEHOG_SHOOT = BASE_DIR / "assets/audio/hedgehog_shoot.mp3"
+OVEN_SHOOT = BASE_DIR / "assets/audio/oven_shoot.mp3"
+TOILET_SHOOT = BASE_DIR / "assets/audio/toilet_shoot.mp3"
+BALLOON_SHOOT = BASE_DIR / "assets/audio/balloon_shoot.mp3"
 
 
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
@@ -117,9 +128,11 @@ OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
 OVEN_IMAGE = BASE_DIR / "assets/images/oven.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
 BALLOON_IMAGE = BASE_DIR / "assets/images/balloon_after_upgrade.png"
+BALLOON_DEAD_IMAGE = BASE_DIR / "assets/images/dead_balloon.png"
 HEDGEHOG_IMAGE = BASE_DIR / "assets/images/hedgehog.png"
 HEDGEHOG_AFTER_SHOOT_IMAGE = BASE_DIR / "assets/images/hedgehog_after_shoot.png"
 TOILET_IMAGE = BASE_DIR / "assets/images/toilet.png"
+DESTROYED_TOILET_IMAGE = BASE_DIR / "assets/images/destroyed_toilet.png"
 CARTRIDGE_IMAGE = BASE_DIR / "assets/images/shotgun_cartridge.png"
 
 

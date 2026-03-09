@@ -10,6 +10,7 @@ from src.factories.cartridge_factory import CartridgesFactory
 from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
+from src.interface.sound_player import SoundPlayer
 from src.interface.writer import Writer
 from src.objects.balloon import Balloon
 from src.objects.hedgehog import Hedgehog
@@ -58,12 +59,13 @@ class Game:
         self._dt = clock.tick(FPS) / 1000.0
 
         self._scroll_position = SCREEN_WIDTH // 2
-        self._reload_clip_effect = pygame.mixer.Sound(RELOAD_CLIP_EFFECT)
-        self._empty_clip_effect = pygame.mixer.Sound(EMPTY_CLIP_EFFECT)
-        self._shoot_effect = pygame.mixer.Sound(SHOOT_EFFECT)
-        self._shoot_effect.set_volume(0.6)
-        self._reload_clip_effect.set_volume(0.6)
-        self._empty_clip_effect.set_volume(0.6)
+        self._sound_player = SoundPlayer()
+        # self._reload_clip_effect = pygame.mixer.Sound(RELOAD_CLIP_EFFECT)
+        # self._empty_clip_effect = pygame.mixer.Sound(EMPTY_CLIP_EFFECT)
+        # self._shoot_effect = pygame.mixer.Sound(SHOOT_EFFECT)
+        # self._shoot_effect.set_volume(0.6)
+        # self._reload_clip_effect.set_volume(0.6)
+        # self._empty_clip_effect.set_volume(0.6)
 
         self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                         (CARTRIDGE_START_X - SPACE_BETWEEN_CARTRIDGES * 5, CARTRIDGE_START_Y))
@@ -118,14 +120,16 @@ class Game:
         if key[pygame.K_r]:
             if len(self._clip.cartridges) == 0:
                 self._clip.create()
-                self._reload_clip_effect.play()
+                self._sound_player.set_sound(RELOAD_CLIP_EFFECT)
+                self._sound_player.play(0.6)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if len(self._clip.cartridges) != 0:
                     self._clip.delete()
-                    self._shoot_effect.play()
+                    self._sound_player.set_sound(SHOOT_EFFECT)
+                    self._sound_player.play(0.6)
                     aim_x, aim_y = self._cursor.get_center()
                     for layer in self._layers:
                         for chicken in layer.chickens:
@@ -141,6 +145,7 @@ class Game:
                             screen_chicken_y = element.rect.y
                             if pygame.Rect(screen_chicken_x, screen_chicken_y, element.rect.width,
                                            element.rect.height).collidepoint(aim_x, aim_y):
+                                element.play(0.6)
                                 element.shoot()
                                 break
 
@@ -161,6 +166,7 @@ class Game:
                             #     chicken.kill()
                             #     break
                 else:
-                    self._empty_clip_effect.play()
+                    self._sound_player.set_sound(EMPTY_CLIP_EFFECT)
+                    self._sound_player.play(0.6)
 
         return None
