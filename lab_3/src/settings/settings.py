@@ -66,6 +66,8 @@ SPACE_INFO_Y = SCREEN_HEIGHT * 0.0375
 SCALE_IMAGE_THIRD_POWER = 1.3
 SCALE_IMAGE_SECOND_POWER = 0.7
 
+TIME_AFTER_SHOOT = 3
+
 BASE_WIDTH_OF_SITTING_CHICKEN = int(SCREEN_WIDTH*0.042)
 INDENT_BEFORE_MAX_HEIGHT = int(SCREEN_HEIGHT*0.125)
 INDENT_BETWEEN_LAYERS = int(0.07*SCREEN_HEIGHT)
@@ -112,6 +114,7 @@ SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
 OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
+OVEN_IMAGE = BASE_DIR / "assets/images/oven.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
 BALLOON_IMAGE = BASE_DIR / "assets/images/balloon_after_upgrade.png"
 HEDGEHOG_IMAGE = BASE_DIR / "assets/images/hedgehog.png"

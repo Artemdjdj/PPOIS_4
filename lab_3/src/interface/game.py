@@ -92,6 +92,7 @@ class Game:
 
         for layer in self._layers:
             for element in layer.objects:
+                element.animate()
                 element.draw(self._screen, self._scroll_position)
 
             for chicken in layer.chickens:
@@ -135,6 +136,15 @@ class Game:
                             if chicken.mask.overlap(aim_mask, offset):
                                 chicken.kill()
                                 break
+                        for element in layer.objects:
+                            screen_chicken_x = element.rect.x - self._scroll_position * element.layer_speed
+                            screen_chicken_y = element.rect.y
+                            if pygame.Rect(screen_chicken_x, screen_chicken_y, element.rect.width,
+                                           element.rect.height).collidepoint(aim_x, aim_y):
+                                element.shoot()
+                                break
+
+
                     # for layer in self._layers:
                     #     for chicken in layer.chickens:
                     #         screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
