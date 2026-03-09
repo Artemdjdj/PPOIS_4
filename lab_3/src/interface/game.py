@@ -1,5 +1,5 @@
 import sys
-from typing import Optional, Text
+from typing import Optional, Text, Tuple
 
 import pygame
 from pygame import Surface
@@ -14,6 +14,7 @@ from src.interface.sound_player import SoundPlayer
 from src.interface.writer import Writer
 from src.objects.balloon import Balloon
 from src.objects.hedgehog import Hedgehog
+from src.objects.puddle import Puddle
 from src.objects.toilet import Toilet
 from src.settings.state import State
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BASIC_FONT, BASIC_FONT_SIZE, \
@@ -25,7 +26,7 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
     EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, \
-    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X
+    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
 from src.objects.oven import Oven
@@ -48,6 +49,7 @@ class Game:
         self._layers = [self._layer_sky, self._layer_field, self._layer_game]
 
         self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Puddle(PUDDLE_COORD_X, PUDDLE_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
 
@@ -60,12 +62,7 @@ class Game:
 
         self._scroll_position = SCREEN_WIDTH // 2
         self._sound_player = SoundPlayer()
-        # self._reload_clip_effect = pygame.mixer.Sound(RELOAD_CLIP_EFFECT)
-        # self._empty_clip_effect = pygame.mixer.Sound(EMPTY_CLIP_EFFECT)
-        # self._shoot_effect = pygame.mixer.Sound(SHOOT_EFFECT)
-        # self._shoot_effect.set_volume(0.6)
-        # self._reload_clip_effect.set_volume(0.6)
-        # self._empty_clip_effect.set_volume(0.6)
+
 
         self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                         (CARTRIDGE_START_X - SPACE_BETWEEN_CARTRIDGES * 5, CARTRIDGE_START_Y))
@@ -77,8 +74,8 @@ class Game:
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
 
-    def create_sitting_chickens_field(self, count: int):
-        self._layer_field.create_chickens(count)
+    def create_sitting_chickens_field(self, counts: Tuple[int, int]):
+        self._layer_field.create_chickens(counts)
 
     def create_flying_chickens(self, count: int):
         self._layer_sky.create_chickens(count)
@@ -89,8 +86,8 @@ class Game:
             self._layer_field.draw(self._screen, x, self._scroll_position)
             self._layer_game.draw(self._screen, x, self._scroll_position)
 
-        for chicken in self._layer_sky.chickens:
-            chicken.update(self._dt)
+        # for chicken in self._layer_sky.chickens:
+        #     chicken.update(self._dt)
 
         for layer in self._layers:
             for element in layer.objects:
@@ -98,6 +95,7 @@ class Game:
                 element.draw(self._screen, self._scroll_position)
 
             for chicken in layer.chickens:
+                chicken.update(self._dt)
                 chicken.animate()
                 chicken.draw(self._screen, self._scroll_position)
 
@@ -139,6 +137,7 @@ class Game:
                             aim_mask = pygame.mask.Mask((1, 1), fill=True)
                             offset = (int(aim_x-screen_chicken_x), int(aim_y-screen_chicken_y))
                             if chicken.mask.overlap(aim_mask, offset):
+                                chicken.play(0.6)
                                 chicken.shoot()
                                 break
                         for element in layer.objects:

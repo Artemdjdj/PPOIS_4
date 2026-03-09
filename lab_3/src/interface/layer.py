@@ -3,7 +3,8 @@ from abc import ABC, abstractmethod
 import pygame
 from pygame.sprite import Group
 
-from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory
+from src.factories.bird_factory import ChickenFactory, SittingChickenFactory, FlyingChickenFactory, \
+    HorizontalFlyingChickenFactory
 from src.objects.balloon import Balloon
 from src.objects.base_sprite import BaseObjectInLayer
 from src.objects.toilet import Toilet
@@ -58,20 +59,33 @@ class SkyLayer(Layer):
             if chicken:
                 self._group.add(chicken)
 
+
 class GroundField(Layer):
-    def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
+    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]):
         super().__init__(image, name, layer_speed, y_range)
-        self._factory = SittingChickenFactory(self._group)
+        self._factory_sitting = SittingChickenFactory(self._group)
 
     def create_chickens(self, count: int)->None:
         for _ in range(count):
-            chicken = self._factory.create(self._y_range[0], self._y_range[1], self._speed, self._objects)
+            chicken = self._factory_sitting.create(self._y_range[0], self._y_range[1], self._speed, self._objects)
             if chicken:
                 self._group.add(chicken)
 
+
 class FieldLayer(GroundField):
-    def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):
+    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]):
         super().__init__(image, name, layer_speed, y_range)
+        self._factory_flying = HorizontalFlyingChickenFactory(self._group)
+
+    def create_chickens(self, counts: Tuple[int, int]) -> None:
+        sitting_count, flying_count = counts
+        factories = (self._factory_sitting, self._factory_flying)
+
+        for factory, count in zip(factories, (sitting_count, flying_count)):
+            for _ in range(count):
+                chicken = factory.create(self._y_range[0],self._y_range[1], self._speed, self._objects)
+                if chicken:
+                    self._group.add(chicken)
 
 class GameLayer(GroundField):
     def __init__(self, image: pygame.Surface, name:str, layer_speed, y_range:Tuple[int, int]):

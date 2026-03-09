@@ -25,12 +25,12 @@ class Moorhuhn:
         self._table_records = TableRecords(self._screen)
         self._clock = pygame.time.Clock()
         self._game = Game(self._screen, self._clock)
-        self._game.create_sitting_chickens_field(20)
+        self._game.create_sitting_chickens_field((20,15))
         self._game.create_sitting_chickens_game(20)
         self._game.create_flying_chickens(10)
-        # pygame.mixer.music.load(MENU_MUSIC)
-        # pygame.mixer.music.set_volume(0.0)
-        # pygame.mixer.music.play(-1)
+        pygame.mixer.music.load(MENU_MUSIC)
+        pygame.mixer.music.set_volume(0.2)
+        pygame.mixer.music.play(-1)
         self._chickens = []
 
 
@@ -49,9 +49,9 @@ class Moorhuhn:
                 new_state = self._menu.check_event()
                 if current_music != MENU_MUSIC:
                     current_music = MENU_MUSIC
-                    # pygame.mixer.music.load(MENU_MUSIC)
-                    # pygame.mixer.music.play(-1)
-                    # pygame.mixer.music.set_volume(0.1)
+                    pygame.mixer.music.load(MENU_MUSIC)
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.2)
 
             elif self._state == State.PLAY:
                 pygame.mouse.set_visible(False)
@@ -59,9 +59,9 @@ class Moorhuhn:
                 new_state = self._game.check_event()
                 if current_music != GAME_MUSIC:
                     current_music = GAME_MUSIC
-                    # pygame.mixer.music.load(GAME_MUSIC)
-                    # pygame.mixer.music.play(-1)
-                    # pygame.mixer.music.set_volume(0.1)
+                    pygame.mixer.music.load(GAME_MUSIC)
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.2)
 
 
                 # for chicken in self._chickens:

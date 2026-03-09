@@ -5,7 +5,7 @@ import pygame
 from src.settings.settings import SCREEN_WIDTH, SITTING_CHICKEN, HEIGHT_FLYING_CHICKEN, SCALE_IMAGE_THIRD_POWER, \
     SCALE_IMAGE_SECOND_POWER, BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_HEIGHT, SPEED_THIRD_LAYER, LEFT_FLYING_CHICKEN, \
     RIGHT_FLYING_CHICKEN, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD, MIN_VERTICAL_CHICKEN_SPEED, \
-    MAX_VERTICAL_CHICKEN_SPEED, CHICKEN_DEAD_IMAGE, ALPHA
+    MAX_VERTICAL_CHICKEN_SPEED, CHICKEN_DEAD_IMAGE, ALPHA, CHICKEN_SHOOT, RIGHT_FLYING_CHICKEN_2, LEFT_FLYING_CHICKEN_2
 from src.objects.base_sprite import BaseSprite
 from src.utils.image_formatter import ImageFormatter
 
@@ -29,7 +29,7 @@ class BaseChicken(BaseSprite):
         else:
             screen.blit(self.image, (screen_x, self.rect.y))
 
-    def update(self, dt: float) -> None:
+    def update(self, dt: float=0.0) -> None:
         pass
 
     def shoot(self) -> None:
@@ -47,6 +47,10 @@ class BaseChicken(BaseSprite):
 
             if self._alpha <= 0:
                 self.kill()
+
+    def play(self, volume) ->None:
+        self._player.set_sound(CHICKEN_SHOOT)
+        super().play(volume)
 
 
 class SittingChicken(BaseChicken):
@@ -88,7 +92,7 @@ class FlyingChicken(BaseChicken):
         self._target_y = float(random.randint(self._y_min, self._y_max))
         self._vertical_speed = self._velocity * random.uniform(MIN_VERTICAL_CHICKEN_SPEED, MAX_VERTICAL_CHICKEN_SPEED)
 
-    def update(self, dt: float) -> None:
+    def update(self, dt: float=0.0) -> None:
         if not self._is_killed:
             if self._direction == "left":
                 self._float_x -= self._velocity * dt
@@ -113,6 +117,22 @@ class FlyingChicken(BaseChicken):
             self.rect.x = int(self._float_x)
             self.rect.y = int(self._float_y)
 
-    # def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
-    #     screen_x = self.rect.x - scroll_position * self.layer_speed
-    #     screen.blit(self.image, (screen_x, self.rect.y))
+class HorizontalFlyingChicken(BaseChicken):
+    def __init__(self, x: int, y: int, layer_speed:float, velocity: float, direction: str):
+        self._direction = direction
+        self._velocity = velocity
+        self._float_x = float(x)
+
+        image_path = LEFT_FLYING_CHICKEN_2 if direction == "left" else RIGHT_FLYING_CHICKEN_2
+        image = pygame.image.load(image_path).convert_alpha()
+        super().__init__(image, x, y, layer_speed)
+
+    def update(self, dt:float=0.0) -> None:
+        if not self._is_killed:
+            if self._direction == "left":
+                self._float_x -= self._velocity * dt
+            else:
+                self._float_x += self._velocity * dt
+
+            self.rect.x = int(self._float_x)
+

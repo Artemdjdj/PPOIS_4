@@ -49,6 +49,8 @@ COORD_X_NAME = SCREEN_WIDTH * 0.37
 COORD_X_RECORD = SCREEN_WIDTH * 0.70
 HEIGHT_BETWEEN_BUTTONS = SCREEN_HEIGHT * 0.1125
 HEIGHT_FLYING_CHICKEN = 300
+PUDDLE_COORD_X = SCREEN_WIDTH * 1.45
+PUDDLE_COORD_Y = SCREEN_HEIGHT * 0.65
 CAR_COORD_X = SCREEN_WIDTH * 0.42
 CAR_COORD_Y = SCREEN_HEIGHT * 0.625
 OVEN_COORD_X = SCREEN_WIDTH*1.67
@@ -119,11 +121,14 @@ HEDGEHOG_SHOOT = BASE_DIR / "assets/audio/hedgehog_shoot.mp3"
 OVEN_SHOOT = BASE_DIR / "assets/audio/oven_shoot.mp3"
 TOILET_SHOOT = BASE_DIR / "assets/audio/toilet_shoot.mp3"
 BALLOON_SHOOT = BASE_DIR / "assets/audio/balloon_shoot.mp3"
+PUDDLE_SHOOT = BASE_DIR / "assets/audio/puddle_shoot.mp3"
 
 
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
+LEFT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/left_horizontal_chicken_2.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
+RIGHT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/right_horizontal_chicken_2.png"
 OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
 OVEN_IMAGE = BASE_DIR / "assets/images/oven.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
@@ -135,6 +140,7 @@ TOILET_IMAGE = BASE_DIR / "assets/images/toilet.png"
 DESTROYED_TOILET_IMAGE = BASE_DIR / "assets/images/destroyed_toilet.png"
 CARTRIDGE_IMAGE = BASE_DIR / "assets/images/shotgun_cartridge.png"
 CHICKEN_DEAD_IMAGE = BASE_DIR / "assets/images/dead_chicken.png"
+PUDDLE_IMAGE = BASE_DIR / "assets/images/puddle.png"
 
 
 TEST_LEADERS = [
