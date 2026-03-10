@@ -2,14 +2,13 @@ import pygame
 
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 from src.settings.settings import BALLOON_IMAGE, BALLOON_SHOOT, BALLOON_DEAD_IMAGE, ALPHA, BLOOR_BALLOON_Y, \
-    DELTA_FALLING_SPEED, FALLING_SPEED
+    DELTA_FALLING_SPEED, FALLING_SPEED, SCORE_BALLOON
 
 
 class Balloon(BaseObjectInLayer):
     def __init__(self, x: int, y: int, layer_speed: float) -> None:
         image = pygame.image.load(BALLOON_IMAGE).convert_alpha()
-        score = -50
-        super().__init__(image, x, y, layer_speed, score)
+        super().__init__(image, x, y, layer_speed, SCORE_BALLOON)
 
         self._is_falling = False
         self._fall_speed = 0.0

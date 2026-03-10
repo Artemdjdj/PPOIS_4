@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
 
 
-class BasicReader(ABC):
+class BasicRulesReader(ABC):
     @abstractmethod
     def read(self)->str:
         pass
 
-class TxtReader(BasicReader):
+class TxtReader(BasicRulesReader):
     def __init__(self, path: str):
         self._path = path
 
@@ -14,3 +14,4 @@ class TxtReader(BasicReader):
         with open(self._path, 'r') as f:
             text = f.read()
             return text
+

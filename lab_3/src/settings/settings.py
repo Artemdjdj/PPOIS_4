@@ -62,7 +62,7 @@ BALLOON_COORD_Y = SCREEN_HEIGHT *0.125
 TOILET_COORD_X = SCREEN_WIDTH *1.16
 TOILET_COORD_Y = SCREEN_HEIGHT *0.375
 SPACE_TIME_X = SCREEN_WIDTH* 0.0125
-SPACE_SCORE_X = SCREEN_WIDTH * 0.86
+SPACE_SCORE_X = SCREEN_WIDTH * 0.93
 SPACE_INFO_Y = SCREEN_HEIGHT * 0.0375
 ALPHA = SCREEN_HEIGHT *0.3188
 BLOOR_BALLOON_Y = SCREEN_HEIGHT *0.25
@@ -111,6 +111,9 @@ THIRD_LAYER = BASE_DIR / f"assets/images/new_layer_3.png"
 
 
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
+FILE_TABLE_LEADERS = BASE_DIR / "assets/json/table_leaders.json"
+
+
 GAME_MUSIC = BASE_DIR / "assets/audio/main_game.mp3"
 MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
 SHOOT_EFFECT = BASE_DIR / "assets/audio/gun_shoot.mp3"
@@ -144,31 +147,13 @@ CARTRIDGE_IMAGE = BASE_DIR / "assets/images/shotgun_cartridge.png"
 CHICKEN_DEAD_IMAGE = BASE_DIR / "assets/images/dead_chicken.png"
 PUDDLE_IMAGE = BASE_DIR / "assets/images/puddle.png"
 
-
-TEST_LEADERS = [
-    {
-        "number": 1,
-        "name": "Artemdjdj",
-        "record": 100
-    },
-    {
-        "number": 2,
-        "name": "zhkulik",
-        "record": 85
-    },
-    {
-        "number": 3,
-        "name": "ionhavetimee",
-        "record": 80
-    },
-    {
-        "number": 4,
-        "name": "dburbas",
-        "record": 70
-    },
-    {
-        "number": 5,
-        "name": "Shoptick",
-        "record": 60
-    }
-]
+SCORE_BIG_CHICKEN = 5
+SCORE_FLYING_CHICKEN = 25
+SCORE_SMALL_CHICKEN = 10
+SCORE_HORIZONTAL_CHICKEN = 15
+SCORE_TOILET = -2
+SCORE_CAR = -1
+SCORE_OVEN = -3
+SCORE_PUDDLE = -1
+SCORE_BALLOON = -50
+SCORE_HEDGEHOG = -100

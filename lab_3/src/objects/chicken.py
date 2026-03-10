@@ -5,7 +5,8 @@ import pygame
 from src.settings.settings import SCREEN_WIDTH, SITTING_CHICKEN, HEIGHT_FLYING_CHICKEN, SCALE_IMAGE_THIRD_POWER, \
     SCALE_IMAGE_SECOND_POWER, BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_HEIGHT, SPEED_THIRD_LAYER, LEFT_FLYING_CHICKEN, \
     RIGHT_FLYING_CHICKEN, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD, MIN_VERTICAL_CHICKEN_SPEED, \
-    MAX_VERTICAL_CHICKEN_SPEED, CHICKEN_DEAD_IMAGE, ALPHA, CHICKEN_SHOOT, RIGHT_FLYING_CHICKEN_2, LEFT_FLYING_CHICKEN_2
+    MAX_VERTICAL_CHICKEN_SPEED, CHICKEN_DEAD_IMAGE, ALPHA, CHICKEN_SHOOT, RIGHT_FLYING_CHICKEN_2, LEFT_FLYING_CHICKEN_2, \
+    SCORE_HORIZONTAL_CHICKEN, SCORE_FLYING_CHICKEN, SCORE_BIG_CHICKEN, SCORE_SMALL_CHICKEN
 from src.objects.base_sprite import BaseSprite
 from src.utils.image_formatter import ImageFormatter
 
@@ -61,7 +62,7 @@ class SittingChicken(BaseChicken):
             pygame.image.load(SITTING_CHICKEN).convert_alpha(),
             width
         )
-        score = 5 if scale > 1 else 10
+        score = SCORE_BIG_CHICKEN if scale > 1 else SCORE_SMALL_CHICKEN
         super().__init__(image, x, y, layer_speed, score)
 
     @staticmethod
@@ -87,8 +88,7 @@ class FlyingChicken(BaseChicken):
 
         image_path = LEFT_FLYING_CHICKEN if direction == "left" else RIGHT_FLYING_CHICKEN
         image = pygame.image.load(image_path).convert_alpha()
-        score = 25
-        super().__init__(image, x, y, layer_speed, score)
+        super().__init__(image, x, y, layer_speed, SCORE_FLYING_CHICKEN)
 
     def _pick_new_target_y(self) -> None:
         self._target_y = float(random.randint(self._y_min, self._y_max))
@@ -127,8 +127,7 @@ class HorizontalFlyingChicken(BaseChicken):
 
         image_path = LEFT_FLYING_CHICKEN_2 if direction == "left" else RIGHT_FLYING_CHICKEN_2
         image = pygame.image.load(image_path).convert_alpha()
-        score = 10
-        super().__init__(image, x, y, layer_speed, score)
+        super().__init__(image, x, y, layer_speed, SCORE_HORIZONTAL_CHICKEN)
 
     def update(self, dt:float=0.0) -> None:
         if not self._is_killed:

@@ -75,6 +75,8 @@ class Game:
 
         self._kill_scores = []
 
+        self._total_kill_points = 0
+
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
 
@@ -87,8 +89,11 @@ class Game:
     def update_time(self, time:str)->None:
         self._time_text.set_text(time)
 
-    def update(self, dt: float) -> None:
+    def update_dt(self, dt: float) -> None:
         self._dt = dt
+
+    def _update_score(self, score: int) -> None:
+        self._score_text.set_text(str(score))
 
     def draw(self) -> None:
         for x in range(3):
@@ -109,6 +114,7 @@ class Game:
                 chicken.animate()
                 chicken.draw(self._screen, self._scroll_position)
 
+        self._update_score(self._total_kill_points)
         self._score_text.draw(self._screen)
         self._time_text.draw(self._screen)
 
@@ -125,6 +131,12 @@ class Game:
             self._reload_clip_text.draw(self._screen)
 
         self._cursor.draw(self._screen)
+
+    def _update_kill_points(self, point:int)->None:
+        if point + self._total_kill_points <0:
+            self._total_kill_points = 0
+        else:
+            self._total_kill_points += point
 
     def check_event(self) -> Optional[State]:
         key = pygame.key.get_pressed()
@@ -155,14 +167,17 @@ class Game:
                             if chicken.mask.overlap(aim_mask, offset):
                                 chicken.play(0.6)
                                 chicken.shoot()
-                                self._kill_scores.append(TextKillWriter(
-                                    chicken.rect.x - self._scroll_position * chicken.layer_speed,
-                                    chicken.rect.top+10,
-                                    str(chicken.score),
-                                    BASIC_FONT,
-                                    SCORE_TEXT_SIZE,
-                                    (255,255,255)
-                                ))
+                                text = chicken.score
+                                if text:
+                                    self._kill_scores.append(TextKillWriter(
+                                        chicken.rect.x - self._scroll_position * chicken.layer_speed,
+                                        chicken.rect.top+10,
+                                        str(chicken.score),
+                                        BASIC_FONT,
+                                        SCORE_TEXT_SIZE,
+                                        (255,255,255)
+                                    ))
+                                    self._update_kill_points(chicken.score)
                                 break
                         for element in layer.objects:
                             screen_chicken_x = element.rect.x - self._scroll_position * element.layer_speed
@@ -181,6 +196,7 @@ class Game:
                                         SCORE_TEXT_SIZE,
                                         (255, 255, 255)
                                     ))
+                                self._update_kill_points(int(text))
                                 break
 
 

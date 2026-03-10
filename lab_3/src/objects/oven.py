@@ -3,7 +3,7 @@ import time
 import pygame
 
 from src.settings.settings import OVEN_WITH_CHICKEN, OVEN_IMAGE, OVEN_COORD_X, OVEN_COORD_Y, TIME_AFTER_SHOOT, \
-    OVEN_SHOOT
+    OVEN_SHOOT, SCORE_OVEN
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
@@ -12,7 +12,7 @@ class Oven(BaseObjectInLayer):
         self._img_with_chicken = pygame.image.load(OVEN_WITH_CHICKEN).convert_alpha()
         self._img_empty = pygame.image.load(OVEN_IMAGE).convert_alpha()
         self.shoot_time = None
-        super().__init__(self._img_with_chicken, x, y, layer_speed, -3)
+        super().__init__(self._img_with_chicken, x, y, layer_speed, SCORE_OVEN)
 
     def shoot(self) -> None:
         if self._is_killed:

@@ -1,6 +1,7 @@
 import pygame
 
-from src.settings.settings import CAR_IMAGE, TOILET_IMAGE, DESTROYED_TOILET_IMAGE, TOILET_SHOOT, NOT_TOILET_IMAGE
+from src.settings.settings import CAR_IMAGE, TOILET_IMAGE, DESTROYED_TOILET_IMAGE, TOILET_SHOOT, NOT_TOILET_IMAGE, \
+    SCORE_TOILET
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
@@ -11,8 +12,7 @@ class Toilet(BaseObjectInLayer):
         self._image_not_toilet = pygame.image.load(NOT_TOILET_IMAGE).convert_alpha()
         self._count_of_shoots = 0
         self._is_toilet_nothing = False
-        score = -5
-        super().__init__(self._image_toilet, x, y, layer_speed, score)
+        super().__init__(self._image_toilet, x, y, layer_speed, SCORE_TOILET)
 
     def shoot(self)->None:
         self._count_of_shoots += 1
@@ -21,7 +21,7 @@ class Toilet(BaseObjectInLayer):
             self._is_killed = True
 
         if self._count_of_shoots>9:
-            self.score = None
+            self.score = 0
             self._is_toilet_nothing = True
 
     def animate(self) -> None:

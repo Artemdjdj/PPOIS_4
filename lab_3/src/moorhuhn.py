@@ -67,7 +67,7 @@ class Moorhuhn:
                 if self._timer.is_finished():
                     sys.exit()
                 self._game.update_time(str(self._timer.get_time_left()))
-                self._game.update(self._dt)
+                self._game.update_dt(self._dt)
                 self._game.draw()
                 new_state = self._game.check_event()
                 if current_music != GAME_MUSIC:
