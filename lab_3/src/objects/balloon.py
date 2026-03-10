@@ -8,7 +8,8 @@ from src.settings.settings import BALLOON_IMAGE, BALLOON_SHOOT, BALLOON_DEAD_IMA
 class Balloon(BaseObjectInLayer):
     def __init__(self, x: int, y: int, layer_speed: float) -> None:
         image = pygame.image.load(BALLOON_IMAGE).convert_alpha()
-        super().__init__(image, x, y, layer_speed)
+        score = -50
+        super().__init__(image, x, y, layer_speed, score)
 
         self._is_falling = False
         self._fall_speed = 0.0

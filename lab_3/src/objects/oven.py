@@ -12,9 +12,11 @@ class Oven(BaseObjectInLayer):
         self._img_with_chicken = pygame.image.load(OVEN_WITH_CHICKEN).convert_alpha()
         self._img_empty = pygame.image.load(OVEN_IMAGE).convert_alpha()
         self.shoot_time = None
-        super().__init__(self._img_with_chicken, x, y, layer_speed)
+        super().__init__(self._img_with_chicken, x, y, layer_speed, -3)
 
     def shoot(self) -> None:
+        if self._is_killed:
+            return
         self.shoot_time = time.time()
         super().shoot()
 
@@ -34,3 +36,6 @@ class Oven(BaseObjectInLayer):
     def play(self, volume:float) -> None:
         self._player.set_sound(OVEN_SHOOT)
         super().play(volume)
+
+    def draw(self,screen: pygame.Surface, scroll_position: float ) -> None:
+        super().draw(screen, scroll_position)

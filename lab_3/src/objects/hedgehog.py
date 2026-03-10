@@ -8,7 +8,8 @@ from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 class Hedgehog(BaseObjectInLayer):
     def __init__(self, x:int, y:int, layer_speed:float) -> None:
         image = pygame.image.load(HEDGEHOG_IMAGE).convert_alpha()
-        super().__init__(image, x, y, layer_speed)
+        score = -100
+        super().__init__(image, x, y, layer_speed, score)
 
     def animate(self) -> None:
         if self._is_killed:

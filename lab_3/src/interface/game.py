@@ -11,6 +11,7 @@ from src.interface.button import Button
 from src.interface.cursor import Cursor
 from src.interface.layer import SkyLayer, FieldLayer, GameLayer
 from src.interface.sound_player import SoundPlayer
+from src.interface.text_kill_writer import TextKillWriter
 from src.interface.writer import Writer
 from src.objects.balloon import Balloon
 from src.objects.hedgehog import Hedgehog
@@ -50,8 +51,8 @@ class Game:
 
         self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Puddle(PUDDLE_COORD_X, PUDDLE_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
 
         self._layer_sky.add_object(Balloon(BALLOON_COORD_X, BALLOON_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_field.add_object(Toilet(TOILET_COORD_X, TOILET_COORD_Y, SPEED_SECOND_LAYER))
@@ -70,6 +71,9 @@ class Game:
                                   (SPACE_SCORE_X, SPACE_INFO_Y))
         self._time_text = Writer("", BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                  (SPACE_TIME_X, SPACE_INFO_Y))
+
+
+        self._kill_scores = []
 
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
@@ -108,6 +112,12 @@ class Game:
         self._score_text.draw(self._screen)
         self._time_text.draw(self._screen)
 
+        for text in self._kill_scores:
+            text.update()
+            text.draw(self._screen)
+
+        self._kill_scores = [t for t in self._kill_scores if t.alive]
+
         if self._clip.cartridges:
             for cartridge in self._clip.cartridges:
                 cartridge.draw(self._screen, self._scroll_position)
@@ -145,6 +155,14 @@ class Game:
                             if chicken.mask.overlap(aim_mask, offset):
                                 chicken.play(0.6)
                                 chicken.shoot()
+                                self._kill_scores.append(TextKillWriter(
+                                    chicken.rect.x - self._scroll_position * chicken.layer_speed,
+                                    chicken.rect.top+10,
+                                    str(chicken.score),
+                                    BASIC_FONT,
+                                    SCORE_TEXT_SIZE,
+                                    (255,255,255)
+                                ))
                                 break
                         for element in layer.objects:
                             screen_chicken_x = element.rect.x - self._scroll_position * element.layer_speed
@@ -153,6 +171,16 @@ class Game:
                                            element.rect.height).collidepoint(aim_x, aim_y):
                                 element.play(0.6)
                                 element.shoot()
+                                text = element.score
+                                if text:
+                                    self._kill_scores.append(TextKillWriter(
+                                        element.rect.x - self._scroll_position * element.layer_speed,
+                                        element.rect.top+10,
+                                        str(text),
+                                        BASIC_FONT,
+                                        SCORE_TEXT_SIZE,
+                                        (255, 255, 255)
+                                    ))
                                 break
 
 

@@ -11,8 +11,8 @@ from src.utils.image_formatter import ImageFormatter
 
 
 class BaseChicken(BaseSprite):
-    def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float) -> None:
-        super().__init__(image, x, y)
+    def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float, score:int) -> None:
+        super().__init__(image, x, y, score)
         self.layer_speed = layer_speed
         self.shoot_time = 0
         self.mask = pygame.mask.from_surface(self.image)
@@ -61,7 +61,8 @@ class SittingChicken(BaseChicken):
             pygame.image.load(SITTING_CHICKEN).convert_alpha(),
             width
         )
-        super().__init__(image, x, y, layer_speed)
+        score = 5 if scale > 1 else 10
+        super().__init__(image, x, y, layer_speed, score)
 
     @staticmethod
     def _get_size(layer_speed: float) -> float:
@@ -86,7 +87,8 @@ class FlyingChicken(BaseChicken):
 
         image_path = LEFT_FLYING_CHICKEN if direction == "left" else RIGHT_FLYING_CHICKEN
         image = pygame.image.load(image_path).convert_alpha()
-        super().__init__(image, x, y, layer_speed)
+        score = 25
+        super().__init__(image, x, y, layer_speed, score)
 
     def _pick_new_target_y(self) -> None:
         self._target_y = float(random.randint(self._y_min, self._y_max))
@@ -125,7 +127,8 @@ class HorizontalFlyingChicken(BaseChicken):
 
         image_path = LEFT_FLYING_CHICKEN_2 if direction == "left" else RIGHT_FLYING_CHICKEN_2
         image = pygame.image.load(image_path).convert_alpha()
-        super().__init__(image, x, y, layer_speed)
+        score = 10
+        super().__init__(image, x, y, layer_speed, score)
 
     def update(self, dt:float=0.0) -> None:
         if not self._is_killed:
