@@ -1,4 +1,5 @@
 import sys
+import time
 
 import pygame
 from keyboard import restore_state
@@ -8,7 +9,7 @@ from src.interface.help_menu import HelpMenu
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
-    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS
+    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS, TIME_OF_SPAWN_CHICKENS
 from src.settings.state import State
 from src.objects.chicken import SittingChicken
 from src.utils.loader import JsonLeadersLoader
@@ -34,8 +35,8 @@ class Moorhuhn:
         self._dt = self._clock.tick(FPS) / 1000.0
 
         self._game = Game(self._screen, self._dt)
-        self._game.create_sitting_chickens_field((20,15))
-        self._game.create_sitting_chickens_game(20)
+        self._game.create_sitting_chickens_field((4,6))
+        self._game.create_sitting_chickens_game(10)
         self._game.create_flying_chickens(10)
 
         pygame.mixer.music.load(MENU_MUSIC)
@@ -43,6 +44,7 @@ class Moorhuhn:
         pygame.mixer.music.play(-1)
 
         self._timer = GameTimer(90.0)
+        self._spawn_timer = time.time()
 
     def _check_leader(self, score:int):
         res_pos = -1
@@ -53,11 +55,11 @@ class Moorhuhn:
                 res_leader = leader
                 break
 
-        print("All right")
         if res_leader is None:
             self._state = State.GAME_OVER
         else:
-            print("ok")
+            for i in range(len(res_leader)-1, res_pos,-1):
+                self._leaders[i] = self._leaders[i+1]
             self._leaders[res_pos] = ("Dima babnik", score)
             saver = JsonLeadersSaver(FILE_TABLE_LEADERS, self._leaders)
             saver.save()
@@ -84,6 +86,10 @@ class Moorhuhn:
 
             elif self._state == State.PLAY:
                 self._timer.update(self._dt)
+                current_time = time.time()
+                if current_time - self._spawn_timer > TIME_OF_SPAWN_CHICKENS:
+                    self._game.spawn_chickens()
+                    self._spawn_timer = current_time
                 pygame.mouse.set_visible(False)
                 if self._timer.is_finished():
                     self._state = State.CHECK_LEADER

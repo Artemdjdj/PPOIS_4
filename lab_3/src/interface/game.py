@@ -1,4 +1,6 @@
+import random
 import sys
+import time
 from typing import Optional, Text, Tuple
 
 import pygame
@@ -27,7 +29,8 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
     EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, \
-    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y
+    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
+    MAX_COUNT_CHICKENS_IN_LAYER
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
 from src.objects.oven import Oven
@@ -72,10 +75,26 @@ class Game:
         self._time_text = Writer("", BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                  (SPACE_TIME_X, SPACE_INFO_Y))
 
+        self._max_count_chickens_in_layer = MAX_COUNT_CHICKENS_IN_LAYER
+
 
         self._kill_scores = []
 
         self._total_kill_points = 0
+
+    def spawn_chickens(self):
+        actions = [
+            (self.create_sitting_chickens_game,
+             lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens))),)),
+            (self.create_sitting_chickens_field, lambda: (
+                (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2)),
+                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2))),
+            )),
+            (self.create_flying_chickens,
+             lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens))),))
+        ]
+        func, args_gen = random.choice(actions)
+        func(*args_gen())
 
     @property
     def total_kill_points(self) -> int:
@@ -104,9 +123,6 @@ class Game:
             self._layer_sky.draw(self._screen, x, self._scroll_position)
             self._layer_field.draw(self._screen, x, self._scroll_position)
             self._layer_game.draw(self._screen, x, self._scroll_position)
-
-        # for chicken in self._layer_sky.chickens:
-        #     chicken.update(self._dt)
 
         for layer in self._layers:
             for element in layer.objects:
@@ -202,23 +218,6 @@ class Game:
                                     ))
                                 self._update_kill_points(int(text))
                                 break
-
-
-                    # for layer in self._layers:
-                    #     for chicken in layer.chickens:
-                    #         screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
-                    #         screen_chicken_y = chicken.rect.y
-                    #         # if chicken.rect.collidepoint(aim_x, aim_y):
-                    #         collision_rect = chicken.get_collision_rect()
-                    #         collision_rect.x = screen_chicken_x
-                    #         collision_rect.y = screen_chicken_y
-                    #         if collision_rect.collidepoint(aim_x, aim_y):
-                    #             chicken.kill()
-                    #             break
-                            # if pygame.Rect(screen_chicken_x, screen_chicken_y, chicken.rect.width, chicken.rect.height).collidepoint(
-                            #         aim_x, aim_y):
-                            #     chicken.kill()
-                            #     break
                 else:
                     self._sound_player.set_sound(EMPTY_CLIP_EFFECT)
                     self._sound_player.play(0.6)

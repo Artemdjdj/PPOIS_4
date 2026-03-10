@@ -67,9 +67,6 @@ SPACE_INFO_Y = SCREEN_HEIGHT * 0.0375
 ALPHA = SCREEN_HEIGHT *0.3188
 BLOOR_BALLOON_Y = SCREEN_HEIGHT *0.25
 
-SCALE_IMAGE_THIRD_POWER = 1.3
-SCALE_IMAGE_SECOND_POWER = 0.7
-
 TIME_AFTER_SHOOT = 3
 
 BASE_WIDTH_OF_SITTING_CHICKEN = int(SCREEN_WIDTH*0.042)
@@ -93,10 +90,12 @@ SPEED_FIRST_LAYER = 0.4
 SPEED_SECOND_LAYER = 0.7
 SPEED_THIRD_LAYER = 1.0
 DEFAULT_SPEED = 3
-MIN_CHICKEN_SPEED = 60
-MAX_CHICKEN_SPEED = 130
+MIN_CHICKEN_SPEED = 90
+MAX_CHICKEN_SPEED = 120
 MIN_VERTICAL_CHICKEN_SPEED = 0.7
 MAX_VERTICAL_CHICKEN_SPEED = 1.2
+SPEED_ANIMATION_RUNNING_CHICKEN = 0.18
+TIME_OF_SPAWN_CHICKENS = 10
 
 
 
@@ -128,11 +127,15 @@ BALLOON_SHOOT = BASE_DIR / "assets/audio/balloon_shoot.mp3"
 PUDDLE_SHOOT = BASE_DIR / "assets/audio/puddle_shoot.mp3"
 
 
-SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken.png"
+SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken_3.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
-LEFT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/left_horizontal_chicken_2.png"
+LEFT_FLYING_CHICKEN_HORIZONTAL = BASE_DIR / "assets/images/left_horizontal_chicken_2.png"
+LEFT_FLYING_CHICKEN_HORIZONTAL_2 = BASE_DIR / "assets/images/left_horizontal_chicken_2_2.png"
+LEFT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/left_horizontal_chicken_3_2.png"
 RIGHT_FLYING_CHICKEN = BASE_DIR / "assets/images/right_horizontal_chicken_3.png"
-RIGHT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/right_horizontal_chicken_2.png"
+RIGHT_FLYING_CHICKEN_HORIZONTAL = BASE_DIR / "assets/images/right_horizontal_chicken_2.png"
+RIGHT_FLYING_CHICKEN_HORIZONTAL_2 = BASE_DIR / "assets/images/right_horizontal_chicken_2_2.png"
+RIGHT_FLYING_CHICKEN_2 = BASE_DIR / "assets/images/right_horizontal_chicken_3_2.png"
 OVEN_WITH_CHICKEN = BASE_DIR / "assets/images/oven_with_chicken.png"
 OVEN_IMAGE = BASE_DIR / "assets/images/oven.png"
 CAR_IMAGE = BASE_DIR / "assets/images/car_2.png"
@@ -146,10 +149,13 @@ NOT_TOILET_IMAGE = BASE_DIR / "assets/images/not_toilet.png"
 CARTRIDGE_IMAGE = BASE_DIR / "assets/images/shotgun_cartridge.png"
 CHICKEN_DEAD_IMAGE = BASE_DIR / "assets/images/dead_chicken.png"
 PUDDLE_IMAGE = BASE_DIR / "assets/images/puddle.png"
+LEFT_RUNNING_CHICKEN_IMAGE_1 = BASE_DIR / "assets/images/left_running_chicken_1.png"
+LEFT_RUNNING_CHICKEN_IMAGE_2 = BASE_DIR / "assets/images/left_running_chicken_2.png"
+RIGHT_RUNNING_CHICKEN_IMAGE_1 = BASE_DIR / "assets/images/right_running_chicken_1.png"
+RIGHT_RUNNING_CHICKEN_IMAGE_2 = BASE_DIR / "assets/images/right_running_chicken_2.png"
 
-SCORE_BIG_CHICKEN = 5
+SCORE_BIG_CHICKEN = 10
 SCORE_FLYING_CHICKEN = 25
-SCORE_SMALL_CHICKEN = 10
 SCORE_HORIZONTAL_CHICKEN = 15
 SCORE_TOILET = -2
 SCORE_CAR = -1
@@ -157,3 +163,4 @@ SCORE_OVEN = -3
 SCORE_PUDDLE = -1
 SCORE_BALLOON = -50
 SCORE_HEDGEHOG = -100
+MAX_COUNT_CHICKENS_IN_LAYER = 20
