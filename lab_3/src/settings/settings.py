@@ -15,7 +15,9 @@ BORDER_RADIUS = 10
 
 BASIC_FONT = BASE_DIR / "assets/fonts/main.otf"
 BASIC_FONT_SIZE = 20
-RULES_FONT_SIZE = 18
+RULES_FONT_SIZE = 16
+FONT_INPUT_SIZE = 36
+FONT_LARGE_SIZE = 48
 COLUMN_NAME_FONT_SIZE = 27
 RELOAD_TEXT_SIZE = 40
 SCORE_TEXT_SIZE = 30
@@ -25,6 +27,7 @@ BASIC_BACKGROUND_HOVER_COLOR = (200, 0, 0)
 BASIC_COLOR = (255, 255, 255)
 RULES_COLOR = (0, 0, 0)
 RELOAD_TEXT_COLOR = (255, 255, 255)
+DEFAULT_BACKGROUND = (0, 0, 0)
 
 NAME_PLAY = "Играть"
 NAME_TABLE_RECORD = "Таблица рекордов"
@@ -32,8 +35,11 @@ NAME_HELP = "Справка"
 NAME_QUIT = "Выйти"
 NAME_BACK = "Назад"
 RELOAD_CLIP_TEXT = "ПЕРЕЗАРЯДКА"
-SCORE_TEXT = "ОЧКИ: 700"
-TIME_TEXT = "ВРЕМЯ: 90"
+CONFIRM_NAME_TEXT = "Нажмите Enter для подтверждения"
+INPUT_NAME_TEXT = "Введите ваше имя:"
+NEW_RECORD_TEXT = "Новый рекорд!"
+BASE_NAME = "No name"
+BASE_SYMBOL_IN_INPUT = "_"
 
 NAME_COLUMN_NUMBER = "Номер"
 NAME_COLUMN_NAME = "Имя"
@@ -66,7 +72,8 @@ SPACE_SCORE_X = SCREEN_WIDTH * 0.93
 SPACE_INFO_Y = SCREEN_HEIGHT * 0.0375
 ALPHA = SCREEN_HEIGHT *0.3188
 BLOOR_BALLOON_Y = SCREEN_HEIGHT *0.25
-
+HEIGHT_INPUT_BOX = SCREEN_HEIGHT*0.05
+WIDTH_INPUT_BOX = SCREEN_WIDTH*0.258
 TIME_AFTER_SHOOT = 3
 
 BASE_WIDTH_OF_SITTING_CHICKEN = int(SCREEN_WIDTH*0.042)
@@ -96,8 +103,7 @@ MIN_VERTICAL_CHICKEN_SPEED = 0.7
 MAX_VERTICAL_CHICKEN_SPEED = 1.2
 SPEED_ANIMATION_RUNNING_CHICKEN = 0.18
 TIME_OF_SPAWN_CHICKENS = 10
-
-
+MAX_LENGTH_NAME = 15
 
 MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/background_basic2.png"
 HELP_MENU_BACKGROUND_IMAGE = BASE_DIR / "assets/images/menu_help_5.png"
@@ -108,10 +114,8 @@ FIRST_LAYER = BASE_DIR / f"assets/images/new_layer_1.png"
 SECOND_LAYER = BASE_DIR / f"assets/images/new_layer_2.png"
 THIRD_LAYER = BASE_DIR / f"assets/images/new_layer_3.png"
 
-
 FILE_RULES_PATH = BASE_DIR / "assets/config/rules.txt"
 FILE_TABLE_LEADERS = BASE_DIR / "assets/json/table_leaders.json"
-
 
 GAME_MUSIC = BASE_DIR / "assets/audio/main_game.mp3"
 MENU_MUSIC = BASE_DIR / "assets/audio/menu.mp3"
@@ -125,7 +129,6 @@ OVEN_SHOOT = BASE_DIR / "assets/audio/oven_shoot.mp3"
 TOILET_SHOOT = BASE_DIR / "assets/audio/toilet_shoot.mp3"
 BALLOON_SHOOT = BASE_DIR / "assets/audio/balloon_shoot.mp3"
 PUDDLE_SHOOT = BASE_DIR / "assets/audio/puddle_shoot.mp3"
-
 
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken_3.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"
@@ -153,6 +156,7 @@ LEFT_RUNNING_CHICKEN_IMAGE_1 = BASE_DIR / "assets/images/left_running_chicken_1.
 LEFT_RUNNING_CHICKEN_IMAGE_2 = BASE_DIR / "assets/images/left_running_chicken_2.png"
 RIGHT_RUNNING_CHICKEN_IMAGE_1 = BASE_DIR / "assets/images/right_running_chicken_1.png"
 RIGHT_RUNNING_CHICKEN_IMAGE_2 = BASE_DIR / "assets/images/right_running_chicken_2.png"
+BACKGROUND_INPUT_NAME = BASE_DIR / "assets/images/background_init.png"
 
 SCORE_BIG_CHICKEN = 10
 SCORE_FLYING_CHICKEN = 25

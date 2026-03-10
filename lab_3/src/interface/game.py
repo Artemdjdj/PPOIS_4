@@ -28,8 +28,7 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
-    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, \
-    SCORE_TEXT, TIME_TEXT, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
+    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
     MAX_COUNT_CHICKENS_IN_LAYER
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
@@ -86,9 +85,9 @@ class Game:
         actions = [
             (self.create_sitting_chickens_game,
              lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens))),)),
-            (self.create_sitting_chickens_field, lambda: (
-                (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2)),
-                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2))),
+            (self.create_moving_chickens_field, lambda: (
+                (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 3)),
+                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens))))),
             )),
             (self.create_flying_chickens,
              lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens))),))
@@ -103,7 +102,7 @@ class Game:
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
 
-    def create_sitting_chickens_field(self, counts: Tuple[int, int]):
+    def create_moving_chickens_field(self, counts: Tuple[int, int]):
         self._layer_field.create_chickens(counts)
 
     def create_flying_chickens(self, count: int):

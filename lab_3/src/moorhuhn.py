@@ -6,6 +6,7 @@ from keyboard import restore_state
 
 from src.interface.game import Game
 from src.interface.help_menu import HelpMenu
+from src.interface.input_screen import NameInputScreen
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
@@ -35,7 +36,7 @@ class Moorhuhn:
         self._dt = self._clock.tick(FPS) / 1000.0
 
         self._game = Game(self._screen, self._dt)
-        self._game.create_sitting_chickens_field((4,6))
+        self._game.create_moving_chickens_field((4,6))
         self._game.create_sitting_chickens_game(10)
         self._game.create_flying_chickens(10)
 
@@ -43,7 +44,7 @@ class Moorhuhn:
         pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)
 
-        self._timer = GameTimer(90.0)
+        self._timer = GameTimer(30.0)
         self._spawn_timer = time.time()
 
     def _check_leader(self, score:int):
@@ -60,9 +61,14 @@ class Moorhuhn:
         else:
             for i in range(len(res_leader)-1, res_pos,-1):
                 self._leaders[i] = self._leaders[i+1]
-            self._leaders[res_pos] = ("Dima babnik", score)
+
+            name_input = NameInputScreen(self._screen)
+            player_name = name_input.run()
+
+            self._leaders[res_pos] = (player_name, score)
             saver = JsonLeadersSaver(FILE_TABLE_LEADERS, self._leaders)
             saver.save()
+
             sys.exit()
 
     def _draw_background(self):
