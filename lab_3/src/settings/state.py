@@ -7,4 +7,3 @@ class State(Enum):
     HELP = "help"
     QUIT = "quit"
     CHECK_LEADER = "check_leader"
-    GAME_OVER = "game_over"

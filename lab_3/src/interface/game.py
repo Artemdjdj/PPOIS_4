@@ -51,15 +51,9 @@ class Game:
 
         self._layers = [self._layer_sky, self._layer_field, self._layer_game]
 
-        self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_game.add_object(Puddle(PUDDLE_COORD_X, PUDDLE_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
-
-        self._layer_sky.add_object(Balloon(BALLOON_COORD_X, BALLOON_COORD_Y, SPEED_THIRD_LAYER))
-        self._layer_field.add_object(Toilet(TOILET_COORD_X, TOILET_COORD_Y, SPEED_SECOND_LAYER))
-
+        self._create_objects()
         self._cursor = Cursor()
+
         self._clip = CartridgesFactory(5, CARTRIDGE_START_X, CARTRIDGE_START_Y, SPACE_BETWEEN_CARTRIDGES)
         self._dt = dt
 
@@ -116,6 +110,27 @@ class Game:
 
     def _update_score(self, score: int) -> None:
         self._score_text.set_text(str(score))
+
+    def _create_objects(self)->None:
+        self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Puddle(PUDDLE_COORD_X, PUDDLE_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_game.add_object(Oven(OVEN_COORD_X, OVEN_COORD_Y, SPEED_THIRD_LAYER))
+
+        self._layer_sky.add_object(Balloon(BALLOON_COORD_X, BALLOON_COORD_Y, SPEED_THIRD_LAYER))
+        self._layer_field.add_object(Toilet(TOILET_COORD_X, TOILET_COORD_Y, SPEED_SECOND_LAYER))
+
+    def reset(self):
+        self._layer_game.clear()
+        self._layer_field.clear()
+        self._layer_sky.clear()
+        self._create_objects()
+        self._total_kill_points = 0
+        # self.create_moving_chickens_field((4, 6))
+        # self.create_sitting_chickens_game(10)
+        # self.create_flying_chickens(10)
+        self._kill_scores.clear()
+        self._clip.create()
 
     def draw(self) -> None:
         for x in range(3):
@@ -194,7 +209,7 @@ class Game:
                                         str(chicken.score),
                                         BASIC_FONT,
                                         SCORE_TEXT_SIZE,
-                                        (255,255,255)
+                                        BASIC_COLOR
                                     ))
                                     self._update_kill_points(chicken.score)
                                 break
@@ -213,7 +228,7 @@ class Game:
                                         str(text),
                                         BASIC_FONT,
                                         SCORE_TEXT_SIZE,
-                                        (255, 255, 255)
+                                        BASIC_COLOR
                                     ))
                                 self._update_kill_points(int(text))
                                 break

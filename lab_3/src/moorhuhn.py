@@ -36,14 +36,28 @@ class Moorhuhn:
         self._dt = self._clock.tick(FPS) / 1000.0
 
         self._game = Game(self._screen, self._dt)
-        self._game.create_moving_chickens_field((4,6))
-        self._game.create_sitting_chickens_game(10)
-        self._game.create_flying_chickens(10)
+        self._create_chickens()
+
+        self._spawn_timer = None
+        self._timer = None
 
         pygame.mixer.music.load(MENU_MUSIC)
         pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)
 
+        self._create_timer()
+
+    def _reset(self)->None:
+        self._create_timer()
+        self._game.reset()
+        self._create_chickens()
+
+    def _create_chickens(self)->None:
+        self._game.create_moving_chickens_field((4, 6))
+        self._game.create_sitting_chickens_game(10)
+        self._game.create_flying_chickens(10)
+
+    def _create_timer(self)->None:
         self._timer = GameTimer(30.0)
         self._spawn_timer = time.time()
 
@@ -56,9 +70,7 @@ class Moorhuhn:
                 res_leader = leader
                 break
 
-        if res_leader is None:
-            self._state = State.GAME_OVER
-        else:
+        if res_leader is not None:
             for i in range(len(res_leader)-1, res_pos,-1):
                 self._leaders[i] = self._leaders[i+1]
 
@@ -69,7 +81,8 @@ class Moorhuhn:
             saver = JsonLeadersSaver(FILE_TABLE_LEADERS, self._leaders)
             saver.save()
 
-            sys.exit()
+        self._reset()
+        self._state = State.MENU
 
     def _draw_background(self):
         self._screen.fill(BACKGROUND_COLOR)
@@ -112,10 +125,6 @@ class Moorhuhn:
 
             elif self._state == State.CHECK_LEADER:
                 self._check_leader(self._game.total_kill_points)
-
-            elif self._state == State.GAME_OVER:
-                print("game over")
-                sys.exit()
 
             elif self._state == State.RECORD_TABLE:
                 self._table_records.draw()

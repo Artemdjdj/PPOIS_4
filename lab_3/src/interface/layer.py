@@ -28,6 +28,10 @@ class Layer(ABC):
         if not pygame.sprite.spritecollide(new_element, self._objects, False):
             self._objects.add(new_element)
 
+    def clear(self)->None:
+        self._group.empty()
+        self._objects.empty()
+
     @property
     def speed(self)->int:
         return self._speed
