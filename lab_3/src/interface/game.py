@@ -77,6 +77,10 @@ class Game:
 
         self._total_kill_points = 0
 
+    @property
+    def total_kill_points(self) -> int:
+        return self._total_kill_points
+
     def create_sitting_chickens_game(self, count: int):
         self._layer_game.create_chickens(count)
 

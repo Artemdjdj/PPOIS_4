@@ -16,9 +16,8 @@ from src.utils.loader import JsonLeadersLoader
 
 
 class TableRecords(AdditionalMenuMixin):
-    def __init__(self, screen: Surface) -> None:
-        self._loader = JsonLeadersLoader(FILE_TABLE_LEADERS)
-        self._leaders = self._loader.load()
+    def __init__(self, screen: Surface, leaders) -> None:
+        self._leaders = leaders
         super().__init__(screen, TABLE_RECORDS_BACKGROUND_IMAGE)
 
     def _write_leaders(self) -> None:
@@ -31,12 +30,12 @@ class TableRecords(AdditionalMenuMixin):
         Writer(NAME_COLUMN_RECORD, BASIC_FONT, COLUMN_NAME_FONT_SIZE, RULES_COLOR,
                (COORD_X_RECORD, COORD_Y_START_TABLE_RECORDS_COLUMN)).draw(self._screen)
 
-        for leader in self._leaders:
-            number_writer = Writer(str(leader[0]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR,
+        for i,leader in enumerate(self._leaders):
+            number_writer = Writer(str(i+1), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR,
                                    (COORD_X_NUMBER, y_pos))
-            Writer(str(leader[1]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (COORD_X_NAME, y_pos)).draw(
+            Writer(str(leader[0]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (COORD_X_NAME, y_pos)).draw(
                 self._screen)
-            Writer(str(leader[2]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (COORD_X_RECORD, y_pos)).draw(
+            Writer(str(leader[1]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (COORD_X_RECORD, y_pos)).draw(
                 self._screen)
             number_writer.draw(self._screen)
             y_pos += number_writer.rect.height

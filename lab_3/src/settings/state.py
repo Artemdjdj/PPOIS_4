@@ -6,3 +6,5 @@ class State(Enum):
     RECORD_TABLE = "record_table"
     HELP = "help"
     QUIT = "quit"
+    CHECK_LEADER = "check_leader"
+    GAME_OVER = "game_over"
