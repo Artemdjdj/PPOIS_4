@@ -1,0 +1,12 @@
+{
+    "big_chicken": 10,
+    "flying_chicken": 25,
+    "horizontal_chicken": 15,
+    "toilet": -2,
+    "car": -1,
+    "oven": -3,
+    "puddle": -1,
+    "balloon": -50,
+    "hedgehog": -100,
+    "max_chickens_per_layer": 20
+}

@@ -1,0 +1,61 @@
+{
+    "fonts": {
+        "basic": "assets/fonts/main.otf"
+    },
+    "images": {
+        "menu_background": "assets/images/background_basic2.png",
+        "help_menu_background": "assets/images/menu_help_5.png",
+        "table_records_background": "assets/images/table_records_5.png",
+        "game_background": "assets/images/background_2.png",
+        "crosshair": "assets/images/crosshair3_3.png",
+        "first_layer": "assets/images/new_layer_1.png",
+        "second_layer": "assets/images/new_layer_2.png",
+        "third_layer": "assets/images/new_layer_3.png",
+        "sitting_chicken": "assets/images/result_chicken_3.png",
+        "left_flying_chicken": "assets/images/left_horizontal_chicken_3.png",
+        "left_flying_horizontal": "assets/images/left_horizontal_chicken_2.png",
+        "left_flying_horizontal_2": "assets/images/left_horizontal_chicken_2_2.png",
+        "left_flying_chicken_2": "assets/images/left_horizontal_chicken_3_2.png",
+        "right_flying_chicken": "assets/images/right_horizontal_chicken_3.png",
+        "right_flying_horizontal": "assets/images/right_horizontal_chicken_2.png",
+        "right_flying_horizontal_2": "assets/images/right_horizontal_chicken_2_2.png",
+        "right_flying_chicken_2": "assets/images/right_horizontal_chicken_3_2.png",
+        "oven_with_chicken": "assets/images/oven_with_chicken.png",
+        "oven": "assets/images/oven.png",
+        "car": "assets/images/car_2.png",
+        "balloon": "assets/images/balloon_after_upgrade.png",
+        "balloon_dead": "assets/images/dead_balloon.png",
+        "hedgehog": "assets/images/hedgehog.png",
+        "hedgehog_after_shoot": "assets/images/hedgehog_after_shoot.png",
+        "toilet": "assets/images/toilet.png",
+        "destroyed_toilet": "assets/images/destroyed_toilet.png",
+        "not_toilet": "assets/images/not_toilet.png",
+        "cartridge": "assets/images/shotgun_cartridge.png",
+        "chicken_dead": "assets/images/dead_chicken.png",
+        "puddle": "assets/images/puddle.png",
+        "left_running_1": "assets/images/left_running_chicken_1.png",
+        "left_running_2": "assets/images/left_running_chicken_2.png",
+        "right_running_1": "assets/images/right_running_chicken_1.png",
+        "right_running_2": "assets/images/right_running_chicken_2.png",
+        "input_background": "assets/images/background_init.png"
+    },
+    "files": {
+        "rules": "rules.txt",
+        "leaders": "config/table_leaders.json"
+    },
+    "audio": {
+        "game_music": "assets/audio/main_game.mp3",
+        "menu_music": "assets/audio/menu.mp3",
+        "shoot_effect": "assets/audio/gun_shoot.mp3",
+        "reload_clip": "assets/audio/empty.mp3",
+        "empty_clip": "assets/audio/reload_cartridges.mp3",
+        "car_shoot": "assets/audio/car_shoot.mp3",
+        "chicken_shoot": "assets/audio/chicken_shoot.mp3",
+        "hedgehog_shoot": "assets/audio/hedgehog_shoot.mp3",
+        "oven_shoot": "assets/audio/oven_shoot.mp3",
+        "toilet_shoot": "assets/audio/toilet_shoot.mp3",
+        "balloon_shoot": "assets/audio/balloon_shoot.mp3",
+        "puddle_shoot": "assets/audio/puddle_shoot.mp3",
+        "win_music": "assets/audio/win_music.mp3"
+    }
+}

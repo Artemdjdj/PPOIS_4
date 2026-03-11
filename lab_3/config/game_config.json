@@ -1,0 +1,110 @@
+{
+    "screen": {
+        "width": 1200,
+        "height": 800
+    },
+    "game_name": "Moorhuhn",
+    "background_color": [0, 0, 0],
+    "button_width_ratio": 0.18,
+    "button_height_ratio": 0.0875,
+    "border_radius": 10,
+    "font": {
+        "basic_size": 20,
+        "rules_size": 16,
+        "input_size": 36,
+        "large_size": 48,
+        "column_name_size": 27,
+        "reload_text_size": 40,
+        "score_text_size": 30
+    },
+    "colors": {
+        "basic_background": [128, 0, 0],
+        "basic_background_hover": [200, 0, 0],
+        "basic": [255, 255, 255],
+        "rules": [0, 0, 0],
+        "reload_text": [255, 255, 255],
+        "default_background": [0, 0, 0]
+    },
+    "texts": {
+        "play": "Играть",
+        "table_record": "Таблица рекордов",
+        "help": "Справка",
+        "quit": "Выйти",
+        "back": "Назад",
+        "reload_clip": "ПЕРЕЗАРЯДКА",
+        "confirm_name": "Нажмите Enter для подтверждения",
+        "input_name": "Введите ваше имя:",
+        "new_record": "Новый рекорд!",
+        "base_name": "No name",
+        "base_symbol": "_",
+        "column_number": "Номер",
+        "column_name": "Имя",
+        "column_record": "Рекорд"
+    },
+    "coordinates": {
+        "y_first_button_ratio": 0.2375,
+        "y_start_text_ratio": 0.20,
+        "y_start_table_records_ratio": 0.25,
+        "y_start_table_records_column_ratio": 0.20,
+        "y_back_button_ratio": 0.60,
+        "x_number_ratio": 0.20,
+        "x_name_ratio": 0.37,
+        "x_record_ratio": 0.70,
+        "height_between_buttons_ratio": 0.1125,
+        "height_flying_chicken": 300,
+        "puddle_x_ratio": 1.40,
+        "puddle_y_ratio": 0.73,
+        "car_x_ratio": 0.42,
+        "car_y_ratio": 0.625,
+        "oven_x_ratio": 1.67,
+        "oven_y_ratio": 0.5875,
+        "hedgehog_x_ratio": 1.0,
+        "hedgehog_y_ratio": 0.775,
+        "balloon_x_ratio": 0.33,
+        "balloon_y_ratio": 0.125,
+        "toilet_x_ratio": 1.16,
+        "toilet_y_ratio": 0.375,
+        "space_time_x_ratio": 0.0125,
+        "space_score_x_ratio": 0.93,
+        "space_info_y_ratio": 0.0375,
+        "alpha_ratio": 0.3188,
+        "bloor_balloon_y_ratio": 0.25,
+        "height_input_box_ratio": 0.05,
+        "width_input_box_ratio": 0.258
+    },
+    "time_after_shoot": 3,
+    "chicken": {
+        "base_width_ratio": 0.042,
+        "indent_before_max_height_ratio": 0.125,
+        "indent_between_layers_ratio": 0.07
+    },
+    "layers": {
+        "third_height_ratio": 0.42,
+        "second_height_ratio": 0.18,
+        "first_height_ratio": 0.40
+    },
+    "cartridges": {
+        "space_between_ratio": 0.039,
+        "start_x_ratio": 0.95,
+        "start_y_ratio": 0.87
+    },
+    "physics": {
+        "falling_speed": 0.2,
+        "delta_falling_speed": 0.1
+    },
+    "fps": 60,
+    "speeds": {
+        "default_world": 0.8,
+        "first_layer": 0.4,
+        "second_layer": 0.7,
+        "third_layer": 1.0,
+        "default": 3,
+        "min_chicken": 90,
+        "max_chicken": 120,
+        "min_vertical_chicken": 0.7,
+        "max_vertical_chicken": 1.2,
+        "animation_running": 0.18
+    },
+    "time_of_spawn_chickens": 10,
+    "max_length_name": 15
+}
