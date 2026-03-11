@@ -15,7 +15,7 @@ from src.utils.reader import TxtReader
 
 class HelpMenu(AdditionalMenuMixin):
     def __init__(self, screen: Surface) -> None:
-        super().__init__(screen, HELP_MENU_BACKGROUND_IMAGE)
+        super().__init__(screen, NAME_BACK, HELP_MENU_BACKGROUND_IMAGE)
         reader = TxtReader(FILE_RULES_PATH)
         self._rules = reader.read()
 

@@ -1,16 +1,19 @@
 import json
 from pathlib import Path
 
+from src.utils.reader import JsonReader
+
 BASE_DIR = Path(__file__).parent.parent.parent
 
-with open(BASE_DIR / "config/game_config.json", "r", encoding="utf-8") as f:
-    game_config = json.load(f)
+json_reader = JsonReader(BASE_DIR / "config/game_config.json")
+game_config = json_reader.read()
 
-with open(BASE_DIR / "config/paths.json", "r", encoding="utf-8") as f:
-    paths_config = json.load(f)
+json_reader.path = BASE_DIR / "config/paths.json"
+paths_config = json_reader.read()
 
-with open(BASE_DIR / "config/score.json", "r", encoding="utf-8") as f:
-    scoring_config = json.load(f)
+json_reader.path = BASE_DIR / "config/score.json"
+scoring_config = json_reader.read()
+
 
 SCREEN_WIDTH = game_config["screen"]["width"]
 SCREEN_HEIGHT = game_config["screen"]["height"]
@@ -40,6 +43,10 @@ NAME_TABLE_RECORD = game_config["texts"]["table_record"]
 NAME_HELP = game_config["texts"]["help"]
 NAME_QUIT = game_config["texts"]["quit"]
 NAME_BACK = game_config["texts"]["back"]
+NAME_NEXT = game_config["texts"]["next"]
+NAME_POINT = game_config["texts"]["point"]
+NAME_GAME_OVER = game_config["texts"]["game_over"]
+CONTINUE_TEXT = game_config["texts"]["continue"]
 RELOAD_CLIP_TEXT = game_config["texts"]["reload_clip"]
 CONFIRM_NAME_TEXT = game_config["texts"]["confirm_name"]
 INPUT_NAME_TEXT = game_config["texts"]["input_name"]
@@ -51,6 +58,7 @@ NAME_COLUMN_NUMBER = game_config["texts"]["column_number"]
 NAME_COLUMN_NAME = game_config["texts"]["column_name"]
 NAME_COLUMN_RECORD = game_config["texts"]["column_record"]
 
+COUNT_OF_ATTEMPTS_TO_CREATE_CHICKEN = game_config["counts"]["count_of_attempts_to_create_chicken"]
 COORD_Y_FIRST_BUTTON = SCREEN_HEIGHT * game_config["coordinates"]["y_first_button_ratio"]
 COORD_Y_START_TEXT = SCREEN_HEIGHT * game_config["coordinates"]["y_start_text_ratio"]
 COORD_Y_START_TABLE_RECORDS = SCREEN_HEIGHT * game_config["coordinates"]["y_start_table_records_ratio"]

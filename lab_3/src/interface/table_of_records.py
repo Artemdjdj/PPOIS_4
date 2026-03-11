@@ -18,7 +18,7 @@ from src.utils.loader import JsonLeadersLoader
 class TableRecords(AdditionalMenuMixin):
     def __init__(self, screen: Surface, leaders) -> None:
         self._leaders = leaders
-        super().__init__(screen, TABLE_RECORDS_BACKGROUND_IMAGE)
+        super().__init__(screen, NAME_BACK, TABLE_RECORDS_BACKGROUND_IMAGE)
 
     def _write_leaders(self) -> None:
         y_pos = COORD_Y_START_TABLE_RECORDS

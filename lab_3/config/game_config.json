@@ -33,13 +33,20 @@
         "back": "Назад",
         "reload_clip": "ПЕРЕЗАРЯДКА",
         "confirm_name": "Нажмите Enter для подтверждения",
+        "continue": "Нажмите Enter для выхода в меню",
         "input_name": "Введите ваше имя:",
         "new_record": "Новый рекорд!",
         "base_name": "No name",
         "base_symbol": "_",
         "column_number": "Номер",
         "column_name": "Имя",
-        "column_record": "Рекорд"
+        "column_record": "Рекорд",
+        "next": "Продолжить",
+        "point": "очков!",
+        "game_over": "Вы набрали"
+    },
+    "counts": {
+        "count_of_attempts_to_create_chicken": 10
     },
     "coordinates": {
         "y_first_button_ratio": 0.2375,
@@ -105,6 +112,6 @@
         "max_vertical_chicken": 1.2,
         "animation_running": 0.18
     },
-    "time_of_spawn_chickens": 10,
+    "time_of_spawn_chickens": 5,
     "max_length_name": 15
 }

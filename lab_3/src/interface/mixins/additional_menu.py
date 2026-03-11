@@ -11,11 +11,11 @@ from src.settings.state import State
 
 
 class AdditionalMenuMixin:
-    def __init__(self, screen: Surface, name_of_background: str) -> None:
+    def __init__(self, screen: Surface, name:str, name_of_background: str) -> None:
         self._screen = screen
         self._back_button = Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_BACK_BUTTON, BUTTON_WIDTH,
                                    BUTTON_HEIGHT, BASIC_COLOR,
-                                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, NAME_BACK,
+                                   BASIC_BACKGROUND_COLOR, BASIC_BACKGROUND_HOVER_COLOR, name,
                                    pygame.font.Font(BASIC_FONT, BASIC_FONT_SIZE), State.MENU)
 
         self._background = pygame.image.load(name_of_background).convert_alpha()

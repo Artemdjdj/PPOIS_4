@@ -5,6 +5,7 @@ import pygame
 from keyboard import restore_state
 
 from src.interface.game import Game
+from src.interface.game_over_screen import GameOverScreen
 from src.interface.help_menu import HelpMenu
 from src.interface.input_screen import NameInputScreen
 from src.interface.menu import Menu
@@ -62,29 +63,25 @@ class Moorhuhn:
         self._game.create_flying_chickens(10)
 
     def _create_timer(self)->None:
-        self._timer = GameTimer(30.0)
+        self._timer = GameTimer(90.0)
         self._spawn_timer = time.time()
 
     def _check_leader(self, score:int):
-        res_pos = -1
-        res_leader = None
         if score > self._leaders[0][1]:
-            res_pos = 0
-            res_leader = self._leaders[0]
-
-        if res_leader is not None:
-            for i in range(len(res_leader)-1, res_pos,-1):
-                self._leaders[i] = self._leaders[i+1]
+            for i in range(len(self._leaders) - 1, 0, -1):
+                self._leaders[i] = self._leaders[i - 1]
 
             self._play_music(WIN_MUSIC)
-
-            name_input = NameInputScreen(self._screen)
+            name_input = NameInputScreen(self._screen, self._game.total_kill_points)
             player_name = name_input.run()
-
-            self._leaders[res_pos] = (player_name, score)
+            self._leaders[0] = (player_name, score)
 
             saver = JsonLeadersSaver(FILE_TABLE_LEADERS, self._leaders)
             saver.save()
+        else:
+            self._play_music(MENU_MUSIC)
+            game_over = GameOverScreen(self._screen, self._game.total_kill_points)
+            game_over.run()
 
         self._reset()
         self._state = State.MENU

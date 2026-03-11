@@ -1,19 +1,31 @@
 [
     {
-        "name": "BEST",
-        "record": 205
+        "name": "Legendss",
+        "record": 295
+    },
+    {
+        "name": "NewLegenda2",
+        "record": 235
+    },
+    {
+        "name": "Legenda1",
+        "record": 183
+    },
+    {
+        "name": "NewUser",
+        "record": 102
+    },
+    {
+        "name": "Hehehe",
+        "record": 90
     },
     {
         "name": "arrrrrr",
-        "record": 98
-    },
-    {
-        "name": "arrrrrr",
-        "record": 98
+        "record": 86
     },
     {
         "name": "AS",
-        "record": 97
+        "record": 85
     },
     {
         "name": "Dima_lega",
@@ -26,17 +38,5 @@
     {
         "name": "Bravler",
         "record": 50
-    },
-    {
-        "name": "Zavy",
-        "record": 45
-    },
-    {
-        "name": "Smurf",
-        "record": 40
-    },
-    {
-        "name": "jester",
-        "record": 35
     }
 ]

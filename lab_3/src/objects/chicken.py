@@ -85,6 +85,9 @@ class MoveChicken(BaseChicken):
                 self.animation_period = current_time
 
     def update(self, dt:float=0.0) -> None:
+        if self.rect.x < -350 or self.rect.x > 3 * SCREEN_WIDTH + 350:
+            self.kill()
+            return
         if not self._is_killed:
             self.change_state()
             if self._direction == "left":

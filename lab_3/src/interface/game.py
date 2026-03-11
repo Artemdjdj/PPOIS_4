@@ -78,13 +78,13 @@ class Game:
     def spawn_chickens(self):
         actions = [
             (self.create_sitting_chickens_game,
-             lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens))),)),
+             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens)//2))),)),
             (self.create_moving_chickens_field, lambda: (
-                (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 3)),
-                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens))))),
+                (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2)),
+                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)//2)))),
             )),
             (self.create_flying_chickens,
-             lambda: (random.randint(0, max(0, MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens))),))
+             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens)//2))),))
         ]
         func, args_gen = random.choice(actions)
         func(*args_gen())
@@ -126,10 +126,8 @@ class Game:
         self._layer_sky.clear()
         self._create_objects()
         self._total_kill_points = 0
-        # self.create_moving_chickens_field((4, 6))
-        # self.create_sitting_chickens_game(10)
-        # self.create_flying_chickens(10)
         self._kill_scores.clear()
+        self._clip.clear()
         self._clip.create()
 
     def draw(self) -> None:
