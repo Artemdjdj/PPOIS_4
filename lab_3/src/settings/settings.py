@@ -129,6 +129,7 @@ OVEN_SHOOT = BASE_DIR / "assets/audio/oven_shoot.mp3"
 TOILET_SHOOT = BASE_DIR / "assets/audio/toilet_shoot.mp3"
 BALLOON_SHOOT = BASE_DIR / "assets/audio/balloon_shoot.mp3"
 PUDDLE_SHOOT = BASE_DIR / "assets/audio/puddle_shoot.mp3"
+WIN_MUSIC = BASE_DIR / "assets/audio/win_music.mp3"
 
 SITTING_CHICKEN = BASE_DIR / "assets/images/result_chicken_3.png"
 LEFT_FLYING_CHICKEN = BASE_DIR / "assets/images/left_horizontal_chicken_3.png"

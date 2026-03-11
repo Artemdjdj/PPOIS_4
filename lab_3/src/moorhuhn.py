@@ -10,7 +10,7 @@ from src.interface.input_screen import NameInputScreen
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
-    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS, TIME_OF_SPAWN_CHICKENS
+    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS, TIME_OF_SPAWN_CHICKENS, WIN_MUSIC
 from src.settings.state import State
 from src.objects.chicken import SittingChicken
 from src.utils.loader import JsonLeadersLoader
@@ -41,9 +41,7 @@ class Moorhuhn:
         self._spawn_timer = None
         self._timer = None
 
-        pygame.mixer.music.load(MENU_MUSIC)
-        pygame.mixer.music.set_volume(0.2)
-        pygame.mixer.music.play(-1)
+        self._play_music(MENU_MUSIC)
 
         self._create_timer()
 
@@ -51,6 +49,12 @@ class Moorhuhn:
         self._create_timer()
         self._game.reset()
         self._create_chickens()
+
+    def _play_music(self, name:str, volume:float = 0.2, is_infinity = True)->None:
+        pygame.mixer.music.load(name)
+        pygame.mixer.music.set_volume(volume)
+        if is_infinity:
+            pygame.mixer.music.play(-1)
 
     def _create_chickens(self)->None:
         self._game.create_moving_chickens_field((4, 6))
@@ -64,20 +68,21 @@ class Moorhuhn:
     def _check_leader(self, score:int):
         res_pos = -1
         res_leader = None
-        for i, leader in enumerate(self._leaders):
-            if score > leader[1]:
-                res_pos = i
-                res_leader = leader
-                break
+        if score > self._leaders[0][1]:
+            res_pos = 0
+            res_leader = self._leaders[0]
 
         if res_leader is not None:
             for i in range(len(res_leader)-1, res_pos,-1):
                 self._leaders[i] = self._leaders[i+1]
 
+            self._play_music(WIN_MUSIC)
+
             name_input = NameInputScreen(self._screen)
             player_name = name_input.run()
 
             self._leaders[res_pos] = (player_name, score)
+
             saver = JsonLeadersSaver(FILE_TABLE_LEADERS, self._leaders)
             saver.save()
 
@@ -99,9 +104,7 @@ class Moorhuhn:
                 new_state = self._menu.check_event()
                 if current_music != MENU_MUSIC:
                     current_music = MENU_MUSIC
-                    pygame.mixer.music.load(MENU_MUSIC)
-                    pygame.mixer.music.play(-1)
-                    pygame.mixer.music.set_volume(0.2)
+                    self._play_music(MENU_MUSIC)
 
             elif self._state == State.PLAY:
                 self._timer.update(self._dt)
@@ -119,9 +122,7 @@ class Moorhuhn:
                     new_state = self._game.check_event()
                     if current_music != GAME_MUSIC:
                         current_music = GAME_MUSIC
-                        pygame.mixer.music.load(GAME_MUSIC)
-                        pygame.mixer.music.play(-1)
-                        pygame.mixer.music.set_volume(0.2)
+                        self._play_music(GAME_MUSIC)
 
             elif self._state == State.CHECK_LEADER:
                 self._check_leader(self._game.total_kill_points)
