@@ -1,4 +1,5 @@
 import sys
+from typing import Optional
 
 import pygame
 from pygame import Surface
@@ -11,7 +12,7 @@ from src.settings.state import State
 
 
 class AdditionalMenuMixin:
-    def __init__(self, screen: Surface, name:str, name_of_background: str) -> None:
+    def __init__(self, screen: Surface, name: str, name_of_background: str) -> None:
         self._screen = screen
         self._back_button = Button(SCREEN_WIDTH // 2 - BUTTON_WIDTH // 2, COORD_Y_BACK_BUTTON, BUTTON_WIDTH,
                                    BUTTON_HEIGHT, BASIC_COLOR,
@@ -21,11 +22,11 @@ class AdditionalMenuMixin:
         self._background = pygame.image.load(name_of_background).convert_alpha()
         self._background = pygame.transform.scale(self._background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    def draw(self):
+    def draw(self) -> None:
         self._screen.blit(self._background, (0, 0))
         self._back_button.draw(self._screen)
 
-    def check_event(self):
+    def check_event(self) -> Optional[State]:
         key = pygame.key.get_pressed()
         if key[pygame.K_ESCAPE]:
             return State.MENU

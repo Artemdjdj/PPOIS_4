@@ -11,7 +11,7 @@ from src.settings.settings import (
 
 
 class NameInputScreen(EndScreen):
-    def __init__(self, screen, score: int, max_length: int = MAX_LENGTH_NAME, prompt=INPUT_NAME_TEXT):
+    def __init__(self, screen, score: int, max_length: int = MAX_LENGTH_NAME, prompt: str = INPUT_NAME_TEXT) -> None:
         super().__init__(screen, score, NEW_RECORD_TEXT, bg_image=BACKGROUND_INPUT_NAME)
 
         self.max_length = max_length
@@ -24,7 +24,7 @@ class NameInputScreen(EndScreen):
             WIDTH_INPUT_BOX, HEIGHT_INPUT_BOX
         )
 
-    def _handle_custom_events(self, events):
+    def _handle_custom_events(self, events) -> None:
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_BACKSPACE:
@@ -34,7 +34,7 @@ class NameInputScreen(EndScreen):
                       and len(self.input_text) < self.max_length):
                     self.input_text += event.unicode
 
-    def draw(self):
+    def draw(self) -> None:
         self._draw_background()
         self._draw_title()
         self._draw_prompt()
@@ -42,7 +42,7 @@ class NameInputScreen(EndScreen):
         self._draw_exit_hint()
         pygame.display.flip()
 
-    def _draw_exit_hint(self):
+    def _draw_exit_hint(self) -> None:
         surf = self.font_small.render(CONFIRM_NAME_TEXT, True, BASIC_COLOR)
         rect = surf.get_rect(center=(
             self.screen.get_width() // 2,
@@ -50,7 +50,7 @@ class NameInputScreen(EndScreen):
         ))
         self.screen.blit(surf, rect)
 
-    def _draw_prompt(self):
+    def _draw_prompt(self) -> None:
         surf = self.font_small.render(self.prompt, True, BASIC_COLOR)
         rect = surf.get_rect(center=(
             self.screen.get_width() // 2,
@@ -58,7 +58,7 @@ class NameInputScreen(EndScreen):
         ))
         self.screen.blit(surf, rect)
 
-    def _draw_input_box(self):
+    def _draw_input_box(self) -> None:
         pygame.draw.rect(self.screen, BASIC_COLOR, self.input_rect, 2)
 
         display_text = self.input_text + BASE_SYMBOL_IN_INPUT
@@ -75,6 +75,6 @@ class NameInputScreen(EndScreen):
 
         self.screen.blit(surf, text_rect)
 
-    def run(self):
+    def run(self) -> str:
         super().run()
         return self.input_text if self.input_text else BASE_NAME

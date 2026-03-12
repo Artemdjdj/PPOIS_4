@@ -75,7 +75,7 @@ class Game:
 
         self._total_kill_points = 0
 
-    def spawn_chickens(self):
+    def spawn_chickens(self) -> None:
         actions = [
             (self.create_sitting_chickens_game,
              lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens) // 2))),)),
@@ -93,13 +93,13 @@ class Game:
     def total_kill_points(self) -> int:
         return self._total_kill_points
 
-    def create_sitting_chickens_game(self, count: int):
+    def create_sitting_chickens_game(self, count: int) -> None:
         self._layer_game.create_chickens(count)
 
-    def create_moving_chickens_field(self, counts: Tuple[int, int]):
+    def create_moving_chickens_field(self, counts: Tuple[int, int]) -> None:
         self._layer_field.create_chickens(counts)
 
-    def create_flying_chickens(self, count: int):
+    def create_flying_chickens(self, count: int) -> None:
         self._layer_sky.create_chickens(count)
 
     def update_time(self, time: str) -> None:
@@ -120,7 +120,7 @@ class Game:
         self._layer_sky.add_object(Balloon(BALLOON_COORD_X, BALLOON_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_field.add_object(Toilet(TOILET_COORD_X, TOILET_COORD_Y, SPEED_SECOND_LAYER))
 
-    def reset(self):
+    def reset(self) -> None:
         self._layer_game.clear()
         self._layer_field.clear()
         self._layer_sky.clear()
@@ -170,7 +170,7 @@ class Game:
         else:
             self._total_kill_points += point
 
-    def _check_kill_chicken(self, aim_x:int, aim_y:int, chicken:BaseChicken)->bool:
+    def _check_kill_chicken(self, aim_x: int, aim_y: int, chicken: BaseChicken) -> bool:
         screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
         screen_chicken_y = chicken.rect.y
         aim_mask = pygame.mask.Mask((1, 1), fill=True)
@@ -192,7 +192,7 @@ class Game:
             return True
         return False
 
-    def _check_kill_element(self, aim_x:int, aim_y:int, element:BaseObjectInLayer)->bool:
+    def _check_kill_element(self, aim_x: int, aim_y: int, element: BaseObjectInLayer) -> bool:
         screen_element_x = element.rect.x - self._scroll_position * element.layer_speed
         screen_element_y = element.rect.y
         if pygame.Rect(screen_element_x, screen_element_y, element.rect.width,

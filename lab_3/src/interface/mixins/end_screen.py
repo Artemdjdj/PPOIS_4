@@ -1,7 +1,7 @@
-# src/screens/base_screen.py
-
 import pygame
 import sys
+
+from pygame import Surface
 
 from src.settings.settings import (
     FPS, BASIC_FONT, DEFAULT_BACKGROUND, BASIC_COLOR,
@@ -10,7 +10,7 @@ from src.settings.settings import (
 
 
 class EndScreen:
-    def __init__(self, screen, score:int, title, bg_image=None):
+    def __init__(self, screen: Surface, score: int, title: str, bg_image=None):
         self.screen = screen
         self.score = score
         self.title = title
@@ -44,19 +44,19 @@ class EndScreen:
     def _handle_custom_events(self, events):
         pass
 
-    def draw(self):
+    def draw(self) -> None:
         self._draw_background()
         self._draw_title()
         self._draw_exit_hint()
         pygame.display.flip()
 
-    def _draw_background(self):
+    def _draw_background(self) -> None:
         if self.background:
             self.screen.blit(self.background, (0, 0))
         else:
             self.screen.fill(self.bg_color)
 
-    def _draw_title(self):
+    def _draw_title(self) -> None:
         surf = self.font_large.render(self.title + f" {self.score} {NAME_POINT}", True, BASIC_COLOR)
         rect = surf.get_rect(center=(
             self.screen.get_width() // 2,
@@ -64,7 +64,7 @@ class EndScreen:
         ))
         self.screen.blit(surf, rect)
 
-    def _draw_exit_hint(self):
+    def _draw_exit_hint(self) -> None:
         surf = self.font_small.render(CONTINUE_TEXT, True, BASIC_COLOR)
         rect = surf.get_rect(center=(
             self.screen.get_width() // 2,
@@ -72,7 +72,7 @@ class EndScreen:
         ))
         self.screen.blit(surf, rect)
 
-    def run(self):
+    def run(self) -> None:
         clock = pygame.time.Clock()
         while self.active:
             clock.tick(FPS)
