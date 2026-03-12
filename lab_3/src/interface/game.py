@@ -16,6 +16,7 @@ from src.interface.sound_player import SoundPlayer
 from src.interface.text_kill_writer import TextKillWriter
 from src.interface.writer import Writer
 from src.objects.balloon import Balloon
+from src.objects.base_sprite import BaseObjectInLayer
 from src.objects.hedgehog import Hedgehog
 from src.objects.puddle import Puddle
 from src.objects.toilet import Toilet
@@ -32,7 +33,7 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
     MAX_COUNT_CHICKENS_IN_LAYER
 from src.objects.car import Car
-from src.objects.chicken import SittingChicken, FlyingChicken
+from src.objects.chicken import SittingChicken, FlyingChicken, BaseChicken
 from src.objects.oven import Oven
 
 
@@ -169,6 +170,49 @@ class Game:
         else:
             self._total_kill_points += point
 
+    def _check_kill_chicken(self, aim_x:int, aim_y:int, chicken:BaseChicken)->bool:
+        screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
+        screen_chicken_y = chicken.rect.y
+        aim_mask = pygame.mask.Mask((1, 1), fill=True)
+        offset = (int(aim_x - screen_chicken_x), int(aim_y - screen_chicken_y))
+        if not chicken.is_killed and chicken.mask.overlap(aim_mask, offset):
+            chicken.play(0.6)
+            chicken.shoot()
+            text = chicken.score
+            if text:
+                self._kill_scores.append(TextKillWriter(
+                    chicken.rect.x - self._scroll_position * chicken.layer_speed,
+                    chicken.rect.top + 10,
+                    str(chicken.score),
+                    BASIC_FONT,
+                    SCORE_TEXT_SIZE,
+                    BASIC_COLOR
+                ))
+                self._update_kill_points(chicken.score)
+            return True
+        return False
+
+    def _check_kill_element(self, aim_x:int, aim_y:int, element:BaseObjectInLayer)->bool:
+        screen_element_x = element.rect.x - self._scroll_position * element.layer_speed
+        screen_element_y = element.rect.y
+        if pygame.Rect(screen_element_x, screen_element_y, element.rect.width,
+                       element.rect.height).collidepoint(aim_x, aim_y):
+            element.play(0.6)
+            element.shoot()
+            text = element.score
+            if text:
+                self._kill_scores.append(TextKillWriter(
+                    element.rect.x - self._scroll_position * element.layer_speed,
+                    element.rect.top + 10,
+                    str(text),
+                    BASIC_FONT,
+                    SCORE_TEXT_SIZE,
+                    BASIC_COLOR
+                ))
+            self._update_kill_points(int(text))
+            return True
+        return False
+
     def check_event(self) -> Optional[State]:
         key = pygame.key.get_pressed()
         if (key[pygame.K_LEFT] or key[pygame.K_a]) and self._scroll_position > 0:
@@ -192,24 +236,7 @@ class Game:
                     for layer in self._layers:
                         is_bird_kill = False
                         for chicken in layer.chickens:
-                            screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
-                            screen_chicken_y = chicken.rect.y
-                            aim_mask = pygame.mask.Mask((1, 1), fill=True)
-                            offset = (int(aim_x - screen_chicken_x), int(aim_y - screen_chicken_y))
-                            if not chicken.is_killed and chicken.mask.overlap(aim_mask, offset):
-                                chicken.play(0.6)
-                                chicken.shoot()
-                                text = chicken.score
-                                if text:
-                                    self._kill_scores.append(TextKillWriter(
-                                        chicken.rect.x - self._scroll_position * chicken.layer_speed,
-                                        chicken.rect.top + 10,
-                                        str(chicken.score),
-                                        BASIC_FONT,
-                                        SCORE_TEXT_SIZE,
-                                        BASIC_COLOR
-                                    ))
-                                    self._update_kill_points(chicken.score)
+                            if self._check_kill_chicken(aim_x, aim_y, chicken):
                                 is_bird_kill = True
                                 break
 
@@ -217,23 +244,8 @@ class Game:
                             break
 
                         for element in layer.objects:
-                            screen_chicken_x = element.rect.x - self._scroll_position * element.layer_speed
-                            screen_chicken_y = element.rect.y
-                            if pygame.Rect(screen_chicken_x, screen_chicken_y, element.rect.width,
-                                           element.rect.height).collidepoint(aim_x, aim_y):
-                                element.play(0.6)
-                                element.shoot()
-                                text = element.score
-                                if text:
-                                    self._kill_scores.append(TextKillWriter(
-                                        element.rect.x - self._scroll_position * element.layer_speed,
-                                        element.rect.top + 10,
-                                        str(text),
-                                        BASIC_FONT,
-                                        SCORE_TEXT_SIZE,
-                                        BASIC_COLOR
-                                    ))
-                                self._update_kill_points(int(text))
+                            is_element_kill = self._check_kill_element(aim_x, aim_y, element)
+                            if is_element_kill:
                                 break
                 else:
                     self._sound_player.set_sound(EMPTY_CLIP_EFFECT)
