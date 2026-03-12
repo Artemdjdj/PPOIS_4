@@ -65,9 +65,12 @@ pyinstaller src/main.py ^
     --noconsole ^
     --name Moorhuhn ^
     --icon=%cd%\assets\icons\main_icon_2.ico ^
-    --add-data "assets;assets" ^
-    --add-data "config;config" ^
-    --add-data "rules.txt;." ^
-    --clean
+    --add-data "%cd%\assets;assets" ^
+    --add-data "%cd%\config;config" ^
+    --add-data "%cd%\rules.txt;." ^
+    --clean ^
+    --distpath release\dist ^
+    --workpath release\build ^
+    --specpath release
 ```
-В корне проекта создастся папка *dist*, в которой находится .exe-файл.
+В корне проекта создастся папка *release*, в которой, внутри папки *dist*, находится .exe-файл.
