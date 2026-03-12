@@ -9,6 +9,7 @@ lab_3/
 │   ├── paths.json
 │   ├── score.json
 │   └── table_leaders.json
+├── release/
 ├── src/
 │   ├── factories/
 │   │   ├── __init__.py
