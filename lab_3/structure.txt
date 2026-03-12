@@ -1,12 +1,59 @@
-lab_3
-│
-├── assets/
-│   ├── audio/
-│   │
-│   ├── icons/
-│   │
-│   └── images/
-│
+lab_3/
+├── config/
+│   ├── game_config.json
+│   ├── paths.json
+│   ├── score.json
+│   └── table_leaders.json
+├── src/
+│   ├── factories/
+│   │   ├── __init__.py
+│   │   ├── bird_factory.py
+│   │   └── cartridge_factory.py
+│   ├── interface/
+│   │   ├── mixins/
+│   │   │   ├── __init__.py
+│   │   │   ├── additional_menu.py
+│   │   │   └── end_screen.py
+│   │   ├── __init__.py
+│   │   ├── button.py
+│   │   ├── cartridge.py
+│   │   ├── cursor.py
+│   │   ├── game.py
+│   │   ├── game_over_screen.py
+│   │   ├── help_menu.py
+│   │   ├── input_screen.py
+│   │   ├── layer.py
+│   │   ├── menu.py
+│   │   ├── sound_player.py
+│   │   ├── table_of_records.py
+│   │   ├── text_kill_writer.py
+│   │   └── writer.py
+│   ├── objects/
+│   │   ├── __init__.py
+│   │   ├── balloon.py
+│   │   ├── base_sprite.py
+│   │   ├── car.py
+│   │   ├── chicken.py
+│   │   ├── hedgehog.py
+│   │   ├── oven.py
+│   │   ├── puddle.py
+│   │   └── toilet.py
+│   ├── settings/
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   └── state.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── image_formatter.py
+│   │   ├── loader.py
+│   │   ├── reader.py
+│   │   ├── saver.py
+│   │   └── timer.py
+│   ├── __init__.py
+│   ├── main.py
+│   └── moorhuhn.py
 ├── .gitignore
+├── README.md
 ├── requirements.txt
+├── rules.txt
 └── structure.txt
