@@ -22,10 +22,9 @@ class CartridgesFactory:
             self._cartridges.append(
                 Cartridge(self._start_x - i * self._space_between, self._start_y, 0))
 
-
-    def delete(self)->None:
+    def delete(self) -> None:
         if self._cartridges:
             self._cartridges.pop()
 
-    def clear(self)->None:
+    def clear(self) -> None:
         self._cartridges.clear()

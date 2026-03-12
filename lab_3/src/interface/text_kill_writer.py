@@ -6,7 +6,8 @@ from src.settings.settings import ALPHA
 
 
 class TextKillWriter:
-    def __init__(self, x:int, y:int, text:str, font:str, font_size:int, color:Tuple[int, int, int], fps:int=60, speed_y = 1.6) -> None:
+    def __init__(self, x: int, y: int, text: str, font: str, font_size: int, color: Tuple[int, int, int], fps: int = 60,
+                 speed_y=1.6) -> None:
         self.x = x
         self.y = y
         self.text = text

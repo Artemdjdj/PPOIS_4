@@ -23,9 +23,9 @@ class HelpMenu(AdditionalMenuMixin):
         super().draw()
         rule_lines = self._rules.split('\n')
         y_pos = COORD_Y_START_TEXT
-        writer = Writer("", BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR,(0,0))
+        writer = Writer("", BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (0, 0))
         for line in rule_lines:
-            writer.set_pos((SCREEN_WIDTH//3,y_pos))
+            writer.set_pos((SCREEN_WIDTH // 3, y_pos))
             writer.set_text(line)
             writer.draw(self._screen)
             y_pos += writer.surface.get_height()

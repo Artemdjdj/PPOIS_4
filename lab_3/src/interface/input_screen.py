@@ -11,8 +11,8 @@ from src.settings.settings import (
 
 
 class NameInputScreen(EndScreen):
-    def __init__(self, screen,score:int, max_length:int=MAX_LENGTH_NAME, prompt=INPUT_NAME_TEXT):
-        super().__init__(screen,score, NEW_RECORD_TEXT, bg_image=BACKGROUND_INPUT_NAME)
+    def __init__(self, screen, score: int, max_length: int = MAX_LENGTH_NAME, prompt=INPUT_NAME_TEXT):
+        super().__init__(screen, score, NEW_RECORD_TEXT, bg_image=BACKGROUND_INPUT_NAME)
 
         self.max_length = max_length
         self.prompt = prompt

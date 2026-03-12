@@ -30,10 +30,10 @@ class TableRecords(AdditionalMenuMixin):
         Writer(NAME_COLUMN_RECORD, BASIC_FONT, COLUMN_NAME_FONT_SIZE, RULES_COLOR,
                (COORD_X_RECORD, COORD_Y_START_TABLE_RECORDS_COLUMN)).draw(self._screen)
 
-        for i,leader in enumerate(self._leaders):
+        for i, leader in enumerate(self._leaders):
             if i >= MAX_COUNT_OF_LEADERS:
                 break
-            number_writer = Writer(str(i+1), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR,
+            number_writer = Writer(str(i + 1), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR,
                                    (COORD_X_NUMBER, y_pos))
             Writer(str(leader[0]), BASIC_FONT, RULES_FONT_SIZE, RULES_COLOR, (COORD_X_NAME, y_pos)).draw(
                 self._screen)
@@ -42,6 +42,6 @@ class TableRecords(AdditionalMenuMixin):
             number_writer.draw(self._screen)
             y_pos += number_writer.rect.height
 
-    def draw(self)->None:
+    def draw(self) -> None:
         super().draw()
         self._write_leaders()

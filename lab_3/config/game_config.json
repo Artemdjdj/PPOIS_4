@@ -114,5 +114,10 @@
     },
     "time_of_spawn_chickens": 5,
     "max_length_name": 15,
-    "max_count_of_leaders": 10
+    "max_count_of_leaders": 10,
+    "space_to_kill": 50,
+    "space_to_start_spawn": 300,
+    "game_time": 90.0,
+    "number_to_broke_toilet": 3,
+    "number_to_destroy_toilet": 9
 }

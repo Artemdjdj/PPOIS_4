@@ -11,7 +11,7 @@ from src.interface.input_screen import NameInputScreen
 from src.interface.menu import Menu
 from src.interface.table_of_records import TableRecords
 from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_NAME, BACKGROUND_COLOR, \
-    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS, TIME_OF_SPAWN_CHICKENS, WIN_MUSIC
+    MENU_MUSIC, GAME_MUSIC, FPS, FILE_TABLE_LEADERS, TIME_OF_SPAWN_CHICKENS, WIN_MUSIC, GAME_TIME
 from src.settings.state import State
 from src.objects.chicken import SittingChicken
 from src.utils.loader import JsonLeadersLoader
@@ -20,9 +20,7 @@ from src.utils.timer import GameTimer
 
 
 class Moorhuhn:
-    """Класс для управлением ресурсами и поведением игры"""
-
-    def __init__(self)->None:
+    def __init__(self) -> None:
         pygame.init()
         self._screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption(GAME_NAME)
@@ -46,27 +44,27 @@ class Moorhuhn:
 
         self._create_timer()
 
-    def _reset(self)->None:
+    def _reset(self) -> None:
         self._create_timer()
         self._game.reset()
         self._create_chickens()
 
-    def _play_music(self, name:str, volume:float = 0.2, is_infinity = True)->None:
+    def _play_music(self, name: str, volume: float = 0.2, is_infinity=True) -> None:
         pygame.mixer.music.load(name)
         pygame.mixer.music.set_volume(volume)
         if is_infinity:
             pygame.mixer.music.play(-1)
 
-    def _create_chickens(self)->None:
+    def _create_chickens(self) -> None:
         self._game.create_moving_chickens_field((4, 6))
         self._game.create_sitting_chickens_game(10)
         self._game.create_flying_chickens(10)
 
-    def _create_timer(self)->None:
-        self._timer = GameTimer(90.0)
+    def _create_timer(self) -> None:
+        self._timer = GameTimer(GAME_TIME)
         self._spawn_timer = time.time()
 
-    def _check_leader(self, score:int):
+    def _check_leader(self, score: int):
         if score > self._leaders[0][1]:
             for i in range(len(self._leaders) - 1, 0, -1):
                 self._leaders[i] = self._leaders[i - 1]
@@ -138,4 +136,3 @@ class Moorhuhn:
             if new_state is not None:
                 self._state = new_state
             pygame.display.flip()
-

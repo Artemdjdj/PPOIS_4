@@ -23,7 +23,7 @@ class Oven(BaseObjectInLayer):
     def animate(self) -> None:
         if self._is_killed:
             current_time = time.time()
-            x,y = self.rect.x, self.rect.y
+            x, y = self.rect.x, self.rect.y
             if self.shoot_time is not None and current_time - self.shoot_time >= TIME_AFTER_SHOOT:
                 self.image = self._img_with_chicken
                 self._is_killed = False
@@ -33,9 +33,9 @@ class Oven(BaseObjectInLayer):
             self.rect.x = x
             self.rect.y = y
 
-    def play(self, volume:float) -> None:
+    def play(self, volume: float) -> None:
         self._player.set_sound(OVEN_SHOOT)
         super().play(volume)
 
-    def draw(self,screen: pygame.Surface, scroll_position: float ) -> None:
+    def draw(self, screen: pygame.Surface, scroll_position: float) -> None:
         super().draw(screen, scroll_position)

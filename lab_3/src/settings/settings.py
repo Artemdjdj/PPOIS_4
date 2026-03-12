@@ -14,7 +14,6 @@ paths_config = json_reader.read()
 json_reader.path = BASE_DIR / "config/score.json"
 scoring_config = json_reader.read()
 
-
 SCREEN_WIDTH = game_config["screen"]["width"]
 SCREEN_HEIGHT = game_config["screen"]["height"]
 GAME_NAME = game_config["game_name"]
@@ -119,6 +118,11 @@ SPEED_ANIMATION_RUNNING_CHICKEN = game_config["speeds"]["animation_running"]
 TIME_OF_SPAWN_CHICKENS = game_config["time_of_spawn_chickens"]
 MAX_LENGTH_NAME = game_config["max_length_name"]
 MAX_COUNT_OF_LEADERS = game_config["max_count_of_leaders"]
+SPACE_TO_KILL = game_config["space_to_kill"]
+SPACE_TO_START_SPAWN = game_config["space_to_start_spawn"]
+GAME_TIME = game_config["game_time"]
+NUMBER_OF_SHOOTS_TO_BROKE_TOILET = game_config["number_to_broke_toilet"]
+NUMBER_OF_SHOOTS_TO_DESTROY_TOILET = game_config["number_to_destroy_toilet"]
 
 BASIC_FONT = BASE_DIR / paths_config["fonts"]["basic"]
 FIRST_LAYER = BASE_DIR / paths_config["images"]["first_layer"]

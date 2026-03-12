@@ -28,7 +28,8 @@ from src.settings.settings import SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUT
     SECOND_LAYER_HEIGHT, THIRD_LAYER_HEIGHT, INDENT_BEFORE_MAX_HEIGHT, INDENT_BETWEEN_LAYERS, DEFAULT_SPEED_WORLD, FPS, \
     CAR_COORD_X, CAR_COORD_Y, OVEN_COORD_X, OVEN_COORD_Y, HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, BALLOON_COORD_Y, \
     BALLOON_COORD_X, TOILET_COORD_Y, TOILET_COORD_X, CARTRIDGE_START_Y, CARTRIDGE_START_X, SPACE_BETWEEN_CARTRIDGES, \
-    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
+    EMPTY_CLIP_EFFECT, RELOAD_CLIP_EFFECT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR, RELOAD_CLIP_TEXT, SCORE_TEXT_SIZE, \
+    SPACE_SCORE_X, SPACE_INFO_Y, SPACE_TIME_X, PUDDLE_COORD_X, PUDDLE_COORD_Y, \
     MAX_COUNT_CHICKENS_IN_LAYER
 from src.objects.car import Car
 from src.objects.chicken import SittingChicken, FlyingChicken
@@ -60,7 +61,6 @@ class Game:
         self._scroll_position = SCREEN_WIDTH // 2
         self._sound_player = SoundPlayer()
 
-
         self._reload_clip_text = Writer(RELOAD_CLIP_TEXT, BASIC_FONT, RELOAD_TEXT_SIZE, RELOAD_TEXT_COLOR,
                                         (CARTRIDGE_START_X - SPACE_BETWEEN_CARTRIDGES * 5, CARTRIDGE_START_Y))
         self._score_text = Writer("", BASIC_FONT, SCORE_TEXT_SIZE, RELOAD_TEXT_COLOR,
@@ -70,7 +70,6 @@ class Game:
 
         self._max_count_chickens_in_layer = MAX_COUNT_CHICKENS_IN_LAYER
 
-
         self._kill_scores = []
 
         self._total_kill_points = 0
@@ -78,13 +77,13 @@ class Game:
     def spawn_chickens(self):
         actions = [
             (self.create_sitting_chickens_game,
-             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens)//2))),)),
+             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_game.chickens) // 2))),)),
             (self.create_moving_chickens_field, lambda: (
                 (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)) // 2)),
-                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens)//2)))),
+                 random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_field.chickens) // 2)))),
             )),
             (self.create_flying_chickens,
-             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens)//2))),))
+             lambda: (random.randint(0, max(0, (MAX_COUNT_CHICKENS_IN_LAYER - len(self._layer_sky.chickens) // 2))),))
         ]
         func, args_gen = random.choice(actions)
         func(*args_gen())
@@ -102,7 +101,7 @@ class Game:
     def create_flying_chickens(self, count: int):
         self._layer_sky.create_chickens(count)
 
-    def update_time(self, time:str)->None:
+    def update_time(self, time: str) -> None:
         self._time_text.set_text(time)
 
     def update_dt(self, dt: float) -> None:
@@ -111,7 +110,7 @@ class Game:
     def _update_score(self, score: int) -> None:
         self._score_text.set_text(str(score))
 
-    def _create_objects(self)->None:
+    def _create_objects(self) -> None:
         self._layer_game.add_object(Car(CAR_COORD_X, CAR_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Puddle(PUDDLE_COORD_X, PUDDLE_COORD_Y, SPEED_THIRD_LAYER))
         self._layer_game.add_object(Hedgehog(HEDGEHOG_COORD_X, HEDGEHOG_COORD_Y, SPEED_THIRD_LAYER))
@@ -164,8 +163,8 @@ class Game:
 
         self._cursor.draw(self._screen)
 
-    def _update_kill_points(self, point:int)->None:
-        if point + self._total_kill_points <0:
+    def _update_kill_points(self, point: int) -> None:
+        if point + self._total_kill_points < 0:
             self._total_kill_points = 0
         else:
             self._total_kill_points += point
@@ -196,7 +195,7 @@ class Game:
                             screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
                             screen_chicken_y = chicken.rect.y
                             aim_mask = pygame.mask.Mask((1, 1), fill=True)
-                            offset = (int(aim_x-screen_chicken_x), int(aim_y-screen_chicken_y))
+                            offset = (int(aim_x - screen_chicken_x), int(aim_y - screen_chicken_y))
                             if chicken.mask.overlap(aim_mask, offset):
                                 chicken.play(0.6)
                                 chicken.shoot()
@@ -204,7 +203,7 @@ class Game:
                                 if text:
                                     self._kill_scores.append(TextKillWriter(
                                         chicken.rect.x - self._scroll_position * chicken.layer_speed,
-                                        chicken.rect.top+10,
+                                        chicken.rect.top + 10,
                                         str(chicken.score),
                                         BASIC_FONT,
                                         SCORE_TEXT_SIZE,
@@ -227,7 +226,7 @@ class Game:
                                 if text:
                                     self._kill_scores.append(TextKillWriter(
                                         element.rect.x - self._scroll_position * element.layer_speed,
-                                        element.rect.top+10,
+                                        element.rect.top + 10,
                                         str(text),
                                         BASIC_FONT,
                                         SCORE_TEXT_SIZE,

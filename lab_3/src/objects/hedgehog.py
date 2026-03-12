@@ -6,7 +6,7 @@ from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
 class Hedgehog(BaseObjectInLayer):
-    def __init__(self, x:int, y:int, layer_speed:float) -> None:
+    def __init__(self, x: int, y: int, layer_speed: float) -> None:
         image = pygame.image.load(HEDGEHOG_IMAGE).convert_alpha()
         super().__init__(image, x, y, layer_speed, SCORE_HEDGEHOG)
 
@@ -18,7 +18,7 @@ class Hedgehog(BaseObjectInLayer):
             self.rect.y = HEDGEHOG_COORD_Y
             self.score = 0
 
-    def play(self, volume:float) -> None:
+    def play(self, volume: float) -> None:
         if not self._is_killed:
             self._player.set_sound(HEDGEHOG_SHOOT)
             super().play(volume)

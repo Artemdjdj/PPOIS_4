@@ -10,7 +10,7 @@ from src.settings.settings import SCREEN_WIDTH, SITTING_CHICKEN, HEIGHT_FLYING_C
     SCORE_HORIZONTAL_CHICKEN, SCORE_FLYING_CHICKEN, SCORE_BIG_CHICKEN, LEFT_RUNNING_CHICKEN_IMAGE_1, \
     RIGHT_RUNNING_CHICKEN_IMAGE_1, LEFT_RUNNING_CHICKEN_IMAGE_2, \
     RIGHT_RUNNING_CHICKEN_IMAGE_2, SPEED_ANIMATION_RUNNING_CHICKEN, RIGHT_FLYING_CHICKEN_2, LEFT_FLYING_CHICKEN_2, \
-    RIGHT_FLYING_CHICKEN_HORIZONTAL_2, LEFT_FLYING_CHICKEN_HORIZONTAL_2
+    RIGHT_FLYING_CHICKEN_HORIZONTAL_2, LEFT_FLYING_CHICKEN_HORIZONTAL_2, SPACE_TO_START_SPAWN, SPACE_TO_KILL
 from src.objects.base_sprite import BaseSprite
 from src.utils.image_formatter import ImageFormatter
 
@@ -85,7 +85,7 @@ class MoveChicken(BaseChicken):
                 self.animation_period = current_time
 
     def update(self, dt:float=0.0) -> None:
-        if self.rect.x < -350 or self.rect.x > 3 * SCREEN_WIDTH + 350:
+        if self.rect.x < -(SPACE_TO_KILL+SPACE_TO_START_SPAWN) or self.rect.x > 3 * SCREEN_WIDTH + (SPACE_TO_KILL+SPACE_TO_START_SPAWN):
             self.kill()
             return
         if not self._is_killed:

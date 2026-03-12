@@ -1,12 +1,12 @@
 import pygame
 
 from src.settings.settings import CAR_IMAGE, TOILET_IMAGE, DESTROYED_TOILET_IMAGE, TOILET_SHOOT, NOT_TOILET_IMAGE, \
-    SCORE_TOILET
+    SCORE_TOILET, NUMBER_OF_SHOOTS_TO_BROKE_TOILET, NUMBER_OF_SHOOTS_TO_DESTROY_TOILET
 from src.objects.base_sprite import BaseSprite, BaseObjectInLayer
 
 
 class Toilet(BaseObjectInLayer):
-    def __init__(self, x:int, y:int, layer_speed:float) -> None:
+    def __init__(self, x: int, y: int, layer_speed: float) -> None:
         self._image_toilet = pygame.image.load(TOILET_IMAGE).convert_alpha()
         self._image_destroyed_toilet = pygame.image.load(DESTROYED_TOILET_IMAGE).convert_alpha()
         self._image_not_toilet = pygame.image.load(NOT_TOILET_IMAGE).convert_alpha()
@@ -14,13 +14,13 @@ class Toilet(BaseObjectInLayer):
         self._is_toilet_nothing = False
         super().__init__(self._image_toilet, x, y, layer_speed, SCORE_TOILET)
 
-    def shoot(self)->None:
+    def shoot(self) -> None:
         self._count_of_shoots += 1
 
-        if self._count_of_shoots >3:
+        if self._count_of_shoots > NUMBER_OF_SHOOTS_TO_BROKE_TOILET:
             self._is_killed = True
 
-        if self._count_of_shoots>9:
+        if self._count_of_shoots > NUMBER_OF_SHOOTS_TO_DESTROY_TOILET:
             self.score = 0
             self._is_toilet_nothing = True
 
@@ -35,7 +35,7 @@ class Toilet(BaseObjectInLayer):
             self.rect.x = x
             self.rect.y = y
 
-    def play(self, volume:float) -> None:
+    def play(self, volume: float) -> None:
         if not self._is_toilet_nothing:
             self._player.set_sound(TOILET_SHOOT)
             super().play(volume)
