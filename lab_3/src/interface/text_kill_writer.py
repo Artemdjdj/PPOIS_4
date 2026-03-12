@@ -20,14 +20,14 @@ class TextKillWriter:
         self.alive = True
         self.alpha = ALPHA
 
-    def update(self):
+    def update(self) -> None:
         self.y += self.speed_y
         self.fps -= 1
         self.alpha = int(ALPHA * (self.fps / self.max_fps))
         if self.fps <= 0:
             self.alive = False
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface) -> None:
         text_surface = self.font.render(self.text, True, self.color)
         text_surface.set_alpha(self.alpha)
         rect = text_surface.get_rect(center=(int(self.x), int(self.y)))

@@ -1,4 +1,5 @@
 import random
+from typing import Optional
 
 import pygame
 from abc import ABC, abstractmethod
@@ -7,20 +8,22 @@ from src.interface.cartridge import Cartridge
 from src.settings.settings import BASE_WIDTH_OF_SITTING_CHICKEN, SCREEN_WIDTH, HEIGHT_FLYING_CHICKEN, SCREEN_HEIGHT, \
     FIRST_LAYER_HEIGHT, MIN_CHICKEN_SPEED, MAX_CHICKEN_SPEED, DEFAULT_SPEED_WORLD, COUNT_OF_ATTEMPTS_TO_CREATE_CHICKEN, \
     SPACE_TO_START_SPAWN
-from src.objects.chicken import SittingChicken, FlyingChicken, HorizontalFlyingChicken, HorizontalRunningChicken
+from src.objects.chicken import SittingChicken, FlyingChicken, HorizontalFlyingChicken, HorizontalRunningChicken, \
+    BaseChicken
 
 
 class ChickenFactory(ABC):
-    def __init__(self, all_birds: pygame.sprite.Group):
+    def __init__(self, all_birds: pygame.sprite.Group) -> None:
         self.all_birds = all_birds
 
     @abstractmethod
-    def create(self, min_y, max_y, layer_speed, layer_objects: pygame.sprite.Group):
+    def create(self, min_y, max_y, layer_speed, layer_objects: pygame.sprite.Group) -> Optional[pygame.sprite.Group]:
         pass
 
 
 class SittingChickenFactory(ChickenFactory):
-    def create(self, min_y: int, max_y: int, layer_speed: float, layer_objects: pygame.sprite.Group):
+    def create(self, min_y: int, max_y: int, layer_speed: float, layer_objects: pygame.sprite.Group) -> Optional[
+        pygame.sprite.Group]:
         x = random.randint(BASE_WIDTH_OF_SITTING_CHICKEN, 2 * SCREEN_WIDTH - BASE_WIDTH_OF_SITTING_CHICKEN)
         y = random.randint(min_y, max_y)
         temp_bird = SittingChicken(x, y, layer_speed)
@@ -32,10 +35,12 @@ class SittingChickenFactory(ChickenFactory):
 
 class MoveChickenFactory(ChickenFactory):
     @abstractmethod
-    def create_bird(self, x: int, y: int, layer_speed: float, speed: float, direction: str, min_y: int, max_y: int):
+    def create_bird(self, x: int, y: int, layer_speed: float, speed: float, direction: str, min_y: int,
+                    max_y: int) -> BaseChicken:
         pass
 
-    def create(self, min_y: int, max_y: int, layer_speed: float, layer_objects: pygame.sprite.Group):
+    def create(self, min_y: int, max_y: int, layer_speed: float, layer_objects: pygame.sprite.Group) -> Optional[
+        pygame.sprite.Group]:
         for _ in range(COUNT_OF_ATTEMPTS_TO_CREATE_CHICKEN):
             direction = random.choice(["left", "right"])
             x = random.randint(-SPACE_TO_START_SPAWN, -1) if direction == "right" else random.randint(
@@ -51,15 +56,15 @@ class MoveChickenFactory(ChickenFactory):
 
 
 class FlyingChickenFactory(MoveChickenFactory):
-    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y):
+    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y) -> BaseChicken:
         return FlyingChicken(x, y, layer_speed, speed, direction, min_y, max_y)
 
 
 class HorizontalFlyingChickenFactory(MoveChickenFactory):
-    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y):
+    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y) -> BaseChicken:
         return HorizontalFlyingChicken(x, y, layer_speed, speed, direction)
 
 
 class RunningChickenFactory(MoveChickenFactory):
-    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y):
+    def create_bird(self, x, y, layer_speed, speed, direction, min_y, max_y) -> BaseChicken:
         return HorizontalRunningChicken(x, y, layer_speed, speed, direction)

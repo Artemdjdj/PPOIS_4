@@ -41,7 +41,7 @@ class Layer(ABC):
         return self._objects
 
     @property
-    def chickens(self):
+    def chickens(self) -> pygame.sprite.Group:
         return self._group
 
     @abstractmethod
@@ -54,7 +54,7 @@ class Layer(ABC):
 
 class SkyLayer(Layer):
     def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int],
-                 default_speed_chicken: float):
+                 default_speed_chicken: float) -> None:
         self._default_speed = default_speed_chicken
         super().__init__(image, name, layer_speed, y_range)
         self._factory = FlyingChickenFactory(self._group)
@@ -67,7 +67,7 @@ class SkyLayer(Layer):
 
 
 class GameLayer(Layer):
-    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]):
+    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]) -> None:
         super().__init__(image, name, layer_speed, y_range)
         self._factory_sitting = SittingChickenFactory(self._group)
 
@@ -79,7 +79,7 @@ class GameLayer(Layer):
 
 
 class FieldLayer(Layer):
-    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]):
+    def __init__(self, image: pygame.Surface, name: str, layer_speed, y_range: Tuple[int, int]) -> None:
         super().__init__(image, name, layer_speed, y_range)
         self._factory_flying = HorizontalFlyingChickenFactory(self._group)
         self._factory_running = RunningChickenFactory(self._group)

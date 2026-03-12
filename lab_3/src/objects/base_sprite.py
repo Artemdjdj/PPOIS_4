@@ -19,7 +19,7 @@ class BaseSprite(pygame.sprite.Sprite):
         self.score: Optional[int] = score
 
     @property
-    def is_killed(self):
+    def is_killed(self) -> bool:
         return self._is_killed
 
     def shoot(self) -> None:

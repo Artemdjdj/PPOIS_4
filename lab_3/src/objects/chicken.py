@@ -16,7 +16,7 @@ from src.utils.image_formatter import ImageFormatter
 
 
 class BaseChicken(BaseSprite):
-    def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float, score:int) -> None:
+    def __init__(self, image: pygame.Surface, x: int, y: int, layer_speed: float, score: int) -> None:
         super().__init__(image, x, y, score)
         self.layer_speed = layer_speed
         self.shoot_time = 0
@@ -34,7 +34,7 @@ class BaseChicken(BaseSprite):
         else:
             screen.blit(self.image, (screen_x, self.rect.y))
 
-    def update(self, dt: float=0.0) -> None:
+    def update(self, dt: float = 0.0) -> None:
         pass
 
     def shoot(self) -> None:
@@ -53,7 +53,7 @@ class BaseChicken(BaseSprite):
             if self._alpha <= 0:
                 self.kill()
 
-    def play(self, volume) ->None:
+    def play(self, volume) -> None:
         self._player.set_sound(CHICKEN_SHOOT)
         super().play(volume)
 
@@ -64,8 +64,9 @@ class SittingChicken(BaseChicken):
         score = SCORE_BIG_CHICKEN
         super().__init__(image, x, y, layer_speed, score)
 
+
 class MoveChicken(BaseChicken):
-    def __init__(self,image, x: int, y: int, layer_speed:float, velocity: float, direction: str, score:int):
+    def __init__(self, image, x: int, y: int, layer_speed: float, velocity: float, direction: str, score: int):
         self._direction = direction
         self._velocity = velocity
         self._float_x = float(x)
@@ -84,8 +85,9 @@ class MoveChicken(BaseChicken):
                     self.image = self.image_1
                 self.animation_period = current_time
 
-    def update(self, dt:float=0.0) -> None:
-        if self.rect.x < -(SPACE_TO_KILL+SPACE_TO_START_SPAWN) or self.rect.x > 3 * SCREEN_WIDTH + (SPACE_TO_KILL+SPACE_TO_START_SPAWN):
+    def update(self, dt: float = 0.0) -> None:
+        if self.rect.x < -(SPACE_TO_KILL + SPACE_TO_START_SPAWN) or self.rect.x > 3 * SCREEN_WIDTH + (
+                SPACE_TO_KILL + SPACE_TO_START_SPAWN):
             self.kill()
             return
         if not self._is_killed:
@@ -96,6 +98,7 @@ class MoveChicken(BaseChicken):
                 self._float_x += self._velocity * dt
 
             self.rect.x = int(self._float_x)
+
 
 class FlyingChicken(MoveChicken):
     def __init__(self, x: int, y: int, layer_speed: float, velocity: float, direction: str,
@@ -111,7 +114,7 @@ class FlyingChicken(MoveChicken):
         image_path_2 = LEFT_FLYING_CHICKEN_2 if direction == "left" else RIGHT_FLYING_CHICKEN_2
         image_1 = pygame.image.load(image_path_1).convert_alpha()
         image_2 = pygame.image.load(image_path_2).convert_alpha()
-        super().__init__(image_1, x, y, layer_speed,velocity, direction, SCORE_FLYING_CHICKEN)
+        super().__init__(image_1, x, y, layer_speed, velocity, direction, SCORE_FLYING_CHICKEN)
         self.image_1 = image_1
         self.image_2 = image_2
 
@@ -119,7 +122,7 @@ class FlyingChicken(MoveChicken):
         self._target_y = float(random.randint(self._y_min, self._y_max))
         self._vertical_speed = self._velocity * random.uniform(MIN_VERTICAL_CHICKEN_SPEED, MAX_VERTICAL_CHICKEN_SPEED)
 
-    def update(self, dt: float=0.0) -> None:
+    def update(self, dt: float = 0.0) -> None:
         super().update(dt)
         if not self._is_killed:
             self._time_until_next_move -= dt
@@ -140,8 +143,9 @@ class FlyingChicken(MoveChicken):
             self.rect.x = int(self._float_x)
             self.rect.y = int(self._float_y)
 
+
 class HorizontalFlyingChicken(MoveChicken):
-    def __init__(self, x: int, y: int, layer_speed:float, velocity: float, direction: str):
+    def __init__(self, x: int, y: int, layer_speed: float, velocity: float, direction: str):
         image_path_1 = LEFT_FLYING_CHICKEN_HORIZONTAL if direction == "left" else RIGHT_FLYING_CHICKEN_HORIZONTAL
         image_path_2 = LEFT_FLYING_CHICKEN_HORIZONTAL_2 if direction == "left" else RIGHT_FLYING_CHICKEN_HORIZONTAL_2
         image_1 = pygame.image.load(image_path_1).convert_alpha()
@@ -152,7 +156,7 @@ class HorizontalFlyingChicken(MoveChicken):
 
 
 class HorizontalRunningChicken(MoveChicken):
-    def __init__(self, x: int, y: int, layer_speed:float, velocity: float, direction: str):
+    def __init__(self, x: int, y: int, layer_speed: float, velocity: float, direction: str):
         image_path_1 = LEFT_RUNNING_CHICKEN_IMAGE_1 if direction == "left" else RIGHT_RUNNING_CHICKEN_IMAGE_1
         image_path_2 = LEFT_RUNNING_CHICKEN_IMAGE_2 if direction == "left" else RIGHT_RUNNING_CHICKEN_IMAGE_2
         image_1 = pygame.image.load(image_path_1).convert_alpha()
@@ -160,5 +164,3 @@ class HorizontalRunningChicken(MoveChicken):
         super().__init__(image_1, x, y, layer_speed, velocity, direction, SCORE_HORIZONTAL_CHICKEN)
         self.image_1 = image_1
         self.image_2 = image_2
-
-
