@@ -191,6 +191,7 @@ class Game:
                     self._sound_player.play(0.6)
                     aim_x, aim_y = self._cursor.get_center()
                     for layer in self._layers:
+                        is_bird_kill = False
                         for chicken in layer.chickens:
                             screen_chicken_x = chicken.rect.x - self._scroll_position * chicken.layer_speed
                             screen_chicken_y = chicken.rect.y
@@ -210,7 +211,11 @@ class Game:
                                         BASIC_COLOR
                                     ))
                                     self._update_kill_points(chicken.score)
-                                break
+                                is_bird_kill = True
+
+                        if is_bird_kill:
+                            break
+
                         for element in layer.objects:
                             screen_chicken_x = element.rect.x - self._scroll_position * element.layer_speed
                             screen_chicken_y = element.rect.y

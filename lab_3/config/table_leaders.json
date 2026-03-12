@@ -1,5 +1,17 @@
 [
     {
+        "name": "Evgexa_PRO_2",
+        "record": 1250
+    },
+    {
+        "name": "Evgexa_PRO",
+        "record": 946
+    },
+    {
+        "name": "dima_2",
+        "record": 404
+    },
+    {
         "name": "Legendss",
         "record": 295
     },
@@ -26,17 +38,5 @@
     {
         "name": "AS",
         "record": 85
-    },
-    {
-        "name": "Dima_lega",
-        "record": 80
-    },
-    {
-        "name": "Zhe",
-        "record": 60
-    },
-    {
-        "name": "Bravler",
-        "record": 50
     }
 ]
