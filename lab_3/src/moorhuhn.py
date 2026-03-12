@@ -56,9 +56,9 @@ class Moorhuhn:
             pygame.mixer.music.play(-1)
 
     def _create_chickens(self) -> None:
-        self._game.create_moving_chickens_field((4, 6))
-        self._game.create_sitting_chickens_game(10)
-        self._game.create_flying_chickens(10)
+        self._game.create_moving_chickens_field((4, 5))
+        self._game.create_sitting_chickens_game(9)
+        self._game.create_flying_chickens(9)
 
     def _create_timer(self) -> None:
         self._timer = GameTimer(GAME_TIME)

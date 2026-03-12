@@ -18,6 +18,10 @@ class BaseSprite(pygame.sprite.Sprite):
         self._player = SoundPlayer()
         self.score: Optional[int] = score
 
+    @property
+    def is_killed(self):
+        return self._is_killed
+
     def shoot(self) -> None:
         self._is_killed = True
 

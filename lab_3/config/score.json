@@ -8,5 +8,5 @@
     "puddle": -1,
     "balloon": -50,
     "hedgehog": -100,
-    "max_chickens_per_layer": 11
+    "max_chickens_per_layer": 9
 }

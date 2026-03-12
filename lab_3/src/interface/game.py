@@ -196,7 +196,7 @@ class Game:
                             screen_chicken_y = chicken.rect.y
                             aim_mask = pygame.mask.Mask((1, 1), fill=True)
                             offset = (int(aim_x - screen_chicken_x), int(aim_y - screen_chicken_y))
-                            if chicken.mask.overlap(aim_mask, offset):
+                            if not chicken.is_killed and chicken.mask.overlap(aim_mask, offset):
                                 chicken.play(0.6)
                                 chicken.shoot()
                                 text = chicken.score
@@ -211,6 +211,7 @@ class Game:
                                     ))
                                     self._update_kill_points(chicken.score)
                                 is_bird_kill = True
+                                break
 
                         if is_bird_kill:
                             break

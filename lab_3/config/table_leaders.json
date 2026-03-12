@@ -1,11 +1,19 @@
 [
     {
+        "name": "Dimon_CHEMPION1",
+        "record": 500
+    },
+    {
+        "name": "Dimon_Chempion",
+        "record": 407
+    },
+    {
         "name": "Evgexa_PRO_2",
-        "record": 1250
+        "record": 406
     },
     {
         "name": "Evgexa_PRO",
-        "record": 946
+        "record": 405
     },
     {
         "name": "dima_2",
@@ -30,13 +38,5 @@
     {
         "name": "Hehehe",
         "record": 90
-    },
-    {
-        "name": "arrrrrr",
-        "record": 86
-    },
-    {
-        "name": "AS",
-        "record": 85
     }
 ]

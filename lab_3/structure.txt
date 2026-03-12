@@ -1,4 +1,9 @@
 lab_3/
+├── assets/
+│   ├── audio
+│   ├── fonts
+│   ├── icons
+│   └── images
 ├── config/
 │   ├── game_config.json
 │   ├── paths.json

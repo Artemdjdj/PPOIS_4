@@ -1,9 +1,17 @@
 import json
+import sys
 from pathlib import Path
-
 from src.utils.reader import JsonReader
 
-BASE_DIR = Path(__file__).parent.parent.parent
+
+
+def get_base_dir() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys._MEIPASS)
+    else:
+        return Path(__file__).parent.parent.parent
+
+BASE_DIR = get_base_dir()
 
 json_reader = JsonReader(BASE_DIR / "config/game_config.json")
 game_config = json_reader.read()

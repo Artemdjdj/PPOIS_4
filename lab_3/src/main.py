@@ -1,4 +1,4 @@
-from moorhuhn import Moorhuhn
+from src.moorhuhn import Moorhuhn
 
 if __name__ == "__main__":
     game = Moorhuhn()
