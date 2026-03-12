@@ -113,5 +113,6 @@
         "animation_running": 0.18
     },
     "time_of_spawn_chickens": 5,
-    "max_length_name": 15
+    "max_length_name": 15,
+    "max_count_of_leaders": 10
 }

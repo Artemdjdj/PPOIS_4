@@ -118,6 +118,7 @@ MAX_VERTICAL_CHICKEN_SPEED = game_config["speeds"]["max_vertical_chicken"]
 SPEED_ANIMATION_RUNNING_CHICKEN = game_config["speeds"]["animation_running"]
 TIME_OF_SPAWN_CHICKENS = game_config["time_of_spawn_chickens"]
 MAX_LENGTH_NAME = game_config["max_length_name"]
+MAX_COUNT_OF_LEADERS = game_config["max_count_of_leaders"]
 
 BASIC_FONT = BASE_DIR / paths_config["fonts"]["basic"]
 FIRST_LAYER = BASE_DIR / paths_config["images"]["first_layer"]
