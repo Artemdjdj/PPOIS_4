@@ -12,7 +12,7 @@
             "color": "зеленый",
             "is_watered": "True",
             "diameter": 34.0,
-            "time_of_last_adding_water": 37000
+            "time_of_last_adding_water": null
         },
         {
             "height": 45.0,
@@ -20,7 +20,7 @@
             "color": "красный",
             "is_watered": "True",
             "diameter": 56.0,
-            "time_of_last_adding_water": 37000
+            "time_of_last_adding_water": null
         }
     ],
     "tools": [
@@ -42,6 +42,6 @@
         }
     ],
     "irrigation_system": {
-        "time_of_last_adding_water": 56.0
+        "time_of_last_adding_water": null
     }
 }

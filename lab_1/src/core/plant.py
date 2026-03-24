@@ -70,7 +70,8 @@ class Plant:
         return self.__color.color
 
     def __str__(self) -> str:
-        return f"Растение {self.__name} высота которого: {self.height}"
+        is_watered = "полито" if self.is_watered else "не полито"
+        return f"Растение {self.__name}, высота которого: {self.height}, {is_watered}"
 
     def create_dict(self) -> Dict[str, Any]:
         return {
