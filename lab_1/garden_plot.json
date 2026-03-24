@@ -10,15 +10,17 @@
             "height": 23.0,
             "name": "огурец",
             "color": "зеленый",
-            "is_watered": false,
-            "diameter": 34.0
+            "is_watered": "True",
+            "diameter": 34.0,
+            "time_of_last_adding_water": 37000
         },
         {
             "height": 45.0,
             "name": "помидор",
             "color": "красный",
-            "is_watered": false,
-            "diameter": 56.0
+            "is_watered": "True",
+            "diameter": 56.0,
+            "time_of_last_adding_water": 37000
         }
     ],
     "tools": [
@@ -40,7 +42,6 @@
         }
     ],
     "irrigation_system": {
-        "amount_of_all_water": 56.0,
-        "is_active": false
+        "time_of_last_adding_water": 56.0
     }
 }

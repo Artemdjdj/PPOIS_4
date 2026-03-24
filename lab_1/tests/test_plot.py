@@ -1,5 +1,5 @@
 import pytest
-from src.core.plot import RecreationArea, Grill, GardenPlot
+from src.core.plot import RecreationArea, Grill, GardenPlot, MeatType
 from src.core.plant import Color, Plant
 from src.core.soil import SoilType
 from src.core.tool import Tool
@@ -39,7 +39,7 @@ class TestRecreationArea:
     def test_use_grill_without_grill(self):
         area = RecreationArea(10, 10)
         with pytest.raises(GrillDoesNotExist):
-            area.use_grill()
+            area.use_grill(MeatType.BEEF)
 
     def test_clean_area(self):
         area = RecreationArea(40, 35)
@@ -53,36 +53,42 @@ class TestRecreationArea:
 
 class TestGardenPlot:
     def test_initial_plot(self):
-        plot = GardenPlot(100, 50, SoilType.LOAMY, 200)
+        plot = GardenPlot(100, 50, SoilType.LOAMY)
         assert plot.square == 100
         assert plot.perimeter == 50
         assert plot.plants == []
         assert plot.tools == []
         assert plot.recreation_area is None
 
-    def test_plant_and_remove_plant(self):
-        plot = GardenPlot(101, 54, SoilType.SANDY, 200)
+    def test_water_plant_and_remove_plant(self):
+        plot = GardenPlot(101, 54, SoilType.SANDY)
         color = Color()
         color.color = "красный"
         plant = Plant(30, "Роза", color, diameter=10)
         plot.plant_plant(plant)
+        plot.water_plant_by_pos(0)
         assert len(plot.plants) == 1
         assert plot.plants[0].name == "Роза"
         plot.remove_plant(0)
         assert len(plot.plants) == 0
 
     def test_remove_plant_invalid_position(self):
-        plot = GardenPlot(100, 50, SoilType.CLAY, 200)
+        plot = GardenPlot(100, 50, SoilType.CLAY)
         with pytest.raises(PositionError):
             plot.remove_plant(5)
 
+    def test_water_plant_invalid_position(self):
+        plot = GardenPlot(100, 50, SoilType.CLAY)
+        with pytest.raises(PositionError):
+            plot.water_plant_by_pos(5)
+
     def test_remove_plant_invalid_negative_position(self):
-        plot = GardenPlot(104, 54, SoilType.CLAY, 200)
+        plot = GardenPlot(104, 54, SoilType.CLAY)
         with pytest.raises(PositionError):
             plot.remove_plant(-5)
 
     def test_clear_all_plants(self):
-        plot = GardenPlot(100, 50, SoilType.PEATY, 200)
+        plot = GardenPlot(100, 50, SoilType.PEATY)
         color = Color()
         color.color = "желтый"
         plot.plant_plant(Plant(10, "Одуванчик", color, diameter=5))
@@ -92,24 +98,24 @@ class TestGardenPlot:
         assert len(plot.plants) == 0
 
     def test_water_plants(self):
-        plot = GardenPlot(100, 50, SoilType.CHERNOZEM, 50)
+        plot = GardenPlot(100, 50, SoilType.CHERNOZEM)
         color = Color()
         color.color = "зеленый"
         plant1 = Plant(20, "Папоротник", color, diameter=4)
         plant2 = Plant(25, "Колокольчик", color, diameter=5)
         plot.plant_plant(plant1)
         plot.plant_plant(plant2)
-        plot.water_plants(30)
+        plot.water_plants()
         assert plant1.is_watered is True
         assert plant2.is_watered is True
 
     def test_fertilize_soil(self):
-        plot = GardenPlot(100, 50, SoilType.LOAMY, 200)
+        plot = GardenPlot(100, 50, SoilType.LOAMY)
         with pytest.raises(BigAmountOfFertilizerError):
             plot.fertilize_soil(200)
 
     def test_create_recreation_area(self):
-        plot = GardenPlot(200, 150, SoilType.CLAY, 300)
+        plot = GardenPlot(200, 150, SoilType.CLAY)
         area = RecreationArea(50, 40)
         plot.create_recreation_area(area)
         assert plot.recreation_area is area
@@ -118,7 +124,7 @@ class TestGardenPlot:
             plot.create_recreation_area(big_area)
 
     def test_tools_operations(self):
-        plot = GardenPlot(100, 50, SoilType.SANDY, 100)
+        plot = GardenPlot(100, 50, SoilType.SANDY)
         tool1 = Tool("Грабли", "Gardena", "Веерные грабли")
         tool2 = Tool("Секатор", "Fiskars", "Садовый секатор")
         plot.add_tool(tool1)
@@ -133,7 +139,7 @@ class TestGardenPlot:
             plot.remove_tool(0)
 
     def test_tool_maintenance(self):
-        plot = GardenPlot(100, 50, SoilType.LOAMY, 100)
+        plot = GardenPlot(100, 50, SoilType.LOAMY)
         tool = Tool("Топор", "Husqvarna", "Обычный")
         plot.add_tool(tool)
         tool.perform_task(15)

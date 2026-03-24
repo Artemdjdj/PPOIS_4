@@ -38,14 +38,14 @@ class Tool:
         return self.__state.value
 
     @property
-    def usage_count(self) -> str:
+    def usage_count(self) -> int | float:
         return self.__usage_count
 
     @property
     def date_of_maintain(self) -> date:
         return self.__date_of_maintain
 
-    def __default_maintain(self, time_repair: int) -> None:
+    def __default_maintain(self) -> None:
         self.__state: ToolState = ToolState.GOOD
         self.__usage_count: int | float = 0
         self.__date_of_maintain = date.today()
@@ -56,10 +56,10 @@ class Tool:
         elif self.__state == ToolState.GOOD:
             return "Инструмент в хорошем состоянии, можно приступать к работе"
         elif self.__state == ToolState.WORN:
-            self.__default_maintain(1)
+            self.__default_maintain()
             return "Инструмент имел небольшие дефекты, теперь все готово инструмент и хорошем состоянии"
         else:
-            self.__default_maintain(2)
+            self.__default_maintain()
             return "Инструмент был сильно поврежден, теперь все готово инструмент и хорошем состоянии"
 
     def perform_task(self, work_hours: int | float) -> None:
@@ -67,14 +67,13 @@ class Tool:
             raise BrokenToolError("Инструмент сломан")
         self.__usage_count += work_hours
         if (
-            self.__usage_count >= COUNT_OF_WORK_HOURS_WORN
-            and self.__usage_count <= COUNT_OF_WORK_HOURS_BROKEN
+                COUNT_OF_WORK_HOURS_WORN <= self.__usage_count <= COUNT_OF_WORK_HOURS_BROKEN
         ):
             self.__state = ToolState.WORN
         elif self.__usage_count > COUNT_OF_WORK_HOURS_BROKEN:
             self.__state = ToolState.BROKEN
 
-    def __str__(self) -> None:
+    def __str__(self) -> str:
         return f"Инструмент: {self.__name}, бренд: {self.__brand}"
 
     def create_dict(self) -> Dict[str, Any]:

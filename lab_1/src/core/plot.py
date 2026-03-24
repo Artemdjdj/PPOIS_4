@@ -1,3 +1,4 @@
+import time
 from enum import Enum
 from typing import Set, Optional, Dict, Any, List
 from src.utils.descriptor import NumberValidator
@@ -86,9 +87,9 @@ class RecreationArea(BasicObject):
             return True
         return False
 
-    def use_grill(self) -> str:
+    def use_grill(self, meat:MeatType) -> str:
         if self.__grill:
-            return self.__grill.fry()
+            return self.__grill.fry(meat)
         raise GrillDoesNotExist("Гриль не установлен!")
 
     @property
@@ -110,13 +111,14 @@ class RecreationArea(BasicObject):
 
     @classmethod
     def create_object_from_dict(cls, info_dict: Dict[str, Any]) -> "RecreationArea":
-        return cls(
+        area = cls(
             square=info_dict["square"],
-            perimeter=info_dict["perimeter"],
-            decorative_fittings=set(info_dict["decorative_fittings"]),
-            grill=Grill() if info_dict["grill"] else None,
-            is_clean=info_dict["is_clean"],
+            perimeter=info_dict["perimeter"]
         )
+        area.__decorative_fittings = set(info_dict["decorative_fittings"])
+        area.__grill = Grill() if info_dict["grill"] else None
+        area.__is_clean = info_dict["is_clean"]
+        return area
 
 
 class GardenPlot(BasicObject):
@@ -125,16 +127,13 @@ class GardenPlot(BasicObject):
         square: int | float,
         perimeter: int | float,
         soil_type: SoilType,
-        amount_of_all_water: int | float,
     ) -> None:
         super().__init__(square, perimeter)
         self.__soil: Soil = Soil(soil_type)
         self.__recreation_area: Optional[RecreationArea] = None
         self.__plants: List[Plant] = []
         self.__tools: List[Tool] = []
-        self.__irrigation_system: IrrigationSystem = IrrigationSystem(
-            amount_of_all_water
-        )
+        self.__irrigation_system: IrrigationSystem = IrrigationSystem()
 
     def plant_plant(self, plant: Plant) -> None:
         self.__plants.append(plant)
@@ -151,10 +150,15 @@ class GardenPlot(BasicObject):
     def clear_garden_of_all_plants(self) -> None:
         self.__plants.clear()
 
-    def water_plants(self, amount: int | float) -> None:
+    def water_plants(self) -> None:
         self.__irrigation_system.turn_on()
-        self.__irrigation_system.water(amount, self.__plants)
+        self.__irrigation_system.water(self.__plants)
         self.__irrigation_system.turn_of()
+
+    def water_plant_by_pos(self, position:int) -> None:
+        validator = PositionValidator(len(self.__plants), position)
+        validator.validate()
+        self.__plants[position].water(time.time())
 
     def fertilize_soil(self, amount_of_fertilizer: int | float) -> None:
         coeff_fertilizer = amount_of_fertilizer / AMOUNT_OF_FERTILIZER
@@ -201,9 +205,7 @@ class GardenPlot(BasicObject):
         base_dict = super().create_dict()
         garden_dict = {
             "soil": self.__soil.create_dict(),
-            "recreation_area": self.recreation_area.create_dict()
-            if self.recreation_area
-            else None,
+            "recreation_area": self.recreation_area.create_dict() if self.recreation_area else None,
             "plants": [plant.create_dict() for plant in self.__plants],
             "tools": [tool.create_dict() for tool in self.__tools],
             "irrigation_system": self.__irrigation_system.create_dict(),
@@ -216,7 +218,6 @@ class GardenPlot(BasicObject):
             square=data["square"],
             perimeter=data["perimeter"],
             soil_type=SoilType(data["soil"]["soil_type"]),
-            amount_of_all_water=data["irrigation_system"]["amount_of_all_water"],
         )
         if data["recreation_area"]:
             garden.__recreation_area = RecreationArea.create_object_from_dict(

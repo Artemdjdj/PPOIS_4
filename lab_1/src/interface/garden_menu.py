@@ -20,7 +20,7 @@ from src.exceptions.exceptions import (
 class GardenMenu:
     def __init__(self, filename: str) -> None:
         self.__garden_plot: Optional[GardenPlot] = None
-        self.__garden_manager: BasicDataManager = None
+        self.__garden_manager: Optional[BasicDataManager] = None
         self.__filename = filename
 
     def run(self) -> None:
@@ -58,9 +58,8 @@ class GardenMenu:
             }
             soil_type = soil_dict.get(soil_choice, SoilType.CLAY)
 
-            amount_of_all_water = float(input("Начальный запас воды (л): "))
             self.__garden_plot = GardenPlot(
-                square, perimeter, soil_type, amount_of_all_water
+                square, perimeter, soil_type
             )
             print("Участок успешно создан!\n")
         except ValueError as e:
@@ -96,7 +95,8 @@ class GardenMenu:
         print("4  - просмотр всех растений на участке")
         print("5  - очистить участок от растений")
         print("6  - полить растения")
-        print("7  - удобрить почву")
+        print("7  - полить конкретное растение")
+        print("8  - удобрить почву")
         print("______________________________")
 
     def __show_recreation_area(self) -> None:
@@ -130,7 +130,7 @@ class GardenMenu:
         print("4  - работа с инструментами")
         print("__________________________")
 
-    def __make_choice_wiht_plant(self) -> None:
+    def __make_choice_with_plant(self) -> None:
         self.__show_plant_and_soil_menu()
         user_choice = input("Выберите операцию: ")
         match user_choice:
@@ -149,6 +149,8 @@ class GardenMenu:
             case "6":
                 self.__water_plants()
             case "7":
+                self.__water_plant()
+            case "8":
                 self.__fertilize_plants()
             case _:
                 self.__incorrect_input()
@@ -204,7 +206,7 @@ class GardenMenu:
             case "1":
                 self.__make_start_choice()
             case "2":
-                self.__make_choice_wiht_plant()
+                self.__make_choice_with_plant()
             case "3":
                 self.__make_choice_with_recreation_area()
             case "4":
@@ -283,19 +285,28 @@ class GardenMenu:
         print("\nВыбрана функция полива растений \n")
         try:
             if len(self.__garden_plot.plants) > 0:
-                amount = float(input("Введите необходимый объем полива: "))
-                if amount <= 0:
-                    raise ValueError("Объем воды должен быть положительным числом")
-                self.__garden_plot.water_plants(amount)
+                self.__garden_plot.water_plants()
                 print("\nРастения успешно политы")
             else:
                 print("\nРастений нет")
         except SystemIsNotActiveError as e:
             print(f"\nСистемная ошибка: {e}")
-        except LackOfWaterError as e:
-            print(f"\nНедостаточно воды: {e}")
         except TooMuchPlantsAreWateredError as e:
             print(f"\nСлишком много растений полито: {e}")
+        except ValueError as e:
+            print(f"\nОшибка ввода: {e}")
+        except Exception as e:
+            print(f"\nНепредвиденная ошибка: {e}")
+
+    def __water_plant(self) -> None:
+        print("\nВыбрана функция полива конкретного растения \n")
+        try:
+            if len(self.__garden_plot.plants) > 0:
+                position = int(input("Введите позицию растения: "))
+                self.__garden_plot.water_plant_by_pos(position)
+                print("\nРастение успешно полито")
+            else:
+                print("\nРастений нет")
         except ValueError as e:
             print(f"\nОшибка ввода: {e}")
         except Exception as e:

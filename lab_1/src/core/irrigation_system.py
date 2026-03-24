@@ -1,33 +1,35 @@
-from typing import Dict, Any
+import time
+from typing import Dict, Any, List
+
+from core.plant import Plant
 from src.exceptions.exceptions import (
     SystemIsNotActiveError,
     LackOfWaterError,
     TooMuchPlantsAreWateredError,
 )
 from src.utils.descriptor import NumberValidator
-from src.core.plant import Plant
-
+MIN_TIME_OF_WATERING = 36000
 
 class IrrigationSystem:
     amount_of_all_water = NumberValidator()
 
-    def __init__(self, amount_of_all_water: int | float) -> None:
+    def __init__(self) -> None:
         self.__is_active = False
-        self.amount_of_all_water: int | float = amount_of_all_water
+        self.time_of_last_adding_water = None
 
-    def water(self, amount: int | float, plants: list[Plant]) -> None:
+
+    def water(self,plants: List[Plant]) -> None:
         if not self.__is_active:
             raise SystemIsNotActiveError("Система автоматического полива не включена")
-        if amount > self.amount_of_all_water:
-            raise LackOfWaterError(
-                "В системе автоматического полива нехватает воды залейте воду в бак"
-            )
-        count_of_watered_plants = sum(1 for plant in plants if plant.is_watered)
-        if count_of_watered_plants > len(plants) // 2:
-            raise TooMuchPlantsAreWateredError(" Большая часть растений уже полита")
-        for plant in plants:
-            plant.is_watered = True
-        self.amount_of_all_water -= amount
+
+        if not self.time_of_last_adding_water or time.time() - self.time_of_last_adding_water >= MIN_TIME_OF_WATERING:
+            self.time_of_last_adding_water = time.time()
+            for plant in plants:
+                plant.water(self.time_of_last_adding_water)
+            self.__is_active = False
+
+        else:
+            raise TooMuchPlantsAreWateredError("Растения недавно были политы, нужно что бы прошло время")
 
     def turn_on(self) -> None:
         self.__is_active = True
@@ -37,12 +39,12 @@ class IrrigationSystem:
 
     def create_dict(self) -> Dict[str, Any]:
         return {
-            "amount_of_all_water": self.amount_of_all_water,
-            "is_active": self.__is_active,
+            "time_of_last_adding_water": self.time_of_last_adding_water,
         }
 
     @classmethod
     def create_object_from_dict(cls, data: Dict[str, Any]) -> 'IrrigationSystem':
-        irrigation_system = cls(amount_of_all_water=data["amount_of_all_water"])
-        irrigation_system.__is_active = data["is_active"]
+        irrigation_system = cls()
+        irrigation_system.__is_active = False
+        irrigation_system.time_of_last_adding_water = data["time_of_last_adding_water"]
         return irrigation_system
