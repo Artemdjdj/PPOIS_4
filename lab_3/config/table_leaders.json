@@ -1,7 +1,15 @@
 [
     {
+        "name": "Dimas",
+        "record": 503
+    },
+    {
+        "name": "Prepod",
+        "record": 502
+    },
+    {
         "name": "artemdjdjdjdgsg",
-        "record": 711
+        "record": 501
     },
     {
         "name": "Dimon_CHEMPION1",
@@ -30,13 +38,5 @@
     {
         "name": "NewLegenda2",
         "record": 235
-    },
-    {
-        "name": "Legenda1",
-        "record": 183
-    },
-    {
-        "name": "NewUser",
-        "record": 102
     }
 ]
