@@ -1,0 +1,70 @@
+:root {
+  --bg-color: #fffdf7;       /* Кремовый фон */
+  --green:rgb(26, 145, 84);          /* Лаймовый зеленый киви */
+  --color-lime-400: #a3e635;
+  --color-lime-600: #65a30d;
+  --dark: #2D2C28;     /* Темный цвет для текста и футера */
+  --text-brown: #574231;      /* Коричневый цвет */
+  --light-brown: #92897f;
+  --border-color: #F0EBE5;  /* Цвет границ */
+  --transparent-brown: #44342395; /* Коричневый прозрачный цвет */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.page-btn {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: white;
+  color: var(--dark);
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.page-btn:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.page-btn.active {
+  background: var(--dark);
+  color: white;
+  border-color: var(--dark);
+  cursor: default;
+}
+
+.page-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-dots {
+  padding: 0 5px;
+  font-weight: 600;
+  color: var(--transparent-brown);
+}
+
+.create-ad-link {
+  color: var(--dark);
+}
+.btn-outline:hover .create-ad-link {
+  color: white;
+}
