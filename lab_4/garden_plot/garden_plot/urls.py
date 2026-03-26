@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include("main.urls")),
     path('plants/', include("plants.urls")),
     path('tools/', include("tools.urls")),
+    path('recreation_area/', include("recreation_area.urls")),
 ]
