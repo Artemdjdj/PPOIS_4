@@ -1,4 +1,9 @@
 from django.shortcuts import render
 
+from .models import PlantModel
+
+
 def index(request):
-    return render(request, 'plants/index.html')
+    plants = PlantModel.objects.all()
+    context = {'plants':plants}
+    return render(request, 'plants/index.html', context)

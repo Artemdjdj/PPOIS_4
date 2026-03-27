@@ -1,269 +1,59 @@
+{% extends 'layouts/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <title>Инструменты</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
-    <link href="{% static 'css/pagination.css'%}" rel="stylesheet">
-    <link href="{% static 'css/styles.css'%}" rel="stylesheet"/>
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
-<body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Садовый участок</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-            class="fas fa-bars"></i></button>
-</nav>
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Меню</div>
-                    <a class="nav-link" href="plot_settings.html">
-                        <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-house-gear" viewBox="0 0 16 16">...
-                            </svg>
-                        </div>
-                        Участок
-                    </a>
-                    <a class="nav-link" href="tools.html">
-                        <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-tools" viewBox="0 0 16 16">...
-                            </svg>
-                        </div>
-                        Инструменты
-                    </a>
-                    <a class="nav-link" href="plantss.html">
-                        <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-flower3" viewBox="0 0 16 16">...
-                            </svg>
-                        </div>
-                        Растения и почва
-                    </a>
-                    <a class="nav-link" href="chill.html">
-                        <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-fork-knife" viewBox="0 0 16 16">...
-                            </svg>
-                        </div>
-                        Отдых
-                    </a>
-                    <a class="nav-link" href="{% url 'admin:index' %}">
-                        <div class="sb-nav-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-person-gear" viewBox="0 0 16 16">
-                                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
-                            </svg>
-                        </div>
-                        Админ панель
-                    </a>
-                </div>
-            </div>
-            <!-- <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
-            </div> -->
-        </nav>
-    </div>
-    <div id="layoutSidenav_content">
-        <main class="d-flex flex-column">
-            <div class="container-fluid px-0 d-flex flex-column flex-fill">
-                <div class="row g-0 flex-fill">
-                    <div class="col-16 position-relative p-5">
-                        <div style="display: flex; gap: 20px; flex-wrap:wrap;">
-                            <div>
-                                <h1>Растения</h1>
-                            </div>
-                            <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                <div style="margin-top:10px;">
-                                    <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
-                                        растение</a>
-                                </div>
-                                <div style="margin-top:10px;">
-                                    <a type="button" href="add_new_tool.html" class="btn btn-info">Полить все
-                                        растения</a>
-                                </div>
-                                <div style="margin-top:10px;">
-                                    <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
-                                </div>
-                                <div style="margin-top:10px;margin-left:auto">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px;">
 
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/cucumber.jpeg'%}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/cucumber.jpeg'%}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/cucumber.jpeg' %}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/apple_tree.png' %}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/apple_tree.png' %}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/apple_tree.png' %}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="{% static 'assets/plants_images/apple_tree.png'%}" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card’s content.</p>
-                                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                                        Полито
-                                    </div>
-                                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                        <button type="button" class="btn btn-info">Полить</button>
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <nav class="pagination" aria-label="Пагинация">
-                            <a href="?page=1" class="page-btn disabled" aria-disabled="true"
-                               aria-label="Предыдущая страница"><</a>
+{% block main %}
+{% endblock %}
 
-                            <a href="?page=1" class="page-btn active" aria-current="page">1</a>
-                            <a href="?page=2" class="page-btn">2</a>
-                            <a href="?page=3" class="page-btn">3</a>
-                            <a href="?page=4" class="page-btn">4</a>
-                            <a href="?page=5" class="page-btn">5</a>
+{% block header_main %}Растения{% endblock header_main %}
 
-                            <span class="page-dots" aria-hidden="true">...</span>
-
-                            <a href="?page=10" class="page-btn">10</a>
-
-                            <a href="?page=2" class="page-btn" aria-label="Следующая страница">></a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer class="py-4 bg-light">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div>
-                        <p>@ Все права защищены. Bootstrap</p>
-                    </div>
-                    <div>
-                        <p>Разработчик: Башура Артем Олегович</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+{% block href_add_new %}
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
+        растение</a>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-<script src="{% static 'js/scripts.js'%}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="{% static 'assets/demo/chart-area-demo.js' %}"></script>
-<script src="{% static 'assets/demo/chart-bar-demo.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-<script src="{% static 'js/datatables-simple-demo.js'%}"></script>
-</body>
-</html>
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_tool.html" class="btn btn-info">Полить все
+        растения</a>
+</div>
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
+</div>
+{% endblock href_add_new %}
+
+{% block filter %}
+<div style="margin-top:10px;margin-left:auto">
+    <select class="form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    </select>
+</div>
+{%endblock filter %}
+
+{% block include %}
+{% for plant in plants %}
+    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{plant.image.url}}" class="card-img-top"
+                 alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{plant.name}}</h5>
+                <p class="card-text">Высота: {{plant.height}}, диаметер: {{plant.diameter}}, цвет: {{plant.get_color}}</p>
+                <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                    {% if plant.is_watered %}Полито{%else%}Не полито{% endif %}
+                </div>
+                <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
+                    <button type="button" class="btn btn-info">Полить</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock include %}
+
+{% block pagination %}
+{% include 'layouts/pagination.html' %}
+{% endblock pagination %}
+

@@ -101,9 +101,7 @@
                                 <h1>{% block header_main %}{% endblock header_main %}</h1>
                             </div>
                             <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                                <div style="margin-top:10px;">
-                                    {% block href_add_new %}{% endblock href_add_new %}
-                                </div>
+                                {% block href_add_new %}{% endblock href_add_new %}
                                 {% block filter %}
                                 {% endblock filter %}
                             </div>
