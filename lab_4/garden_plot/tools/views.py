@@ -1,4 +1,9 @@
 from django.shortcuts import render
 
+from .models import ToolModel
+
+
 def index(request):
-    return render(request, "tools/index.html")
+    tools = ToolModel.objects.all()
+    context = {'tools': tools}
+    return render(request, "tools/index.html", context)
