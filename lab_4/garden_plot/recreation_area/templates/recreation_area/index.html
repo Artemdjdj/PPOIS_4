@@ -27,18 +27,19 @@
 {%endblock filter %}
 
 {% block include %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
 {% for fitting in fittings %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{fitting.image.url}}" class="card-img-top" alt="...">
         <div class="card-body" style="display: flex; flex-direction: column;">
             <h5 class="card-title">{{fitting.name}}</h5>
             <div style="display:flex; flex-wrap:nowrap; gap:40px;">
-                <button type="button" class="btn btn-info">Использовать</button>
                 <button type="button" class="btn btn-danger">Удалить</button>
             </div>
         </div>
     </div>
 {% endfor %}
+</div>
 {% endblock include %}
 
 {% block pagination %}

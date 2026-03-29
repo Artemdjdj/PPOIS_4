@@ -25,6 +25,7 @@
 {%endblock filter %}
 
 {% block include %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
 {% for tool in tools %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{tool.image.url}}" class="card-img-top" alt="...">
@@ -56,6 +57,7 @@
         </div>
     </div>
 {% endfor %}
+</div>
 {% endblock include %}
 
 {% block pagination %}

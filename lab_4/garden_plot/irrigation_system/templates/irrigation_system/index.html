@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        <h1>Система полива</h1>
+        <img
+            src="{% static 'assets/irrigation_system_images/main_3.jpeg' %}"
+            class="img-fluid rounded shadow"
+            style="max-width: 700px; width: 100%; object-fit: contain;"
+            alt="Main image"
+        >
+
+        <div class="row g-3 mt-4 justify-content-center" style="max-width: 700px; width: 100%;">
+            <div class="col-6 col-md-4">
+                <button class="btn btn-outline-secondary w-100 py-3 shadow-sm" id="btnLastWatering">
+                    <i class="bi bi-clock-history fs-4 me-2"></i>
+                    6 ч
+                </button>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <button class="btn btn-success w-100 py-3 shadow-sm" id="btnTurnOn">
+                    <i class="bi bi-play-fill fs-4 me-2"></i>
+                    Включить
+                </button>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <button class="btn btn-danger w-100 py-3 shadow-sm" id="btnTurnOff" disabled>
+                    <i class="bi bi-stop-fill fs-4 me-2"></i>
+                    Выключить
+                </button>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

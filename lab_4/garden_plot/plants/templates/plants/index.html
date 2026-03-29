@@ -12,10 +12,6 @@
         растение</a>
 </div>
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_tool.html" class="btn btn-info">Полить все
-        растения</a>
-</div>
-<div style="margin-top:10px;">
     <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
 </div>
 {% endblock href_add_new %}
@@ -32,6 +28,7 @@
 {%endblock filter %}
 
 {% block include %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
 {% for plant in plants %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <div class="card" style="width: 18rem;">
@@ -51,7 +48,9 @@
         </div>
     </div>
 {% endfor %}
+</div>
 {% endblock include %}
+
 
 {% block pagination %}
 {% include 'layouts/pagination.html' %}

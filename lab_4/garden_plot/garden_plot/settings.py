@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'main',
     'tools',
     'plants',
-    'recreation_area'
+    'recreation_area',
+    'plot',
+    'irrigation_system'
 ]
 
 MIDDLEWARE = [
