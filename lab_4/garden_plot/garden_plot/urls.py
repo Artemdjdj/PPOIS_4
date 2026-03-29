@@ -27,5 +27,6 @@ urlpatterns = [
     path('tools/', include("tools.urls")),
     path('recreation_area/', include("recreation_area.urls")),
     path('irrigation_system/', include("irrigation_system.urls")),
+    path('plot_settings/', include("plot.urls")),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
