@@ -3,3 +3,4 @@
 .vscode/
 
 garden_plot/db.sqlite3
+**/migrations/

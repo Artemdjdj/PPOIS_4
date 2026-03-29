@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator,  MaxValueValidator
 
 class SoilModel(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")
@@ -6,24 +8,48 @@ class SoilModel(models.Model):
 
     class Meta:
         db_table = 'Soil'
-        verbose_name ='Soil'
+        verbose_name = 'Soil'
         verbose_name_plural = 'Soils'
 
-    def __str__(self)->str:
+    def __str__(self) -> str:
         return self.name
 
 
+class PlotManager(models.Manager):
+    def get_plot(self):
+        try:
+            return self.get()
+        except PlotModel.DoesNotExist:
+            return None
+
+    def delete_plot(self):
+        if self.get():
+            self.get().delete()
+
+
 class PlotModel(models.Model):
-    square = models.PositiveIntegerField(verbose_name="Площадь")
-    perimeter = models.PositiveIntegerField(verbose_name="Периметр")
-    soil = models.ForeignKey(SoilModel, on_delete=models.CASCADE, verbose_name="Тип почва")
+    square = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)], verbose_name="Площадь")
+    perimeter = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)], verbose_name="Периметр")
+    soil = models.ForeignKey(SoilModel, on_delete=models.CASCADE, verbose_name="Тип почвы")
+
+    objects = PlotManager()
 
     class Meta:
         db_table = 'Plot'
-        verbose_name ='Plot'
+        verbose_name = 'Plot'
         verbose_name_plural = 'Plots'
+
+    def save(self, *args, **kwargs):
+        if not self.pk and PlotModel.objects.exists():
+            raise ValidationError("Может существовать только один участок. Используйте редактирование существующего.")
+        super().save(*args, **kwargs)
 
     @property
     def soil_name(self):
-        return self.soil.soil_name
+        return self.soil.name
 
+    def __str__(self):
+        return f"Участок №{self.pk}"
+
+    def get_tools(self):
+        return self.tools.all()

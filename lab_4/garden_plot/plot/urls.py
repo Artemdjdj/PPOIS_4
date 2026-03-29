@@ -5,5 +5,7 @@ from . import views
 app_name = 'plot'
 
 urlpatterns = [
-    path('', views.index, name="index")
+    path('', views.plot_info, name="plot_info"),
+    path('add_plot/', views.add_plot, name="add_plot"),
+    path('delete_plot/', views.delete_plot, name="delete_plot"),
 ]
