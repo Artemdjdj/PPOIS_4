@@ -24,7 +24,12 @@ def add_plot(request):
 
 def plot_info(request):
     plot = PlotModel.objects.get_plot()
-    context = {'plot': plot}
+
+    context = {
+        'plot': plot,
+        'tools_count':len(plot.get_tools()) if plot else None,
+        'plants_count':len(plot.get_plants()) if plot else None,
+    }
     return render(request, "plot/plot_info.html", context)
 
 def delete_plot(request):

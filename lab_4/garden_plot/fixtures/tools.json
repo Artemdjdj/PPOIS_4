@@ -1,0 +1,72 @@
+[
+  {
+    "model": "tools.toolmodel",
+    "pk": 1,
+    "fields": {
+      "tool_type": 1,
+      "brand": "Звезда",
+      "description": "Очень крутой и стильный молоток",
+      "state": 1,
+      "usage_count": 0,
+      "date_of_maintain": "2026-03-27",
+      "image": "tool_images/hammer.png",
+      "plot": 9
+    }
+  },
+  {
+    "model": "tools.toolmodel",
+    "pk": 2,
+    "fields": {
+      "tool_type": 2,
+      "brand": "Stihl",
+      "description": "В отличном состоянии",
+      "state": 1,
+      "usage_count": 0,
+      "date_of_maintain": "2026-03-27",
+      "image": "tool_images/chainsaw.png",
+      "plot": 9
+    }
+  },
+  {
+    "model": "tools.toolmodel",
+    "pk": 3,
+    "fields": {
+      "tool_type": 3,
+      "brand": "Звезда",
+      "description": "Отличный инструмент для каждого",
+      "state": 1,
+      "usage_count": 0,
+      "date_of_maintain": "2026-03-27",
+      "image": "tool_images/rake.png",
+      "plot": 9
+    }
+  },
+  {
+    "model": "tools.toolmodel",
+    "pk": 4,
+    "fields": {
+      "tool_type": 4,
+      "brand": "Звезда",
+      "description": "Стальная лопата для каждого садовода",
+      "state": 1,
+      "usage_count": 0,
+      "date_of_maintain": "2026-03-27",
+      "image": "tool_images/glover.png",
+      "plot": 9
+    }
+  },
+  {
+    "model": "tools.toolmodel",
+    "pk": 5,
+    "fields": {
+      "tool_type": 5,
+      "brand": "Makita",
+      "description": "Очень мощный инструмент",
+      "state": 1,
+      "usage_count": 0,
+      "date_of_maintain": "2026-03-27",
+      "image": "tool_images/drill.png",
+      "plot": 9
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "model": "plants.plantmodel",
+    "pk": 2,
+    "fields": {
+      "height": 34,
+      "name": "огуец",
+      "color": 1,
+      "diameter": 34,
+      "is_watered": false,
+      "time_of_last_adding_water": 4,
+      "image": "plant_images/cucumber.jpeg",
+      "plot": 9
+    }
+  },
+  {
+    "model": "plants.plantmodel",
+    "pk": 3,
+    "fields": {
+      "height": 56,
+      "name": "яблоня",
+      "color": 6,
+      "diameter": 45,
+      "is_watered": true,
+      "time_of_last_adding_water": 5,
+      "image": "plant_images/apple_tree.png",
+      "plot": 9
+    }
+  }
+]

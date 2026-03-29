@@ -53,3 +53,6 @@ class PlotModel(models.Model):
 
     def get_tools(self):
         return self.tools.all()
+
+    def get_plants(self):
+        return self.plants.all()

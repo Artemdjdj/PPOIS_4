@@ -1,5 +1,5 @@
 from django.db import models
-
+from plot.models import PlotModel
 
 class ColorModel(models.Model):
     name = models.CharField(max_length=40, verbose_name="Название")
@@ -22,6 +22,14 @@ class PlantModel(models.Model):
     is_watered = models.BooleanField(default="False", verbose_name="Полито ли")
     time_of_last_adding_water = models.PositiveIntegerField(verbose_name="Время с последнего полива в часах")
     image = models.ImageField(upload_to="plant_images", null=True, blank=True, verbose_name="Изображение")
+    plot = models.ForeignKey(
+        PlotModel,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='plants',
+        verbose_name="Садовый участок"
+    )
 
     class Meta:
         db_table = "Plant"
