@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        <h1>Гриль</h1>
+        <img
+            src="{% static 'assets/chill_images/grill.jpg' %}"
+            class="img-fluid rounded shadow"
+            style="max-width: 700px; width: 100%; object-fit: contain;"
+            alt="Main image"
+        >
+
+        <div class="row g-3 mt-4 justify-content-center" style="max-width: 700px; width: 100%;">
+
+            {% if result_time_of_frying is not None %}
+            <div class="col-6 col-md-4">
+                <button class="btn btn-outline-secondary w-100 py-3 shadow-sm" id="btnLastWatering">
+                    <i class="bi bi-clock-history fs-4 me-2"></i>
+                    id: {{ result_time_of_frying }}
+                </button>
+            </div>
+            {% endif %}
+
+            {% if not grill %}
+            <div class="col-6 col-md-4">
+                <button class="btn btn-warning w-100 py-3 shadow-sm" id="btnTurnOn">
+                    <i class="bi bi-play-fill fs-4 me-2"></i>
+                    Поставить
+                </button>
+            </div>
+            {% endif %}
+
+            {% if grill %}
+            <div class="col-6 col-md-4">
+                <button class="btn btn-danger w-100 py-3 shadow-sm" disabled>
+                    <i class="bi bi-stop-fill fs-4 me-2"></i>
+                    Убрать
+                </button>
+            </div>
+
+            <div class="col-12">
+                <form action="{% url 'recreation_area:grill' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-6 col-md-5">
+                            <label for="inputState" class="form-label">Тип мяса</label>
+                            <select id="inputState" class="form-select" name="meat_type">
+                                {% if meat_type_last %}
+                                    <option value="{{ meat_type_last.id }}">{{ meat_type_last }}</option>
+                                {% endif %}
+                                {% for meat_type in meat_types %}
+                                    {% if meat_type != meat_type_last %}
+                                        <option value="{{ meat_type.id }}">{{ meat_type }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-success w-100 py-3 shadow-sm">
+                                <i class="bi bi-fire fs-4 me-2"></i>
+                                Приготовить
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

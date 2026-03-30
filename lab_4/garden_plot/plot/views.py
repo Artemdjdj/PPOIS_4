@@ -23,7 +23,7 @@ def add_plot(request):
     return render(request, "plot/add_plot.html", context)
 
 def plot_info(request):
-    plot = PlotModel.objects.get_plot()
+    plot = PlotModel.objects.get_obj()
 
     context = {
         'plot': plot,

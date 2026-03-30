@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator,  MaxValueValidator
+from recreation_area.models import BaseManager
 
 class SoilModel(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")
@@ -15,17 +16,12 @@ class SoilModel(models.Model):
         return self.name
 
 
-class PlotManager(models.Manager):
-    def get_plot(self):
+class PlotManager(BaseManager):
+    def get_obj(self):
         try:
             return self.get()
         except PlotModel.DoesNotExist:
             return None
-
-    def delete_plot(self):
-        if self.get():
-            self.get().delete()
-
 
 class PlotModel(models.Model):
     square = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)], verbose_name="Площадь")
@@ -41,7 +37,7 @@ class PlotModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk and PlotModel.objects.exists():
-            raise ValidationError("Может существовать только один участок. Используйте редактирование существующего.")
+            raise ValidationError("Может существовать только один участок.")
         super().save(*args, **kwargs)
 
     @property
