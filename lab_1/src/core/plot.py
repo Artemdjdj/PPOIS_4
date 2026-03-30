@@ -22,8 +22,6 @@ class MeatType(Enum):
     RABBIT = ("крольчатина", 60)
     GOAT = ("козлятина", 90)
     VENISON = ("оленина", 100)
-    MUTTON = ("баранина", 110)
-    GOOSE = ("гусятина", 90)
 
     @property
     def name(self) -> str:
