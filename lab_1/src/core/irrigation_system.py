@@ -11,7 +11,6 @@ from src.utils.descriptor import NumberValidator
 MIN_TIME_OF_WATERING = 36000
 
 class IrrigationSystem:
-    amount_of_all_water = NumberValidator()
 
     def __init__(self) -> None:
         self.__is_active = False
