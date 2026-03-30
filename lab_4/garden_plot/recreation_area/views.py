@@ -1,4 +1,7 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+
 from .models import FittingModel, GrillModel, MeatTypeModel
 
 
@@ -14,7 +17,7 @@ def grill(request):
     if request.method == 'POST':
         meat_id = request.POST.get('meat_type')
         meat_type_last = MeatTypeModel.objects.get(id=meat_id)
-        result_time_of_frying = meat_id
+        result_time_of_frying = grill.fry(meat_type_last)
 
     context = {
         'grill': grill,
@@ -23,3 +26,16 @@ def grill(request):
         'meat_type_last': meat_type_last,
     }
     return render(request, 'recreation_area/grill.html', context)
+
+def create_grill(request):
+    if request.method == 'POST':
+        GrillModel.objects.create()
+        return HttpResponseRedirect(reverse('recreation_area:grill'))
+    return render(request, "recreation_area/grill.html")
+
+
+def delete_grill(request):
+    if request.method == "POST":
+        GrillModel.objects.delete_obj()
+        return HttpResponseRedirect(reverse('recreation_area:grill'))
+    return render(request, "recreation_area/grill.html")

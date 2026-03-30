@@ -85,6 +85,13 @@ class GrillModel(models.Model):
             raise ValidationError("Может существовать только один гриль.")
         super().save(*args, **kwargs)
 
+
+    def fry(self, meat) -> str:
+        return f"мясо приготовилось за {meat.time_of_cooking} минут"
+
+    def __str__(self):
+        return f"Гриль {self.pk} для приготовления мясных блюд"
+
     class Meta:
         db_table = 'Grill'
         verbose_name = 'Grill'

@@ -15,29 +15,34 @@
         <div class="row g-3 mt-4 justify-content-center" style="max-width: 700px; width: 100%;">
 
             {% if result_time_of_frying is not None %}
-            <div class="col-6 col-md-4">
-                <button class="btn btn-outline-secondary w-100 py-3 shadow-sm" id="btnLastWatering">
-                    <i class="bi bi-clock-history fs-4 me-2"></i>
-                    id: {{ result_time_of_frying }}
-                </button>
+            <div class="col-6 col-md-4" style="margin-top:23px">
+                <div class="border rounded w-100 py-3 shadow-sm text-center text-secondary" style="border-color: #6c757d;">
+                    <span class="small">{{ result_time_of_frying }}</span>
+                </div>
             </div>
             {% endif %}
 
             {% if not grill %}
             <div class="col-6 col-md-4">
-                <button class="btn btn-warning w-100 py-3 shadow-sm" id="btnTurnOn">
-                    <i class="bi bi-play-fill fs-4 me-2"></i>
-                    Поставить
-                </button>
+                <form action="{% url 'recreation_area:create_grill' %}" method="post">
+                {% csrf_token %}
+                    <button class="btn btn-warning w-100 py-3 shadow-sm" id="btnTurnOn">
+                        <i class="bi bi-play-fill fs-4 me-2"></i>
+                        Поставить
+                    </button>
+                </form>
             </div>
             {% endif %}
 
             {% if grill %}
             <div class="col-6 col-md-4">
-                <button class="btn btn-danger w-100 py-3 shadow-sm" disabled>
-                    <i class="bi bi-stop-fill fs-4 me-2"></i>
-                    Убрать
-                </button>
+                <form action="{% url 'recreation_area:delete_grill' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100 py-3 shadow-sm">
+                        <i class="bi bi-stop-fill fs-4 me-2"></i>
+                        Убрать
+                    </button>
+                </form>
             </div>
 
             <div class="col-12">

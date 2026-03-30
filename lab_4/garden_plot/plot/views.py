@@ -34,6 +34,6 @@ def plot_info(request):
 
 def delete_plot(request):
     if request.method == "POST":
-        PlotModel.objects.delete_plot()
+        PlotModel.objects.delete_obj()
         return HttpResponseRedirect(reverse('plot:plot_info'))
     return render(request, "plot/plot_info.html")
