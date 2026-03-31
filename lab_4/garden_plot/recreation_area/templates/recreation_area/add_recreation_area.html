@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+    <main class="d-flex flex-column" style="flex: 1;">
+        <div class="container-fluid px-0 d-flex flex-column flex-fill">
+            <div class="row g-0 flex-fill">
+                <div class="col-12 position-relative p-5">
+                    <div style="margin-bottom:20px; text-align:center">
+                        <h1>Добавление зоны отдыха</h1>
+                    </div>
+                    <form action="{% url 'recreation_area:add_recreation_area'%}" class="row g-3" method="post">
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label for="square">Площадь (м^2)</label>
+                            <input type="number" class="form-control" id="square_id" name="square"
+                                step="1"
+                                value="{{ form.square.value|default:100 }}">
+                            {% if form.square.errors %}
+                                <div>{{form.square.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-12">
+                            <label for="diameter">Периметр (м)</label>
+                            <input type="number" class="form-control" id="perimeter_id" name="perimeter"
+                                step="1"
+                                value="{{ form.perimeter.value|default:100 }}">
+                            {% if form.perimeter.errors %}
+                                <div>{{form.perimeter.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+                            <button type="submit" class="btn btn-info">Создать</button>
+                            <a href="{% url 'recreation_area:index'%}" type="submit" class="btn btn-warning">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

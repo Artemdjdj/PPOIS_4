@@ -1,35 +1,47 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 
-{% block main %}
-{% endblock %}
 
-{% block header_main %}Декор{% endblock header_main %}
+{% block main %}
+    {%  if not plot %}
+        <main class="d-flex flex-column" style="flex: 1;">
+            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+                {% include 'layouts/plot_is_not_created.html' %}
+            </div>
+        </main>
+    {% endif %}
+
+    {% if plot and not recreation_area %}
+        <main class="d-flex flex-column" style="flex: 1;">
+            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+                {% include 'layouts/recreation_area_is_not_created.html' %}
+            </div>
+        </main>
+    {% endif %}
+
+{% endblock main %}
+
+{% block header_main %}{% if recreation_area %}Декор{% endif %}{% endblock header_main %}
 
 {% block href_add_new %}
+{% if recreation_area %}
 <div style="margin-top:10px;">
     <a type="button" href="add_new_elem_of_decor.html"class="btn btn-success">Добавить элемент декора</a>
 </div>
 <div style="margin-top:10px;">
-    <a type="button" href="recreation_area_settings.html"class="btn btn-primary">Настройки зоны отдыха</a>
+    <a type="button" href="{% url 'recreation_area:recreation_area_info' %}" class="btn btn-primary">Настройки зоны отдыха</a>
 </div>
 <div style="margin-top:10px;">
     <a type="button" href="{% url 'recreation_area:grill' %}"class="btn btn-warning">Гриль</a>
 </div>
+{% endif %}
 {% endblock href_add_new %}
 
 {% block filter %}
-<div style="margin-top:10px;margin-left:auto">
-    <select class="form-select" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    </select>
-</div>
-{%endblock filter %}
+{% endblock filter %}
 
 {% block include %}
+{% if recreation_area %}
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
 {% for fitting in fittings %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
@@ -43,11 +55,15 @@
     </div>
 {% endfor %}
 </div>
+{% endif %}
 {% endblock include %}
 
 {% block pagination %}
+{% if recreation_area %}
 {% include 'layouts/pagination.html' %}
+{% endif %}
 {% endblock pagination %}
+
 
 
 

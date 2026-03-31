@@ -7,36 +7,29 @@
         <div class="row g-0 flex-fill">
             <div class="col-12 position-relative p-5">
                 <div style="margin-bottom:20px; text-align:center">
-                    <h1>Настройки садового участка</h1>
+                    <h1>Настройки зоны отдыха</h1>
                 </div>
-                {% if plot %}
+                {% if recreation_area %}
                 <div class="card" style="max-width: 500px; margin: 100px auto;">
                     <div class="card-header bg-info text-white">
-                        <h5 class="card-title mb-0">Ваш участок</h5>
+                        <h5 class="card-title mb-0">Ваша зона отдыха</h5>
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between">
-                                <strong>Площадь:</strong> {{ plot.square }} м²
+                                <strong>Площадь:</strong> {{recreation_area.square }} м²
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <strong>Периметр:</strong> {{ plot.perimeter }} м
+                                <strong>Периметр:</strong> {{ recreation_area.perimeter }} м
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <strong>Тип почвы:</strong> {{ plot.soil.name }}
+                                <strong>Количество элементов декора:</strong> {{decor_count}}
                             </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <strong>Количество инструментов:</strong> {{tools_count}}
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <strong>Количество растений:</strong> {{plants_count}}
-                            </li>
-
                             <li class="list-group-item d-flex justify-content-between">
                             </li>
                         </ul>
                         <div style="text-align: center; margin:10px">
-                            <form action="{% url 'plot:delete_plot' %}" method="post">
+                            <form action="{% url 'recreation_area:delete_recreation_area' %}" method="post">
                                 {% csrf_token %}
                                 <button type=submit class="btn btn-danger btn-lg mt-4 px-5">
                                     Удалить
@@ -46,7 +39,7 @@
                     </div>
                 </div>
                 {% else %}
-                    {% include 'layouts/plot_is_not_created.html' %}
+                    {% include 'layouts/recreation_area_is_not_created.html' %}
                 {% endif %}
             </div>
         </div>

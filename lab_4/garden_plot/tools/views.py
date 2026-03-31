@@ -1,9 +1,14 @@
 from django.shortcuts import render
 
 from .models import ToolModel
+from plot.models import PlotModel
 
 
 def index(request):
     tools = ToolModel.objects.all()
-    context = {'tools': tools}
+    plot = PlotModel.objects.get_obj()
+    context = {
+        'tools': tools,
+        'plot':plot,
+    }
     return render(request, "tools/index.html", context)

@@ -8,6 +8,7 @@ from plot.models import PlotModel
 from recreation_area.utils import BaseManager
 
 
+
 class MeatTypeModel(models.Model):
     name = models.CharField(max_length=30, verbose_name="Название")
     slug = models.SlugField(max_length=30, verbose_name="URL")
@@ -22,6 +23,13 @@ class MeatTypeModel(models.Model):
     def __str__(self):
         return self.name
 
+class RecreationAreaManager(BaseManager):
+    def get_obj(self):
+        try:
+            return self.get()
+        except RecreationAreaModel.DoesNotExist:
+            return None
+
 class RecreationAreaModel(models.Model):
     square = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)],
                                          verbose_name="Площадь")
@@ -33,6 +41,16 @@ class RecreationAreaModel(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Участок"
     )
+
+    objects = RecreationAreaManager()
+
+    def save(self, *args, **kwargs):
+        if not self.pk and RecreationAreaModel.objects.exists():
+            raise ValidationError("Может существовать только одна зона отдыха.")
+        super().save(*args, **kwargs)
+
+    def get_fittings(self):
+        return self.fittings.all()
 
     class Meta:
         db_table = 'RecreationArea'
@@ -49,6 +67,7 @@ class FittingModel(models.Model):
     recreation_area = models.ForeignKey(
         RecreationAreaModel,
         on_delete=models.CASCADE,
+        related_name='fittings',
         verbose_name="Зона отдыха"
     )
     class Meta:
