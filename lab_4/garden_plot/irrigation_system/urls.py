@@ -5,5 +5,7 @@ from . import views
 app_name = 'irrigation_system'
 
 urlpatterns = [
-    path('', views.index, name="index")
+    path('', views.index, name="index"),
+    path('activate/', views.activate, name="activate"),
+    path('deactivate/', views.deactivate, name="deactivate"),
 ]

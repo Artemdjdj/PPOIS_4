@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator,  MaxValueValidator
-from recreation_area.models import BaseManager
+from recreation_area.utils import BaseManager
 
 class SoilModel(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")

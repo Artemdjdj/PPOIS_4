@@ -38,8 +38,6 @@ class ToolModel(models.Model):
     image = models.ImageField(upload_to="tool_images", null=True, blank=True, verbose_name="Изображение")
     plot = models.ForeignKey(
         PlotModel,
-        null=True,
-        blank=True,
         on_delete=models.CASCADE,
         related_name='tools',
         verbose_name="Садовый участок"

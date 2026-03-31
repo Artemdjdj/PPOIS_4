@@ -24,8 +24,6 @@ class PlantModel(models.Model):
     image = models.ImageField(upload_to="plant_images", null=True, blank=True, verbose_name="Изображение")
     plot = models.ForeignKey(
         PlotModel,
-        null=True,
-        blank=True,
         on_delete=models.CASCADE,
         related_name='plants',
         verbose_name="Садовый участок"

@@ -4,6 +4,9 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+from plot.models import PlotModel
+from recreation_area.utils import BaseManager
+
 
 class MeatTypeModel(models.Model):
     name = models.CharField(max_length=30, verbose_name="Название")
@@ -25,6 +28,11 @@ class RecreationAreaModel(models.Model):
     perimeter = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)],
                                             verbose_name="Периметр")
     is_clean = models.BooleanField(default=False, verbose_name="Убрана")
+    plot = models.OneToOneField(
+        PlotModel,
+        on_delete=models.CASCADE,
+        verbose_name="Участок"
+    )
 
     class Meta:
         db_table = 'RecreationArea'
@@ -41,8 +49,6 @@ class FittingModel(models.Model):
     recreation_area = models.ForeignKey(
         RecreationAreaModel,
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         verbose_name="Зона отдыха"
     )
     class Meta:
@@ -52,16 +58,6 @@ class FittingModel(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class BaseManager(models.Manager, ABC):
-    @abstractmethod
-    def get_obj(self):
-       pass
-
-    def delete_obj(self):
-        if self.get():
-            self.get().delete()
 
 class GrillManager(BaseManager):
     def get_obj(self):
@@ -74,8 +70,6 @@ class GrillModel(models.Model):
     recreation_area = models.ForeignKey(
         RecreationAreaModel,
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         verbose_name="Зона отдыха"
     )
     objects = GrillManager()
