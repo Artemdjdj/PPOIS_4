@@ -43,5 +43,4 @@ def add_tool(request):
 def delete_tool(request, tool_id):
     tool = get_object_or_404(ToolModel, id=tool_id)
     tool.delete()
-    print("ok")
     return HttpResponseRedirect(reverse("tools:index"))
