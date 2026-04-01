@@ -3,36 +3,39 @@
 
 
 {% block main %}
-    {% if plot and not recreation_area %}
-        <main class="d-flex flex-column" style="flex: 1;">
-            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-                {% include 'layouts/recreation_area_is_not_created.html' %}
-            </div>
-        </main>
-    {% endif %}
+{% if plot and not recreation_area %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/recreation_area_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 
-    {%  if not plot %}
-        <main class="d-flex flex-column" style="flex: 1;">
-            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-                {% include 'layouts/plot_is_not_created.html' %}
-            </div>
-        </main>
-    {% endif %}
+{%  if not plot %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 
 {% endblock main %}
 
-{% block header_main %}{% if recreation_area %}Декор{% endif %}{% endblock header_main %}
+{% block header_main %}{% if recreation_area and fittings %}Декор{% endif %}{% endblock header_main %}
 
 {% block href_add_new %}
-{% if recreation_area %}
+{% if recreation_area and fittings%}
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_elem_of_decor.html"class="btn btn-success">Добавить элемент декора</a>
+    <a type="button" href="add_new_elem_of_decor.html" class="btn btn-success">Добавить элемент декора</a>
+</div>
+{% endif %}
+{% if recreation_area%}
+<div style="margin-top:10px;">
+    <a type="button" href="{% url 'recreation_area:recreation_area_info' %}" class="btn btn-primary">Настройки зоны
+        отдыха</a>
 </div>
 <div style="margin-top:10px;">
-    <a type="button" href="{% url 'recreation_area:recreation_area_info' %}" class="btn btn-primary">Настройки зоны отдыха</a>
-</div>
-<div style="margin-top:10px;">
-    <a type="button" href="{% url 'recreation_area:grill' %}"class="btn btn-warning">Гриль</a>
+    <a type="button" href="{% url 'recreation_area:grill' %}" class="btn btn-warning">Гриль</a>
 </div>
 {% endif %}
 {% endblock href_add_new %}
@@ -42,8 +45,20 @@
 
 {% block include %}
 {% if recreation_area %}
+{% if not fittings %}
+<div class="alert alert-success d-flex align-items-center justify-content-center"
+     role="alert"
+     style="margin: 200px auto; max-width: 500px; background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
+    <div class="text-center">
+        <h4 class="alert-heading mb-3">Декора пока нет</h4>
+        <a href="{% url 'tools:add_tool' %}" class="btn btn-danger">
+            <i class="bi bi-plus-lg me-1"></i>Добавить декор
+        </a>
+    </div>
+</div>
+{% else %}
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-{% for fitting in fittings %}
+    {% for fitting in fittings %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{fitting.image.url}}" class="card-img-top" alt="...">
         <div class="card-body" style="display: flex; flex-direction: column;">
@@ -53,13 +68,14 @@
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
+{% endif %}
 {% endif %}
 {% endblock include %}
 
 {% block pagination %}
-{% if recreation_area %}
+{% if recreation_area and fittings%}
 {% include 'layouts/pagination.html' %}
 {% endif %}
 {% endblock pagination %}

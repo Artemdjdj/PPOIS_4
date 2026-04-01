@@ -1,5 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import FittingModel, GrillModel, MeatTypeModel, RecreationAreaModel
@@ -31,19 +32,20 @@ def recreation_area_info(request):
     return render(request, "recreation_area/recreation_area_info.html", context)
 
 def add_recreation_area(request):
+    plot = PlotModel.objects.get_obj()
     if request.method == "POST":
-        form = RecreationAreaForm(data=request.POST)
+        form = RecreationAreaForm(data=request.POST, plot=plot)
         if form.is_valid():
-            plot = PlotModel.objects.get_obj()
             recreation_area = form.save(commit=False)
             recreation_area.plot = plot
             recreation_area.save()
-            return HttpResponseRedirect(reverse('recreation_area:index'))
+            return redirect('recreation_area:index')
     else:
-        form = RecreationAreaForm()
+        form = RecreationAreaForm(plot=plot)
 
     context = {
         'form': form,
+        'plot':plot
     }
     return render(request, "recreation_area/add_recreation_area.html", context)
 

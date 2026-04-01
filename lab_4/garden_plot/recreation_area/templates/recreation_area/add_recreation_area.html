@@ -11,27 +11,40 @@
                     </div>
                     <form action="{% url 'recreation_area:add_recreation_area'%}" class="row g-3" method="post">
                         {% csrf_token %}
+
                         <div class="col-12">
-                            <label for="square">Площадь (м^2)</label>
-                            <input type="number" class="form-control" id="square_id" name="square"
-                                step="1"
-                                value="{{ form.square.value|default:100 }}">
+                            <label for="{{ form.square.id_for_label }}" class="form-label">Площадь (м²)</label>
+                            <input type="number"
+                                   class="form-control {% if form.square.errors %}is-invalid{% endif %}"
+                                   id="{{ form.square.id_for_label }}"
+                                   name="square"
+                                   step="1"
+                                   value="{{ form.square.value|default:100 }}"
+                                   min="100" max="10000">
                             {% if form.square.errors %}
-                                <div>{{form.square.errors}}</div>
+                                <div class="invalid-feedback d-block">{{ form.square.errors.0 }}</div>
                             {% endif %}
+                            <small class="text-muted">Максимум: {{ plot.square }} м²</small>
                         </div>
+
                         <div class="col-12">
-                            <label for="diameter">Периметр (м)</label>
-                            <input type="number" class="form-control" id="perimeter_id" name="perimeter"
-                                step="1"
-                                value="{{ form.perimeter.value|default:100 }}">
+                            <label for="{{ form.perimeter.id_for_label }}" class="form-label">Периметр (м)</label>
+                            <input type="number"
+                                   class="form-control {% if form.perimeter.errors %}is-invalid{% endif %}"
+                                   id="{{ form.perimeter.id_for_label }}"
+                                   name="perimeter"
+                                   step="1"
+                                   value="{{ form.perimeter.value|default:100 }}"
+                                   min="100" max="10000">
                             {% if form.perimeter.errors %}
-                                <div>{{form.perimeter.errors}}</div>
+                                <div class="invalid-feedback d-block">{{ form.perimeter.errors.0 }}</div>
                             {% endif %}
+                            <small class="text-muted">Максимум: {{ plot.perimeter }} м</small>
                         </div>
-                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+
+                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px; margin-top: 20px;">
                             <button type="submit" class="btn btn-info">Создать</button>
-                            <a href="{% url 'recreation_area:index'%}" type="submit" class="btn btn-warning">Отмена</a>
+                            <a href="{% url 'recreation_area:index'%}" class="btn btn-warning">Отмена</a>
                         </div>
                     </form>
                 </div>

@@ -3,18 +3,18 @@
 
 {% block main %}
 {%  if not plot %}
-    <main class="d-flex flex-column" style="flex: 1;">
-        <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-            {% include 'layouts/plot_is_not_created.html' %}
-        </div>
-    </main>
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
 {% endif %}
 {% endblock main %}
 
-{% block header_main %}{% if plot %}Растения{% endif %}{% endblock header_main %}
+{% block header_main %}{% if plot and plants %}Растения{% endif %}{% endblock header_main %}
 
 {% block href_add_new %}
-{% if plot %}
+{% if plot and plants %}
 <div style="margin-top:10px;">
     <a type="button" href="{% url 'plants:add_plant' %}" class="btn btn-success">Добавить
         растение</a>
@@ -28,15 +28,28 @@
 
 {% block include %}
 {% if plot %}
+{% if not plants %}
+<div class="alert alert-success d-flex align-items-center justify-content-center"
+     role="alert"
+     style="margin: 200px auto; max-width: 500px; background-color: #fff3cd; border-color: #ffeeba; color: #856404;">
+    <div class="text-center">
+        <h4 class="alert-heading mb-3">Растений пока нет</h4>
+        <a href="{% url 'tools:add_tool' %}" class="btn btn-warning">
+            <i class="bi bi-plus-lg me-1"></i>Добавить растение
+        </a>
+    </div>
+</div>
+{% else %}
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-{% for plant in plants %}
+    {% for plant in plants %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <div class="card" style="width: 18rem;">
             <img src="{{plant.image.url}}" class="card-img-top"
                  alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{plant.name}}</h5>
-                <p class="card-text">Высота: {{plant.height}}, диаметер: {{plant.diameter}}, цвет: {{plant.get_color}}</p>
+                <p class="card-text">Высота: {{plant.height}}, диаметер: {{plant.diameter}}, цвет:
+                    {{plant.get_color}}</p>
                 <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
                     {% if plant.is_watered %}Полито{%else%}Не полито{% endif %}
                 </div>
@@ -47,14 +60,15 @@
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
+{% endif %}
 {% endif %}
 {% endblock include %}
 
 
 {% block pagination %}
-{% if plot %}
+{% if plot and plants %}
 {% include 'layouts/pagination.html' %}
 {% endif %}
 {% endblock pagination %}

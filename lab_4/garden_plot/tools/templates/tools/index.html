@@ -25,57 +25,58 @@
 
 {% block include %}
 {% if plot %}
-    {% if not tools %}
-        <div class="alert alert-success d-flex align-items-center justify-content-center"
-             role="alert"
-             style="margin: 200px auto; max-width: 500px; background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
-            <div class="text-center">
-                <h4 class="alert-heading mb-3">Инструментов пока нет</h4>
-                <a href="{% url 'tools:add_tool' %}" class="btn btn-success">
-                    <i class="bi bi-plus-lg me-1"></i>Добавить инструмент
-                </a>
+{% if not tools %}
+<div class="alert alert-success d-flex align-items-center justify-content-center"
+     role="alert"
+     style="margin: 200px auto; max-width: 500px; background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
+    <div class="text-center">
+        <h4 class="alert-heading mb-3">Инструментов пока нет</h4>
+        <a href="{% url 'tools:add_tool' %}" class="btn btn-success">
+            <i class="bi bi-plus-lg me-1"></i>Добавить инструмент
+        </a>
+    </div>
+</div>
+{% else %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
+    {% for tool in tools %}
+    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+        <img src="{{tool.image.url}}" class="card-img-top" alt="..."
+             style="max-height: 200px; object-fit: cover; width: 100%;">
+        <div class="card-body" style="display: flex; flex-direction: column;">
+            <h5 class="card-title">{{tool.brand}}</h5>
+            <p class="card-text"
+               style="min-height: 3rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                {{tool.description}}
+            </p>
+            <div style="align-self: flex-start; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                Отработано: {{tool.usage_count}} час
             </div>
-        </div>
-    {% else %}
-        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-            {% for tool in tools %}
-            <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-                <img src="{{tool.image.url}}" class="card-img-top" alt="..." style="max-height: 200px; object-fit: cover; width: 100%;">
-                <div class="card-body" style="display: flex; flex-direction: column;">
-                    <h5 class="card-title">{{tool.brand}}</h5>
-                    <p class="card-text"
-                       style="min-height: 3rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                        {{tool.description}}
-                    </p>
-                    <div style="align-self: flex-start; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                        Отработано: {{tool.usage_count}} час
-                    </div>
-                    <div style="align-self: flex-start; background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                        Статус: {{tool.state_name}}
-                    </div>
-                    <div style="margin-top: auto;">
-                        <label style="font-size: 0.85rem; margin-bottom: 4px; display: block;">Количество часов
-                            использования:</label>
-                        <input
-                                type="number"
-                                class="form-control form-control-sm"
-                                min="1"
-                                placeholder="Введите кол-во часов"
-                                style="margin-bottom: 10px;"
-                        >
-                        <div style="display:flex; flex-wrap:nowrap; gap:40px;">
-                            <button type="button" class="btn btn-info">Использовать</button>
-                            <form action="{% url 'tools:delete_tool' tool.id %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Удалить</button>
-                            </form>
-                        </div>
-                    </div>
+            <div style="align-self: flex-start; background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                Статус: {{tool.state_name}}
+            </div>
+            <div style="margin-top: auto;">
+                <label style="font-size: 0.85rem; margin-bottom: 4px; display: block;">Количество часов
+                    использования:</label>
+                <input
+                        type="number"
+                        class="form-control form-control-sm"
+                        min="1"
+                        placeholder="Введите кол-во часов"
+                        style="margin-bottom: 10px;"
+                >
+                <div style="display:flex; flex-wrap:nowrap; gap:40px;">
+                    <button type="button" class="btn btn-info">Использовать</button>
+                    <form action="{% url 'tools:delete_tool' tool.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
                 </div>
             </div>
-            {% endfor %}
         </div>
-    {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 {% endif %}
 {% endblock include %}
 
