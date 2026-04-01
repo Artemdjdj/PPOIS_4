@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block main %}
+{% if plot %}
 <main class="d-flex flex-column" style="flex: 1;">
     <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-        {% if plot %}
         <h1>Система полива</h1>
         <img
                 src="{% static 'assets/irrigation_system_images/main_5.png' %}"
@@ -40,12 +40,13 @@
                 </form>
             </div>
         </div>
-        {% else %}
-        {% include 'layouts/plot_is_not_created.html' %}
-        {% endif %}
     </div>
 </main>
+{% else %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 {% endblock main %}
-
-{% block cards %}
-{% endblock cards %}

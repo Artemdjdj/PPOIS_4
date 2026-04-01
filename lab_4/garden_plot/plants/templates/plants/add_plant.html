@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+    <main class="d-flex flex-column" style="flex: 1;">
+        <div class="container-fluid px-0 d-flex flex-column flex-fill">
+            <div class="row g-0 flex-fill">
+                <div class="col-12 position-relative p-5">
+                    <div style="margin-bottom:20px; text-align:center">
+                        <h1>Добавление растения</h1>
+                    </div>
+                    <form action="{% url 'plants:add_plant' %}" class="row g-3" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label for="name" class="form-label">Имя</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value|default:'' }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="height" class="form-label">Высота (см)</label>
+                            <input type="number" class="form-control" id="height" name="height" step="1" value="{{ form.height.value|default:'' }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="diameter" class="form-label">Диаметр стебля (см)</label>
+                            <input type="number" class="form-control" id="diameter" name="diameter" step="1" value="{{ form.diameter.value|default:'' }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="color" class="form-label">Цвет</label>
+                            <select id="color" class="form-select" name="color">
+                                {% for color in colors %}
+                                    <option value="{{ color.id }}">{{ color }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12 form-check" style="margin-left:10px;">
+                            <input type="checkbox" class="form-check-input" id="is_watered" name="is_watered" style="margin-right:10px;" {% if form.is_watered.value %}checked{% endif %}>
+                            <label class="form-check-label" for="is_watered">Полито ли</label>
+                        </div>
+                        <div class="col-12">
+                            <label for="time_of_last_adding_water" class="form-label">Время с последнего полива (часы)</label>
+                            <input type="number" class="form-control" id="time_of_last_adding_water" name="time_of_last_adding_water" step="1" value="{{ form.time_of_last_adding_water.value|default:0 }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="image" class="form-label">Изображение</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        </div>
+                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+                            <button type="submit" class="btn btn-info">Создать</button>
+                            <a href="{% url 'plants:index' %}" class="btn btn-warning">Отмена</a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

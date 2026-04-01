@@ -12,3 +12,7 @@ def index(request):
         'plot':plot,
     }
     return render(request, "tools/index.html", context)
+
+
+def add_tool(request):
+    return render(request, "tools/add_tool.html")

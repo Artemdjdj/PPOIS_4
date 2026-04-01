@@ -33,9 +33,9 @@
                             <label for="inputState" class="form-label">Тип почвы</label>
                             <select id="inputState" class="form-select" name="soil">
                                 {% if soil_types %}
-                                {% for soil in soil_types %}
-                                    <option value="{{ soil.id}}">{{soil}}</option>
-                                {% endfor %}
+                                    {% for soil in soil_types %}
+                                        <option value="{{ soil.id}}">{{soil}}</option>
+                                    {% endfor %}
                                 {% endif %}
                             </select>
                         </div>

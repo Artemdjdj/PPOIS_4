@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+    <main class="d-flex flex-column" style="flex: 1;">
+        <div class="container-fluid px-0 d-flex flex-column flex-fill">
+            <div class="row g-0 flex-fill">
+                <div class="col-12 position-relative p-5">
+                    <div style="margin-bottom:20px; text-align:center">
+                        <h1>Добавление садового участка</h1>
+                    </div>
+                    <form action="{% url 'tools:add_tool' %}" class="row g-3" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label for="tool_type" class="form-label">Тип инструмента</label>
+                            <select id="tool_type" class="form-select" name="tool_type">
+                                {% for tool_type in tool_types %}
+                                    <option value="{{ tool_type.id }}">{{ tool_type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="brand" class="form-label">Бренд</label>
+                            <input type="text" class="form-control" id="brand" name="brand" value="{{ form.brand.value|default:'' }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="description" class="form-label">Комментарии</label>
+                            <textarea class="form-control" id="description" name="description" rows="3">{{ form.description.value|default:'' }}</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="state" class="form-label">Состояние</label>
+                            <select id="state" class="form-select" name="state">
+                                {% for state in tool_states %}
+                                    <option value="{{ state.id }}">{{ state }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="usage_count" class="form-label">Часов использования</label>
+                            <input type="number" class="form-control" id="usage_count" name="usage_count" step="1" value="{{ form.usage_count.value|default:0 }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="image" class="form-label">Изображение</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        </div>
+                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+                            <button type="submit" class="btn btn-info">Создать</button>
+                            <a href="{% url 'tools:index' %}" class="btn btn-warning">Отмена</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

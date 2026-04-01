@@ -17,7 +17,7 @@
 {% block href_add_new %}
 {% if plot %}
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
+    <a type="button" href="{% url 'tools:add_tool' %}" class="btn btn-success">Добавить
         инструмент</a>
 </div>
 {% endif %}

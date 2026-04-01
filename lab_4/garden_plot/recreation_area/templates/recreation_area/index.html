@@ -3,18 +3,18 @@
 
 
 {% block main %}
-    {%  if not plot %}
-        <main class="d-flex flex-column" style="flex: 1;">
-            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-                {% include 'layouts/plot_is_not_created.html' %}
-            </div>
-        </main>
-    {% endif %}
-
     {% if plot and not recreation_area %}
         <main class="d-flex flex-column" style="flex: 1;">
             <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
                 {% include 'layouts/recreation_area_is_not_created.html' %}
+            </div>
+        </main>
+    {% endif %}
+
+    {%  if not plot %}
+        <main class="d-flex flex-column" style="flex: 1;">
+            <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+                {% include 'layouts/plot_is_not_created.html' %}
             </div>
         </main>
     {% endif %}
