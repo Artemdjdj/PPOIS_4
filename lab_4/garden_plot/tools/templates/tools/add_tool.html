@@ -28,14 +28,6 @@
                             <textarea class="form-control" id="description" name="description" rows="3">{{ form.description.value|default:'' }}</textarea>
                         </div>
                         <div class="col-12">
-                            <label for="state" class="form-label">Состояние</label>
-                            <select id="state" class="form-select" name="state">
-                                {% for state in tool_states %}
-                                    <option value="{{ state.id }}">{{ state }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-12">
                             <label for="usage_count" class="form-label">Часов использования</label>
                             <input type="number" class="form-control" id="usage_count" name="usage_count" step="1" value="{{ form.usage_count.value|default:0 }}">
                         </div>
