@@ -31,7 +31,7 @@ class ToolStateModel(models.Model):
 class ToolModel(models.Model):
     tool_type = models.ForeignKey(ToolTypeModel, on_delete=models.CASCADE, verbose_name="Тип")
     brand = models.CharField(max_length=65, verbose_name="Бренд")
-    description = models.TextField(max_length=600, verbose_name="Комментарии")
+    description = models.CharField(max_length=50, verbose_name="Комментарии")
     state = models.ForeignKey(ToolStateModel, on_delete=models.CASCADE, verbose_name="Cостояние")
     usage_count = models.PositiveIntegerField(default=0, verbose_name="Часов использования")
     date_of_maintain = models.DateField(auto_now_add=True, verbose_name="Дата обслуживания")
