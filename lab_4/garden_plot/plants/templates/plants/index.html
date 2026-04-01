@@ -11,58 +11,64 @@
 {% endif %}
 {% endblock main %}
 
+{% block header_main %}{% if plot %}Растения{% endif %}{% endblock header_main %}
+
+{% block href_add_new %}
 {% if plot %}
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
+        растение</a>
+</div>
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
+</div>
+{% endif %}
+{% endblock href_add_new %}
 
-    {% block header_main %}Растения{% endblock header_main %}
+{% block filter %}
+{% if plot %}
+<div style="margin-top:10px;margin-left:auto">
+    <select class="form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    </select>
+</div>
+{% endif %}
+{%endblock filter %}
 
-    {% block href_add_new %}
-    <div style="margin-top:10px;">
-        <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
-            растение</a>
-    </div>
-    <div style="margin-top:10px;">
-        <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
-    </div>
-    {% endblock href_add_new %}
-
-    {% block filter %}
-    <div style="margin-top:10px;margin-left:auto">
-        <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        </select>
-    </div>
-    {%endblock filter %}
-
-    {% block include %}
-    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-    {% for plant in plants %}
-        <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-            <div class="card" style="width: 18rem;">
-                <img src="{{plant.image.url}}" class="card-img-top"
-                     alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{plant.name}}</h5>
-                    <p class="card-text">Высота: {{plant.height}}, диаметер: {{plant.diameter}}, цвет: {{plant.get_color}}</p>
-                    <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                        {% if plant.is_watered %}Полито{%else%}Не полито{% endif %}
-                    </div>
-                    <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
-                        <button type="button" class="btn btn-info">Полить</button>
-                        <button type="button" class="btn btn-danger">Удалить</button>
-                    </div>
+{% block include %}
+{% if plot %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
+{% for plant in plants %}
+    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{plant.image.url}}" class="card-img-top"
+                 alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{plant.name}}</h5>
+                <p class="card-text">Высота: {{plant.height}}, диаметер: {{plant.diameter}}, цвет: {{plant.get_color}}</p>
+                <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                    {% if plant.is_watered %}Полито{%else%}Не полито{% endif %}
+                </div>
+                <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px;">
+                    <button type="button" class="btn btn-info">Полить</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
                 </div>
             </div>
         </div>
-    {% endfor %}
     </div>
-    {% endblock include %}
-
-
-    {% block pagination %}
-    {% include 'layouts/pagination.html' %}
-    {% endblock pagination %}
+{% endfor %}
+</div>
 {% endif %}
+{% endblock include %}
+
+
+{% block pagination %}
+{% if plot %}
+{% include 'layouts/pagination.html' %}
+{% endif %}
+{% endblock pagination %}
+
 

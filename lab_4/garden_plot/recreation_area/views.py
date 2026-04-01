@@ -55,9 +55,6 @@ def delete_recreation_area(request):
 
 def grill(request):
     grill_res = GrillModel.objects.get_obj()
-    if not grill_res:
-        recreation_area = RecreationAreaModel.objects.get_obj()
-        grill_res = GrillModel.objects.create(recreation_area=recreation_area)
 
     meat_types =MeatTypeModel.objects.all()
     meat_type_last = None

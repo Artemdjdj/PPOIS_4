@@ -7,15 +7,11 @@
         {% if plot %}
         <h1>Система полива</h1>
         <img
-            src="{% static 'assets/irrigation_system_images/main_5.png' %}"
-            class="img-fluid rounded shadow"
-            style="max-width: 700px; width: 100%; object-fit: contain;"
-            alt="Main image"
+                src="{% static 'assets/irrigation_system_images/main_5.png' %}"
+                class="img-fluid rounded shadow"
+                style="max-width: 700px; width: 100%; object-fit: contain;"
+                alt="Main image"
         >
-<!--        <button class="btn btn-info btn-lg mt-4 px-5">-->
-<!--            Начать полив-->
-<!--        </button>-->
-        {% if plot %}
         <div class="row g-3 mt-4 justify-content-center" style="max-width: 700px; width: 100%;">
             <div class="col-6 col-md-4">
                 <button class="btn btn-outline-secondary w-100 py-3 shadow-sm" id="btnLastWatering">
@@ -43,15 +39,10 @@
                     </button>
                 </form>
             </div>
-            {% else %}
-                {% include 'layouts/plot_is_not_created.html' %}
-            {% endif %}
-
         </div>
         {% else %}
-            {% include 'layouts/plot_is_not_created.html' %}
+        {% include 'layouts/plot_is_not_created.html' %}
         {% endif %}
-
     </div>
 </main>
 {% endblock main %}

@@ -2,74 +2,83 @@
 {% load static %}
 
 {% block main %}
-    {% if not plot %}
-    <main class="d-flex flex-column" style="flex: 1;">
-        <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
-            {% include 'layouts/plot_is_not_created.html' %}
-        </div>
-    </main>
-    {% endif %}
+{% if not plot %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 {% endblock %}
 
 
+{% block header_main %}{% if plot %}Инвентарь{% endif %}{% endblock header_main %}
+
+{% block href_add_new %}
 {% if plot %}
-    {% block header_main %}Инвентарь{% endblock header_main %}
+<div style="margin-top:10px;">
+    <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
+        инструмент</a>
+</div>
+{% endif %}
+{% endblock href_add_new %}
 
-    {% block href_add_new %}
-    <div style="margin-top:10px;">
-        <a type="button" href="add_new_plant.html" class="btn btn-success">Добавить
-            инструмент</a>
-    </div>
-    {% endblock href_add_new %}
-
-    {% block filter %}
-    <div style="margin-top:10px;margin-left:auto">
-        <select class="form-select" aria-label="Default select example">
+{% block filter %}
+{% if plot %}
+<div style="margin-top:10px;margin-left:auto">
+    <select class="form-select" aria-label="Default select example">
         <option selected>Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
-        </select>
-    </div>
-    {%endblock filter %}
+    </select>
+</div>
+{% endif %}
+{%endblock filter %}
 
-    {% block include %}
-    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
+{% block include %}
+{% if plot %}
+<div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
     {% for tool in tools %}
-        <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-            <img src="{{tool.image.url}}" class="card-img-top" alt="...">
-            <div class="card-body" style="display: flex; flex-direction: column;">
-                <h5 class="card-title">{{tool.brand}}</h5>
-                <p class="card-text" style="min-height: 3rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                    {{tool.description}}
-                </p>
-                <div style="align-self: flex-start; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                    Отработано: {{tool.usage_count}} час
-                </div>
-                <div style="align-self: flex-start; background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                    Статус: {{tool.state_name}}
-                </div>
-                <div style="margin-top: auto;">
-                    <label style="font-size: 0.85rem; margin-bottom: 4px; display: block;">Количество часов использования:</label>
-                    <input
+    <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
+        <img src="{{tool.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body" style="display: flex; flex-direction: column;">
+            <h5 class="card-title">{{tool.brand}}</h5>
+            <p class="card-text"
+               style="min-height: 3rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                {{tool.description}}
+            </p>
+            <div style="align-self: flex-start; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                Отработано: {{tool.usage_count}} час
+            </div>
+            <div style="align-self: flex-start; background-color: green; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                Статус: {{tool.state_name}}
+            </div>
+            <div style="margin-top: auto;">
+                <label style="font-size: 0.85rem; margin-bottom: 4px; display: block;">Количество часов
+                    использования:</label>
+                <input
                         type="number"
                         class="form-control form-control-sm"
                         min="1"
                         placeholder="Введите кол-во часов"
                         style="margin-bottom: 10px;"
-                    >
-                    <div style="display:flex; flex-wrap:nowrap; gap:40px;">
-                        <button type="button" class="btn btn-info">Использовать</button>
-                        <button type="button" class="btn btn-danger">Удалить</button>
-                    </div>
+                >
+                <div style="display:flex; flex-wrap:nowrap; gap:40px;">
+                    <button type="button" class="btn btn-info">Использовать</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
                 </div>
             </div>
         </div>
-    {% endfor %}
     </div>
-    {% endblock include %}
-
-    {% block pagination %}
-    {% include 'layouts/pagination.html' %}
-    {% endblock pagination %}
+    {% endfor %}
+</div>
 {% endif %}
+{% endblock include %}
+
+{% block pagination %}
+{% if plot %}
+{% include 'layouts/pagination.html' %}
+{% endif %}
+{% endblock pagination %}
+
