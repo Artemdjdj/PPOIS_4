@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block main %}
+    <main class="d-flex flex-column" style="flex: 1;">
+        <div class="container-fluid px-0 d-flex flex-column flex-fill">
+            <div class="row g-0 flex-fill">
+                <div class="col-12 position-relative p-5">
+                    <div style="margin-bottom:20px; text-align:center">
+                        <h1>Добавление декора</h1>
+                    </div>
+                    <form action="{% url 'recreation_area:add_fitting' %}" class="row g-3" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-12">
+                            <label for="name" class="form-label">Название</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value|default:'' }}">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="image" class="form-label">Изображение</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        </div>
+                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+                            <button type="submit" class="btn btn-info">Создать</button>
+                            <a href="{% url 'recreation_area:index' %}" class="btn btn-warning">Отмена</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock main %}
+
+{% block cards %}
+{% endblock cards %}

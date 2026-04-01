@@ -12,5 +12,6 @@ def index(request):
         'plot':plot
     }
     return render(request, 'plants/index.html', context)
+
 def add_plant(request):
     return render(request, "plants/add_plant.html")

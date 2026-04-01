@@ -27,7 +27,7 @@ class RecreationAreaForm(BaseForm):
     def clean(self):
         cleaned_data = super().clean()
         if not self.plot:
-            raise ValidationError("Ошибка: садовый участок не выбран.")
+            raise ValidationError("Ошибка: садовый участок не создан.")
 
         square = cleaned_data.get('square')
         perimeter = cleaned_data.get('perimeter')

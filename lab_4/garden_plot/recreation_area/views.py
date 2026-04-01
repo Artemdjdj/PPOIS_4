@@ -1,11 +1,11 @@
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
+from .forms import FittingForm
 from .models import FittingModel, GrillModel, MeatTypeModel, RecreationAreaModel
 from plot.models import PlotModel
-
 from plot.forms import RecreationAreaForm
 
 
@@ -86,3 +86,27 @@ def delete_grill(request):
         GrillModel.objects.delete_obj()
         return HttpResponseRedirect(reverse('recreation_area:grill'))
     return render(request, "recreation_area/grill.html")
+
+
+def add_fitting(request):
+    recreation_area = RecreationAreaModel.objects.get_obj()
+    if request.method == "POST":
+        form  = FittingForm(data= request.POST, files=request.FILES)
+        if form.is_valid():
+            fitting = form.save(commit=False)
+            fitting.recreation_area = recreation_area
+            fitting.save()
+            return HttpResponseRedirect(reverse('recreation_area:index'))
+    else:
+        form = FittingForm()
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'recreation_area/add_fitting.html', context)
+
+
+def delete_fitting(request, fitting_id):
+    fitting = get_object_or_404(FittingModel, id=fitting_id)
+    fitting.delete()
+    return HttpResponseRedirect(reverse("recreation_area:index"))

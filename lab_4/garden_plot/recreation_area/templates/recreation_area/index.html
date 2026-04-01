@@ -26,7 +26,7 @@
 {% block href_add_new %}
 {% if recreation_area and fittings%}
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_elem_of_decor.html" class="btn btn-success">Добавить элемент декора</a>
+    <a type="button" href="{% url 'recreation_area:add_fitting' %}" class="btn btn-success">Добавить элемент декора</a>
 </div>
 {% endif %}
 {% if recreation_area%}
@@ -51,7 +51,7 @@
      style="margin: 200px auto; max-width: 500px; background-color: #f8d7da; border-color: #f5c6cb; color: #721c24;">
     <div class="text-center">
         <h4 class="alert-heading mb-3">Декора пока нет</h4>
-        <a href="{% url 'tools:add_tool' %}" class="btn btn-danger">
+        <a href="{% url 'recreation_area:add_fitting' %}" class="btn btn-danger">
             <i class="bi bi-plus-lg me-1"></i>Добавить декор
         </a>
     </div>
@@ -61,10 +61,13 @@
     {% for fitting in fittings %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{fitting.image.url}}" class="card-img-top" alt="...">
-        <div class="card-body" style="display: flex; flex-direction: column;">
+        <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
             <h5 class="card-title">{{fitting.name}}</h5>
-            <div style="display:flex; flex-wrap:nowrap; gap:40px;">
-                <button type="button" class="btn btn-danger">Удалить</button>
+            <div style="display:flex; flex-wrap:nowrap; gap:40px; margin-top: auto;">
+                <form action="{% url 'recreation_area:delete_fitting' fitting.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
             </div>
         </div>
     </div>
