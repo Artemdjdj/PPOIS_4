@@ -20,7 +20,7 @@ class PlantModel(models.Model):
     color = models.ForeignKey(ColorModel, on_delete=models.CASCADE, verbose_name="Цвет")
     diameter = models.PositiveIntegerField(verbose_name="Диаметер стебля")
     is_watered = models.BooleanField(default="False", verbose_name="Полито ли")
-    time_of_last_adding_water = models.PositiveIntegerField(verbose_name="Время с последнего полива в часах")
+    time_of_last_adding_water = models.PositiveIntegerField(default=4, verbose_name="Время с последнего полива в минутах")
     image = models.ImageField(upload_to="plant_images", null=True, blank=True, verbose_name="Изображение")
     plot = models.ForeignKey(
         PlotModel,
