@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -10,9 +11,14 @@ from plot.models import PlotModel
 def index(request):
     tools = ToolModel.objects.all()
     plot = PlotModel.objects.get_obj()
+    page_number = request.GET.get("page")
+
+    paginator = Paginator(tools, 4)
+    page_obj = paginator.get_page(page_number)
     context = {
         'tools': tools,
         'plot':plot,
+        'page_obj': page_obj,
     }
     return render(request, "tools/index.html", context)
 

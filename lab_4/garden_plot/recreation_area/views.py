@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -13,11 +14,16 @@ def index(request):
     fittings = FittingModel.objects.all()
     plot = PlotModel.objects.get_obj()
     recreation_area = RecreationAreaModel.objects.get_obj()
+    page_number = request.GET.get("page")
+
+    paginator = Paginator(fittings, 4)
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'plot':plot,
         'recreation_area':recreation_area,
-        'fittings': fittings
+        'fittings': fittings,
+        'page_obj': page_obj,
     }
 
     return render(request, 'recreation_area/index.html', context)

@@ -26,7 +26,7 @@
 {% block href_add_new %}
 {% if recreation_area and fittings%}
 <div style="margin-top:10px;">
-    <a type="button" href="{% url 'recreation_area:add_fitting' %}" class="btn btn-success">Добавить элемент декора</a>
+    <a type="button" href="{% url 'recreation_area:add_fitting' %}" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i>Добавить элемент декора</a>
 </div>
 {% endif %}
 {% if recreation_area%}
@@ -58,7 +58,7 @@
 </div>
 {% else %}
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-    {% for fitting in fittings %}
+    {% for fitting in page_obj %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{fitting.image.url}}" class="card-img-top" alt="...">
         <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
@@ -78,7 +78,7 @@
 {% endblock include %}
 
 {% block pagination %}
-{% if recreation_area and fittings%}
+{% if recreation_area and fittings %}
 {% include 'layouts/pagination.html' %}
 {% endif %}
 {% endblock pagination %}

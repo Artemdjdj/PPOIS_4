@@ -1,5 +1,6 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .forms import PlantForm
@@ -10,8 +11,13 @@ from plot.models import PlotModel
 def index(request):
     plants = PlantModel.objects.all()
     plot = PlotModel.objects.get_obj()
+    page_number = request.GET.get("page")
+
+    paginator = Paginator(plants, 4)
+    page_obj = paginator.get_page(page_number)
     context = {
-        'plants':plants,
+        'plants': plants,
+        'page_obj':page_obj,
         'plot':plot
     }
     return render(request, 'plants/index.html', context)
@@ -35,3 +41,8 @@ def add_plant(request):
     }
 
     return render(request, "plants/add_plant.html", context)
+
+def delete_plant(request, plant_id):
+    plant = get_object_or_404(PlantModel, id=plant_id)
+    plant.delete()
+    return HttpResponseRedirect(reverse("plants:index"))

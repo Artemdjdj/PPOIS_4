@@ -1,15 +1,48 @@
-<nav class="pagination" aria-label="Пагинация">
-    <a href="?page=1" class="page-btn disabled" aria-disabled="true" aria-label="Предыдущая страница"><</a>
+{% if page_obj.has_other_pages %}
+    <nav class="pagination" aria-label="Пагинация">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-btn" aria-label="Предыдущая страница">
+                &lt;
+            </a>
+        {% else %}
+            <a href="#" class="page-btn disabled" aria-disabled="true" aria-label="Предыдущая страница">
+                &lt;
+            </a>
+        {% endif %}
 
-    <a href="?page=1" class="page-btn active" aria-current="page">1</a>
-    <a href="?page=2" class="page-btn">2</a>
-    <a href="?page=3" class="page-btn">3</a>
-    <a href="?page=4" class="page-btn">4</a>
-    <a href="?page=5" class="page-btn">5</a>
+        {# Первая страница #}
+        {% if page_obj.number > 3 %}
+            <a href="?page=1" class="page-btn">1</a>
+            {% if page_obj.number > 4 %}
+                <span class="page-dots" aria-hidden="true">...</span>
+            {% endif %}
+        {% endif %}
 
-    <span class="page-dots" aria-hidden="true">...</span>
+        {% for p in page_obj.paginator.page_range %}
+            {% if p == page_obj.number %}
+                <a href="?page={{ p }}" class="page-btn active" aria-current="page">{{ p }}</a>
+            {% elif p > page_obj.number|add:-2 and p < page_obj.number|add:2 %}
+                <a href="?page={{ p }}" class="page-btn">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
 
-    <a href="?page=10" class="page-btn">10</a>
+        {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+            {% if page_obj.number < page_obj.paginator.num_pages|add:-3 %}
+                <span class="page-dots" aria-hidden="true">...</span>
+            {% endif %}
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="page-btn">
+                {{ page_obj.paginator.num_pages }}
+            </a>
+        {% endif %}
 
-    <a href="?page=2" class="page-btn" aria-label="Следующая страница">></a>
-</nav>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="page-btn" aria-label="Следующая страница">
+                &gt;
+            </a>
+        {% else %}
+            <a href="#" class="page-btn disabled" aria-disabled="true" aria-label="Следующая страница">
+                &gt;
+            </a>
+        {% endif %}
+    </nav>
+{% endif %}

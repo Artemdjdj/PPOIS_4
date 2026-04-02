@@ -17,7 +17,7 @@
 {% block href_add_new %}
 {% if plot and tools %}
 <div style="margin-top:10px;">
-    <a type="button" href="{% url 'tools:add_tool' %}" class="btn btn-success">Добавить
+    <a type="button" href="{% url 'tools:add_tool' %}" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i>Добавить
         инструмент</a>
 </div>
 {% endif %}
@@ -38,7 +38,7 @@
 </div>
 {% else %}
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
-    {% for tool in tools %}
+    {% for tool in page_obj %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
         <img src="{{tool.image.url}}" class="card-img-top" alt="..."
              style="max-height: 200px; object-fit: cover; width: 100%;">
