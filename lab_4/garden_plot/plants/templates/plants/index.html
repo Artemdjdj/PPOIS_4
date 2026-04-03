@@ -20,7 +20,7 @@
         растение</a>
 </div>
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_tool.html" class="btn btn-warning">Удобрить почву</a>
+    <a type="button" href="add_new_tool.html" class="btn btn-warning"><i class="bi bi-flower1 me-1"></i>Удобрить почву</a>
 </div>
 {% endif %}
 {% endblock href_add_new %}
@@ -50,11 +50,16 @@
                 <h5 class="card-title">{{plant.name}}</h5>
                 <p class="card-text">Высота: {{plant.height}}, диаметр: {{plant.diameter}}, цвет:
                     {{plant.get_color}}</p>
-                <div style="display: inline-block; background-color: orange; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                    {% if plant.is_watered %}Полито{%else%}Не полито{% endif %}
+                <div style="display: inline-block; background-color:{% if plant.is_watered %}#28a745{% else %}#dc3545{% endif %}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
+                    {% if plant.is_watered %}Полито{% else %}Не полито{% endif %}
                 </div>
                 <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px; margin-top: auto;">
-                    <button type="button" class="btn btn-info">Полить</button>
+                    {% if not plant.is_watered %}
+                        <form action="{% url 'plants:water_plant' plant.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-info">Полить</button>
+                        </form>
+                    {% endif %}
                     <form action="{% url 'plants:delete_plant' plant.id %}" method="post">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Удалить</button>

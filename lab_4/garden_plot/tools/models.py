@@ -1,6 +1,10 @@
 from django.db import models
+from django.utils import timezone
 
 from plot.models import PlotModel
+
+from garden_plot.exceptions import BrokenToolError
+from garden_plot.settings import COUNT_OF_WORK_HOURS_WORN, COUNT_OF_WORK_HOURS_BROKEN
 
 
 class ToolTypeModel(models.Model):
@@ -15,6 +19,7 @@ class ToolTypeModel(models.Model):
     def __str__(self):
         return self.name
 
+
 class ToolStateModel(models.Model):
     name = models.CharField(max_length=20, verbose_name="Название")
     slug = models.SlugField(max_length=20, unique=True, blank=True, null=True, verbose_name="URL")
@@ -24,7 +29,7 @@ class ToolStateModel(models.Model):
         verbose_name = "ToolState"
         verbose_name_plural = "ToolStates"
 
-    def __str__(self)->str:
+    def __str__(self) -> str:
         return self.name
 
 
@@ -56,4 +61,30 @@ class ToolModel(models.Model):
     def state_name(self):
         return self.state.name
 
+    def default_maintain(self):
+        self.state = ToolStateModel.objects.get(name="хорошее")
+        self.usage_count: int | float = 0
+        self.date_of_maintain = timezone.now()
 
+    def maintenance(self):
+        if self.state.name == "идеальное":
+            return "Инструмент новый, обслуживание не надо"
+        elif self.state.name == "хорошее":
+            return "Инструмент в хорошем состоянии, можно приступать к работе"
+        elif self.state.name == "поврежденное":
+            self.default_maintain()
+            return "Инструмент имел небольшие дефекты, теперь все готово, инструмент в хорошем состоянии"
+        else:
+            self.default_maintain()
+            return "Инструмент был сильно поврежден, теперь все готово, инструмент в хорошем состоянии"
+
+    def perform_task(self, work_hours: int | float) -> None:
+        if self.state.name == "сломанное":
+            raise BrokenToolError("Инструмент сломан")
+        self.usage_count += work_hours
+        if (
+                COUNT_OF_WORK_HOURS_WORN <= self.usage_count <= COUNT_OF_WORK_HOURS_BROKEN
+        ):
+            self.state = ToolStateModel.objects.get(name="поврежденное")
+        elif self.usage_count > COUNT_OF_WORK_HOURS_BROKEN:
+            self.state = ToolStateModel.objects.get(name="сломанное")

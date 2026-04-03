@@ -10,6 +10,8 @@ from plot.models import PlotModel
 
 def index(request):
     plants = PlantModel.objects.all()
+    for plant in plants:
+        plant.update()
     plot = PlotModel.objects.get_obj()
     page_number = request.GET.get("page")
 
@@ -45,4 +47,9 @@ def add_plant(request):
 def delete_plant(request, plant_id):
     plant = get_object_or_404(PlantModel, id=plant_id)
     plant.delete()
+    return HttpResponseRedirect(reverse("plants:index"))
+
+def water_plant(request, plant_id):
+    plant = get_object_or_404(PlantModel, id=plant_id)
+    plant.update_time_of_last_adding_water()
     return HttpResponseRedirect(reverse("plants:index"))

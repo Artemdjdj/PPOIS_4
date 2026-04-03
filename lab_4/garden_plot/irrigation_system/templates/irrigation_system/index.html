@@ -12,30 +12,22 @@
                 style="max-width: 700px; width: 100%; object-fit: contain;"
                 alt="Main image"
         >
-        <div class="row g-3 mt-4 justify-content-center" style="max-width: 700px; width: 100%;">
-            <div class="col-6 col-md-4">
-                <button class="btn btn-outline-secondary w-100 py-3 shadow-sm" id="btnLastWatering">
-                    <i class="bi bi-clock-history fs-4 me-2"></i>
-                    6 ч
-                </button>
+        <div class="row g-3 mt-4 justify-content-center"
+             style="max-width: 1000px; min-width:250px;width: 100%; font-size:20px;">
+            <div class="col-6 col-md-4" style="margin-top:25px">
+                <div class="border rounded w-100 py-3 shadow-sm text-center text-secondary"
+                     style="border-color: #6c757d;">
+                    <span class="small">{% if not result %} Система готова к поливу растений, нажмите на кнопку, чтобы полить все растения{% else %} {{result}} {% endif %}</span>
+                </div>
             </div>
 
-            <div class="col-6 col-md-4">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-success w-100 py-3 shadow-sm" id="btnTurnOn">
-                        <i class="bi bi-play-fill fs-4 me-2"></i>
-                        Включить
-                    </button>
-                </form>
-            </div>
 
-            <div class="col-6 col-md-4">
-                <form action="" method="post">
+            <div class="col-6 col-md-4" style="margin-top:45px;">
+                <form action="{% url 'irrigation_system:index' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger w-100 py-3 shadow-sm" id="btnTurnOff">
-                        <i class="bi bi-stop-fill fs-4 me-2"></i>
-                        Выключить
+                    <button type="submit" class="btn btn-success w-100 py-3 shadow-sm" >
+                        <i class="bi-play-fill fs-4 me-2"></i>
+                        Полить
                     </button>
                 </form>
             </div>
