@@ -50,3 +50,17 @@ def delete_tool(request, tool_id):
     tool = get_object_or_404(ToolModel, id=tool_id)
     tool.delete()
     return HttpResponseRedirect(reverse("tools:index"))
+
+
+def use_tool(request, tool_id):
+    tool = get_object_or_404(ToolModel, id=tool_id)
+    task_in_hour = request.GET.get("task_in_hour")
+    if task_in_hour:
+        task_in_hour = float(request.GET.get("task_in_hour"))
+        tool.perform_task(task_in_hour)
+    return HttpResponseRedirect(reverse("tools:index"))
+
+def maintain_tool(request, tool_id):
+    tool = get_object_or_404(ToolModel, id=tool_id)
+    tool.maintenance()
+    return HttpResponseRedirect(reverse("tools:index"))

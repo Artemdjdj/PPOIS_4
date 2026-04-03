@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.utils import timezone
 
@@ -38,7 +40,7 @@ class ToolModel(models.Model):
     brand = models.CharField(max_length=65, verbose_name="Бренд")
     description = models.CharField(max_length=50, verbose_name="Комментарии")
     state = models.ForeignKey(ToolStateModel, on_delete=models.CASCADE, verbose_name="Cостояние")
-    usage_count = models.PositiveIntegerField(default=0, verbose_name="Часов использования")
+    usage_count = models.DecimalField(default=0.0, max_digits=5,decimal_places=2, verbose_name="Часов использования")
     date_of_maintain = models.DateField(auto_now_add=True, verbose_name="Дата обслуживания")
     image = models.ImageField(upload_to="tool_images", null=True, blank=True, verbose_name="Изображение")
     plot = models.ForeignKey(
@@ -65,6 +67,7 @@ class ToolModel(models.Model):
         self.state = ToolStateModel.objects.get(name="хорошее")
         self.usage_count: int | float = 0
         self.date_of_maintain = timezone.now()
+        self.save()
 
     def maintenance(self):
         if self.state.name == "идеальное":
@@ -81,10 +84,12 @@ class ToolModel(models.Model):
     def perform_task(self, work_hours: int | float) -> None:
         if self.state.name == "сломанное":
             raise BrokenToolError("Инструмент сломан")
-        self.usage_count += work_hours
+        self.usage_count += Decimal(str(work_hours))
         if (
                 COUNT_OF_WORK_HOURS_WORN <= self.usage_count <= COUNT_OF_WORK_HOURS_BROKEN
         ):
             self.state = ToolStateModel.objects.get(name="поврежденное")
         elif self.usage_count > COUNT_OF_WORK_HOURS_BROKEN:
             self.state = ToolStateModel.objects.get(name="сломанное")
+
+        self.save()
