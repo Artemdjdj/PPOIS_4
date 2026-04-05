@@ -1,9 +1,13 @@
+from decimal import Decimal
+
+from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .forms import PlotForm
 from .models import PlotModel, SoilModel
+from garden_plot.exceptions import BigAmountOfFertilizerError
 
 
 def add_plot(request):
@@ -34,6 +38,31 @@ def plot_info(request):
 
 def delete_plot(request):
     if request.method == "POST":
+        plot = PlotModel.objects.get_obj()
+        soil = plot.soil
+        soil.clear_soil()
         PlotModel.objects.delete_obj()
         return HttpResponseRedirect(reverse('plot:plot_info'))
     return render(request, "plot/plot_info.html")
+
+
+def soil_info(request):
+    plot = PlotModel.objects.get_obj()
+    if plot is None:
+        context = {'plot': None}
+        return render(request, "plot/soil.html", context)
+
+    coeff = request.GET.get('coeff')
+    if coeff and coeff != "":
+        try:
+            coeff = Decimal(coeff)
+            soil = plot.soil
+            soil.fertilize(coeff)
+        except Exception:
+            return redirect('plot:soil_info')
+
+    context = {
+        'plot': plot,
+        'result': plot.soil.coeff_fertilizer,
+    }
+    return render(request, "plot/soil.html", context)

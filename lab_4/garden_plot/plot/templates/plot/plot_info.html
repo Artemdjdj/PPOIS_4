@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block main %}
+{% if plot %}
 <main class="d-flex flex-column" style="flex: 1;">
     <div class="container-fluid px-0 d-flex flex-column flex-fill">
         <div class="row g-0 flex-fill">
@@ -9,7 +10,6 @@
                 <div style="margin-bottom:20px; text-align:center">
                     <h1>Настройки садового участка</h1>
                 </div>
-                {% if plot %}
                 <div class="card" style="max-width: 500px; margin: 100px auto;">
                     <div class="card-header bg-info text-white">
                         <h5 class="card-title mb-0">Ваш участок</h5>
@@ -31,28 +31,28 @@
                             <li class="list-group-item d-flex justify-content-between">
                                 <strong>Количество растений:</strong> {{plants_count}}
                             </li>
-
                             <li class="list-group-item d-flex justify-content-between">
                             </li>
                         </ul>
                         <div style="text-align: center; margin:10px">
                             <form action="{% url 'plot:delete_plot' %}" method="post">
                                 {% csrf_token %}
-                                <button type=submit class="btn btn-danger btn-lg mt-4 px-5">
+                                <button type="submit" class="btn btn-danger btn-lg mt-4 px-5">
                                     Удалить
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
-                {% else %}
-                    {% include 'layouts/plot_is_not_created.html' %}
-                {% endif %}
             </div>
         </div>
     </div>
 </main>
+{% else %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 {% endblock main %}
-
-{% block cards %}
-{% endblock cards %}

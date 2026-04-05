@@ -2,10 +2,15 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator,  MaxValueValidator
 from recreation_area.utils import BaseManager
+from garden_plot.exceptions  import BigAmountOfFertilizerError
+
+from garden_plot.settings import MAX_COEFF, NORMAL_COEFF
+
 
 class SoilModel(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")
     slug = models.SlugField(max_length=50, verbose_name="URL")
+    coeff_fertilizer = models.DecimalField(default=NORMAL_COEFF, max_digits=4, decimal_places=2, verbose_name="Коэффициент засоленности")
 
     class Meta:
         db_table = 'Soil'
@@ -14,6 +19,19 @@ class SoilModel(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def fertilize(self, coeff_fertilize):
+        if self.coeff_fertilizer + coeff_fertilize <= MAX_COEFF:
+            self.coeff_fertilizer += coeff_fertilize
+            self.save()
+        else:
+            raise BigAmountOfFertilizerError(
+                "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
+            )
+
+    def clear_soil(self):
+        self.coeff_fertilizer = NORMAL_COEFF
+        self.save()
 
 
 class PlotManager(BaseManager):

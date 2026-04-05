@@ -20,7 +20,7 @@
         растение</a>
 </div>
 <div style="margin-top:10px;">
-    <a type="button" href="add_new_tool.html" class="btn btn-warning"><i class="bi bi-flower1 me-1"></i>Удобрить почву</a>
+    <a type="button" href="{% url 'plot:soil_info' %}" class="btn btn-warning"><i class="bi bi-flower1 me-1"></i>Удобрить почву</a>
 </div>
 {% endif %}
 {% endblock href_add_new %}
