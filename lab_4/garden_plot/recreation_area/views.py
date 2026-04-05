@@ -62,8 +62,8 @@ def delete_recreation_area(request):
     return render(request, "recreation_area/index.html")
 
 def grill(request):
+    plot = PlotModel.objects.get_obj()
     grill_res = GrillModel.objects.get_obj()
-
     meat_types =MeatTypeModel.objects.all()
     meat_type_last = None
     result_time_of_frying = None
@@ -73,6 +73,7 @@ def grill(request):
         result_time_of_frying = grill_res.fry(meat_type_last)
 
     context = {
+        'plot':plot,
         'grill': grill_res,
         'meat_types': meat_types,
         'result_time_of_frying': result_time_of_frying,

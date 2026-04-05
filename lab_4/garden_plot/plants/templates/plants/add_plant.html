@@ -1,83 +1,91 @@
-[02.04.2026 08:55] Артем: {% extends 'layouts/base.html' %}
+{% extends 'layouts/base.html' %}
 {% load static %}
 
 {% block main %}
-    <main class="d-flex flex-column" style="flex: 1;">
-        <div class="container-fluid px-0 d-flex flex-column flex-fill">
-            <div class="row g-0 flex-fill">
-                <div class="col-12 position-relative p-5">
-                    <div style="margin-bottom:20px; text-align:center">
-                        <h1>Добавление растения</h1>
-                    </div>
-                    <form action="{% url 'plants:add_plant' %}" class="row g-3" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-
-                        <div class="col-12">
-                            <label for="name" class="form-label">Название</label>
-                            <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}"
-                                   id="name" name="name" value="{{ form.name.value|default:'' }}">
-                            {% if form.name.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.name.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-
-                        <div class="col-12">
-                            <label for="height" class="form-label">Высота (см)</label>
-                            <input type="number" class="form-control {% if form.height.errors %}is-invalid{% endif %}"
-                                   id="height" name="height" step="1" value="{{ form.height.value|default:'' }}">
-                            {% if form.height.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.height.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-
-                        <div class="col-12">
-                            <label for="diameter" class="form-label">Диаметр стебля (см)</label>
-                            <input type="number" class="form-control {% if form.diameter.errors %}is-invalid{% endif %}"
-                                   id="diameter" name="diameter" step="1" value="{{ form.diameter.value|default:'' }}">
-                            {% if form.diameter.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.diameter.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-
-                        <div class="col-12">
-                            <label for="color" class="form-label">Цвет</label>
-                            <select id="color" class="form-select {% if form.color.errors %}is-invalid{% endif %}" name="color">
-                                {% for color in colors %}
-                                    <option value="{{ color.id }}">{{ color }}</option>
-                                {% endfor %}
-                            </select>
-                            {% if form.color.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.color.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="col-12">
-                            <label for="image" class="form-label">Изображение</label>
-                            <input type="file" class="form-control {% if form.image.errors %}is-invalid{% endif %}"
-                                   id="image" name="image" accept="image/*">
-                            {% if form.image.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.image.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-
-                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
-                            <button type="submit" class="btn btn-info">Создать</button>
-                            <a href="{% url 'plants:index' %}" class="btn btn-warning">Отмена</a>
-                        </div>
-                    </form>
+{% if plot %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container-fluid px-0 d-flex flex-column flex-fill">
+        <div class="row g-0 flex-fill">
+            <div class="col-12 position-relative p-5">
+                <div style="margin-bottom:20px; text-align:center">
+                    <h1>Добавление растения</h1>
                 </div>
+                <form action="{% url 'plants:add_plant' %}" class="row g-3" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="col-12">
+                        <label for="name" class="form-label">Название</label>
+                        <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                               id="name" name="name" value="{{ form.name.value|default:'' }}">
+                        {% if form.name.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.name.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-12">
+                        <label for="height" class="form-label">Высота (см)</label>
+                        <input type="number" class="form-control {% if form.height.errors %}is-invalid{% endif %}"
+                               id="height" name="height" step="1" value="{{ form.height.value|default:'' }}">
+                        {% if form.height.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.height.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-12">
+                        <label for="diameter" class="form-label">Диаметр стебля (см)</label>
+                        <input type="number" class="form-control {% if form.diameter.errors %}is-invalid{% endif %}"
+                               id="diameter" name="diameter" step="1" value="{{ form.diameter.value|default:'' }}">
+                        {% if form.diameter.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.diameter.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-12">
+                        <label for="color" class="form-label">Цвет</label>
+                        <select id="color" class="form-select {% if form.color.errors %}is-invalid{% endif %}" name="color">
+                            {% for color in colors %}
+                                <option value="{{ color.id }}">{{ color }}</option>
+                            {% endfor %}
+                        </select>
+                        {% if form.color.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.color.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-12">
+                        <label for="image" class="form-label">Изображение</label>
+                        <input type="file" class="form-control {% if form.image.errors %}is-invalid{% endif %}"
+                               id="image" name="image" accept="image/*">
+                        {% if form.image.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.image.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px;">
+                        <button type="submit" class="btn btn-info">Создать</button>
+                        <a href="{% url 'plants:index' %}" class="btn btn-warning">Отмена</a>
+                    </div>
+                </form>
             </div>
         </div>
-    </main>
+    </div>
+</main>
+{% else %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 {% endblock main %}
 
 {% block cards %}

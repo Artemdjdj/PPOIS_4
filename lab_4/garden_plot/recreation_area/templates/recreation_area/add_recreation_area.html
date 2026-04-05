@@ -2,55 +2,63 @@
 {% load static %}
 
 {% block main %}
-    <main class="d-flex flex-column" style="flex: 1;">
-        <div class="container-fluid px-0 d-flex flex-column flex-fill">
-            <div class="row g-0 flex-fill">
-                <div class="col-12 position-relative p-5">
-                    <div style="margin-bottom:20px; text-align:center">
-                        <h1>Добавление зоны отдыха</h1>
-                    </div>
-                    <form action="{% url 'recreation_area:add_recreation_area'%}" class="row g-3" method="post">
-                        {% csrf_token %}
-
-                        <div class="col-12">
-                            <label for="{{ form.square.id_for_label }}" class="form-label">Площадь (м²)</label>
-                            <input type="number"
-                                   class="form-control {% if form.square.errors %}is-invalid{% endif %}"
-                                   id="{{ form.square.id_for_label }}"
-                                   name="square"
-                                   step="1"
-                                   value="{{ form.square.value|default:100 }}"
-                                   min="100" max="10000">
-                            {% if form.square.errors %}
-                                <div class="invalid-feedback d-block">{{ form.square.errors.0 }}</div>
-                            {% endif %}
-                            <small class="text-muted">Максимум: {{ plot.square }} м²</small>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="{{ form.perimeter.id_for_label }}" class="form-label">Периметр (м)</label>
-                            <input type="number"
-                                   class="form-control {% if form.perimeter.errors %}is-invalid{% endif %}"
-                                   id="{{ form.perimeter.id_for_label }}"
-                                   name="perimeter"
-                                   step="1"
-                                   value="{{ form.perimeter.value|default:100 }}"
-                                   min="100" max="10000">
-                            {% if form.perimeter.errors %}
-                                <div class="invalid-feedback d-block">{{ form.perimeter.errors.0 }}</div>
-                            {% endif %}
-                            <small class="text-muted">Максимум: {{ plot.perimeter }} м</small>
-                        </div>
-
-                        <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px; margin-top: 20px;">
-                            <button type="submit" class="btn btn-info">Создать</button>
-                            <a href="{% url 'recreation_area:index'%}" class="btn btn-warning">Отмена</a>
-                        </div>
-                    </form>
+{% if plot %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container-fluid px-0 d-flex flex-column flex-fill">
+        <div class="row g-0 flex-fill">
+            <div class="col-12 position-relative p-5">
+                <div style="margin-bottom:20px; text-align:center">
+                    <h1>Добавление зоны отдыха</h1>
                 </div>
+                <form action="{% url 'recreation_area:add_recreation_area'%}" class="row g-3" method="post">
+                    {% csrf_token %}
+
+                    <div class="col-12">
+                        <label for="{{ form.square.id_for_label }}" class="form-label">Площадь (м²)</label>
+                        <input type="number"
+                               class="form-control {% if form.square.errors %}is-invalid{% endif %}"
+                               id="{{ form.square.id_for_label }}"
+                               name="square"
+                               step="1"
+                               value="{{ form.square.value|default:100 }}"
+                               min="100" max="10000">
+                        {% if form.square.errors %}
+                            <div class="invalid-feedback d-block">{{ form.square.errors.0 }}</div>
+                        {% endif %}
+                        <small class="text-muted">Максимум: {{ plot.square }} м²</small>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="{{ form.perimeter.id_for_label }}" class="form-label">Периметр (м)</label>
+                        <input type="number"
+                               class="form-control {% if form.perimeter.errors %}is-invalid{% endif %}"
+                               id="{{ form.perimeter.id_for_label }}"
+                               name="perimeter"
+                               step="1"
+                               value="{{ form.perimeter.value|default:100 }}"
+                               min="100" max="10000">
+                        {% if form.perimeter.errors %}
+                            <div class="invalid-feedback d-block">{{ form.perimeter.errors.0 }}</div>
+                        {% endif %}
+                        <small class="text-muted">Максимум: {{ plot.perimeter }} м</small>
+                    </div>
+
+                    <div style="display:flex; flex-wrap:nowrap; margin-right:auto; gap:20px; margin-top: 20px;">
+                        <button type="submit" class="btn btn-info">Создать</button>
+                        <a href="{% url 'recreation_area:index'%}" class="btn btn-warning">Отмена</a>
+                    </div>
+                </form>
             </div>
         </div>
-    </main>
+    </div>
+</main>
+{% else %}
+<main class="d-flex flex-column" style="flex: 1;">
+    <div class="container py-5 d-flex flex-column align-items-center justify-content-center flex-fill">
+        {% include 'layouts/plot_is_not_created.html' %}
+    </div>
+</main>
+{% endif %}
 {% endblock main %}
 
 {% block cards %}
