@@ -17,10 +17,11 @@
             <div class="col-6 col-md-4" style="margin-top:45px">
                 <div class="border rounded w-100 py-3 shadow-sm text-center text-secondary"
                      style="border-color: #6c757d;">
-                    <span class="small">Коэффициент удобрения: {{result}}</span>
+                    <span class="small">Коэффициент удобрения: {{ result }}</span>
                 </div>
             </div>
 
+            {% if result != 1 %}
             <div class="col-6 col-md-4">
                 <form action="{% url 'plot:soil_info' %}" method="get">
                     {% csrf_token %}
@@ -34,6 +35,14 @@
                     </button>
                 </form>
             </div>
+            {% else %}
+            <div class="col-6 col-md-4">
+                <div class="alert alert-success text-center" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    Почва достигла максимального предела удобрений
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </main>

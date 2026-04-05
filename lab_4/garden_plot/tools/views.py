@@ -42,6 +42,7 @@ def add_tool(request):
     context = {
         'tool_types': tool_types,
         'form': tool_form,
+        'plot': plot,
     }
     return render(request, "tools/add_tool.html", context)
 

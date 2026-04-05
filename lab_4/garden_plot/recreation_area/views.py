@@ -30,8 +30,9 @@ def index(request):
 
 def recreation_area_info(request):
     recreation_area = RecreationAreaModel.objects.get_obj()
-
+    plot = PlotModel.objects.get_obj()
     context = {
+        'plot':plot,
         'recreation_area':recreation_area,
         'decor_count': len(recreation_area.get_fittings()) if recreation_area else None
     }

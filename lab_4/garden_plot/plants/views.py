@@ -38,6 +38,7 @@ def add_plant(request):
         form = PlantForm()
 
     context = {
+        'plot':plot,
         'form': form,
         'colors': colors
     }
