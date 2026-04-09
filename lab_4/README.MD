@@ -41,3 +41,18 @@
 ## Структура проекта
 
 Структуру проекта можно подробно изучить в файле **structure.txt**
+
+
+## Инструкция по запуску
+
+Основные этапы установки:
+
+```
+git clone https://github.com/Artemdjdj/PPOIS_4.git
+cd lab_4
+# создать и активировать окружение
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
