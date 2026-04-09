@@ -1,0 +1,99 @@
+lab_4/
+├── .gitignore
+├── dev/
+│   ├── assets/
+│   │   ├── css/
+│   │   └── js/
+│   ├── add_new_elem_of_decor.html
+│   ├── add_new_plant.html
+│   ├── add_new_tool.html
+│   ├── chill.html
+│   ├── index.html
+│   ├── plants.html
+│   ├── plot_settings.html
+│   ├── recreation_area_settings.html
+│   └── tools.html
+├── garden_plot/
+│   ├── fixtures/
+│   │   ├── colors.json
+│   │   ├── meat_types.json
+│   │   ├── plants.json
+│   │   └── tools.json
+│   └── garden_plot/
+│       ├── __init__.py
+│       ├── asgi.py
+│       ├── exceptions.py
+│       ├── settings.py
+│       ├── urls.py
+│       └── wsgi.py
+├── irrigation_system/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── templates/
+│   │   └── irrigation_system/
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── main/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── templates/
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── media/
+│   ├── plant_images/
+│   ├── recreation_area_images/
+│   └── tool_images/
+├── plants/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── templates/
+│   │   └── plants/
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── plot/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── templates/
+│   │   └── plot/
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── recreation_area/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── templates/
+│   │   └── recreation_area/
+│   ├── tests.py
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── static/
+│   └── assets/
+│       ├── css/
+│       └── js/
+├── tools/
+│   └── __init__.py
+├── manage.py
+├── README.MD
+├── requirements.txt
+└── structure.txt

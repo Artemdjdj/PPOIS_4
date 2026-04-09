@@ -6,8 +6,8 @@ from garden_plot.settings import TIME_OF_LAST_ADDING_WATER
 
 
 class ColorModel(models.Model):
-    name = models.CharField(max_length=40, verbose_name="Название")
-    slug = models.SlugField(max_length=40, verbose_name="URL")
+    name = models.CharField(max_length=40, unique=True, verbose_name="Название")
+    slug = models.SlugField(max_length=40, unique=True, verbose_name="URL")
 
     class Meta:
         db_table = "Color"
@@ -45,18 +45,19 @@ class PlantModel(models.Model):
     def update(self):
         current_time = timezone.now()
         if self.is_watered:
-            if self.time_of_last_adding_water is not None and (current_time - self.time_of_last_adding_water).seconds >= TIME_OF_LAST_ADDING_WATER:
+            if self.time_of_last_adding_water is not None and (
+                    current_time - self.time_of_last_adding_water).seconds >= TIME_OF_LAST_ADDING_WATER:
                 self.is_watered = False
                 self.save()
 
     def update_time_of_last_adding_water(self):
         current_time = timezone.now()
-        if self.time_of_last_adding_water is not None and (current_time - self.time_of_last_adding_water).seconds >= TIME_OF_LAST_ADDING_WATER:
+        if self.time_of_last_adding_water is not None and (
+                current_time - self.time_of_last_adding_water).seconds >= TIME_OF_LAST_ADDING_WATER:
             self.water(current_time)
         else:
             self.is_watered = False
             self.save()
-
 
     def water(self, my_time):
         self.is_watered = True

@@ -1,16 +1,17 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator,  MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from recreation_area.utils import BaseManager
-from garden_plot.exceptions  import BigAmountOfFertilizerError
+from garden_plot.exceptions import BigAmountOfFertilizerError
 
 from garden_plot.settings import MAX_COEFF, NORMAL_COEFF
 
 
 class SoilModel(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Название")
-    slug = models.SlugField(max_length=50, verbose_name="URL")
-    coeff_fertilizer = models.DecimalField(default=NORMAL_COEFF, max_digits=4, decimal_places=2, verbose_name="Коэффициент засоленности")
+    name = models.CharField(max_length=50, unique=True, verbose_name="Название")
+    slug = models.SlugField(max_length=50, unique=True, verbose_name="URL")
+    coeff_fertilizer = models.DecimalField(default=NORMAL_COEFF, max_digits=4, decimal_places=2,
+                                           verbose_name="Коэффициент засоленности")
 
     class Meta:
         db_table = 'Soil'
@@ -41,9 +42,12 @@ class PlotManager(BaseManager):
         except PlotModel.DoesNotExist:
             return None
 
+
 class PlotModel(models.Model):
-    square = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)], verbose_name="Площадь")
-    perimeter = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)], verbose_name="Периметр")
+    square = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)],
+                                         verbose_name="Площадь")
+    perimeter = models.PositiveIntegerField(validators=[MinValueValidator(100), MaxValueValidator(10000)],
+                                            verbose_name="Периметр")
     soil = models.ForeignKey(SoilModel, on_delete=models.CASCADE, verbose_name="Тип почвы")
 
     objects = PlotManager()

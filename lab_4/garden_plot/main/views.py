@@ -10,4 +10,3 @@ def index(request):
         "plot": plot
     }
     return render(request, "main/index.html", context)
-

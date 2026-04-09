@@ -10,7 +10,7 @@ from garden_plot.settings import COUNT_OF_WORK_HOURS_WORN, COUNT_OF_WORK_HOURS_B
 
 
 class ToolTypeModel(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Название")
+    name = models.CharField(max_length=50, unique=True, verbose_name="Название")
     slug = models.SlugField(max_length=50, unique=True, blank=True, null=True, verbose_name="URL")
 
     class Meta:
@@ -23,7 +23,7 @@ class ToolTypeModel(models.Model):
 
 
 class ToolStateModel(models.Model):
-    name = models.CharField(max_length=20, verbose_name="Название")
+    name = models.CharField(max_length=20, unique=True, verbose_name="Название")
     slug = models.SlugField(max_length=20, unique=True, blank=True, null=True, verbose_name="URL")
 
     class Meta:
@@ -40,7 +40,7 @@ class ToolModel(models.Model):
     brand = models.CharField(max_length=65, verbose_name="Бренд")
     description = models.CharField(max_length=50, verbose_name="Комментарии")
     state = models.ForeignKey(ToolStateModel, on_delete=models.CASCADE, verbose_name="Cостояние")
-    usage_count = models.DecimalField(default=0.0, max_digits=5,decimal_places=2, verbose_name="Часов использования")
+    usage_count = models.DecimalField(default=0.0, max_digits=5, decimal_places=2, verbose_name="Часов использования")
     date_of_maintain = models.DateField(auto_now_add=True, verbose_name="Дата обслуживания")
     image = models.ImageField(upload_to="tool_images", null=True, blank=True, verbose_name="Изображение")
     plot = models.ForeignKey(

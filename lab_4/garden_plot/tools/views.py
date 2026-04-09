@@ -17,7 +17,7 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'tools': tools,
-        'plot':plot,
+        'plot': plot,
         'page_obj': page_obj,
     }
     return render(request, "tools/index.html", context)
@@ -27,7 +27,7 @@ def add_tool(request):
     tool_types = ToolTypeModel.objects.all()
     plot = PlotModel.objects.get_obj()
     if request.method == "POST":
-        tool_form = ToolForm(data= request.POST, files=request.FILES)
+        tool_form = ToolForm(data=request.POST, files=request.FILES)
         if tool_form.is_valid():
             tool = tool_form.save(commit=False)
             tool_state = ToolStateModel.objects.get(name="идеальное")
@@ -60,6 +60,7 @@ def use_tool(request, tool_id):
         task_in_hour = float(request.GET.get("task_in_hour"))
         tool.perform_task(task_in_hour)
     return HttpResponseRedirect(reverse("tools:index"))
+
 
 def maintain_tool(request, tool_id):
     tool = get_object_or_404(ToolModel, id=tool_id)

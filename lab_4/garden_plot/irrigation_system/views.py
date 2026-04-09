@@ -20,7 +20,6 @@ def index(request):
         if plot is not None:
             irrigation_system = IrrigationSystemModel.objects.create(plot=plot)
 
-
     if irrigation_system is not None:
         plants = PlantModel.objects.all()
         try:
@@ -32,14 +31,10 @@ def index(request):
             irrigation_system.is_active = False
             irrigation_system.save()
 
-
     context = {
         "irrigation_system": irrigation_system,
-        "plot":plot,
+        "plot": plot,
         'result': result
     }
 
     return render(request, "irrigation_system/index.html", context)
-
-
-

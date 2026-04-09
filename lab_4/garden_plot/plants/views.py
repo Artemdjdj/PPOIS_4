@@ -19,16 +19,17 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'plants': plants,
-        'page_obj':page_obj,
-        'plot':plot
+        'page_obj': page_obj,
+        'plot': plot
     }
     return render(request, 'plants/index.html', context)
+
 
 def add_plant(request):
     plot = PlotModel.objects.get_obj()
     colors = ColorModel.objects.all()
     if request.method == 'POST':
-        form  = PlantForm(request.POST, request.FILES)
+        form = PlantForm(request.POST, request.FILES)
         if form.is_valid():
             plant = form.save(commit=False)
             plant.plot = plot
@@ -38,17 +39,19 @@ def add_plant(request):
         form = PlantForm()
 
     context = {
-        'plot':plot,
+        'plot': plot,
         'form': form,
         'colors': colors
     }
 
     return render(request, "plants/add_plant.html", context)
 
+
 def delete_plant(request, plant_id):
     plant = get_object_or_404(PlantModel, id=plant_id)
     plant.delete()
     return HttpResponseRedirect(reverse("plants:index"))
+
 
 def water_plant(request, plant_id):
     plant = get_object_or_404(PlantModel, id=plant_id)
