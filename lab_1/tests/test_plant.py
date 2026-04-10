@@ -46,7 +46,7 @@ class TestPlant:
         color = Color()
         color.color = "зеленый"
         plant = Plant(100, "папоротник", color, diameter=100)
-        assert str(plant) == "Растение папоротник высота которого: 100"
+        assert str(plant) == "Растение папоротник, высота которого: 100, не полито"
 
     def test_invalid_height(self):
         color = Color()

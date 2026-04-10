@@ -1,14 +1,14 @@
 import time
 from typing import Dict, Any, List
 
-from core.plant import Plant
+from src.core.plant import Plant
 from src.exceptions.exceptions import (
     SystemIsNotActiveError,
     LackOfWaterError,
     TooMuchPlantsAreWateredError,
 )
 from src.utils.descriptor import NumberValidator
-MIN_TIME_OF_WATERING = 36000
+MIN_TIME_OF_WATERING = 10
 
 class IrrigationSystem:
 
