@@ -50,8 +50,8 @@ class BasicObject:
 
 
 class Grill:
-    def fry(self, meat: MeatType) -> str:
-        return f"мясо приготовилось за {meat.cooking_time} минут"
+    def fry(self, time_min:int) -> str:
+        return f"мясо приготовилось за {time_min} минут"
 
     def __str__(self) -> str:
         return "Гриль для приготовления мясных блюд"

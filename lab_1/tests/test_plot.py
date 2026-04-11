@@ -10,7 +10,31 @@ from src.exceptions.exceptions import (
     SizeError,
 )
 
+class TestGrill:
+    def test_fry_with_integer(self):
+        grill = Grill()
+        result = grill.fry(120)
+        assert result == "мясо приготовилось за 120 минут"
 
+    def test_fry_with_zero(self):
+        grill = Grill()
+        result = grill.fry(0)
+        assert result == "мясо приготовилось за 0 минут"
+
+    def test_fry_with_large_value(self):
+        grill = Grill()
+        result = grill.fry(1000)
+        assert result == "мясо приготовилось за 1000 минут"
+
+    def test_str_method(self):
+        grill = Grill()
+        assert str(grill) == "Гриль для приготовления мясных блюд"
+
+    def test_multiple_fry_calls(self):
+        grill = Grill()
+        assert grill.fry(60) == "мясо приготовилось за 60 минут"
+        assert grill.fry(90) == "мясо приготовилось за 90 минут"
+        assert grill.fry(120) == "мясо приготовилось за 120 минут"
 
 class TestRecreationArea:
     def test_initial_area(self):

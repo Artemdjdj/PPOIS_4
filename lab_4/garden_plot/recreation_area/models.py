@@ -6,7 +6,7 @@ from django.db import models
 
 from plot.models import PlotModel
 from recreation_area.utils import BaseManager
-
+from src.core.plot import Grill
 
 
 class MeatTypeModel(models.Model):
@@ -98,12 +98,18 @@ class GrillModel(models.Model):
             raise ValidationError("Может существовать только один гриль.")
         super().save(*args, **kwargs)
 
-
-    def fry(self, meat) -> str:
-        return f"мясо приготовилось за {meat.time_of_cooking} минут"
-
     def __str__(self):
         return f"Гриль {self.pk} для приготовления мясных блюд"
+
+    def to_library_grill(self) -> Grill:
+        return Grill()
+
+    @classmethod
+    def from_library_grill(cls, lib_grill: Grill, recreation_area: RecreationAreaModel) -> "GrillModel":
+        return cls(recreation_area=recreation_area)
+
+    def update_from_library_grill(self, lib_grill: Grill) -> None:
+        self.save()
 
     class Meta:
         db_table = 'Grill'

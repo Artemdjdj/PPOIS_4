@@ -71,7 +71,8 @@ def grill(request):
     if request.method == 'POST':
         meat_id = request.POST.get('meat_type')
         meat_type_last = MeatTypeModel.objects.get(id=meat_id)
-        result_time_of_frying = grill_res.fry(meat_type_last)
+        convert_grill = grill_res.to_library_grill()
+        result_time_of_frying = convert_grill.fry(meat_type_last.time_of_cooking)
 
     context = {
         'plot':plot,
