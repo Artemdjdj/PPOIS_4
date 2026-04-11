@@ -11,6 +11,7 @@ from src.exceptions.exceptions import (
 )
 
 
+
 class TestRecreationArea:
     def test_initial_area(self):
         area = RecreationArea(56, 67)

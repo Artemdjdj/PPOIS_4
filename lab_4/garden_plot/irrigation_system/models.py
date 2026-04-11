@@ -1,18 +1,17 @@
-from datetime import timedelta
+from datetime import timedelta, datetime, timezone
 
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone as django_timezone
 
 from plot.models import PlotModel
 from recreation_area.utils import BaseManager
 
 from garden_plot.exceptions import SystemIsNotActiveError, TooMuchPlantsAreWateredError
-
 from garden_plot.settings import TIME_OF_LAST_ADDING_WATER
-
 from garden_plot.exceptions import NoPlantsError
+
+from src.core.irrigation_system import IrrigationSystem
 
 
 class IrrigationSystemManager(BaseManager):
@@ -22,8 +21,10 @@ class IrrigationSystemManager(BaseManager):
         except IrrigationSystemModel.DoesNotExist:
             return None
 
+
 def default_last_watering_time():
-    return timezone.now() - timedelta(seconds=TIME_OF_LAST_ADDING_WATER + 1)
+    return django_timezone.now() - timedelta(seconds=TIME_OF_LAST_ADDING_WATER + 1)
+
 
 class IrrigationSystemModel(models.Model):
     is_active = models.BooleanField(default=False, verbose_name='Включена ли')
@@ -43,24 +44,33 @@ class IrrigationSystemModel(models.Model):
             raise ValidationError("Может существовать только одна система полива.")
         super().save(*args, **kwargs)
 
-    def water(self, plants) -> str:
-        if not self.is_active:
-            raise SystemIsNotActiveError("Система автоматического полива не включена")
-
-        if len(plants) == 0:
-            raise NoPlantsError("У вас нет растений, прежде чем включить полив, добавьте растения на садовый участок")
-
-        if not self.time_of_last_adding_water or (timezone.now() - self.time_of_last_adding_water).total_seconds() >= TIME_OF_LAST_ADDING_WATER:
-            for plant in plants:
-                plant.update_time_of_last_adding_water()
-            self.is_active = False
-            self.time_of_last_adding_water = timezone.now()
-            self.save()
-
+    def to_library_system(self):
+        lib = IrrigationSystem()
+        if self.is_active:
+            lib.turn_on()
         else:
-            raise TooMuchPlantsAreWateredError("Растения недавно были политы, нужно, чтобы прошло время (10 секунд минимум)")
+            lib.turn_of()
+        lib.time_of_last_adding_water = self.time_of_last_adding_water.replace(tzinfo=None)
+        return lib
 
-        return f"Не политые растения были успешно политы, вскоре вы нужно будет их снова полить"
+    @classmethod
+    def from_library_system(cls, lib, plot):
+        dt = lib.time_of_last_adding_water
+        if dt is not None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return cls(
+            is_active=lib.is_active,
+            time_of_last_adding_water=dt or django_timezone.now(),
+            plot=plot,
+        )
+
+    def update_from_library_system(self, lib):
+        self.is_active = lib.is_active
+        dt = lib.time_of_last_adding_water
+        if dt is not None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        self.time_of_last_adding_water = dt or django_timezone.now()
+        self.save()
 
     class Meta:
         db_table = 'IrrigationSystem'

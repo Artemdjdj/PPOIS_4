@@ -5,9 +5,6 @@ from django.utils import timezone
 
 from irrigation_system.models import IrrigationSystemModel
 from plot.models import PlotModel
-
-from garden_plot.settings import TIME_OF_LAST_ADDING_WATER
-
 from plants.models import PlantModel
 
 
@@ -21,15 +18,21 @@ def index(request):
             irrigation_system = IrrigationSystemModel.objects.create(plot=plot)
 
     if irrigation_system is not None:
-        plants = PlantModel.objects.all()
-        try:
-            irrigation_system.is_active = True
-            irrigation_system.save()
-            result = irrigation_system.water(plants)
-        except Exception as e:
-            result = e.msg
-            irrigation_system.is_active = False
-            irrigation_system.save()
+        plant_models = PlantModel.objects.all()
+        if plant_models.exists():
+            new_plants = [p.to_library_plant() for p in plant_models]
+            try:
+                irrigation_system.is_active = True
+                irrigation_system.save()
+                convert_irrigation_system = irrigation_system.to_library_system()
+                result = convert_irrigation_system.water(new_plants)
+                irrigation_system.update_from_library_system(convert_irrigation_system)
+                for i in range(len(plant_models)):
+                    plant_models[i].update_from_library_plant(new_plants[i])
+            except Exception as e:
+                result = str(e)
+                irrigation_system.is_active = False
+                irrigation_system.save()
 
     context = {
         "irrigation_system": irrigation_system,

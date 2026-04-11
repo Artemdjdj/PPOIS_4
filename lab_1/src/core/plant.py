@@ -4,6 +4,7 @@ from src.utils.descriptor import NumberValidator
 from src.main.settings import MAX_DIAMETER_OF_PLANT
 from src.utils.validator import ColorValidator, ColorType
 from datetime import datetime, timezone
+
 MIN_TIME_OF_WATERING = 10
 
 class Color:
@@ -52,7 +53,7 @@ class Plant:
 
     @property
     def time_of_last_adding_water(self) -> Optional[datetime]:
-        current_time = datetime.now(timezone.utc) 
+        current_time = datetime.now(timezone.utc).replace(tzinfo=None)  # наивный UTC
         if self.__time_of_last_adding_water is not None and \
            (current_time - self.__time_of_last_adding_water).total_seconds() >= MIN_TIME_OF_WATERING:
             self.__time_of_last_adding_water = None
@@ -61,13 +62,14 @@ class Plant:
 
     @time_of_last_adding_water.setter
     def time_of_last_adding_water(self, dt: Optional[datetime]) -> None:
-        if dt is not None and dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+        if dt is not None:
+            if dt.tzinfo is not None:
+                dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
         self.__time_of_last_adding_water = dt
 
     def water(self, my_time: datetime) -> None:
-        if my_time.tzinfo is None:
-            my_time = my_time.replace(tzinfo=timezone.utc)
+        if my_time.tzinfo is not None:
+            my_time = my_time.astimezone(timezone.utc).replace(tzinfo=None)
         self.is_watered = True
         self.__time_of_last_adding_water = my_time
 
@@ -102,8 +104,6 @@ class Plant:
         )
         if info_dict.get("time_of_last_adding_water"):
             dt = datetime.fromisoformat(info_dict["time_of_last_adding_water"])
-            if dt.tzinfo is None:
-                dt = dt.replace(tzinfo=timezone.utc)
             plant.time_of_last_adding_water = dt
         else:
             plant.time_of_last_adding_water = None
@@ -113,7 +113,7 @@ class Plant:
         _ = self.time_of_last_adding_water
 
     def update_time_of_last_adding_water(self) -> None:
-        current_time = datetime.now(timezone.utc)
+        current_time = datetime.now(timezone.utc).replace(tzinfo=None)
         if (self.__time_of_last_adding_water is None or
             (current_time - self.__time_of_last_adding_water).total_seconds() >= MIN_TIME_OF_WATERING):
             self.water(current_time)

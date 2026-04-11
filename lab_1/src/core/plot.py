@@ -3,12 +3,13 @@ from enum import Enum
 from typing import Set, Optional, Dict, Any, List
 from src.utils.descriptor import NumberValidator
 from src.utils.validator import PositionValidator
-from src.exceptions.exceptions import GrillDoesNotExist, SizeError
+from src.exceptions.exceptions import GrillDoesNotExist, SizeError,PositionError
 from src.main.settings import AMOUNT_OF_FERTILIZER
 from src.core.soil import Soil, SoilType
 from src.core.plant import Plant
 from src.core.tool import Tool
 from src.core.irrigation_system import IrrigationSystem
+from datetime import datetime, timezone
 
 
 class MeatType(Enum):
@@ -148,15 +149,17 @@ class GardenPlot(BasicObject):
     def clear_garden_of_all_plants(self) -> None:
         self.__plants.clear()
 
-    def water_plants(self) -> None:
-        self.__irrigation_system.turn_on()
-        self.__irrigation_system.water(self.__plants)
-        self.__irrigation_system.turn_of()
 
-    def water_plant_by_pos(self, position:int) -> None:
-        validator = PositionValidator(len(self.__plants), position)
-        validator.validate()
-        self.__plants[position].water(time.time())
+    def water_plant_by_pos(self, position: int) -> None:
+        if position < 0 or position >= len(self.__plants):
+            raise PositionError("Неверная позиция")
+        plant = self.__plants[position]
+        plant.water(datetime.now(timezone.utc))
+
+    def water_plants(self) -> None:
+        if not self.__irrigation_system.is_active:
+            self.__irrigation_system.turn_on()
+        self.__irrigation_system.water(self.__plants)
 
     def fertilize_soil(self, amount_of_fertilizer: int | float) -> None:
         coeff_fertilizer = amount_of_fertilizer / AMOUNT_OF_FERTILIZER
