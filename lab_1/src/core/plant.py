@@ -3,7 +3,8 @@ from typing import Optional, Dict, Any
 from src.utils.descriptor import NumberValidator
 from src.main.settings import MAX_DIAMETER_OF_PLANT
 from src.utils.validator import ColorValidator, ColorType
-MIN_TIME_OF_WATERING = 36000
+from datetime import datetime, timezone
+MIN_TIME_OF_WATERING = 10
 
 class Color:
     def __init__(self) -> None:
@@ -31,15 +32,15 @@ class Plant:
         height: int | float,
         name: str,
         color: Color,
-        is_watered: bool=False,
-        diameter: int | float = None,
+        is_watered: bool = False,
+        diameter: int | float = 0,
     ) -> None:
         self.height = height
         self.__name = name
         self.__color = color
         self.diameter = diameter
         self.is_watered = is_watered
-        self.__time_of_last_adding_water = None
+        self.__time_of_last_adding_water: Optional[datetime] = None
 
     @property
     def name(self) -> str:
@@ -50,18 +51,23 @@ class Plant:
         self.__name = name
 
     @property
-    def time_of_last_adding_water(self) -> int:
-        current_time = time.time()
-        if self.__time_of_last_adding_water is not None and current_time - self.__time_of_last_adding_water >= MIN_TIME_OF_WATERING:
+    def time_of_last_adding_water(self) -> Optional[datetime]:
+        current_time = datetime.now(timezone.utc) 
+        if self.__time_of_last_adding_water is not None and \
+           (current_time - self.__time_of_last_adding_water).total_seconds() >= MIN_TIME_OF_WATERING:
             self.__time_of_last_adding_water = None
             self.is_watered = False
         return self.__time_of_last_adding_water
 
     @time_of_last_adding_water.setter
-    def time_of_last_adding_water(self, time_of_last_adding_water: int) -> None:
-        self.__time_of_last_adding_water = time_of_last_adding_water
+    def time_of_last_adding_water(self, dt: Optional[datetime]) -> None:
+        if dt is not None and dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        self.__time_of_last_adding_water = dt
 
-    def water(self, my_time):
+    def water(self, my_time: datetime) -> None:
+        if my_time.tzinfo is None:
+            my_time = my_time.replace(tzinfo=timezone.utc)
         self.is_watered = True
         self.__time_of_last_adding_water = my_time
 
@@ -80,7 +86,7 @@ class Plant:
             "color": self.color,
             "is_watered": self.is_watered,
             "diameter": self.diameter,
-            "time_of_last_adding_water": self.time_of_last_adding_water,
+            "time_of_last_adding_water": self.__time_of_last_adding_water.isoformat() if self.__time_of_last_adding_water else None,
         }
 
     @classmethod
@@ -94,5 +100,20 @@ class Plant:
             is_watered=info_dict["is_watered"],
             diameter=info_dict["diameter"],
         )
-        plant.time_of_last_adding_water = info_dict["time_of_last_adding_water"]
+        if info_dict.get("time_of_last_adding_water"):
+            dt = datetime.fromisoformat(info_dict["time_of_last_adding_water"])
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            plant.time_of_last_adding_water = dt
+        else:
+            plant.time_of_last_adding_water = None
         return plant
+
+    def update(self) -> None:
+        _ = self.time_of_last_adding_water
+
+    def update_time_of_last_adding_water(self) -> None:
+        current_time = datetime.now(timezone.utc)
+        if (self.__time_of_last_adding_water is None or
+            (current_time - self.__time_of_last_adding_water).total_seconds() >= MIN_TIME_OF_WATERING):
+            self.water(current_time)

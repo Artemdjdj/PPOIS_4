@@ -7,6 +7,8 @@ from .forms import ToolForm
 from .models import ToolModel, ToolTypeModel, ToolStateModel
 from plot.models import PlotModel
 
+from src.core.tool import Tool
+
 
 def index(request):
     tools = ToolModel.objects.all()
@@ -30,10 +32,8 @@ def add_tool(request):
         tool_form = ToolForm(data=request.POST, files=request.FILES)
         if tool_form.is_valid():
             tool = tool_form.save(commit=False)
-            tool_state = ToolStateModel.objects.get(name="идеальное")
-            tool.usage_count = 0
-            tool.state = tool_state
-            tool.plot = plot
+            convert_tool = Tool(tool.tool_type, tool.brand, tool.description)
+            tool = ToolModel.from_library_tool(convert_tool,plot, tool.image)
             tool.save()
             return HttpResponseRedirect(reverse("tools:index"))
     else:
@@ -58,11 +58,15 @@ def use_tool(request, tool_id):
     task_in_hour = request.GET.get("task_in_hour")
     if task_in_hour:
         task_in_hour = float(request.GET.get("task_in_hour"))
-        tool.perform_task(task_in_hour)
+        convert_tool = tool.to_library_tool()
+        convert_tool.perform_task(task_in_hour)
+        tool = tool.update_from_library_tool(convert_tool)
     return HttpResponseRedirect(reverse("tools:index"))
 
 
 def maintain_tool(request, tool_id):
     tool = get_object_or_404(ToolModel, id=tool_id)
-    tool.maintenance()
+    convert_tool = tool.to_library_tool()
+    convert_tool.maintenance()
+    tool.update_from_library_tool(convert_tool)
     return HttpResponseRedirect(reverse("tools:index"))

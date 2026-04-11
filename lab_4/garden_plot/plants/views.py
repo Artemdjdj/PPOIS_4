@@ -6,12 +6,15 @@ from django.urls import reverse
 from .forms import PlantForm
 from .models import PlantModel, ColorModel
 from plot.models import PlotModel
+from src.core.plant import Plant, Color
 
 
 def index(request):
     plants = PlantModel.objects.all()
     for plant in plants:
-        plant.update()
+        convert_plant = plant.to_library_plant()
+        convert_plant.update()
+        plant = plant.update_from_library_plant(convert_plant)
     plot = PlotModel.objects.get_obj()
     page_number = request.GET.get("page")
 
@@ -55,5 +58,7 @@ def delete_plant(request, plant_id):
 
 def water_plant(request, plant_id):
     plant = get_object_or_404(PlantModel, id=plant_id)
-    plant.update_time_of_last_adding_water()
+    convert_plant = plant.to_library_plant()
+    convert_plant.update_time_of_last_adding_water()
+    plant.update_from_library_plant(convert_plant)
     return HttpResponseRedirect(reverse("plants:index"))
