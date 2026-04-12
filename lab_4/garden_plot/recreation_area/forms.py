@@ -12,8 +12,4 @@ class FittingForm(forms.ModelForm):
 
     class Meta:
         model = FittingModel
-        fields = ['name', 'image']
-
-
-
-
+        fields = ["name", "image"]

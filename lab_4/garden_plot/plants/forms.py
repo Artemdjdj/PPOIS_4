@@ -12,9 +12,9 @@ class PlantForm(forms.ModelForm):
     class Meta:
         model = PlantModel
         fields = [
-            'height',
-            'name',
-            'color',
-            'diameter',
-            'image',
+            "height",
+            "name",
+            "color",
+            "diameter",
+            "image",
         ]

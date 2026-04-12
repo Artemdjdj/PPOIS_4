@@ -3,19 +3,26 @@ from .models import ToolTypeModel, ToolStateModel, ToolModel
 
 
 class ToolTypeModelAdmin(admin.ModelAdmin):
-    prepopulated_fields  = {'slug':('name',)}
-    list_display=['name', 'slug']
-    search_fields=['name', 'slug']
+    prepopulated_fields = {"slug": ("name",)}
+    list_display = ["name", "slug"]
+    search_fields = ["name", "slug"]
 
 
 class ToolStateModelAdmin(admin.ModelAdmin):
-    prepopulated_fields  = {'slug':('name',)}
-    list_display=['name', 'slug']
-    search_fields=['name', 'slug']
+    prepopulated_fields = {"slug": ("name",)}
+    list_display = ["name", "slug"]
+    search_fields = ["name", "slug"]
+
 
 class ToolModelAdmin(admin.ModelAdmin):
-    list_display=['tool_type_name','brand', 'usage_count', 'state_name', 'date_of_maintain']
-    search_fields=['brand']
+    list_display = [
+        "tool_type_name",
+        "brand",
+        "usage_count",
+        "state_name",
+        "date_of_maintain",
+    ]
+    search_fields = ["brand"]
 
 
 admin.site.register(ToolTypeModel, ToolTypeModelAdmin)

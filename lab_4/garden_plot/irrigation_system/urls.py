@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-app_name = 'irrigation_system'
+app_name = "irrigation_system"
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path("", views.index, name="index"),
 ]

@@ -18,9 +18,9 @@ def index(request):
     paginator = Paginator(tools, 4)
     page_obj = paginator.get_page(page_number)
     context = {
-        'tools': tools,
-        'plot': plot,
-        'page_obj': page_obj,
+        "tools": tools,
+        "plot": plot,
+        "page_obj": page_obj,
     }
     return render(request, "tools/index.html", context)
 
@@ -33,16 +33,16 @@ def add_tool(request):
         if tool_form.is_valid():
             tool = tool_form.save(commit=False)
             convert_tool = Tool(tool.tool_type, tool.brand, tool.description)
-            tool = ToolModel.from_library_tool(convert_tool,plot, tool.image)
+            tool = ToolModel.from_library_tool(convert_tool, plot, tool.image)
             tool.save()
             return HttpResponseRedirect(reverse("tools:index"))
     else:
         tool_form = ToolForm()
 
     context = {
-        'tool_types': tool_types,
-        'form': tool_form,
-        'plot': plot,
+        "tool_types": tool_types,
+        "form": tool_form,
+        "plot": plot,
     }
     return render(request, "tools/add_tool.html", context)
 

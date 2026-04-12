@@ -19,6 +19,7 @@ class ColorModel(models.Model):
     def __str__(self):
         return self.name
 
+
 class PlantModel(models.Model):
     height = models.PositiveIntegerField(verbose_name="Высота")
     name = models.CharField(max_length=50, verbose_name="Имя")

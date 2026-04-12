@@ -1,5 +1,4 @@
 lab_4/
-├── .gitignore
 ├── dev/
 │   ├── assets/
 │   │   ├── css/
@@ -27,23 +26,23 @@ lab_4/
 │       ├── urls.py
 │       └── wsgi.py
 ├── irrigation_system/
+│   ├── migrations/
+│   ├── templates/
+│   │   └── irrigation_system/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── migrations/
 │   ├── models.py
-│   ├── templates/
-│   │   └── irrigation_system/
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
 ├── main/
+│   ├── migrations/
+│   ├── templates/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── migrations/
 │   ├── models.py
-│   ├── templates/
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
@@ -52,37 +51,37 @@ lab_4/
 │   ├── recreation_area_images/
 │   └── tool_images/
 ├── plants/
+│   ├── templates/
+│   │   └── plants/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
 │   ├── models.py
-│   ├── templates/
-│   │   └── plants/
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
 ├── plot/
+│   ├── migrations/
+│   ├── templates/
+│   │   └── plot/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
-│   ├── migrations/
 │   ├── models.py
-│   ├── templates/
-│   │   └── plot/
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
 ├── recreation_area/
+│   ├── migrations/
+│   ├── templates/
+│   │   └── recreation_area/
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
-│   ├── migrations/
 │   ├── models.py
-│   ├── templates/
-│   │   └── recreation_area/
 │   ├── tests.py
 │   ├── urls.py
 │   ├── utils.py
@@ -92,7 +91,19 @@ lab_4/
 │       ├── css/
 │       └── js/
 ├── tools/
-│   └── __init__.py
+│   ├── migrations/
+│   ├── templates/
+│   │   └── tools/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── .gitignore
+├── __init__.py
 ├── manage.py
 ├── README.MD
 ├── requirements.txt

@@ -19,25 +19,21 @@ def index(request):
 
     if irrigation_system is not None:
         plant_models = PlantModel.objects.all()
-        if plant_models.exists():
-            new_plants = [p.to_library_plant() for p in plant_models]
-            try:
-                irrigation_system.is_active = True
-                irrigation_system.save()
-                convert_irrigation_system = irrigation_system.to_library_system()
-                result = convert_irrigation_system.water(new_plants)
-                irrigation_system.update_from_library_system(convert_irrigation_system)
-                for i in range(len(plant_models)):
-                    plant_models[i].update_from_library_plant(new_plants[i])
-            except Exception as e:
-                result = str(e)
-                irrigation_system.is_active = False
-                irrigation_system.save()
+        new_plants = [p.to_library_plant() for p in plant_models]
+        try:
+            irrigation_system.is_active = True
+            irrigation_system.save()
+            convert_irrigation_system = irrigation_system.to_library_system()
+            print(f"количество {len(new_plants)}")
+            result = convert_irrigation_system.water(new_plants)
+            irrigation_system.update_from_library_system(convert_irrigation_system)
+            for i in range(len(plant_models)):
+                plant_models[i].update_from_library_plant(new_plants[i])
+        except Exception as e:
+            result = str(e)
+            irrigation_system.is_active = False
+            irrigation_system.save()
 
-    context = {
-        "irrigation_system": irrigation_system,
-        "plot": plot,
-        'result': result
-    }
+    context = {"irrigation_system": irrigation_system, "plot": plot, "result": result}
 
     return render(request, "irrigation_system/index.html", context)

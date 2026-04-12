@@ -27,15 +27,12 @@ def default_last_watering_time():
 
 
 class IrrigationSystemModel(models.Model):
-    is_active = models.BooleanField(default=False, verbose_name='Включена ли')
+    is_active = models.BooleanField(default=False, verbose_name="Включена ли")
     time_of_last_adding_water = models.DateTimeField(
-        default=default_last_watering_time,
-        verbose_name="Дата последнего полива"
+        default=default_last_watering_time, verbose_name="Дата последнего полива"
     )
     plot = models.OneToOneField(
-        PlotModel,
-        on_delete=models.CASCADE,
-        verbose_name="Участок"
+        PlotModel, on_delete=models.CASCADE, verbose_name="Участок"
     )
     objects = IrrigationSystemManager()
 
@@ -50,7 +47,9 @@ class IrrigationSystemModel(models.Model):
             convert_system.turn_on()
         else:
             convert_system.turn_of()
-        convert_system.time_of_last_adding_water = self.time_of_last_adding_water.replace(tzinfo=None)
+        convert_system.time_of_last_adding_water = (
+            self.time_of_last_adding_water.replace(tzinfo=None)
+        )
         return convert_system
 
     @classmethod
@@ -73,6 +72,6 @@ class IrrigationSystemModel(models.Model):
         self.save()
 
     class Meta:
-        db_table = 'IrrigationSystem'
-        verbose_name = 'IrrigationSystem'
-        verbose_name_plural = 'IrrigationSystems'
+        db_table = "IrrigationSystem"
+        verbose_name = "IrrigationSystem"
+        verbose_name_plural = "IrrigationSystems"

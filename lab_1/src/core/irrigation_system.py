@@ -40,7 +40,7 @@ class IrrigationSystem:
             for plant in plants:
                 plant.water(current_time)
             self.__is_active = False
-            return "Не политые растения были успешно политы, вскоре вы нужно будет их снова полить"
+            return "Не политые растения были успешно политы, вскоре нужно будет их снова полить"
         else:
             raise TooMuchPlantsAreWateredError("Растения недавно были политы, нужно чтобы прошло время (10 секунд минимум)")
 

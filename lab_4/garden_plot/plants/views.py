@@ -20,32 +20,24 @@ def index(request):
 
     paginator = Paginator(plants, 4)
     page_obj = paginator.get_page(page_number)
-    context = {
-        'plants': plants,
-        'page_obj': page_obj,
-        'plot': plot
-    }
-    return render(request, 'plants/index.html', context)
+    context = {"plants": plants, "page_obj": page_obj, "plot": plot}
+    return render(request, "plants/index.html", context)
 
 
 def add_plant(request):
     plot = PlotModel.objects.get_obj()
     colors = ColorModel.objects.all()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = PlantForm(request.POST, request.FILES)
         if form.is_valid():
             plant = form.save(commit=False)
             plant.plot = plot
             plant.save()
-            return HttpResponseRedirect(reverse('plants:index'))
+            return HttpResponseRedirect(reverse("plants:index"))
     else:
         form = PlantForm()
 
-    context = {
-        'plot': plot,
-        'form': form,
-        'colors': colors
-    }
+    context = {"plot": plot, "form": form, "colors": colors}
 
     return render(request, "plants/add_plant.html", context)
 
