@@ -1,5 +1,8 @@
 asgiref==3.11.1
 Django==6.0.3
+-e git+https://github.com/Artemdjdj/PPOIS_4.git@502626051edf96fd49835cfad3af79ba949f482f#egg=garden_plot&subdirectory=lab_1
+-e git+https://github.com/Artemdjdj/PPOIS_4.git@502626051edf96fd49835cfad3af79ba949f482f#egg=garden_plot_core&subdirectory=lab_1
+-e git+https://github.com/Artemdjdj/PPOIS_4.git@502626051edf96fd49835cfad3af79ba949f482f#egg=gardenplot&subdirectory=lab_1
 pillow==12.1.1
 sqlparse==0.5.5
 tzdata==2025.3

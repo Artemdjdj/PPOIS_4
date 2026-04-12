@@ -7,7 +7,6 @@ from django.db import models
 from plot.models import PlotModel
 from recreation_area.utils import BaseManager
 from src.core.plot import Grill
-from src.core.plot import RecreationArea
 
 
 class MeatTypeModel(models.Model):
@@ -15,6 +14,7 @@ class MeatTypeModel(models.Model):
     slug = models.SlugField(max_length=30, verbose_name="URL")
     time_of_cooking = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(300)],
                                          verbose_name="Среднее время приготовления мин")
+    image = models.ImageField(upload_to='meat_images', null=True, blank=True, verbose_name="Изображение")
 
     class Meta:
         db_table = 'MeatType'
@@ -46,43 +46,43 @@ class RecreationAreaModel(models.Model):
     def get_fittings(self):
         return self.fittings.all()
 
-    def to_library_area(self) -> RecreationArea:
-        lib_area = RecreationArea(square=self.square, perimeter=self.perimeter)
-        for fitting_model in self.fittings.all():
-            lib_area.add_decorative_fitting(fitting_model.name)
-        if GrillModel.objects.filter(recreation_area=self).exists():
-            lib_area.put_grill()
-        if self.is_clean:
-            lib_area.clean()
-        return lib_area
-
-    @classmethod
-    def from_library_area(cls, lib_area: RecreationArea, plot: PlotModel) -> "RecreationAreaModel":
-        area_model = cls(square=lib_area.square, perimeter=lib_area.perimeter, plot=plot, is_clean=lib_area.is_clean)
-        area_model.save()
-        for fitting in lib_area.get_decorative_fittings():
-            FittingModel.objects.create(name=fitting.name, recreation_area=area_model)
-        if lib_area._RecreationArea__grill is not None:
-            GrillModel.objects.create(recreation_area=area_model)
-        return area_model
-
-    def update_from_library_area(self, lib_area: RecreationArea) -> None:
-        self.square = lib_area.square
-        self.perimeter = lib_area.perimeter
-        self.is_clean = lib_area.is_clean
-        self.save()
-        current_fittings = set(self.fittings.values_list('name', flat=True))
-        lib_fittings = set(f.name for f in lib_area.get_decorative_fittings())
-        for name in lib_fittings - current_fittings:
-            FittingModel.objects.create(name=name, recreation_area=self)
-        for name in current_fittings - lib_fittings:
-            self.fittings.filter(name=name).delete()
-        has_grill = GrillModel.objects.filter(recreation_area=self).exists()
-        lib_has_grill = lib_area._RecreationArea__grill is not None
-        if lib_has_grill and not has_grill:
-            GrillModel.objects.create(recreation_area=self)
-        elif not lib_has_grill and has_grill:
-            GrillModel.objects.filter(recreation_area=self).delete()
+#     def to_library_area(self) -> RecreationArea:
+#         convert_area = RecreationArea(square=self.square, perimeter=self.perimeter)
+#         for fitting_model in self.fittings.all():
+#             convert_area.add_decorative_fitting(fitting_model.name)
+#         if GrillModel.objects.filter(recreation_area=self).exists():
+#             convert_area.put_grill()
+#         if self.is_clean:
+#             convert_area.clean()
+#         return convert_area
+# 
+#     @classmethod
+#     def from_library_area(cls, lib_area: RecreationArea, plot: PlotModel) -> "RecreationAreaModel":
+#         area_model = cls(square=lib_area.square, perimeter=lib_area.perimeter, plot=plot, is_clean=lib_area.is_clean)
+#         area_model.save()
+#         for fitting in lib_area.get_decorative_fittings():
+#             FittingModel.objects.create(name=fitting.name, recreation_area=area_model)
+#         if lib_area._RecreationArea__grill is not None:
+#             GrillModel.objects.create(recreation_area=area_model)
+#         return area_model
+# 
+#     def update_from_library_area(self, lib_area: RecreationArea) -> None:
+#         self.square = lib_area.square
+#         self.perimeter = lib_area.perimeter
+#         self.is_clean = lib_area.is_clean
+#         self.save()
+#         current_fittings = set(self.fittings.values_list('name', flat=True))
+#         lib_fittings = set(f.name for f in lib_area.get_decorative_fittings())
+#         for name in lib_fittings - current_fittings:
+#             FittingModel.objects.create(name=name, recreation_area=self)
+#         for name in current_fittings - lib_fittings:
+#             self.fittings.filter(name=name).delete()
+#         has_grill = GrillModel.objects.filter(recreation_area=self).exists()
+#         lib_has_grill = lib_area._RecreationArea__grill is not None
+#         if lib_has_grill and not has_grill:
+#             GrillModel.objects.create(recreation_area=self)
+#         elif not lib_has_grill and has_grill:
+#             GrillModel.objects.filter(recreation_area=self).delete()
 
     class Meta:
         db_table = 'RecreationArea'
