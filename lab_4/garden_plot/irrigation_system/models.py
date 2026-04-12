@@ -45,13 +45,13 @@ class IrrigationSystemModel(models.Model):
         super().save(*args, **kwargs)
 
     def to_library_system(self):
-        lib = IrrigationSystem()
+        convert_system = IrrigationSystem()
         if self.is_active:
-            lib.turn_on()
+            convert_system.turn_on()
         else:
-            lib.turn_of()
-        lib.time_of_last_adding_water = self.time_of_last_adding_water.replace(tzinfo=None)
-        return lib
+            convert_system.turn_of()
+        convert_system.time_of_last_adding_water = self.time_of_last_adding_water.replace(tzinfo=None)
+        return convert_system
 
     @classmethod
     def from_library_system(cls, lib, plot):

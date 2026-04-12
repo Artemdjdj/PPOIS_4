@@ -59,7 +59,9 @@ def soil_info(request):
         try:
             coeff = Decimal(coeff)
             soil = plot.soil
-            soil.fertilize(coeff)
+            convert_soil = soil.to_library_soil()
+            convert_soil.fertilize(coeff)
+            soil.update_from_library_soil(convert_soil)
         except Exception:
             return redirect('plot:soil_info')
 

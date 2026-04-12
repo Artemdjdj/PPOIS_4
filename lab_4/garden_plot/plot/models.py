@@ -5,7 +5,7 @@ from recreation_area.utils import BaseManager
 from garden_plot.exceptions import BigAmountOfFertilizerError
 
 from garden_plot.settings import MAX_COEFF, NORMAL_COEFF
-
+from src.core.soil import Soil, SoilType
 
 class SoilModel(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name="Название")
@@ -21,17 +21,37 @@ class SoilModel(models.Model):
     def __str__(self) -> str:
         return self.name
 
-    def fertilize(self, coeff_fertilize):
-        if self.coeff_fertilizer + coeff_fertilize <= MAX_COEFF:
-            self.coeff_fertilizer += coeff_fertilize
-            self.save()
-        else:
-            raise BigAmountOfFertilizerError(
-                "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
-            )
+    # def fertilize(self, coeff_fertilize):
+    #     if self.coeff_fertilizer + coeff_fertilize <= MAX_COEFF:
+    #         self.coeff_fertilizer += coeff_fertilize
+    #         self.save()
+    #     else:
+    #         raise BigAmountOfFertilizerError(
+    #             "Слишком много удобрений, почва будет перенасыщена, уменьшите количество!"
+    #         )
 
     def clear_soil(self):
         self.coeff_fertilizer = NORMAL_COEFF
+        self.save()
+
+    def to_library_soil(self) -> Soil:
+        soil_type = SoilType(self.name.lower())
+        convert_soil = Soil(soil_type=soil_type)
+        convert_soil.coeff_fertilizer = self.coeff_fertilizer
+        return convert_soil
+
+    @classmethod
+    def from_library_soil(cls, convert_soil: Soil) -> "SoilModel":
+        return cls(
+            name=convert_soil.type_of_soil.capitalize(),
+            slug=convert_soil.type_of_soil,
+            coeff_fertilizer=convert_soil.coeff_fertilizer,
+        )
+
+    def update_from_library_soil(self, convert_soil: Soil) -> None:
+        self.name = convert_soil.type_of_soil.capitalize()
+        self.slug = convert_soil.type_of_soil
+        self.coeff_fertilizer = convert_soil.coeff_fertilizer
         self.save()
 
 

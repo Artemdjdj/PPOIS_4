@@ -55,23 +55,36 @@ class Grill:
 
     def __str__(self) -> str:
         return "Гриль для приготовления мясных блюд"
+    
+class Fitting:
+    def __init__(self, name:str)->None:
+        self.name = name
+
+    def __eq__(self, fitting_name):
+        return self.name == fitting_name
+    
+    def __hash__(self):
+        return hash(self.name)
 
 
 class RecreationArea(BasicObject):
     def __init__(self, square: int | float, perimeter: int | float) -> None:
         super().__init__(square, perimeter)
-        self.__decorative_fittings: Set[str] = set()
+        self.__decorative_fittings: Set[Fitting] = set()
         self.__grill: Optional[Grill] = None
         self.__is_clean = True
 
-    def get_decorative_fittings(self) -> Set[str]:
+    def get_decorative_fittings(self) -> Set[Fitting]:
         return self.__decorative_fittings
 
     def add_decorative_fitting(self, fitting: str) -> None:
-        self.__decorative_fittings.add(fitting)
+        self.__decorative_fittings.add(Fitting(fitting))
 
-    def remove_decorative_fitting(self, fitting: str) -> None:
-        self.__decorative_fittings.remove(fitting)
+    def remove_decorative_fitting(self, fitting_name: str) -> None:
+        for fitting in self.__decorative_fittings:
+            if fitting.name == fitting_name:
+                self.__decorative_fittings.remove(fitting)
+                break
 
     def put_grill(self) -> bool:
         if self.__grill is None:
@@ -88,7 +101,7 @@ class RecreationArea(BasicObject):
 
     def use_grill(self, meat:MeatType) -> str:
         if self.__grill:
-            return self.__grill.fry(meat)
+            return self.__grill.fry(meat.cooking_time)
         raise GrillDoesNotExist("Гриль не установлен!")
 
     @property
@@ -102,7 +115,7 @@ class RecreationArea(BasicObject):
     def create_dict(self) -> Dict[str, Any]:
         base_dict = super().create_dict()
         area_dict = {
-            "decorative_fittings": list(self.__decorative_fittings),
+            "decorative_fittings": list([fitting.name for fitting in self.__decorative_fittings]),
             "grill": self.__grill is not None,
             "is_clean": self.__is_clean,
         }
@@ -114,7 +127,7 @@ class RecreationArea(BasicObject):
             square=info_dict["square"],
             perimeter=info_dict["perimeter"]
         )
-        area.__decorative_fittings = set(info_dict["decorative_fittings"])
+        area.__decorative_fittings = set([Fitting(f) for f in info_dict["decorative_fittings"]])
         area.__grill = Grill() if info_dict["grill"] else None
         area.__is_clean = info_dict["is_clean"]
         return area
