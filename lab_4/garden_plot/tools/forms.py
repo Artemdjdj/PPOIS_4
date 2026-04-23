@@ -6,7 +6,7 @@ class ToolForm(forms.ModelForm):
     tool_type = forms.ModelChoiceField(queryset=ToolTypeModel.objects.all())
     brand = forms.CharField()
     description = forms.CharField()
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = ToolModel

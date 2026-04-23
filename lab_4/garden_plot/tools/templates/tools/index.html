@@ -39,7 +39,7 @@
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
     {% for tool in page_obj %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-        <img src="{{tool.image.url}}" class="card-img-top" alt="..."
+        <img src="{% if tool.image %}{{tool.image.url}}{% else %}{% static 'assets/tools_images/unknown_tool.jpg' %}{% endif %}" class="card-img-top" alt="..."
              style="max-height: 200px; object-fit: cover; width: 100%;">
         <div class="card-body" style="display: flex; flex-direction: column;">
             <h5 class="card-title">{{tool.brand}}</h5>
