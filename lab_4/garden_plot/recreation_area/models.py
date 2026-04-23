@@ -22,8 +22,8 @@ class MeatTypeModel(models.Model):
 
     class Meta:
         db_table = "MeatType"
-        verbose_name = "MeatType"
-        verbose_name_plural = "MeatTypes"
+        verbose_name = "Тип мяса"
+        verbose_name_plural = "Типы мяса"
 
     def __str__(self):
         return self.name
@@ -60,48 +60,10 @@ class RecreationAreaModel(models.Model):
     def get_fittings(self):
         return self.fittings.all()
 
-    #     def to_library_area(self) -> RecreationArea:
-    #         convert_area = RecreationArea(square=self.square, perimeter=self.perimeter)
-    #         for fitting_model in self.fittings.all():
-    #             convert_area.add_decorative_fitting(fitting_model.name)
-    #         if GrillModel.objects.filter(recreation_area=self).exists():
-    #             convert_area.put_grill()
-    #         if self.is_clean:
-    #             convert_area.clean()
-    #         return convert_area
-    #
-    #     @classmethod
-    #     def from_library_area(cls, lib_area: RecreationArea, plot: PlotModel) -> "RecreationAreaModel":
-    #         area_model = cls(square=lib_area.square, perimeter=lib_area.perimeter, plot=plot, is_clean=lib_area.is_clean)
-    #         area_model.save()
-    #         for fitting in lib_area.get_decorative_fittings():
-    #             FittingModel.objects.create(name=fitting.name, recreation_area=area_model)
-    #         if lib_area._RecreationArea__grill is not None:
-    #             GrillModel.objects.create(recreation_area=area_model)
-    #         return area_model
-    #
-    #     def update_from_library_area(self, lib_area: RecreationArea) -> None:
-    #         self.square = lib_area.square
-    #         self.perimeter = lib_area.perimeter
-    #         self.is_clean = lib_area.is_clean
-    #         self.save()
-    #         current_fittings = set(self.fittings.values_list('name', flat=True))
-    #         lib_fittings = set(f.name for f in lib_area.get_decorative_fittings())
-    #         for name in lib_fittings - current_fittings:
-    #             FittingModel.objects.create(name=name, recreation_area=self)
-    #         for name in current_fittings - lib_fittings:
-    #             self.fittings.filter(name=name).delete()
-    #         has_grill = GrillModel.objects.filter(recreation_area=self).exists()
-    #         lib_has_grill = lib_area._RecreationArea__grill is not None
-    #         if lib_has_grill and not has_grill:
-    #             GrillModel.objects.create(recreation_area=self)
-    #         elif not lib_has_grill and has_grill:
-    #             GrillModel.objects.filter(recreation_area=self).delete()
-
     class Meta:
         db_table = "RecreationArea"
-        verbose_name = "RecreationArea"
-        verbose_name_plural = "RecreationAreas"
+        verbose_name = "Зона отдыха"
+        verbose_name_plural = "Зоны отдыха"
 
     def __str__(self):
         return f"Зона отдыха №{self.pk}"
@@ -124,8 +86,8 @@ class FittingModel(models.Model):
 
     class Meta:
         db_table = "Fitting"
-        verbose_name = "Fitting"
-        verbose_name_plural = "Fittings"
+        verbose_name = "Элемент декора"
+        verbose_name_plural = "Элементы декора"
 
     def __str__(self):
         return self.name
@@ -167,5 +129,5 @@ class GrillModel(models.Model):
 
     class Meta:
         db_table = "Grill"
-        verbose_name = "Grill"
-        verbose_name_plural = "Grills"
+        verbose_name = "Гриль"
+        verbose_name_plural = "Грили"

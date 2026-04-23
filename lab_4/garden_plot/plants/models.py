@@ -13,8 +13,8 @@ class ColorModel(models.Model):
 
     class Meta:
         db_table = "Color"
-        verbose_name = "Color"
-        verbose_name_plural = "Colors"
+        verbose_name = "Цвет"
+        verbose_name_plural = "Цвета"
 
     def __str__(self):
         return self.name
@@ -46,8 +46,8 @@ class PlantModel(models.Model):
 
     class Meta:
         db_table = "Plant"
-        verbose_name = "Plant"
-        verbose_name_plural = "Plants"
+        verbose_name = "Растение"
+        verbose_name_plural = "Растения"
 
     @property
     def get_color(self):

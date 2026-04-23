@@ -18,8 +18,8 @@ class ToolTypeModel(models.Model):
 
     class Meta:
         db_table = "ToolType"
-        verbose_name = "ToolType"
-        verbose_name_plural = "ToolTypes"
+        verbose_name = "Тип инструмента"
+        verbose_name_plural = "Типы инструментов"
 
     def __str__(self):
         return self.name
@@ -33,8 +33,8 @@ class ToolStateModel(models.Model):
 
     class Meta:
         db_table = "ToolState"
-        verbose_name = "ToolState"
-        verbose_name_plural = "ToolStates"
+        verbose_name = "Состояние инструмента"
+        verbose_name_plural = "Состояния инструментов"
 
     def __str__(self) -> str:
         return self.name
@@ -67,8 +67,8 @@ class ToolModel(models.Model):
 
     class Meta:
         db_table = "Tool"
-        verbose_name = "Tool"
-        verbose_name_plural = "Tools"
+        verbose_name = "Инструмент"
+        verbose_name_plural = "Инструменты"
 
     @property
     def tool_type_name(self):
@@ -77,35 +77,6 @@ class ToolModel(models.Model):
     @property
     def state_name(self):
         return self.state.name
-
-    #     def default_maintain(self):
-    #         self.state = ToolStateModel.objects.get(name="хорошее")
-    #         self.usage_count: int | float = 0
-    #         self.date_of_maintain = timezone.now()
-    #         self.save()
-    #
-    #     def maintenance(self):
-    #         if self.state.name == "идеальное":
-    #             return "Инструмент новый, обслуживание не надо"
-    #         elif self.state.name == "хорошее":
-    #             return "Инструмент в хорошем состоянии, можно приступать к работе"
-    #         elif self.state.name == "поврежденное":
-    #             self.default_maintain()
-    #             return "Инструмент имел небольшие дефекты, теперь все готово, инструмент в хорошем состоянии"
-    #         else:
-    #             self.default_maintain()
-    #             return "Инструмент был сильно поврежден, теперь все готово, инструмент в хорошем состоянии"
-    #
-    #     def perform_task(self, work_hours: int | float) -> None:
-    #         if self.state.name == "сломанное":
-    #             raise BrokenToolError("Инструмент сломан")
-    #         self.usage_count += Decimal(str(work_hours))
-    #         if COUNT_OF_WORK_HOURS_WORN <= self.usage_count <= COUNT_OF_WORK_HOURS_BROKEN:
-    #             self.state = ToolStateModel.objects.get(name="поврежденное")
-    #         elif self.usage_count > COUNT_OF_WORK_HOURS_BROKEN:
-    #             self.state = ToolStateModel.objects.get(name="сломанное")
-    #
-    #         self.save()
 
     def to_library_tool(self) -> Tool:
         data = {

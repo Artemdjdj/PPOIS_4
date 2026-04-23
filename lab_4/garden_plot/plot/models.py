@@ -20,8 +20,8 @@ class SoilModel(models.Model):
 
     class Meta:
         db_table = "Soil"
-        verbose_name = "Soil"
-        verbose_name_plural = "Soils"
+        verbose_name = "Почва"
+        verbose_name_plural = "Почвы"
 
     def __str__(self) -> str:
         return self.name
@@ -76,8 +76,8 @@ class PlotModel(models.Model):
 
     class Meta:
         db_table = "Plot"
-        verbose_name = "Plot"
-        verbose_name_plural = "Plots"
+        verbose_name = "Участок"
+        verbose_name_plural = "Участки"
 
     def save(self, *args, **kwargs):
         if not self.pk and PlotModel.objects.exists():

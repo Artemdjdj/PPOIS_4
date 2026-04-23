@@ -73,5 +73,5 @@ class IrrigationSystemModel(models.Model):
 
     class Meta:
         db_table = "IrrigationSystem"
-        verbose_name = "IrrigationSystem"
-        verbose_name_plural = "IrrigationSystems"
+        verbose_name = "Система полива"
+        verbose_name_plural = "Системы полива"
