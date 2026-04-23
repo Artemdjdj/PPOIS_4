@@ -1,7 +1,7 @@
 import time
 from typing import Optional, Dict, Any
 from src.utils.descriptor import NumberValidator
-from src.main.settings import MAX_DIAMETER_OF_PLANT
+from src.main.settings import MAX_HEIGHT_PLANT,MAX_DIAMETER_OF_PLANT
 from src.utils.validator import ColorValidator, ColorType
 from datetime import datetime, timezone
 
@@ -25,7 +25,7 @@ class Color:
 
 
 class Plant:
-    height = NumberValidator()
+    height = NumberValidator(MAX_HEIGHT_PLANT)
     diameter = NumberValidator(MAX_DIAMETER_OF_PLANT)
 
     def __init__(

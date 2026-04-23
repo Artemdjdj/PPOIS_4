@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <label for="height" class="form-label">Высота (см)</label>
                         <input type="number" class="form-control {% if form.height.errors %}is-invalid{% endif %}"
-                               id="height" name="height" step="1" value="{{ form.height.value|default:'' }}">
+                               id="height" name="height" step="1" value="{{ form.height.value|default:'' }}" min="0" max="116000">
                         {% if form.height.errors %}
                             <div class="invalid-feedback d-block">
                                 {{ form.height.errors }}
@@ -38,7 +38,7 @@
                     <div class="col-12">
                         <label for="diameter" class="form-label">Диаметр стебля (см)</label>
                         <input type="number" class="form-control {% if form.diameter.errors %}is-invalid{% endif %}"
-                               id="diameter" name="diameter" step="1" value="{{ form.diameter.value|default:'' }}">
+                               id="diameter" name="diameter" step="1" value="{{ form.diameter.value|default:'' }}" min="0" max="42000">
                         {% if form.diameter.errors %}
                             <div class="invalid-feedback d-block">
                                 {{ form.diameter.errors }}

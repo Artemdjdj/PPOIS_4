@@ -3,6 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # constants
+MAX_HEIGHT_PLANT = 116000
 MAX_DIAMETER_OF_PLANT = 42000
 MAX_COEFF = 1
 NORMAL_COEFF = 0.3
