@@ -19,7 +19,7 @@ class NumberValidator:
     def __set__(self, instance: Any, value: int | float) -> None:
         if not isinstance(value, (int|float)):
             raise TypeError("Число должно быть int либо float!")
-        elif value <= self.min_value:
+        elif value < self.min_value:
             raise ValueError(f"Число меньше минимального, минимальное: {self.min_value}")
         elif self.max_value is not None and value > self.max_value:
             raise ValueError(f"Число больше максимального, максимальное: {self.max_value}")
