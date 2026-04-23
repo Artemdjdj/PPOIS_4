@@ -39,11 +39,11 @@ class RecreationAreaManager(BaseManager):
 
 class RecreationAreaModel(models.Model):
     square = models.PositiveIntegerField(
-        validators=[MinValueValidator(100), MaxValueValidator(10000)],
+        validators=[MinValueValidator(10), MaxValueValidator(10000)],
         verbose_name="Площадь",
     )
     perimeter = models.PositiveIntegerField(
-        validators=[MinValueValidator(100), MaxValueValidator(10000)],
+        validators=[MinValueValidator(10), MaxValueValidator(10000)],
         verbose_name="Периметр",
     )
     is_clean = models.BooleanField(default=False, verbose_name="Убрана")

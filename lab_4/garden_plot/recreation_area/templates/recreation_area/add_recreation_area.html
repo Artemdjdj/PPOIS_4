@@ -20,8 +20,8 @@
                                id="{{ form.square.id_for_label }}"
                                name="square"
                                step="1"
-                               value="{{ form.square.value|default:100 }}"
-                               min="100" max="10000">
+                               value="{{ form.square.value|default:10 }}"
+                               min="10" max="10000">
                         {% if form.square.errors %}
                             <div class="invalid-feedback d-block">{{ form.square.errors.0 }}</div>
                         {% endif %}
@@ -35,8 +35,8 @@
                                id="{{ form.perimeter.id_for_label }}"
                                name="perimeter"
                                step="1"
-                               value="{{ form.perimeter.value|default:100 }}"
-                               min="100" max="10000">
+                               value="{{ form.perimeter.value|default:10 }}"
+                               min="10" max="10000">
                         {% if form.perimeter.errors %}
                             <div class="invalid-feedback d-block">{{ form.perimeter.errors.0 }}</div>
                         {% endif %}

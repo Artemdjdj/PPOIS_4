@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal,  ROUND_HALF_UP
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -62,8 +62,11 @@ def soil_info(request):
         except Exception:
             return redirect("plot:soil_info")
 
+    raw_value = plot.soil.coeff_fertilizer
+    display_value = raw_value.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
+
     context = {
         "plot": plot,
-        "result": plot.soil.coeff_fertilizer,
+        "result": display_value,
     }
     return render(request, "plot/soil.html", context)
