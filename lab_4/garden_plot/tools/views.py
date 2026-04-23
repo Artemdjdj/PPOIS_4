@@ -4,7 +4,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from urllib.parse import urlencode
 
-
 from .forms import ToolForm
 from .models import ToolModel, ToolTypeModel, ToolStateModel
 from plot.models import PlotModel
@@ -24,6 +23,10 @@ def index(request):
         except (ValueError, TypeError):
             error_tool_id = None
 
+    task_in_hour = request.GET.get('task_in_hour')
+    if not task_in_hour or task_in_hour.strip() == '':
+        task_in_hour = '1'
+
     page_number = request.GET.get("page")
     paginator = Paginator(tools, 4)
     page_obj = paginator.get_page(page_number)
@@ -33,8 +36,11 @@ def index(request):
         "plot": plot,
         "error_message": error_message,
         "error_tool_id": error_tool_id,
+        "task_in_hour": task_in_hour,
     }
     return render(request, "tools/index.html", context)
+
+
 def add_tool(request):
     tool_types = ToolTypeModel.objects.all()
     plot = PlotModel.objects.get_obj()
