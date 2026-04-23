@@ -7,7 +7,7 @@ class PlantForm(forms.ModelForm):
     name = forms.CharField()
     color = forms.ModelChoiceField(queryset=ColorModel.objects.all())
     diameter = forms.IntegerField()
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = PlantModel

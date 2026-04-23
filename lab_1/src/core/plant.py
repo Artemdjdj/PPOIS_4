@@ -53,7 +53,7 @@ class Plant:
 
     @property
     def time_of_last_adding_water(self) -> Optional[datetime]:
-        current_time = datetime.now(timezone.utc).replace(tzinfo=None)  # наивный UTC
+        current_time = datetime.now(timezone.utc).replace(tzinfo=None)
         if self.__time_of_last_adding_water is not None and \
            (current_time - self.__time_of_last_adding_water).total_seconds() >= MIN_TIME_OF_WATERING:
             self.__time_of_last_adding_water = None

@@ -45,28 +45,30 @@
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
     {% for plant in page_obj %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-        <div class="card" style="width: 18rem;">
-            <img src="{{plant.image.url}}" class="card-img-top"
-                 alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{plant.name}}</h5>
-                <p class="card-text">Высота: {{plant.height}}, диаметр: {{plant.diameter}}, цвет:
-                    {{plant.get_color}}</p>
-                <div style="display: inline-block; background-color:{% if plant.is_watered %}#28a745{% else %}#dc3545{% endif %}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px;">
-                    {% if plant.is_watered %}Полито{% else %}Не полито{% endif %}
-                </div>
-                <div style="display:flex; flex-wrap:nowrap; margin-left:auto; gap:20px; margin-top: auto;">
-                    {% if not plant.is_watered %}
-                        <form action="{% url 'plants:water_plant' plant.id %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-info">Полить</button>
-                        </form>
-                    {% endif %}
-                    <form action="{% url 'plants:delete_plant' plant.id %}" method="post">
+        <img src="{% if plant.image %}{{plant.image.url}}{% else %}{% static 'assets/plants_images/unknown_plant.jpg' %}{% endif %}"
+             class="card-img-top"
+             style="height: 200px; object-fit: cover;"
+             alt="{{plant.name}}">
+
+        <div class="card-body" style="display: flex; flex-direction: column; flex-grow: 1;">
+            <h5 class="card-title">{{plant.name}}</h5>
+            <p class="card-text">Высота: {{plant.height}}, диаметр: {{plant.diameter}}, цвет: {{plant.get_color}}</p>
+
+            <div style="display: inline-block; background-color:{% if plant.is_watered %}#28a745{% else %}#dc3545{% endif %}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; align-self: flex-start;">
+                {% if plant.is_watered %}Полито{% else %}Не полито{% endif %}
+            </div>
+
+            <div style="display:flex; flex-wrap:nowrap; gap:20px; margin-top: auto;">
+                {% if not plant.is_watered %}
+                    <form action="{% url 'plants:water_plant' plant.id %}" method="post">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit" class="btn btn-info">Полить</button>
                     </form>
-                </div>
+                {% endif %}
+                <form action="{% url 'plants:delete_plant' plant.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
             </div>
         </div>
     </div>

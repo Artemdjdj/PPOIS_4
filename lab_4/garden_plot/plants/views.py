@@ -14,7 +14,7 @@ def index(request):
     for plant in plants:
         convert_plant = plant.to_library_plant()
         convert_plant.update()
-        plant = plant.update_from_library_plant(convert_plant)
+        plant.update_from_library_plant(convert_plant)
     plot = PlotModel.objects.get_obj()
     page_number = request.GET.get("page")
 
