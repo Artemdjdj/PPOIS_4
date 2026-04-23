@@ -60,7 +60,7 @@
 <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top:20px; align-items: stretch;">
     {% for fitting in page_obj %}
     <div class="card" style="width: 18rem; display: flex; flex-direction: column;">
-        <img src="{{fitting.image.url}}" class="card-img-top" alt="...">
+        <img src="{% if fitting.image %}{{fitting.image.url}}{% else %}{% static 'assets/chill_images/unknown_decor.jpg' %}{% endif %}" class="card-img-top" alt="...">
         <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
             <h5 class="card-title">{{fitting.name}}</h5>
             <div style="display:flex; flex-wrap:nowrap; gap:40px; margin-top: auto;">

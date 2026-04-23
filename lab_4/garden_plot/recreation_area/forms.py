@@ -8,7 +8,7 @@ from recreation_area.models import FittingModel
 
 class FittingForm(forms.ModelForm):
     name = forms.CharField()
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = FittingModel
